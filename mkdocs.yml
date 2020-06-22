@@ -1,0 +1,39 @@
+site_name: CASTEP Docs 
+nav: 
+   - Home: 'index.md'
+   - 'Documentation':
+      - 'NMR':
+         - 'NMR Overview': 'documentation/NMR/NMR_overview.md'
+      - 'Pseudopotentials':
+        - 'Theory':   'documentation/Pseudopotentials/theory.md'
+        - 'Overview': 'documentation/Pseudopotentials/overview.md'
+        - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
+   - 'Tutorials':
+      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
+      - 'Bandstructure' : 'tutorials/bandstructure.md'
+
+theme:
+  name: material
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - footnotes
