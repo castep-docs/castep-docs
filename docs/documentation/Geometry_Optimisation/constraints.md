@@ -1,6 +1,6 @@
 ## Atomic constraints
 
-The ionic_constraints block allows us to control which atoms remain
+The `ionic_constraints` block controls which atoms remain
 fixed during a geometry optimisation. e.g.
 
 ```
@@ -22,9 +22,8 @@ The last example in particularly useful in the case of molecular
  all of the heavy atoms in the positions determined by diffraction.
 
 
-If you want to fix the individual Cartesian components of an atom's
-position, then you need to use the full syntax of the
-ionic_constraints block e.g.
+To fix the individual Cartesian components of an atom's
+position use the full syntax of the `ionic_constraints` block e.g.
 ```
 %BLOCK IONIC_CONSTRAINTS
        1       W       1    1.0000000000    0.0000000000    0.0000000000
