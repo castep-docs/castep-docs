@@ -2,8 +2,29 @@ site_name: CASTEP Docs
 nav: 
    - Home: 'index.md'
    - 'Documentation':
+      - 'Getting Started':
+        - 'Introduction': 'documentation/Getting_Started/intro.md'
+        - 'Command line help': 'documentation/Getting_Started/built_in_help.md'
+      - 'Ground State':
+        - 'Overview':  'documentation/Groundstate/intro.md'
+      - 'Geometry Optimisation':
+        - 'Overview': 'documentation/Geometry_Optimisation/overview.md'
+        - 'Keywords': 'documentation/Geometry_Optimisation/keywords.md'
+        - 'Constraints': 'documentation/Geometry_Optimisation/constraints.md'
+        - 'Files': 'documentation/Geometry_Optimisation/files.md'
+        - 'Tools': 'documentation/Geometry_Optimisation/tools.md'
+      - 'Molecular Dynamics':
+        - 'Overview': 'documentation/Molecular_Dynamics/overview.md' 
+      - 'Spectral':
+        - 'Overview': 'documentation/Spectral/overview.md'
+      - 'Vibrations':
+        - 'Vibrations': 'documentation/Vibrations/overview.md'
       - 'NMR':
-         - 'NMR Overview': 'documentation/NMR/NMR_overview.md'
+        - 'NMR Overview': 'documentation/NMR/NMR_overview.md'
+      - 'EPR':
+        - 'EPR Overview': 'documentation/EPR/overview.md'
+      - 'TDDFT':
+        - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
