@@ -1,6 +1,6 @@
 
 
-CASTEP has an in built help option to assist with using particular keywords. Information on using CASTEP can be seen by using:
+CASTEP has a in built help option to assist with using particular keywords. Information on using CASTEP can be seen by using:
 ```
 castep -h
 ```
@@ -18,7 +18,7 @@ castep -s symmetry
 ```
 Finally, to list all keywords, use:
 ```
-castep -s all
+castep -h all
 ```
 
 To find out which version of CASTEP you have, use:
