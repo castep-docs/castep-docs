@@ -7,6 +7,7 @@ nav:
         - 'Command line help': 'documentation/Getting_Started/built_in_help.md'
       - 'Ground State':
         - 'Overview':  'documentation/Groundstate/intro.md'
+        - 'Spin Orbit Coupling': 'documentation/Groundstate/soc.md'
       - 'Geometry Optimisation':
         - 'Overview': 'documentation/Geometry_Optimisation/overview.md'
         - 'Keywords': 'documentation/Geometry_Optimisation/keywords.md'
