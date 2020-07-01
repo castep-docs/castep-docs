@@ -18,6 +18,7 @@ nav:
         - 'Overview': 'documentation/Molecular_Dynamics/overview.md' 
       - 'Spectral':
         - 'Overview': 'documentation/Spectral/overview.md'
+        - 'Keywords': 'documentation/Spectral/keywords.md'
       - 'Vibrations':
         - 'Vibrations': 'documentation/Vibrations/overview.md'
       - 'NMR':
