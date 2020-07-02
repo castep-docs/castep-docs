@@ -32,8 +32,14 @@ nav:
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
         - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
    - 'Tutorials':
-      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
-      - 'Bandstructure' : 'tutorials/bandstructure.md'
+      - 'Bands and DOS': 
+        - 'Plotting - CASTEP tools': 'tutorials/Bands_and_DOS/plotting_perl.md'
+        - 'Plotting - SUMO': 'tutorials/Bands_and_DOS/plotting_sumo.md'
+        -  'Semiconductors':      'tutorials/Bands_and_DOS/semiconductors.md'
+        -  'Metals':      'tutorials/Bands_and_DOS/metals.md'
+        -  'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
+#      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
+#      - 'Bandstructure' : 'tutorials/bandstructure.md'
 
 theme:
   name: material
