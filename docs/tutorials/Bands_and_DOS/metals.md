@@ -37,7 +37,7 @@ opt_strategy    speed         ! Choose algorithms for best speed
 ![Aluminium bandstructure](../../img/al-bands.png)
 
 !!! note
-    Alumnium is a metal - there is no gap energy between the occupied and unoccupied states. The bands are close to parabolic (this is particularly noticeable around Gamma) - the electronic structure of aluminium closely follows a nearly-free electron model.
+    Aluminium is a metal - there is no gap energy between the occupied and unoccupied states. The bands are close to parabolic (this is particularly noticeable around Gamma) - the electronic structure of aluminium closely follows a nearly-free electron model.
 
 ## Copper
 
@@ -77,4 +77,4 @@ spectral_nbands 8             !
 ![Copper bandstructure](../../img/cu-bands.png)
 
 !!! note
-    Copper is a metal - there is no gap energy between the occupied and unoccupied states. The bandstructure of copper is typical for a transition metals - we have highly dispersive parabolic bands corresponding to the s electrons, these are crossed by 5 quite flat bands corresponding to more localised 3d electrons. In copper the 3d states are filled, and we see the flat band lie below the Fermi level.
+    Copper is a metal - there is no gap energy between the occupied and unoccupied states. The bandstructure of copper is typical for a transition metal - we have highly dispersive parabolic bands corresponding to the s electrons, these are crossed by 5 quite flat bands corresponding to more localised 3d electrons. In copper the 3d states are filled, and we see the flat bands lie below the Fermi level.
