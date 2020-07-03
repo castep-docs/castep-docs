@@ -1,4 +1,4 @@
-In this tutorial we will show you the cell and param files needed to plot bandstructures and density of states plots for various materials. For the commands needed to make the plots refer to to earlier tutorials.
+In this tutorial we will show you the cell and param files needed to plot bandstructures and density of states plots for various semiconductors. For the commands needed to make the plots refer to earlier tutorials.
 
 ## Silicon
 
