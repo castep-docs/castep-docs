@@ -135,11 +135,11 @@ There is no charge augmention (this is only needed for ultrasofts) however, a no
 ============================================================   
 ```
 
-This is pseudopotential calculated by using a Dirac equation solver including the spin-orbit interation (FR=fully relativistic).
+This pseudopotential is calculated by using a Dirac equation solver including the spin-orbit interaction (FR=fully relativistic).
 
 It is a norm-conserving potential.
 
-There are 14 electrons included in the valence (6s2,7s2,6p6,6d1,5f3). Because of the spin orbit splitting states with different j quantum numbers have different energies. So states with l>0 are split into $j=l+1/2$ and $j=l-1/2$ (e.g. 6p states are split into 6p1/2 and 6p3/2, the 5f into 5f5/2 5f7/2).
+There are 14 electrons included in the valence (6s2,7s2,6p6,6d1,5f3). Because of the spin orbit splitting states with different j quantum numbers have different energies. States with l>0 are split into $j=l+1/2$ and $j=l-1/2$ (e.g. the 6p states are split into 6p1/2 and 6p3/2, the 5f into 5f5/2 5f7/2).
 
 
 

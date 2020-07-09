@@ -2,6 +2,7 @@ Here we use CASTEP to calculate the bandstructure of two typical metals. The cel
 ## Aluminium
 
 ```
+! Al.cell
 %BLOCK LATTICE_ABC
 2.86 2.86 2.86
 60 60 60
@@ -27,6 +28,7 @@ symmetry_generate
 
 
 ```
+! Al.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
@@ -42,6 +44,7 @@ opt_strategy    speed         ! Choose algorithms for best speed
 ## Copper
 
 ```
+! Cu.cell
 %BLOCK LATTICE_ABC
 2.55 2.55 2.55
 60 60 60
@@ -66,6 +69,7 @@ symmetry_generate
 ```
 
 ```
+! Cu.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
