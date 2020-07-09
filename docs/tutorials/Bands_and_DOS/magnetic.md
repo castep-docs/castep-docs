@@ -3,6 +3,7 @@
 ## Iron 
 
 ```
+! Fe.cell
 %BLOCK LATTICE_CART
       -1.433199999999999       1.433200000000001       1.433200000000001
        1.433200000000001      -1.433200000000000       1.433200000000000
@@ -30,6 +31,7 @@ kpoint_mp_grid 8 8 8
 ```
 In the param file we set `spin_polarised  true` in order to allow the up and down spin electrons to take different configurations. It is important to start the calculation with an initial spin density using e.g. `spin:   1`. The value of the initial spin should not affect the final answer - a non-zero value is just needed to break the symmetry between the spin channels.
 ```
+! Fe.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
@@ -56,6 +58,7 @@ Integrated Spin Density     =     2.15322     hbar/2
 FeO is an anti-ferromagnetic oxide. We set up the calculation with initial spins on the two Fe atoms pointing in opposite directions.
 
 ```
+! FeO.cell
 %BLOCK LATTICE_CART
        1.768531594289456       0.000000000000001       5.002162732258922
       -0.884265797144728       1.531593288050063       5.002162732258921
@@ -82,6 +85,7 @@ symmetry_generate
 %endblock spectral_kpoint_path
 ```
 ```
+! FeO.param
 task           : spectral     ! The TASK keyword instructs CASTEP what to do
 xc_functional  : PBE          ! Which exchange-correlation functional to use.
 cutoff_energy   600 eV        
@@ -90,9 +94,9 @@ nextra_bands : 6
 spin_polarized : true
 ```
 
-A PBE calculation incorrectly find FeO to be a metal (bandstructure on left below).
+A PBE calculation incorrectly finds FeO to be a metal (bandstructure on left below).
 
-Add the following to the cell file to run a PBE+U calculations
+Add the following to the cell file to run a PBE+U calculation
 ```
 %block hubbard_u
 Fe 1 d: 2.5
