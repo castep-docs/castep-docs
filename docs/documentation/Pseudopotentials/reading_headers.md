@@ -57,7 +57,7 @@ The final line gives the choice of local potential. In this case the local poten
 
 `Augmentation charge Rinner`. This is specific to the Ultrasoft scheme - and describes the radius outside which the augmentation charge matches the all-electron charge.
 
-`Partial core correction`. 
+`Partial core correction`. As the exchange correlation energy is a non-linear function of charge there is an error introduced if we compute the xc energy of the valence and core electron separately. We therefore include the core charge in the calculation of the xc energy. The core charge is challenging to represent on a grid - and so a pseudized core charge is used. Rc is the cut-off for this pseudized core charge.
 
 ## Carbon - Normconserving
 
@@ -91,7 +91,7 @@ Note that the `Reference Electronic Structure` section is identical to the ultra
 
 From the pseudopotential definition we see there is one beta projector for l=0 (s) and the local potential is set to be l=1 (p). For norm-consering potentials it is common to only need one projector per angular momentum chanel, and for one of the occupied chanels to be represented by the local potential.
 
-There is no charge augmention (this is only needed for ultrasofts) however, a non-co-linear core correction is used.
+There is no charge augmention (this is only needed for ultrasofts) however, a non-linear core correction is used.
 
 
 ## Uranium - J-dependant
