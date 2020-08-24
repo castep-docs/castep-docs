@@ -62,15 +62,15 @@ Setting an element to zero means to keep it fixed. Two or more elements set to t
 
 ```
 %BLOCK CELL_CONSTRAINTS
-       1       2       3
        0       0       0
+       4       5       6
 %ENDBLOCK CELL_CONSTRAINTS
 ```
 would keep all cell lengths fixed, and allow the three cell angles to vary independently.  
 ```
 %BLOCK CELL_CONSTRAINTS
-       1       1       2
        0       0       0
+       4       4       6
 %ENDBLOCK CELL_CONSTRAINTS
 ```
 would enforce $\alpha=\beta\neq\gamma$ and keep the cell lengths fixed.
