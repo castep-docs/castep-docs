@@ -92,6 +92,8 @@ CALCULATE_XRD_SF:
 :ENDCALCULATE_XRD_SF
 %endblock devel_code
 ```
+!!! note
+    Structure factor calculations are a post-processing calculation, so they can be restarted from a previous DFT calculation's ``.check`` file by using the ``CONTINUATION`` parameter in CASTEP.
 
 ## Output Files
 The resulting structure factors that have been calculated will be outputted into a file named ``seed.xrd_sf``. For the following inputs: 
