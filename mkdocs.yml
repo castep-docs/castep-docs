@@ -28,6 +28,8 @@ nav:
         - 'EPR Overview': 'documentation/EPR/overview.md'
       - 'TDDFT':
         - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
+      - 'Dispersion Corrections':
+        - 'Overview': 'documentation/Dispersion_corrections/overview.md'
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
@@ -68,3 +70,5 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tilde
   - footnotes
+extra_css:
+  - stylesheets/extra.css
