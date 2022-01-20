@@ -184,6 +184,7 @@ Note that the two aliases MBD and MBD* both refer to the revised version of MBD 
 `TODO`: in older versions of CASTEP was this the case? From what version can be rely on that info? 
 
 Restrictions: 
+
 * Can only be used with the following XC functionals: PBE, PBE0, PBE1PBE, HSE03, HSE06, RSCAN    
 * Elements up to Z=54 (Xe) together with first row Lanthanides are supported.
 * Note that in the current implementation, only numeric stresses are available.

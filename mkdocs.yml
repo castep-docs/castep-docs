@@ -42,6 +42,7 @@ nav:
         -  'Semiconductors':      'tutorials/Bands_and_DOS/semiconductors.md'
         -  'Metals':      'tutorials/Bands_and_DOS/metals.md'
         -  'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
+      - 'Dispersion corrections' : 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
 #      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
 #      - 'Bandstructure' : 'tutorials/bandstructure.md'
 
