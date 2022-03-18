@@ -28,6 +28,8 @@ nav:
         - 'EPR Overview': 'documentation/EPR/overview.md'
       - 'TDDFT':
         - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
+      - 'Dispersion Corrections':
+        - 'Overview': 'documentation/Dispersion_corrections/overview.md'
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
@@ -40,6 +42,7 @@ nav:
         -  'Semiconductors':      'tutorials/Bands_and_DOS/semiconductors.md'
         -  'Metals':      'tutorials/Bands_and_DOS/metals.md'
         -  'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
+      - 'Dispersion corrections' : 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
 #      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
 #      - 'Bandstructure' : 'tutorials/bandstructure.md'
 
@@ -68,3 +71,5 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tilde
   - footnotes
+extra_css:
+  - stylesheets/extra.css
