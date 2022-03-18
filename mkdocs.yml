@@ -26,6 +26,7 @@ nav:
         - 'NMR Overview': 'documentation/NMR/NMR_overview.md'
       - 'EPR':
         - 'EPR Overview': 'documentation/EPR/overview.md'
+      - 'XRD': 'documentation/XRD/overview.md'
       - 'TDDFT':
         - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
       - 'Dispersion Corrections':
