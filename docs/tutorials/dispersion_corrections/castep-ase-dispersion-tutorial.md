@@ -30,7 +30,7 @@ from matplotlib import pyplot as plt
 
 ```
 
-For this tutorial I will use CASTEP version 21.11. See [here](../../documentation/Dispersion_corrections/overview.md#table) for a list of the different dispersion correction schemes and which version of CASTEP they are available from. 
+For this tutorial I will use CASTEP version 21.11. See [here](../../documentation/Groundstate/dftd.md#table) for a list of the different dispersion correction schemes and which version of CASTEP they are available from. 
 
 
 
@@ -205,7 +205,7 @@ We can see that the plain PBE functional severely underestimates the binding ene
     in the .param file. What effect does this have on the interlayer binding energy in graphite? (You may also want to set `IPRINT = 2`  to see more information about the dispersion correction parameters.)
 
 
-3.  Compare to other XC functionals with and without the dispersion corrections (though note that of the corrections are [only parameterised for a few functionals](../../documentation/Dispersion_corrections/overview.md#table).) 
+3.  Compare to other XC functionals with and without the dispersion corrections (though note that of the corrections are [only parameterised for a few functionals](../../documentation/Groundstate/dftd.md#table).) 
 
 
 
