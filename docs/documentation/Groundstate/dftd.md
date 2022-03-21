@@ -12,7 +12,7 @@
 ## Background
 
 ### Why and when are long range-dispersion methods needed?
-van der Waals (vdW) interactions are ubiquitous in nature but aren't accounted for by standard local and semilocal density functional approximations. In particular, the long-range attractive part of the vdW interaction between system components (London dispersion interaction) is not captured. Including such dispersion effects is essential for accurately describing certain systems, especially for systems that are not bound ionically or covalently, e.g. gas molecules. 
+van der Waals (vdW) interactions are ubiquitous in nature but aren't accounted for by standard local and semilocal density functional approximations (i.e. LDA or GGAs). In particular, the long-range attractive part of the vdW interaction between system components (London dispersion interaction) is not captured. Including such dispersion effects is essential for accurately describing certain systems, especially for systems that are not bound ionically or covalently, e.g. gas molecules. 
 
 The use of a dispersion method is strongly recommended when intermolecular interactions are expected to play a key role such as in molecular crystals, stacked 2D materials, and generally any weakly-bound system.
 
