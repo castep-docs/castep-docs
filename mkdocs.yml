@@ -30,8 +30,6 @@ nav:
       - 'XRD': 'documentation/XRD/overview.md'
       - 'TDDFT':
         - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
-      - 'Dispersion Corrections':
-        - 'Overview': 'documentation/Dispersion_corrections/overview.md'
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
