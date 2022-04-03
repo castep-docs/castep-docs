@@ -1,5 +1,5 @@
-site_name: CASTEP Docs 
-nav: 
+site_name: CASTEP Docs
+nav:
    - Home: 'index.md'
    - 'Documentation':
       - 'Getting Started':
@@ -16,7 +16,7 @@ nav:
         - 'Files': 'documentation/Geometry_Optimisation/files.md'
         - 'Tools': 'documentation/Geometry_Optimisation/tools.md'
       - 'Molecular Dynamics':
-        - 'Overview': 'documentation/Molecular_Dynamics/overview.md' 
+        - 'Overview': 'documentation/Molecular_Dynamics/overview.md'
       - 'Spectral':
         - 'Overview': 'documentation/Spectral/overview.md'
         - 'Keywords': 'documentation/Spectral/keywords.md'
@@ -33,18 +33,20 @@ nav:
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
-        - 'Headers' : 'documentation/Pseudopotentials/reading_headers.md'
+        - 'Headers': 'documentation/Pseudopotentials/reading_headers.md'
         - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
    - 'Tutorials':
-      - 'Bands and DOS': 
+      - 'Bonding and Charge':
+        - 'Plotting Charge Density': 'tutorials/Bonding_and_Charge/charge_density.md'
+        - 'Population Analysis': 'tutorials/Bonding_and_Charge/mulliken_population.md'
+      - 'Bands and DOS':
         - 'Plotting - CASTEP tools': 'tutorials/Bands_and_DOS/plotting_perl.md'
         - 'Plotting - SUMO': 'tutorials/Bands_and_DOS/plotting_sumo.md'
         -  'Semiconductors':      'tutorials/Bands_and_DOS/semiconductors.md'
         -  'Metals':      'tutorials/Bands_and_DOS/metals.md'
         -  'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
-      - 'Dispersion corrections' : 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
-#      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
-#      - 'Bandstructure' : 'tutorials/bandstructure.md'
+      - 'Dispersion corrections': 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
+      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
 
 theme:
   name: material
