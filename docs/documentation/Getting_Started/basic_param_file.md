@@ -1,4 +1,4 @@
-This is a detailed description of options for CASTEP's param file. See the [basic param file page](basic_param_file.md) for an overview. This page has the most frequently-used param file options, but for a full set use [CASTEP's built-in help](/documentation/Getting_Started/built_in_help).
+This is a basic overview of the param file. See the [full param file page](/documentation/Input_Files/param_file) for more details.
 
 The param file is one of CASTEP's two main input files. It contains all of the information about the kind of simulation your wish CASTEP to perform, as well as details of how CASTEP should perform them and additional simulations and analyses.
 
@@ -29,11 +29,11 @@ For more control over the cut-off energy, the `cut_off_energy` keyword may be us
 ```
 cut_off_energy : 500 eV
 ```
-Typical cut-off energies are in the range 300 to 1500 eV. 
+Typical cut-off energies are in the range 300 to 1500 eV.
 
 ## XC functional ##
 
-Density functional theory is exact in principle, except for the exchange-correlation (XC) functional which must be approximated. There are many different functional forms to approximate this, and in CASTEP you select it with the `xc_functional` keyword, for example:
+Density functional theory is exact in principle, except for the exchange-correlation (XC) functional which must be approximated. There are many different functional forms to approximate this, and in CASTEP you select it with the `xc_functional` keyword, for example: 
 
 ```
 xc_functional : pbe

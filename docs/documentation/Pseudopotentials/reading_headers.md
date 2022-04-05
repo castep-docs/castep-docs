@@ -28,30 +28,30 @@ At the start of a calculation CASTEP will generate the require pseudopotentials.
 | "2|1.4|10|12|13|20:21(qc=7)"                             |                
 ------------------------------------------------------------                
 |      Author: Chris J. Pickard, Cambridge University      |                
-============================================================ 
+============================================================
 ```
 All quantities are given in atomic units - so energies in Hartree (1Ha =26.4eV) and lengths in Bohr (1 bohr = 0.88Ang)
 
-* Element: This is just the symbol for the element 
+* Element: This is just the symbol for the element
 * Ionic Charge: Sum of nuclear charge and the core electrons (C Z=6 core=1s2 gives ionic charge as +6-2=+4)
 * Level of theory: The Exchange-Correlation potential used.
-* Atomic-solver: Koelling-Harmon is the default atomic solver. 
+* Atomic-solver: Koelling-Harmon is the default atomic solver.
 
 ### Reference electronic structure.
 
 This section describes the valence states included in the calculation. For Carbon these are the 2s and 2p states. Their occupations and energies are given.
 
 ### Pseudopotential Definition (Advanced)
-The definitions of each of the non-local projector (aka beta projectors) is given here. 
+The definitions of each of the non-local projector (aka beta projectors) is given here.
 
 * Beta - the number of the projector
 * l    - angular momentum quantum number
 * e    - energy of the corresponding orbital
-* Rc   - Cutoff (matching) radius for the orbital 
+* Rc   - Cutoff (matching) radius for the orbital
 * scheme - pseudization scheme (qc = qc tuned)
 * norm   - 1=norm-conserving 0-ultrasoft (norm not conserved)
 
-This is a standard Ultrasoft pseudopotential with two beta projectors per angular momentum channel. One projector is from an orbital at the boundstate energy (i.e. -0.505Ha for 2s) while the second projector corresponds to a non-bound orbital at an energy of 0.25Ha.
+This is a standard Ultrasoft pseudopotential with two beta projectors per angular momentum channel. One projector is from an orbital at the eigen-energy (i.e. -0.505Ha for 2s) while the second projector corresponds to a non-bound orbital at an energy of 0.25Ha.
 
 The final line gives the choice of local potential. In this case the local potential is constructed from a l=2 state with the same cutoff radius as for the local projectors.
 
@@ -89,12 +89,12 @@ The final line gives the choice of local potential. In this case the local poten
 
 Note that the `Reference Electronic Structure` section is identical to the ultrasoft potential above. This relates to the all-electron atom and is unaffected by the details of the pseudopotential.
 
-From the pseudopotential definition we see there is one beta projector for l=0 (s) and the local potential is set to be l=1 (p). For norm-consering potentials it is common to only need one projector per angular momentum chanel, and for one of the occupied chanels to be represented by the local potential.
+From the pseudopotential definition we see there is one beta projector for l=0 (s) and the local potential is set to be l=1 (p). For norm-conserving potentials it is common to only need one projector per angular momentum chanel, and for one of the occupied channels to be represented by the local potential.
 
-There is no charge augmention (this is only needed for ultrasofts) however, a non-linear core correction is used.
+There is no charge augmentation (this is only needed for ultrasofts) however, a non-linear core correction is used.
 
 
-## Uranium - J-dependant
+## Uranium - J-dependent
 
 ```
 ============================================================                
@@ -140,10 +140,3 @@ This pseudopotential is calculated by using a Dirac equation solver including th
 It is a norm-conserving potential.
 
 There are 14 electrons included in the valence (6s2,7s2,6p6,6d1,5f3). Because of the spin orbit splitting states with different j quantum numbers have different energies. States with l>0 are split into $j=l+1/2$ and $j=l-1/2$ (e.g. the 6p states are split into 6p1/2 and 6p3/2, the 5f into 5f5/2 5f7/2).
-
-
-
-
-
-
-

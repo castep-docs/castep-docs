@@ -1,6 +1,6 @@
 This is a basic overview of the cell file. See the [full cell file page](/documentation/Input_Files/cell_file) for more details.
 
-The cell file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, and atomic properties. 
+The cell file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, and atomic properties.
 
 The file itself is a free-format keyword-driven text file, consisting of keywords and blocks of information. These may be given in any order, with blocks indicated by the special `%block` and `%endblock` markers. Most of the keywords and blocks are optional, but CASTEP *requires* two block entries: a block to specify the lattice, and another to specify the atomic elements and positions within the cell.
 
@@ -19,9 +19,9 @@ Alternatively, you can specify the lattice vectors $\mathbf{a}$, $\mathbf{b}$ an
 ```
 %block lattice_cart
 [unit]
-a_x  a_y  a_z 
-b_x  b_y  b_z 
-c_x  c_y  c_z 
+a_x  a_y  a_z
+b_x  b_y  b_z
+c_x  c_y  c_z
 %endblock lattice_cart
 ```
 The first line is optional, and specifies a length unit; the default is `ang`, meaning Angstroms.
