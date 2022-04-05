@@ -1,6 +1,6 @@
 
 
-CASTEP has a in built help option to assist with using particular keywords. Information on using CASTEP can be seen by using:
+CASTEP has an in-built help option to assist with using particular keywords. Information on using CASTEP can be seen by using:
 ```
 castep -h
 ```

@@ -5,6 +5,7 @@ nav:
       - 'Getting Started':
         - 'Introduction': 'documentation/Getting_Started/intro.md'
         - 'Command line help': 'documentation/Getting_Started/built_in_help.md'
+        - 'Running CASTEP': 'documentation/Getting_Started/running_castep.md'
       - 'Ground State':
         - 'Overview':  'documentation/Groundstate/intro.md'
         - 'Dispersion Corrections': 'documentation/Groundstate/dftd.md'
@@ -35,6 +36,13 @@ nav:
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
         - 'Headers': 'documentation/Pseudopotentials/reading_headers.md'
         - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
+      - 'Input Files':
+        - 'cell file':  'documentation/Input_Files/cell_file.md'
+        - 'param file': 'documentation/Input_Files/param_file.md'
+        - 'cell keywords': 'documentation/Input_Files/cell_keywords.md'
+      - 'Troubleshooting':
+        - 'Common errors':  'documentation/Troubleshooting/troubleshooting.md'
+        - 'Linux help':  'documentation/Troubleshooting/linux_path.md'
    - 'Tutorials':
       - 'Bonding and Charge':
         - 'Plotting Charge Density': 'tutorials/Bonding_and_Charge/charge_density.md'

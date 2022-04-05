@@ -13,4 +13,4 @@ This is needed because we want to control the order in which the pages appear
 
 Please do add any pages missing, or put a request in the issue tracker. All pages will be checked by one of the CASTEP developers.
 
-For the tutorial see the Semiconductor example. The aim is to show input and output - and highlight key points. The sort of open eneded questions that we use for teaching at a workshop are less helpful in this format (i.e. when we are not around to answer and discuss)
+For the tutorial see the Semiconductor example. The aim is to show input and output - and highlight key points. The sort of open ended questions that we use for teaching at a workshop are less helpful in this format (i.e. when we are not around to answer and discuss)
