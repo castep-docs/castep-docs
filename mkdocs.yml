@@ -20,6 +20,10 @@ nav:
         - 'Tools': 'documentation/Geometry_Optimisation/tools.md'
       - 'Molecular Dynamics':
         - 'Overview': 'documentation/Molecular_Dynamics/overview.md'
+      - 'Exchange-Correlation (XC)':
+        - 'Overview': 'documentation/XC/XCoverview.md'
+        - 'Controlling XC': 'documentation/XC/XC.md'
+        - 'libXC': 'documentation/XC/libXC.md'
       - 'Spectral':
         - 'Overview': 'documentation/Spectral/overview.md'
         - 'Keywords': 'documentation/Spectral/keywords.md'
