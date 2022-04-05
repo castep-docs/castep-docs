@@ -1,4 +1,4 @@
-This is a detailed description of options for CASTEP's cell file. See the [basic cell file page](/documentation/Groundstate/basic_cell_file) for an overview. This page has the most frequently-used cell file options, but for a full set use [CASTEP's built-in help](/documentation/Getting_Started/built_in_help). There is also a [concise table of cell keywords](cell_keywords.md).
+This is a detailed description of options for CASTEP's cell file. See the [basic cell file page](/documentation/Getting_Started/basic_cell_file) for an overview. This page has the most frequently-used cell file options, but for a full set use [CASTEP's built-in help](/documentation/Getting_Started/built_in_help). There is also a [concise table of cell keywords](cell_keywords.md).
 
 The cell file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, cell symmetry, external pressure, constraints on motion of the atoms or cell, and atomic properties such as the mass of each species.
 
@@ -16,7 +16,7 @@ $C$ are characters.
 ### Cell Lattice Vectors ###
 
 The cell lattice vectors may be specified in Cartesian coordinates
-or in terms of the lattice vector magnitudes and the angles between 
+or in terms of the lattice vector magnitudes and the angles between
 them ($a, b, c, \alpha, \beta, \gamma$). Only one of `LATTICE_CART`
 and `LATTICE_ABC` may occur in a cell definition file.
 
@@ -26,12 +26,12 @@ The definitions of these keywords are as follows:
 %BLOCK LATTICE_CART
 [units]
 a_x  a_y  a_z  
-b_x  b_y  b_z 
+b_x  b_y  b_z
 c_x  c_y  c_z
 %ENDBLOCK LATTICE_CART
 ```
 
-Here `a_x` is the x-component of the first lattice vector, $\mathbf{a}$, 
+Here `a_x` is the x-component of the first lattice vector, $\mathbf{a}$,
 $b_y$ is the y-component of the second lattice vector, $\mathbf{b}$, etc.
 
 `[units]` specifies the units in which the lattice vectors are
@@ -58,7 +58,7 @@ Here `a` is the value of the lattice constant $\vert\mathbf{a}\vert$, `gamma` is
 
 The ionic positions may be specified in fractional coordinates relative
 to the lattice vectors of the unit cell, or in absolute coordinates.
-Only one of `POSITIONS_FRAC` and `POSITIONS_ABS` may occur in a cell definition 
+Only one of `POSITIONS_FRAC` and `POSITIONS_ABS` may occur in a cell definition
 file.
 
 ```
@@ -71,7 +71,7 @@ CCC_2  R_{2i}  R_{2j}  R_{2k}  [SPIN=s_2]
 
 The first entry on a line is the symbol of the species (chemical element). Alternatively, the atomic number may be given instead, in which case CASTEP will be look up for chemical symbol. A symbol can have a maximum of three
 characters. The first alphabetical characters identify the element,
-from which default values for atomic mass etc. 
+from which default values for atomic mass etc.
 
 The next three entries on a line in POSITIONS_FRAC are real numbers
 representing the position of the ion in fractions of the unit cell
@@ -113,7 +113,7 @@ k-point density. The origin of the Monkhorst-Pack grid may be
 offset by a vector from the origin of the Brillouin zone.
 
 If no k-points are specified, the default will be a Monkhorst-Pack
-grid with a maximum spacing of 0.1Å$^{-1}$ and no offset of the 
+grid with a maximum spacing of 0.1Å$^{-1}$ and no offset of the
 origin.
 
 The `KPOINT_LIST`, `KPOINT_MP_GRID` and `KPOINT_MP_SPACING`
@@ -160,7 +160,7 @@ KPOINT_MP_OFFSET R_i R_j R_k
 ```
 
 This specifies the offset of the Monkhorst-Pack grid with respect to
-the origin of the Brillouin zone. The three entries are the offset in 
+the origin of the Brillouin zone. The three entries are the offset in
 fractional coordinates relative to the reciprocal lattice vectors.
 
 The k-point set for performing spectral calculations
@@ -169,12 +169,12 @@ above with `SPECTRAL_` prepended. The same restrictions regarding
 mutually exclusive keywords apply.
 
 For a non-self-consistent spectral calculation, the k-points may
-be defined along a path through reciprocal space or a list of k-points. 
+be defined along a path through reciprocal space or a list of k-points.
 
 ```
 %BLOCK SPECTRAL_KPOINT_PATH
-R_{1i} R_{1j} R_{1k} 
-R_{2i} R_{2j} R_{2k} 
+R_{1i} R_{1j} R_{1k}
+R_{2i} R_{2j} R_{2k}
 ...
 %ENDBLOCK SPECTRAL_KPOINT_PATH
 ```
@@ -258,22 +258,22 @@ invariant. Each operation is represented as a $3\times 3$ array.
 
 ```
 %BLOCK SYMMETRY_OPS
-R_{11}   R_{21}   R_{31} 
-R_{12}   R_{22}   R_{32} 
-R_{13}   R_{23}   R_{33} 
+R_{11}   R_{21}   R_{31}
+R_{12}   R_{22}   R_{32}
+R_{13}   R_{23}   R_{33}
 T_1      T_2      T_3
 
-R_{11}   R_{21}   R_{31} 
-R_{12}   R_{22}   R_{32} 
-R_{13}   R_{23}   R_{33} 
+R_{11}   R_{21}   R_{31}
+R_{12}   R_{22}   R_{32}
+R_{13}   R_{23}   R_{33}
 T_1      T_2      T_3
 ...
 %ENDBLOCK SYMMETRY_OPS
 ```
 
-Each of the first three lines contains 3 entries representing a row of 
-a $3\times3$ array. These represent one symmetry rotation. The three 
-entries on the following line contain the translation associated with 
+Each of the first three lines contains 3 entries representing a row of
+a $3\times3$ array. These represent one symmetry rotation. The three
+entries on the following line contain the translation associated with
 this rotation.
 
 
@@ -299,13 +299,13 @@ remain fixed is supported by a logical keyword `FIX_COM`.  Also all
 ionic positions or cell parameters may be fixed by specifying the
 keywords `FIX_ALL_IONS` or `FIX_ALL_CELL` to be `TRUE` respectively.
 
-If no ionic or cell constraints are specified in the cell definition file, 
+If no ionic or cell constraints are specified in the cell definition file,
 the default is to fix the centre of mass.
 
 ```
 %BLOCK IONIC_CONSTRAINTS
-I_1  CCC_{1s}   I_{1s}   I_{n1}   R_{1i}   R_{1j}   R_{1k} 
-I_2  CCC_{2s}   I_{2s}   I_{n2}   R_{2i}   R_{2j}   R_{2k} 
+I_1  CCC_{1s}   I_{1s}   I_{n1}   R_{1i}   R_{1j}   R_{1k}
+I_2  CCC_{2s}   I_{2s}   I_{n2}   R_{2i}   R_{2j}   R_{2k}
 ...
 %ENDBLOCK IONIC_CONSTRAINTS
 ```
@@ -320,7 +320,7 @@ The final three numbers are real numbers representing the coefficients
 of the Cartesian coordinates of the ionic position in the constraint
 sum. All coefficients in the sum not explicitly specified will be zero.
 
-On reading this data, the matrix of ionic constraints will be 
+On reading this data, the matrix of ionic constraints will be
 orthogonalised.
 
 ```
@@ -337,8 +337,8 @@ to the angles $\alpha, \beta, \gamma$.
 If the value of the entry corresponding to a magnitude or angle is
 zero, this quantity will remain fixed. If two or three entries
 contain the same integer, the corresponding quantities will be
-constrained to have the same value. If a positive integer greater than 
-0 occurs in entries 1 through 3 the same integer cannot occur in 
+constrained to have the same value. If a positive integer greater than
+0 occurs in entries 1 through 3 the same integer cannot occur in
 entries 4 through 6 as this would imply that a vector length
 and angle must have the same value.
 
@@ -351,8 +351,8 @@ specified in the cell definition file.
 ```
 %BLOCK SPECIES_MASS
 [units]
-CCC_1   I_1   R_1 
-CCC_2   I_2   R_2 
+CCC_1   I_1   R_1
+CCC_2   I_2   R_2
 ...
 %ENDBLOCK SPECIES_MASS
 ```
@@ -372,8 +372,8 @@ specified.
 
 ```
 %BLOCK SPECIES_POT
-CCC_1   I_1   <filename> 
-CCC_2   I_2   <filename> 
+CCC_1   I_1   <filename>
+CCC_2   I_2   <filename>
 ...
 %ENDBLOCK SPECIES_POT
 ```
@@ -386,7 +386,7 @@ containing the definition of the pseudopotential representing the
 ionic species. The file to which this refers may be a definition of
 the parameters of the pseudopotential which is to be generated at
 runtime, or an old-style pseudopotential definition containing the
-data for the pseudopotential. 
+data for the pseudopotential.
 
 Not all species need appear in the `SPECIES_POT` block. If a
 pseudopotential is not specified, the default pseudopotential
@@ -400,8 +400,8 @@ the pseudopotential corresponding to that ion.
 
 ```
 %BLOCK SPECIES_LCAO_STATES
-CCC_1   I_1   I_{B1} 
-CCC_2   I_2   I_{B2} 
+CCC_1   I_1   I_{B1}
+CCC_2   I_2   I_{B2}
 ...
 %ENDBLOCK SPECIES_LCAO_STATES
 ```
@@ -427,9 +427,9 @@ a pressure tensor.
 ```
 %BLOCK EXTERNAL_PRESSURE
 [units]
-R_{xx}   R_{xy}  R_{xz} 
-         R_{yy}  R_{yz} 
-                 R_{zz} 
+R_{xx}   R_{xy}  R_{xz}
+         R_{yy}  R_{yz}
+                 R_{zz}
 %ENDBLOCK EXTERNAL_PRESSURE
 ```
 
@@ -449,8 +449,8 @@ in a cell definition file.
 ```
 %BLOCK IONIC_VELOCITIES
 [units]
-CCC_1 V_{1x}  V_{1y}  V_{1z} 
-CCC_2 V_{2x}  V_{2y}  V_{2z} 
+CCC_1 V_{1x}  V_{1y}  V_{1z}
+CCC_2 V_{2x}  V_{2y}  V_{2z}
 ...
 %ENDBLOCK IONIC_VELOCITIES
 ```
@@ -467,4 +467,3 @@ defined. If not present, the default is Å/ps.
 If this keyword is not present and a molecular dynamics calculation is
 performed, the ionic velocities will be randomly initialised with the
 appropriate temperature.
-
