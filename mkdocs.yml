@@ -8,6 +8,7 @@ nav:
         - 'Running CASTEP': 'documentation/Getting_Started/running_castep.md'
         - 'cell File': 'documentation/Getting_Started/basic_cell_file.md'
         - 'param File': 'documentation/Getting_Started/basic_param_file.md'
+        - 'Checkpoint and Restart': 'documentation/Getting_Started/restarting.md'
       - 'Ground State':
         - 'Overview':  'documentation/Groundstate/intro.md'
         - 'Dispersion Corrections': 'documentation/Groundstate/dftd.md'
