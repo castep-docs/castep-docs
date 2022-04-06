@@ -1,6 +1,6 @@
 ## .geom
 
-The .geom file contains the unit cell, positions of the atoms and the forces on the atoms for each step of the geometry optimisation.
+The .geom file is the primary output file, and contains the unit cell, positions of the atoms and the forces on the atoms for each step of the geometry optimisation.
 The format of this file is the same as the .md file ()
 
 ```
@@ -48,6 +48,9 @@ All quantities are reported in atomic units (this cannot be changed by any param
 * `<-- R` Cartesian positions of atoms
 * `<-- F` Force on atoms
 
+The '<-- c' line also reports the status of 4 convergence flags (either F=false or T=true). These are (in order):
 
-!!! Charges
-    Should add section for charges.
+* dE - has the energy change/atom been below geom_energy_tol for at geom_convergence_win steps?
+* Fmax - is the largest component of any force below geom_force_tol?
+* dRmax - is the largest change in position for any atom below geom_disp_tol?
+* Smax- is the largest component of the stress tensor below geom_stress_tol?

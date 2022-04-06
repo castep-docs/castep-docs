@@ -1,7 +1,7 @@
 ## Atomic constraints
 
 CASTEP can impose various forms of linear or non-linear constraints upon the positions of the atoms. This can be used with all forms of geometry optimization and 
-molecular dynamicss.
+molecular dynamics.
 
 Some simple short cuts exist, such as to keep all the atoms fixed:
 
@@ -143,7 +143,8 @@ For instance
 %ENDBLOCK NONLINEAR_CONSTRAINTS
 ```
 specifies:
-* the distance between the 4th hydrogren atom and the 2nd oxygen atom in the adjacent ( 0 1 0 ) cell
+
+* the distance between the 4th hydrogen atom and the 2nd oxygen atom in the adjacent ( 0 1 0 ) cell
 * the bend angle defined by the 5th hydrogen atom, the 1st carbon atom in the ( 1 0 1 ) cell and the 2nd hydrogen atom
 * the torsion angle defined by 4 hydrogen atoms, etc.
 
