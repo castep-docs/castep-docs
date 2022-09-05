@@ -1,0 +1,1713 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>Dispersion corrections - CASTEP Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interlayer-binding-energy-of-graphite" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="CASTEP Docs" class="md-header__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CASTEP Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dispersion corrections
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="CASTEP Docs" class="md-nav__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CASTEP Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/built_in_help/" class="md-nav__link">
+        Command line help
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/running_castep/" class="md-nav__link">
+        Running CASTEP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/basic_cell_file/" class="md-nav__link">
+        cell File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/basic_param_file/" class="md-nav__link">
+        param File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/restarting/" class="md-nav__link">
+        Checkpoint and Restart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Ground State
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ground State" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ground State
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Groundstate/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Groundstate/dftd/" class="md-nav__link">
+        Dispersion Corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Groundstate/soc/" class="md-nav__link">
+        Spin Orbit Coupling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Geometry Optimisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Geometry Optimisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Geometry Optimisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Molecular Dynamics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Molecular Dynamics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Molecular Dynamics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Molecular_Dynamics/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Exchange-Correlation (XC)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exchange-Correlation (XC)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Exchange-Correlation (XC)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XC/XCoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XC/XC/" class="md-nav__link">
+        Controlling XC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XC/libXC/" class="md-nav__link">
+        libXC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Spectral
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spectral" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Spectral
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Spectral/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Spectral/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Spectral/restarts/" class="md-nav__link">
+        Restarts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Vibrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vibrations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Vibrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Vibrations/overview/" class="md-nav__link">
+        Vibrations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          NMR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          NMR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/NMR/NMR_overview/" class="md-nav__link">
+        NMR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          EPR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="EPR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          EPR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/EPR/overview/" class="md-nav__link">
+        EPR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XRD/overview/" class="md-nav__link">
+        XRD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_11">
+          TDDFT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TDDFT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          TDDFT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/TDDFT/overview/" class="md-nav__link">
+        TDDFT Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          Pseudopotentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pseudopotentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Pseudopotentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/theory/" class="md-nav__link">
+        Theory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/reading_headers/" class="md-nav__link">
+        Headers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/otfg_string/" class="md-nav__link">
+        OTFG string
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          Input Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input Files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Input Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Input_Files/cell_file/" class="md-nav__link">
+        cell file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Input_Files/param_file/" class="md-nav__link">
+        param file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Input_Files/cell_keywords/" class="md-nav__link">
+        cell keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Troubleshooting/troubleshooting/" class="md-nav__link">
+        Common errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Troubleshooting/linux_path/" class="md-nav__link">
+        Linux help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Bonding and Charge
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bonding and Charge" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bonding and Charge
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bonding_and_Charge/charge_density/" class="md-nav__link">
+        Plotting Charge Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bonding_and_Charge/mulliken_population/" class="md-nav__link">
+        Population Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Bands and DOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bands and DOS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bands and DOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/plotting_perl/" class="md-nav__link">
+        Plotting - CASTEP tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/plotting_sumo/" class="md-nav__link">
+        Plotting - SUMO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/semiconductors/" class="md-nav__link">
+        Semiconductors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/metals/" class="md-nav__link">
+        Metals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/magnetic/" class="md-nav__link">
+        Magnetic Materials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dispersion corrections
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Dispersion corrections
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#separation-of-layers-setup-and-run-the-calculations" class="md-nav__link">
+    Separation of layers: setup and run the calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-in-and-analyse-the-results" class="md-nav__link">
+    Read in and analyse the results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-suggestions" class="md-nav__link">
+    Further suggestions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NMR_shielding.md" class="md-nav__link">
+        NMR Shielding
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#separation-of-layers-setup-and-run-the-calculations" class="md-nav__link">
+    Separation of layers: setup and run the calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-in-and-analyse-the-results" class="md-nav__link">
+    Read in and analyse the results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-suggestions" class="md-nav__link">
+    Further suggestions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="interlayer-binding-energy-of-graphite">Interlayer binding energy of graphite</h1>
+<p>Here we'll explore the van der Waals interaction that holds sheets of graphene together to form graphite. We will see how a standard semi-local density functional approximation fails to predict the correct interlayer binding energy in graphite and how we can do better using semi-empirical dispersion corrections in CASTEP.</p>
+<p>For this tutorial we will use the CASTEP-ASE interface to setup and run many short calculations and analyse the results, though you can of course adapt the content here to use a scripting language of your choice. I have broken up the parts of the script to add clarification in places, but you can download the jupyter notebook with all the cells <a href="../castep-ase-dispersion-tutorial.ipynb">here</a>.</p>
+<p>We start by importing several python libraries. For more information on using the atomic simulation environment (ASE) with CASTEP, see <a href="https://wiki.fysik.dtu.dk/ase/ase/calculators/castep.html">the documentation here</a>.  </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ASE version 3.22.1</span>
+<span class="kn">from</span> <span class="nn">ase.io</span> <span class="kn">import</span> <span class="n">read</span><span class="p">,</span> <span class="n">write</span>
+<span class="kn">from</span> <span class="nn">ase.calculators.castep</span> <span class="kn">import</span> <span class="n">Castep</span>
+<span class="kn">from</span> <span class="nn">ase.io.castep</span> <span class="kn">import</span> <span class="n">read_seed</span>
+<span class="kn">from</span> <span class="nn">ase.visualize</span> <span class="kn">import</span> <span class="n">view</span>
+
+<span class="c1"># pandas version 1.3.4</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># castep.mpi on path already, version 21.11</span>
+<span class="n">castep_cmd</span> <span class="o">=</span> <span class="s1">&#39;mpirun -n 4 castep.mpi&#39;</span>
+
+<span class="c1"># plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="c1"># Python version: 3.9.5</span>
+</code></pre></div>
+<p>For this tutorial I will use CASTEP version 21.11. See <a href="../../../documentation/Groundstate/dftd/#table">here</a> for a list of the different dispersion correction schemes and which version of CASTEP they are available from. </p>
+<h2 id="separation-of-layers-setup-and-run-the-calculations">Separation of layers: setup and run the calculations</h2>
+<p>The script below loops over several different dispersion corrections schemes and, for each one, calculates the total energy of a 4-atom graphite cell at several different values of the c lattice constant. This effectively increases the interlayer spacing between the sheets of graphene. By separating them far enough apart, we can estimate the interlayer binding energy predicte by each method. </p>
+<p>The script took about 10 minutes to run using 4 cores on a relatively powerful laptop. You can decrease the k-point sampling or basis set precision, or loop over fewer methods or c parameters in order to speed things up. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># run in this directorsy</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="s1">&#39;separate-layers-tutorial/&#39;</span>
+
+<span class="c1"># k-point grid </span>
+<span class="c1"># -- try coarser grid if this is too slow, </span>
+<span class="c1">#    but higher if you want more reliable results! </span>
+<span class="n">kpts</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="c1"># xc functional to use</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="s1">&#39;PBE&#39;</span> 
+<span class="c1"># range of unit c parameters in Angstroms (interlayer spacings are half these!)</span>
+<span class="n">crange</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">6.25</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mf">6.75</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">7.25</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+
+<span class="c1">#SEDC correction schemes to try:</span>
+<span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;G06&#39;</span><span class="p">,</span> <span class="s1">&#39;D3&#39;</span><span class="p">,</span> <span class="s1">&#39;D3-BJ&#39;</span><span class="p">,</span> <span class="s1">&#39;TS&#39;</span><span class="p">,</span> <span class="s1">&#39;MBD&#39;</span><span class="p">,</span> <span class="s1">&#39;XDM&#39;</span><span class="p">]</span>
+
+<span class="c1"># pandas dataframe to store the results</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;crange&#39;</span> <span class="p">:</span> <span class="n">crange</span><span class="p">})</span>
+
+<span class="c1"># loop over the different correction schemes</span>
+<span class="k">for</span> <span class="n">sedc_scheme</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="mi">50</span><span class="o">*</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xc</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="n">sedc_scheme</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># list to temporarily hold the total energy for each calculation</span>
+    <span class="n">energies</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># loop over c parameters:</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">crange</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xc</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">sedc_scheme</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">3.2f</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">graphite</span> <span class="o">=</span> <span class="n">read_seed</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="c1"># if the calculation doesn&#39;t already exist, we set it up and </span>
+            <span class="c1"># run it</span>
+
+
+         <span class="c1"># read in cif file (taken from here: https://materialsproject.org/materials/mp-48 )</span>
+            <span class="n">graphite</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="s1">&#39;C_mp-48_primitive.cif&#39;</span><span class="p">)</span>
+
+            <span class="c1"># we could make a supercell to get more accurate results for TS, MBD and XDM schemes.  </span>
+            <span class="c1"># graphite = graphite * (3,3,1)</span>
+
+            <span class="c1"># scale c parameter to new value</span>
+            <span class="n">cellpar</span> <span class="o">=</span> <span class="n">graphite</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">cellpar</span><span class="p">()</span>
+            <span class="n">cellpar</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="n">graphite</span><span class="o">.</span><span class="n">set_cell</span><span class="p">(</span><span class="n">cellpar</span><span class="p">,</span> <span class="n">scale_atoms</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># set up castep calculator</span>
+            <span class="n">calc</span> <span class="o">=</span> <span class="n">Castep</span><span class="p">(</span><span class="n">xc</span> <span class="o">=</span> <span class="n">xc</span><span class="p">,</span>
+                        <span class="n">kpts</span> <span class="o">=</span> <span class="n">kpts</span><span class="p">,</span> 
+                        <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">,</span> 
+                        <span class="n">castep_command</span> <span class="o">=</span> <span class="n">castep_cmd</span><span class="p">,</span> 
+                        <span class="n">basis_precision</span> <span class="o">=</span> <span class="s1">&#39;precise&#39;</span><span class="p">,</span>  <span class="c1"># switch to something cheaper (e.g. FINE) to speed things up for this example..</span>
+                        <span class="n">directory</span> <span class="o">=</span> <span class="n">directory</span><span class="p">,</span>
+                        <span class="n">write_checkpoint</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="c1"># don&#39;t need the checkpoint files now</span>
+                        <span class="n">write_cst_esp</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="c1"># don&#39;t need the electrostatic potential file now</span>
+                        <span class="n">write_bands</span>   <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="c1"># don&#39;t need the bands file now</span>
+                        <span class="n">_rename_existing_dir</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="c1"># allows us to write all these calculations to the same directory... </span>
+                        <span class="n">symmetry_generate</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># use symmetry to speed up the calculation</span>
+                        <span class="n">snap_to_symmetry</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># enforce symmetry</span>
+                        <span class="p">)</span>
+
+            <span class="c1"># Switch on the SEDC flags </span>
+            <span class="k">if</span> <span class="n">sedc_scheme</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">calc</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">sedc_apply</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">calc</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">sedc_scheme</span> <span class="o">=</span> <span class="n">sedc_scheme</span>
+
+            <span class="c1"># For the XDM scheme we need to set this manually</span>
+            <span class="c1"># otherwise the calculation crashes... </span>
+            <span class="k">if</span> <span class="n">sedc_scheme</span> <span class="o">==</span> <span class="s1">&#39;XDM&#39;</span><span class="p">:</span>
+                <span class="n">calc</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">SEDC_SC_XDM</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+            <span class="n">graphite</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">calc</span><span class="p">)</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">graphite</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span>
+        <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">8.3f</span><span class="si">}</span><span class="s1"> A</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">e</span><span class="si">:</span><span class="s1">12.8f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
+    <span class="c1"># save the energy wrt to furthest energy: </span>
+    <span class="n">energies</span> <span class="o">=</span>  <span class="p">[</span><span class="n">e</span> <span class="o">-</span> <span class="n">energies</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">energies</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xc</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">sedc_scheme</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>  <span class="o">=</span><span class="n">energies</span>
+
+
+<span class="c1"># Save to a .csv file: </span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;graphite_layer_separation.csv&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>The .param files generated look something like this: </p>
+<div class="highlight"><pre><span></span><code>WRITE_CST_ESP: FALSE
+WRITE_BANDS: FALSE
+WRITE_CHECKPOINT: None
+XC_FUNCTIONAL: PBE
+SEDC_APPLY: TRUE
+SEDC_SCHEME: D3 # or TS or D3-BJ etc.
+BASIS_PRECISION: precise
+</code></pre></div>
+<p>The task defaults to <code>SINGLEPOINT</code> (which is what we want in this case).</p>
+<p>The .cell files simply have the crystal structure in which the cell is scaled in the c direction. </p>
+<h2 id="read-in-and-analyse-the-results">Read in and analyse the results</h2>
+<p>We can now read in and analyse the results from the previous step. Reading the data into a <code>pandas</code> dataframe object is convenient. </p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./graphite_layer_separation.csv&#39;</span><span class="p">)</span>
+<span class="c1"># scale by 1000 / 4 to get the energies per atom and in units of meV</span>
+<span class="n">dfdiff</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">4</span> <span class="c1"># energy per atom in meV</span>
+<span class="c1"># the c parmeter is 2x the interlayer spacing, d</span>
+<span class="n">dfdiff</span><span class="p">[</span><span class="s1">&#39;c/2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;crange&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">styles</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1">-&#39;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="s2">&quot;v&quot;</span><span class="p">,</span><span class="s2">&quot;^&quot;</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">,</span><span class="s2">&quot;+&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="s2">&quot;D&quot;</span><span class="p">]]</span>
+
+<span class="c1"># compared to this refence (and many others!) https://doi.org/10.1039/C3RA47187J</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">dfdiff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;c/2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PBE-&#39;</span><span class="p">,</span><span class="s1">&#39;PBE-G06&#39;</span><span class="p">,</span> <span class="s1">&#39;PBE-D3&#39;</span><span class="p">,</span> <span class="s1">&#39;PBE-D3-BJ&#39;</span><span class="p">,</span> <span class="s1">&#39;PBE-TS&#39;</span><span class="p">,</span> <span class="s1">&#39;PBE-MBD&#39;</span><span class="p">,</span> <span class="s1">&#39;PBE-XDM&#39;</span><span class="p">],</span>
+                 <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;energy/atom (meV)&#39;</span><span class="p">,</span>
+                 <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> 
+                 <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;interlayer spacing d ( = c/2) (${\AA}$)&#39;</span><span class="p">,</span>
+                 <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
+                 <span class="n">style</span> <span class="o">=</span> <span class="n">styles</span><span class="p">,</span>
+                 <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.3&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">3.355</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.4&#39;</span><span class="p">)</span> 
+<span class="c1"># Experimental binding energies reported shown in the figure are 31 ± 2, 43, 52 ± 5 and 35 (+15 to –10) meV per atom</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhspan</span><span class="p">(</span><span class="n">ymin</span><span class="o">=-</span><span class="mi">57</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=-</span><span class="mi">25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;graphite interlayer binding energy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;graphite-interlayer-binding-castep-dispersions.png&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>which produces the following figure:</p>
+<p><img alt="png" src="../graphite-interlayer-binding-castep-dispersions.png" /></p>
+<p>where the dashed vertical line is the experimental interlayer spacing and the shaded grey region is the range of experimentally obtained interlayer binding energies. Please note that these are not fully converged calculations and so do not represent the actual performance of these methods but is simply a guide for how to use them with CASTEP. </p>
+<p>We can see that the plain PBE functional severely underestimates the binding energy of graphite and that many of the dispersion-corrected results are in much better agreement. The TS scheme strongly overbinds graphite, but has been found to be accurate for other types of systems. Testing such methods carefully is always required when you encounter a new system. </p>
+<h2 id="further-suggestions">Further suggestions</h2>
+<ol>
+<li>
+<p>CASTEP writes out a warning for the TS, MBD and XDM schemes about the unit cell being too small for accurate corrections. Try repeat the above calculations for these three methods using a larger supercell to see what the effect is and what sized supercell you would need to converge the dispersion correction.</p>
+</li>
+<li>
+<p>For the D3 and D3-BJ methods, try to switch on the three-body interaction term by setting:</p>
+<div class="highlight"><pre><span></span><code>%BLOCK devel_code
+d3_threebody TRUE
+%ENDBLOCK devel_code
+</code></pre></div>
+<p>in the .param file. What effect does this have on the interlayer binding energy in graphite? (You may also want to set <code>IPRINT = 2</code>  to see more information about the dispersion correction parameters.)</p>
+</li>
+<li>
+<p>Compare to other XC functionals with and without the dispersion corrections (though note that of the corrections are <a href="../../../documentation/Groundstate/dftd/#table">only parameterised for a few functionals</a>.) </p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Bands_and_DOS/magnetic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Magnetic Materials" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Magnetic Materials
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

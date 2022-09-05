@@ -1,0 +1,1726 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>NMR Overview - CASTEP Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diamagnetic-insulators" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="CASTEP Docs" class="md-header__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CASTEP Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NMR Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="CASTEP Docs" class="md-nav__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CASTEP Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/built_in_help/" class="md-nav__link">
+        Command line help
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/running_castep/" class="md-nav__link">
+        Running CASTEP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/basic_cell_file/" class="md-nav__link">
+        cell File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/basic_param_file/" class="md-nav__link">
+        param File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/restarting/" class="md-nav__link">
+        Checkpoint and Restart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Ground State
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ground State" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ground State
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Groundstate/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Groundstate/dftd/" class="md-nav__link">
+        Dispersion Corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Groundstate/soc/" class="md-nav__link">
+        Spin Orbit Coupling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Geometry Optimisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Geometry Optimisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Geometry Optimisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Molecular Dynamics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Molecular Dynamics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Molecular Dynamics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Molecular_Dynamics/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Exchange-Correlation (XC)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exchange-Correlation (XC)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Exchange-Correlation (XC)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XC/XCoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XC/XC/" class="md-nav__link">
+        Controlling XC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XC/libXC/" class="md-nav__link">
+        libXC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Spectral
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spectral" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Spectral
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spectral/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spectral/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spectral/restarts/" class="md-nav__link">
+        Restarts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Vibrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vibrations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Vibrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Vibrations/overview/" class="md-nav__link">
+        Vibrations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          NMR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          NMR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          NMR Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        NMR Overview
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diamagnetic-insulators" class="md-nav__link">
+    Diamagnetic Insulators
+  </a>
+  
+    <nav class="md-nav" aria-label="Diamagnetic Insulators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#magnetic-shielding" class="md-nav__link">
+    Magnetic Shielding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-coupling" class="md-nav__link">
+    J-coupling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efg" class="md-nav__link">
+    EFG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          EPR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="EPR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          EPR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EPR/overview/" class="md-nav__link">
+        EPR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XRD/overview/" class="md-nav__link">
+        XRD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_11">
+          TDDFT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TDDFT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          TDDFT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TDDFT/overview/" class="md-nav__link">
+        TDDFT Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          Pseudopotentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pseudopotentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Pseudopotentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/theory/" class="md-nav__link">
+        Theory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/reading_headers/" class="md-nav__link">
+        Headers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/otfg_string/" class="md-nav__link">
+        OTFG string
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          Input Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input Files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Input Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Input_Files/cell_file/" class="md-nav__link">
+        cell file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Input_Files/param_file/" class="md-nav__link">
+        param file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Input_Files/cell_keywords/" class="md-nav__link">
+        cell keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting/" class="md-nav__link">
+        Common errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/linux_path/" class="md-nav__link">
+        Linux help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Bonding and Charge
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bonding and Charge" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bonding and Charge
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bonding_and_Charge/charge_density/" class="md-nav__link">
+        Plotting Charge Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bonding_and_Charge/mulliken_population/" class="md-nav__link">
+        Population Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Bands and DOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bands and DOS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bands and DOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/plotting_perl/" class="md-nav__link">
+        Plotting - CASTEP tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/plotting_sumo/" class="md-nav__link">
+        Plotting - SUMO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/semiconductors/" class="md-nav__link">
+        Semiconductors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/metals/" class="md-nav__link">
+        Metals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/magnetic/" class="md-nav__link">
+        Magnetic Materials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/dispersion_corrections/castep-ase-dispersion-tutorial/" class="md-nav__link">
+        Dispersion corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/NMR_shielding.md" class="md-nav__link">
+        NMR Shielding
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diamagnetic-insulators" class="md-nav__link">
+    Diamagnetic Insulators
+  </a>
+  
+    <nav class="md-nav" aria-label="Diamagnetic Insulators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#magnetic-shielding" class="md-nav__link">
+    Magnetic Shielding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-coupling" class="md-nav__link">
+    J-coupling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efg" class="md-nav__link">
+    EFG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>NMR Overview</h1>
+
+<h2 id="diamagnetic-insulators">Diamagnetic Insulators</h2>
+<p>By a diamagnetic insulator we mean a system with an electronic gap between its highest occupied state and lowest unoccupied state, and all of the electronic spins are paired, simple examples are diamond, quartz, glycine… This class of materials is the most suitable for calculations as the main NMR interactions, magnetic sielding, J-coupling and electric field gradients can all be computed.</p>
+<h3 id="magnetic-shielding">Magnetic Shielding</h3>
+<p>In a diamagnetic insulator this arises from orbital currents induced by an external magnetic field. This current <span class="arithmatex"><span class="MathJax_Preview">{\bf j}({\bf r})</span><script type="math/tex">{\bf j}({\bf r})</script></span>,
+ produces a non-uniform induced magnetic field in the material, 
+which is given by the Biot-Savart law as </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">{\bf B}_{\rm in}({\bf r})
+=\frac{1}{c}\int d^3r' {\bf j}({\bf r}')\times \frac{{\bf
+    r}-{\bf r}'}{|{\bf r}-{\bf r}'|^3}. </div>
+<script type="math/tex; mode=display">{\bf B}_{\rm in}({\bf r})
+=\frac{1}{c}\int d^3r' {\bf j}({\bf r}')\times \frac{{\bf
+    r}-{\bf r}'}{|{\bf r}-{\bf r}'|^3}. </script>
+</div>
+<p>The shielding tensor is defined as the ratio between this
+induced field, and the external applied field </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">{\bf B}_{\rm in}({\bf r})=-{\vec{\sigma}}({\bf r}){\bf B}_{\rm
+  ext}.</div>
+<script type="math/tex; mode=display">{\bf B}_{\rm in}({\bf r})=-{\vec{\sigma}}({\bf r}){\bf B}_{\rm
+  ext}.</script>
+</div>
+<p>It can thus be seen that the question of computing the shielding tensor is that of computing the induced electronic current. </p>
+<h3 id="j-coupling">J-coupling</h3>
+<p>The J-coupling is a small
+perturbation to the electronic ground-state of the system and we can
+identify it as a derivative of the total energy E, of the system </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">{\bf J}_{\rm KL}= \frac{\hbar\gamma_{\rm K}\gamma_{\rm
+    L}}{2\pi}\frac{\partial^2 E}{\partial {\bf m}_{\rm K} \partial
+  {\bf m}_{\rm L}}</div>
+<script type="math/tex; mode=display">{\bf J}_{\rm KL}= \frac{\hbar\gamma_{\rm K}\gamma_{\rm
+    L}}{2\pi}\frac{\partial^2 E}{\partial {\bf m}_{\rm K} \partial
+  {\bf m}_{\rm L}}</script>
+</div>
+<p>An equivalent expression arises from considering one nuclear spin (L) as perturbation which creates a magnetic field at a second (receiving) nucleus (K)</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">{\bf B}^{(1)}_{\rm in}({\bf R}_{{\rm K}})  = \frac{2\pi}{\hbar\gamma_{{\rm K}}\gamma_{{\rm L}}}{\bf
+  J}_{{\rm KL}} \cdot {\bf m}_{{\rm L}}.</div>
+<script type="math/tex; mode=display">{\bf B}^{(1)}_{\rm in}({\bf R}_{{\rm K}})  = \frac{2\pi}{\hbar\gamma_{{\rm K}}\gamma_{{\rm L}}}{\bf
+  J}_{{\rm KL}} \cdot {\bf m}_{{\rm L}}.</script>
+</div>
+<p>Eqn.~\ref{eq:J} tells us that the question of computing J is essentially
+that of computing the magnetic field induced indirectly by a nuclear magnetic moment.
+When spin-orbit coupling is neglected we can consider the field as
+arising from two, essentially independent, mechanisms. Firstly, the
+magnetic moment can interact with electronic charge inducing an orbital
+current <span class="arithmatex"><span class="MathJax_Preview">{\bf j}({\bf r})</span><script type="math/tex">{\bf j}({\bf r})</script></span>,  which in turn creates a magnetic field at the other nuclei in
+the system. This mechanism is similar to the case of magnetic shielding
+in insulators. The second mechanism arises from the
+interaction of the magnetic moment with the electronic spin, causing an
+electronic  spin polarisation. 
+By working to first order in these quantities we can write the magnetic field 
+at atom <span class="arithmatex"><span class="MathJax_Preview">{\rm K}</span><script type="math/tex">{\rm K}</script></span> induced by the magnetic moment of atom <span class="arithmatex"><span class="MathJax_Preview">{\rm L}</span><script type="math/tex">{\rm L}</script></span> as</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+{\bf B}^{(1)}_{\rm in}({\bf R}_{{\rm K}})  =  \frac{\mu_{0}}{4\pi}\int 
+{\bf m}^{(1)}({\bf r})\cdot \left[\frac{3{\bf r}_{{\rm K}}{\bf r}_{{\rm K}} - 
+|{\bf r}_{{\rm K}}|^{2}}{|{\bf r}_{{\rm K}}|^{5}}\right]\,{\rm
+d}^{3}{\bf r} </div>
+<script type="math/tex; mode=display">
+{\bf B}^{(1)}_{\rm in}({\bf R}_{{\rm K}})  =  \frac{\mu_{0}}{4\pi}\int 
+{\bf m}^{(1)}({\bf r})\cdot \left[\frac{3{\bf r}_{{\rm K}}{\bf r}_{{\rm K}} - 
+|{\bf r}_{{\rm K}}|^{2}}{|{\bf r}_{{\rm K}}|^{5}}\right]\,{\rm
+d}^{3}{\bf r} </script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">+  \frac{\mu_{0}}{4\pi}\frac{8\pi}{3}\int {\bf m}^{(1)}({\bf r})
+\delta({\bf r}_{{\rm K}})\,{\rm d}^{3}{\bf r} </div>
+<script type="math/tex; mode=display">+  \frac{\mu_{0}}{4\pi}\frac{8\pi}{3}\int {\bf m}^{(1)}({\bf r})
+\delta({\bf r}_{{\rm K}})\,{\rm d}^{3}{\bf r} </script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview"> +  \frac{\mu_{0}}{4\pi}\int {\bf j}^{(1)}({\bf r})\times
+\frac{{\bf r}_{{\rm K}}}{|{\bf r}_{{\rm K}}|^{3}}\,{\rm d}^{3}{\bf r}.</div>
+<script type="math/tex; mode=display"> +  \frac{\mu_{0}}{4\pi}\int {\bf j}^{(1)}({\bf r})\times
+\frac{{\bf r}_{{\rm K}}}{|{\bf r}_{{\rm K}}|^{3}}\,{\rm d}^{3}{\bf r}.</script>
+</div>
+<p>Several quantum chemistry packages provide the ability to compute J
+coupling tensors in molecular systems (see Ref <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">1</a></sup>} for
+a review of methods). An approach to compute J tensors within the planewave-pseudopotential approach has recently been developed.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">2</a></sup></p>
+<h3 id="efg">EFG</h3>
+<p>For a nucleus with spin <span class="arithmatex"><span class="MathJax_Preview">&gt;</span><script type="math/tex">></script></span>&frac12; the NMR response will
+ include an interaction between the quadrupole moment of the nucleus, Q,
+ and the electric field gradient (EFG) generated by the surrounding
+ electronic structure. The EFG is a second rank, symmetric, traceless tensor <span class="arithmatex"><span class="MathJax_Preview">G({\bf r})</span><script type="math/tex">G({\bf r})</script></span>
+ given by </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">G_{\alpha\beta}({\bf r}) = \frac{\partial E_{\alpha}({\bf r})}{\partial  r_{\beta}} -
+\frac{1}{3}\delta_{\alpha\beta}\sum_{\gamma}\frac{\partial
+  E_{\gamma}({\bf r})}{\partial r_{\gamma}} </div>
+<script type="math/tex; mode=display">G_{\alpha\beta}({\bf r}) = \frac{\partial E_{\alpha}({\bf r})}{\partial  r_{\beta}} -
+\frac{1}{3}\delta_{\alpha\beta}\sum_{\gamma}\frac{\partial
+  E_{\gamma}({\bf r})}{\partial r_{\gamma}} </script>
+</div>
+<p>where <span class="arithmatex"><span class="MathJax_Preview">\alpha,\beta,\gamma</span><script type="math/tex">\alpha,\beta,\gamma</script></span> denote the Cartesian coordinates x,y,z and
+<span class="arithmatex"><span class="MathJax_Preview">E_{\alpha}({\bf r})</span><script type="math/tex">E_{\alpha}({\bf r})</script></span> is the local electric field at the position <span class="arithmatex"><span class="MathJax_Preview">{\bf
+  r}</span><script type="math/tex">{\bf
+  r}</script></span>, which can be calculated from the charge density <span class="arithmatex"><span class="MathJax_Preview">n({\bf r})</span><script type="math/tex">n({\bf r})</script></span>:
+\begin{equation}
+E_{\alpha}({\bf r})=\int d^3r \frac{n({\bf r})}{|{\bf r}-{\bf r}'|^3} (r_{\alpha}-r_{\alpha}').
+\end{equation}
+The EFG tensor is then equal to
+\begin{equation}\label{eq:efg_rs}
+G_{\alpha\beta}({\bf r}) = \int d^3r \frac{n({\bf r})}{|{\bf r}-{\bf
+    r}'|^3}\left[ \delta_{\alpha\beta} -3
+  \frac{(r_{\alpha}-r_{\alpha}')(r_{\beta}-r_{\beta}')}{|{\bf r}-{\bf
+      r}'|^2}\right]. 
+\end{equation}
+The computation of electric field gradient tensors is less demanding than
+either shielding or J-coupling tensors as it
+requires only knowledge of the electronic ground state.
+The LAPW approach in its implementation within the Wien
+series of codes\cite{blaha90} has been widely used and shown to reliably predict
+Electric Field Gradient (EFG) tensors<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">3</a></sup>. The equivalent
+formalism for the planewave/PAW approach is reported in Ref.~\cite{profeta03}.</p>
+<p>The quadrupolar coupling constant, C<span class="arithmatex"><span class="MathJax_Preview">_Q</span><script type="math/tex">_Q</script></span> and the asymmetry
+ parameter, <span class="arithmatex"><span class="MathJax_Preview">\eta_Q</span><script type="math/tex">\eta_Q</script></span> can be obtained from the  the diagonalized electric
+ field gradient tensor whose eigenvalues are 
+ labelled V<span class="arithmatex"><span class="MathJax_Preview">_{xx}</span><script type="math/tex">_{xx}</script></span>, V<span class="arithmatex"><span class="MathJax_Preview">_{yy}</span><script type="math/tex">_{yy}</script></span>, V<span class="arithmatex"><span class="MathJax_Preview">_{zz}</span><script type="math/tex">_{zz}</script></span>, such that <span class="arithmatex"><span class="MathJax_Preview">|V_{zz}|&gt;|V_{yy}|&gt;|V_{xx}|</span><script type="math/tex">|V_{zz}|>|V_{yy}|>|V_{xx}|</script></span>:
+\begin{equation}
+C_{Q}=\frac{eV_{zz}Q}{h}, 
+\end{equation}
+where h is Planck's constant and
+\begin{equation}
+\eta_Q=\frac{V_{xx}-V_{yy}}{V_{zz}}.
+\end{equation}</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:2">
+<p>Helgaker, T.; Jaszunski, M.; Pecul, M.Progress in Nuclear Magnetic Resonance Spectroscopy2008,53, 249 – 268&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Joyce, S. A.; Yates, J. R.; Pickard, C. J.; Mauri, F.J. Chem. Phys.2007,127, 204107&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:1">
+<p>Blaha, P.; Sorantin, P.; Ambrosch, C.; Schwarz, K.Hyperfine Interact.1989,51, 917&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Vibrations/overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Vibrations" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Vibrations
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../EPR/overview/" class="md-footer__link md-footer__link--next" aria-label="Next: EPR Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              EPR Overview
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

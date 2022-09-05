@@ -1,0 +1,1988 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>cell file - CASTEP Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cell-lattice-vectors" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="CASTEP Docs" class="md-header__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CASTEP Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              cell file
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="CASTEP Docs" class="md-nav__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CASTEP Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/built_in_help/" class="md-nav__link">
+        Command line help
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/running_castep/" class="md-nav__link">
+        Running CASTEP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/basic_cell_file/" class="md-nav__link">
+        cell File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/basic_param_file/" class="md-nav__link">
+        param File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Getting_Started/restarting/" class="md-nav__link">
+        Checkpoint and Restart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Ground State
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ground State" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ground State
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Groundstate/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Groundstate/dftd/" class="md-nav__link">
+        Dispersion Corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Groundstate/soc/" class="md-nav__link">
+        Spin Orbit Coupling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Geometry Optimisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Geometry Optimisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Geometry Optimisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Geometry_Optimisation/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Molecular Dynamics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Molecular Dynamics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Molecular Dynamics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Molecular_Dynamics/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Exchange-Correlation (XC)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exchange-Correlation (XC)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Exchange-Correlation (XC)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XC/XCoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XC/XC/" class="md-nav__link">
+        Controlling XC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XC/libXC/" class="md-nav__link">
+        libXC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Spectral
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spectral" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Spectral
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spectral/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spectral/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spectral/restarts/" class="md-nav__link">
+        Restarts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Vibrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vibrations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Vibrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Vibrations/overview/" class="md-nav__link">
+        Vibrations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          NMR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          NMR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NMR/NMR_overview/" class="md-nav__link">
+        NMR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          EPR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="EPR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          EPR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EPR/overview/" class="md-nav__link">
+        EPR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../XRD/overview/" class="md-nav__link">
+        XRD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_11">
+          TDDFT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TDDFT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          TDDFT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TDDFT/overview/" class="md-nav__link">
+        TDDFT Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          Pseudopotentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pseudopotentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          Pseudopotentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/theory/" class="md-nav__link">
+        Theory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/reading_headers/" class="md-nav__link">
+        Headers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pseudopotentials/otfg_string/" class="md-nav__link">
+        OTFG string
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          Input Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input Files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Input Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          cell file
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        cell file
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cell-lattice-vectors" class="md-nav__link">
+    Cell Lattice Vectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ionic-positions" class="md-nav__link">
+    Ionic Positions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brillouin-zone-sampling-k-points" class="md-nav__link">
+    Brillouin Zone Sampling (k-points)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cell-symmetry" class="md-nav__link">
+    Cell Symmetry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#species-characteristics" class="md-nav__link">
+    Species Characteristics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-pressure" class="md-nav__link">
+    External Pressure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ionic-velocities" class="md-nav__link">
+    Ionic Velocities
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../param_file/" class="md-nav__link">
+        param file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cell_keywords/" class="md-nav__link">
+        cell keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting/" class="md-nav__link">
+        Common errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/linux_path/" class="md-nav__link">
+        Linux help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Bonding and Charge
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bonding and Charge" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bonding and Charge
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bonding_and_Charge/charge_density/" class="md-nav__link">
+        Plotting Charge Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bonding_and_Charge/mulliken_population/" class="md-nav__link">
+        Population Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Bands and DOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bands and DOS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bands and DOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/plotting_perl/" class="md-nav__link">
+        Plotting - CASTEP tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/plotting_sumo/" class="md-nav__link">
+        Plotting - SUMO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/semiconductors/" class="md-nav__link">
+        Semiconductors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/metals/" class="md-nav__link">
+        Metals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/Bands_and_DOS/magnetic/" class="md-nav__link">
+        Magnetic Materials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/dispersion_corrections/castep-ase-dispersion-tutorial/" class="md-nav__link">
+        Dispersion corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/NMR_shielding.md" class="md-nav__link">
+        NMR Shielding
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cell-lattice-vectors" class="md-nav__link">
+    Cell Lattice Vectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ionic-positions" class="md-nav__link">
+    Ionic Positions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brillouin-zone-sampling-k-points" class="md-nav__link">
+    Brillouin Zone Sampling (k-points)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cell-symmetry" class="md-nav__link">
+    Cell Symmetry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#species-characteristics" class="md-nav__link">
+    Species Characteristics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-pressure" class="md-nav__link">
+    External Pressure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ionic-velocities" class="md-nav__link">
+    Ionic Velocities
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>cell file</h1>
+
+<p>This is a detailed description of options for CASTEP's cell file. See the <a href="/documentation/Getting_Started/basic_cell_file">basic cell file page</a> for an overview. This page has the most frequently-used cell file options, but for a full set use <a href="/documentation/Getting_Started/built_in_help">CASTEP's built-in help</a>. There is also a <a href="../cell_keywords/">concise table of cell keywords</a>.</p>
+<p>The cell file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, cell symmetry, external pressure, constraints on motion of the atoms or cell, and atomic properties such as the mass of each species.</p>
+<p>The file itself is a free-format keyword-driven text file, consisting of keywords and blocks of information. These may be given in any order, with blocks indicated by the special <code>%block</code> and <code>%endblock</code> markers. Most of the keywords and blocks are optional, but CASTEP <em>requires</em> two block entries: a block to specify the lattice, and another to specify the atomic elements and positions within the cell.</p>
+<p>At the very least, the cell lattice vectors and ionic positions must
+be specified. Reasonable defaults are chosen for anything else not
+specified.</p>
+<p>For the purposes of the following definitions, all
+variables represented by <span class="arithmatex"><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> are defined to be real numbers, those
+represented by <span class="arithmatex"><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span> are defined to be integers and those represented by
+<span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> are characters.</p>
+<h3 id="cell-lattice-vectors">Cell Lattice Vectors</h3>
+<p>The cell lattice vectors may be specified in Cartesian coordinates
+or in terms of the lattice vector magnitudes and the angles between
+them (<span class="arithmatex"><span class="MathJax_Preview">a, b, c, \alpha, \beta, \gamma</span><script type="math/tex">a, b, c, \alpha, \beta, \gamma</script></span>). Only one of <code>LATTICE_CART</code>
+and <code>LATTICE_ABC</code> may occur in a cell definition file.</p>
+<p>The definitions of these keywords are as follows:</p>
+<div class="highlight"><pre><span></span><code>%BLOCK LATTICE_CART
+[units]
+a_x  a_y  a_z  
+b_x  b_y  b_z
+c_x  c_y  c_z
+%ENDBLOCK LATTICE_CART
+</code></pre></div>
+<p>Here <code>a_x</code> is the x-component of the first lattice vector, <span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}</span><script type="math/tex">\mathbf{a}</script></span>,
+<span class="arithmatex"><span class="MathJax_Preview">b_y</span><script type="math/tex">b_y</script></span> is the y-component of the second lattice vector, <span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}</span><script type="math/tex">\mathbf{b}</script></span>, etc.</p>
+<p><code>[units]</code> specifies the units in which the lattice vectors are
+defined. If not present, the default is Å.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK LATTICE_ABC
+[units]
+a b c
+alpha beta gamma
+%ENDBLOCK LATTICE_ABC
+</code></pre></div>
+<p>Here <code>a</code> is the value of the lattice constant <span class="arithmatex"><span class="MathJax_Preview">\vert\mathbf{a}\vert</span><script type="math/tex">\vert\mathbf{a}\vert</script></span>, <code>gamma</code> is the value of the cell angle <span class="arithmatex"><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span> (in degrees) etc. If the lattice is specified in this manner, the absolute orientation is arbitrary. In this case the orientation is defined by applying the following constraints:</p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}</span><script type="math/tex">\mathbf{a}</script></span> lies along the x-axis</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}</span><script type="math/tex">\mathbf{b}</script></span> lies in the xy plane</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\mathbf{c}</span><script type="math/tex">\mathbf{c}</script></span> forms a right-handed set with <span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}</span><script type="math/tex">\mathbf{a}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}</span><script type="math/tex">\mathbf{b}</script></span></li>
+</ul>
+<p><code>[units]</code> specifies the units in which the lattice vector magnitudes are defined. If not present, the default is Å. Angles should be specified in degrees.</p>
+<h3 id="ionic-positions">Ionic Positions</h3>
+<p>The ionic positions may be specified in fractional coordinates relative
+to the lattice vectors of the unit cell, or in absolute coordinates.
+Only one of <code>POSITIONS_FRAC</code> and <code>POSITIONS_ABS</code> may occur in a cell definition
+file.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK POSITIONS_FRAC
+CCC_1  R_{1i}  R_{1j}  R_{1k}  [SPIN=s_1]  
+CCC_2  R_{2i}  R_{2j}  R_{2k}  [SPIN=s_2]
+...
+%ENDBLOCK END POSITIONS_FRAC
+</code></pre></div>
+<p>The first entry on a line is the symbol of the species (chemical element). Alternatively, the atomic number may be given instead, in which case CASTEP will be look up for chemical symbol. A symbol can have a maximum of three
+characters. The first alphabetical characters identify the element,
+from which default values for atomic mass etc.</p>
+<p>The next three entries on a line in POSITIONS_FRAC are real numbers
+representing the position of the ion in fractions of the unit cell
+lattice vectors.</p>
+<p>If the optional flag <code>SPIN</code> is present on a line, this sets the
+spin polarisation ( <span class="arithmatex"><span class="MathJax_Preview">N^\uparrow-N^\downarrow</span><script type="math/tex">N^\uparrow-N^\downarrow</script></span>) of the
+atom for initialisation of the spin density; for non-collinear spin calculations, the vector spin is specified as three numbers. If this flag is not
+present a non-spin polarised state will be assumed.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK POSITIONS_ABS
+[units]
+CCC_1  R_{1i}  R_{1j}  R_{1k}  [SPIN=s_1]  
+CCC_2  R_{2i}  R_{2j}  R_{2k}  [SPIN=s_2]
+...
+%ENDBLOCK POSITIONS_ABS
+</code></pre></div>
+<p>The first entry on a line is the symbol or atomic number of the ionic
+species, as for <code>POSITIONS_FRAC</code>. The next three entries are real
+numbers representing the position of the ion in Cartesian coordinates.</p>
+<p><code>[units]</code> specifies the units in which the positions are defined. If not present, the default is Å.</p>
+<p>The optional flag <code>SPIN</code> is defined above under <code>POSITIONS_FRAC</code>.</p>
+<h3 id="brillouin-zone-sampling-k-points">Brillouin Zone Sampling (k-points)</h3>
+<p>(N.B. in the following section the keywords with the prefixes
+<code>KPOINT_</code> and <code>KPOINTS_</code> are synonymous. <code>KPOINT_</code> is
+the preferred usage.)</p>
+<p>The k-points at which the Brillouin zone is to be sampled during a
+self consistent calculation to find the electronic ground state may be
+defined either by specifying a list of k-points or a Monkhorst-Pack
+grid in terms of the dimensions of the k-point mesh or a minimum
+k-point density. The origin of the Monkhorst-Pack grid may be
+offset by a vector from the origin of the Brillouin zone.</p>
+<p>If no k-points are specified, the default will be a Monkhorst-Pack
+grid with a maximum spacing of 0.1Å<span class="arithmatex"><span class="MathJax_Preview">^{-1}</span><script type="math/tex">^{-1}</script></span> and no offset of the
+origin.</p>
+<p>The <code>KPOINT_LIST</code>, <code>KPOINT_MP_GRID</code> and <code>KPOINT_MP_SPACING</code>
+keywords are mutually exclusive. <code>KPOINT_MP_OFFSET</code> may be specified
+in combination with either <code>KPOINT_MP_GRID</code> or <code>KPOINT_MP_SPACING</code>.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK KPOINT_LIST
+\begin{array}{cccc}
+R_{1i}  R_{1j}  R_{1k}  R_{1w}
+R_{2i}  R_{2j}  R_{2k}  R_{2w}
+...
+%ENDBLOCK KPOINT_LIST
+</code></pre></div>
+<p>The first three entries on a line are the fractional positions of the
+k-point relative to the reciprocal space lattice vectors. The final entry
+on a line is the weight of the k-point relative to the others specified.
+The sum of the weights must be equal to 1.</p>
+<div class="highlight"><pre><span></span><code>KPOINT_MP_GRID I_i I_j I_k
+</code></pre></div>
+<p>This specifies the dimensions of the Monkhorst-Pack grid requested in
+the directions of the reciprocal space lattice vectors. The generated
+grid will be <span class="arithmatex"><span class="MathJax_Preview">I_i\times I_j\times I_k</span><script type="math/tex">I_i\times I_j\times I_k</script></span>; any symmetries generated (or
+supplied) will be used to reduce this number, when computing the
+irreducible wedge.</p>
+<div class="highlight"><pre><span></span><code>KPOINT_MP_SPACING R [units]
+</code></pre></div>
+<p>The single entry is the maximum distance between k-points on the
+Monkhorst-Pack grid. The dimensions of the grid will be chosen such
+that the maximum separation of k-points is less than this.</p>
+<p><code>[units]</code> specifies the units in which the k-point spacing is
+defined, although <em>note that the actual units used are <span class="arithmatex"><span class="MathJax_Preview">2\pi</span><script type="math/tex">2\pi</script></span> units</em>. If not present, the default is <code>ang-1</code>, such that the spacing is in <span class="arithmatex"><span class="MathJax_Preview">2\pi Å^{-1}</span><script type="math/tex">2\pi Å^{-1}</script></span>.</p>
+<div class="highlight"><pre><span></span><code>KPOINT_MP_OFFSET R_i R_j R_k
+</code></pre></div>
+<p>This specifies the offset of the Monkhorst-Pack grid with respect to
+the origin of the Brillouin zone. The three entries are the offset in
+fractional coordinates relative to the reciprocal lattice vectors.</p>
+<p>The k-point set for performing spectral calculations
+can be specified in the same manner, using version of the keywords
+above with <code>SPECTRAL_</code> prepended. The same restrictions regarding
+mutually exclusive keywords apply.</p>
+<p>For a non-self-consistent spectral calculation, the k-points may
+be defined along a path through reciprocal space or a list of k-points.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK SPECTRAL_KPOINT_PATH
+R_{1i} R_{1j} R_{1k}
+R_{2i} R_{2j} R_{2k}
+...
+%ENDBLOCK SPECTRAL_KPOINT_PATH
+</code></pre></div>
+<p>The three numbers on each line are the fractional positions of the
+k-point relative to the reciprocal space lattice vectors. The k-points
+define a continuous sequence of straight line segments, unless the
+keyword <code>BREAK</code> appears on a separate line within the sequence of
+k-points. In this case the continuous path will end at the k-point
+immediately preceding the <code>BREAK</code> keyword and resume at the k-point
+immediately following. The path will be open <em>unless the first and
+last point in the list are identical</em>.</p>
+<p>The maximum spacing of the points sampled along each line segment is defined by the keyword
+<code>SPECTRAL_KPOINT_PATH_SPACING</code> (default value <span class="arithmatex"><span class="MathJax_Preview">0.1 \times 2\pi</span><script type="math/tex">0.1 \times 2\pi</script></span>Å<span class="arithmatex"><span class="MathJax_Preview">^{-1}</span><script type="math/tex">^{-1}</script></span>). If necessary,
+the actual spacing used may be smaller than this in order to ensure
+that the length of the line segment is an integer multiple of the
+spacing between points on that segment.</p>
+<p>Alternatively, the k-point set for performing a band structure
+calculation can be specified in the same manner as the main k-point
+set, using version of the keywords above with BS_ prepended. The same
+restrictions regarding mutually exclusive keywords apply. In this
+case, the k-point weight in <code>SPECTRAL_KPOINT_LIST</code> is optional. If
+omitted, the weights for each k-point are assumed to be equal.</p>
+<p>For a phonon spectrum calculation, the k-points may be defined along a
+path through reciprocal space or a list of k-points, in the same
+manner as for a spectral calculation. The corresponding keywords
+are identical to those for the band structure specification with the
+initial <code>SPECTRAL_</code> replaced by <code>PHONON_</code>, e.g. <code>PHONON_KPOINT_PATH</code>,
+<code>PHONON_KPOINT_PATH_SPACING</code> and <code>PHONON_KPOINT_LIST</code>. The same
+restrictions regarding mutually exclusive keywords apply.</p>
+<p>The block keyword <code>PHONON_GAMMA_DIRECTIONS</code> specifies the directions
+in which the gamma point will be approached when calculating the
+non-analytic terms of the LO/TO splitting. Each line in this block
+will consist of a 3-vector specifying a direction in the basis of
+reciprocal lattice vectors. If this keyword is not present, the
+default will be a single vector determined as follows:</p>
+<ol>
+<li>If the gamma point is <span class="arithmatex"><span class="MathJax_Preview">q_i = 0</span><script type="math/tex">q_i = 0</script></span> and there is a successor kpoint
+<span class="arithmatex"><span class="MathJax_Preview">q_{i+1}</span><script type="math/tex">q_{i+1}</script></span> in the list, then it is <span class="arithmatex"><span class="MathJax_Preview">q_{i+1}</span><script type="math/tex">q_{i+1}</script></span>.</li>
+<li>Otherwise if the gamma point is <span class="arithmatex"><span class="MathJax_Preview">q_i =0</span><script type="math/tex">q_i =0</script></span> and there is a
+predecessor kpoint <span class="arithmatex"><span class="MathJax_Preview">q_{i-1}</span><script type="math/tex">q_{i-1}</script></span> in the list then it is <span class="arithmatex"><span class="MathJax_Preview">q_{i-1}</span><script type="math/tex">q_{i-1}</script></span>.</li>
+<li>Otherwise (i.e. a Gamma point only calculation) the a-axis of
+the reciprocal cell.</li>
+</ol>
+<p>For backwards compatibility the keywords beginning <code>BS_</code> and <code>OPTICS_</code> are
+synonyms for SPECTRAL_KPOINT_ and similarly those beginning.</p>
+<h3 id="cell-symmetry">Cell Symmetry</h3>
+<p>If no symmetry is specified in the cell definition file,
+the default is for no symmetry to be applied.</p>
+<div class="highlight"><pre><span></span><code>SYMMETRY_GENERATE
+</code></pre></div>
+<p>If this keyword is present in the cell, the highest symmetry group
+that applies to the structure of the cell will be found and the
+corresponding symmetry operations generated.</p>
+<div class="highlight"><pre><span></span><code>SYMMETRY_TOL R [units]
+</code></pre></div>
+<p>This parameter is the tolerance within which symmetry will be
+considered to be satisfied.  If an ion is found within this distance
+of its symmetric position, the symmetry will be considered to be
+satisfied.</p>
+<p><code>[units]</code> specifies the units in which the tolerance is
+defined. If not present, the default is Å.</p>
+<p>Alternatively, the symmetry operations may be provided directly in a
+<code>SYMMETRY_OPS</code> block. The symmetry of the cell is represented as a
+series of symmetry operations under which the unit cell is
+invariant. Each operation is represented as a <span class="arithmatex"><span class="MathJax_Preview">3\times 3</span><script type="math/tex">3\times 3</script></span> array.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK SYMMETRY_OPS
+R_{11}   R_{21}   R_{31}
+R_{12}   R_{22}   R_{32}
+R_{13}   R_{23}   R_{33}
+T_1      T_2      T_3
+
+R_{11}   R_{21}   R_{31}
+R_{12}   R_{22}   R_{32}
+R_{13}   R_{23}   R_{33}
+T_1      T_2      T_3
+...
+%ENDBLOCK SYMMETRY_OPS
+</code></pre></div>
+<p>Each of the first three lines contains 3 entries representing a row of
+a <span class="arithmatex"><span class="MathJax_Preview">3\times3</span><script type="math/tex">3\times3</script></span> array. These represent one symmetry rotation. The three
+entries on the following line contain the translation associated with
+this rotation.</p>
+<h3 id="constraints">Constraints</h3>
+<p>The movement of ions or the unit cell during a relaxation or molecular
+dynamics run may be constrained.</p>
+<p>The constraints on the ionic motion may by specified as a set of
+linear constraints. Each constraint is specified as a series of
+coefficients <span class="arithmatex"><span class="MathJax_Preview">a_{ijk}</span><script type="math/tex">a_{ijk}</script></span> such that:
+$$
+\sum_{k=1}^{\tt N_\mathrm{species}} \quad \sum_{j=1}^{\mathrm{N_\mathrm{ions}}(k)}
+\quad \sum_{i=1}^{3} a_{ijk} \verb#ionic_positions(i,j,k)# = constant
+$$
+where <span class="arithmatex"><span class="MathJax_Preview">\mathrm{N_\mathrm{ions}}(k)</span><script type="math/tex">\mathrm{N_\mathrm{ions}}(k)</script></span> is the number of ions in species <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.</p>
+<p>The change in the shape of the unit cell may also be constrained
+using the keyword <code>CELL_CONSTRAINTS</code>.</p>
+<p>The special case of constraining the centre of mass of the ions to
+remain fixed is supported by a logical keyword <code>FIX_COM</code>.  Also all
+ionic positions or cell parameters may be fixed by specifying the
+keywords <code>FIX_ALL_IONS</code> or <code>FIX_ALL_CELL</code> to be <code>TRUE</code> respectively.</p>
+<p>If no ionic or cell constraints are specified in the cell definition file,
+the default is to fix the centre of mass.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK IONIC_CONSTRAINTS
+I_1  CCC_{1s}   I_{1s}   I_{n1}   R_{1i}   R_{1j}   R_{1k}
+I_2  CCC_{2s}   I_{2s}   I_{n2}   R_{2i}   R_{2j}   R_{2k}
+...
+%ENDBLOCK IONIC_CONSTRAINTS
+</code></pre></div>
+<p>The first element on each line is an integer specifying the number of the
+constraint being specified. The second entry is either the symbol or
+atomic number of the species of the ion to which this constraint applies.
+The third element is the number of the ion within the species. The ordering
+of the ions in a species is the order in which they appear in the
+<code>POSITIONS_FRAC</code> or <code>POSITIONS_ABS</code> block in the cell definition file.
+The final three numbers are real numbers representing the coefficients
+of the Cartesian coordinates of the ionic position in the constraint
+sum. All coefficients in the sum not explicitly specified will be zero.</p>
+<p>On reading this data, the matrix of ionic constraints will be
+orthogonalised.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK CELL_CONSTRAINTS
+I_a      I_b      I_c
+I_alpha  I_beta   I_gamma
+%ENDBLOCK CELL_CONSTRAINTS
+</code></pre></div>
+<p>The first three entries relate to the magnitude of the three
+lattice vectors <span class="arithmatex"><span class="MathJax_Preview">a,b,c</span><script type="math/tex">a,b,c</script></span> and the second set of three entries
+to the angles <span class="arithmatex"><span class="MathJax_Preview">\alpha, \beta, \gamma</span><script type="math/tex">\alpha, \beta, \gamma</script></span>.</p>
+<p>If the value of the entry corresponding to a magnitude or angle is
+zero, this quantity will remain fixed. If two or three entries
+contain the same integer, the corresponding quantities will be
+constrained to have the same value. If a positive integer greater than
+0 occurs in entries 1 through 3 the same integer cannot occur in
+entries 4 through 6 as this would imply that a vector length
+and angle must have the same value.</p>
+<h3 id="species-characteristics">Species Characteristics</h3>
+<p>The mass of a species, the pseudopotential which represents the ion
+and the size of the LCAO basis set used for population anslsyis may be
+specified in the cell definition file.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK SPECIES_MASS
+[units]
+CCC_1   I_1   R_1
+CCC_2   I_2   R_2
+...
+%ENDBLOCK SPECIES_MASS
+</code></pre></div>
+<p><code>[units]</code> specifies the units in which the masses are
+defined. If not present, the default is atomic mass units.</p>
+<p>The first entry on a line is the symbol or atomic number of the
+species.  This must correspond with the species symbol or atomic
+number of the species in the <code>POSITIONS_FRAC</code> or <code>POSITIONS_ABS</code>
+block. The second entry on each line is the mass of that species. Not
+all species need appear in the <code>SPECIES_MASS</code> block, any not present
+will assume the default mass for that species. If the initial
+alphabetical symbol specified for a species is not a standard element
+symbol in the periodic table, the mass of the species must be
+specified.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK SPECIES_POT
+CCC_1   I_1   &lt;filename&gt;
+CCC_2   I_2   &lt;filename&gt;
+...
+%ENDBLOCK SPECIES_POT
+</code></pre></div>
+<p>The first entry on a line is the symbol or atomic number of the
+species.  This must correspond with the species symbol or atomic
+number of the species in the <code>POSITIONS_FRAC</code> or <code>POSITIONS_ABS</code>
+block. The second entry on each line is the filename of the file
+containing the definition of the pseudopotential representing the
+ionic species. The file to which this refers may be a definition of
+the parameters of the pseudopotential which is to be generated at
+runtime, or an old-style pseudopotential definition containing the
+data for the pseudopotential.</p>
+<p>Not all species need appear in the <code>SPECIES_POT</code> block. If a
+pseudopotential is not specified, the default pseudopotential
+parameters will be used to generate a pseudopotential for the element
+specified. If the initial alphabetical characters of a species label
+is not a standard element symbol in the periodic table, the potential
+for the species must be specified.</p>
+<p>The charge on the ion for each species will be derived from
+the pseudopotential corresponding to that ion.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK SPECIES_LCAO_STATES
+CCC_1   I_1   I_{B1}
+CCC_2   I_2   I_{B2}
+...
+%ENDBLOCK SPECIES_LCAO_STATES
+</code></pre></div>
+<p>The first entry on a line is the symbol or atomic number of the
+species.  This must correspond with the species symbol or atomic
+number of the species in the <code>POSITIONS_FRAC</code> or <code>POSITIONS_ABS</code>
+block. The second number is the number of angular momentum channels to
+use in the LCAO basis set for the species when performing population
+analysis. For example, to use the 2s and 2p states for C (The 1s state
+is a core state) this should be 2. By default, the number of states
+will be the appropriate number to complete the valence shell to the
+next noble gas. If shallow core states are excluded from a
+pseudopotential, the value of <code>SPECIES_LCAO_STATES</code> for that species
+should be included in the cell file to ensure a meaningful basis set
+is used.</p>
+<h3 id="external-pressure">External Pressure</h3>
+<p>An external pressure may be applied to the unit cell by specifying
+a pressure tensor.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK EXTERNAL_PRESSURE
+[units]
+R_{xx}   R_{xy}  R_{xz}
+         R_{yy}  R_{yz}
+                 R_{zz}
+%ENDBLOCK EXTERNAL_PRESSURE
+</code></pre></div>
+<p><code>[units]</code> specifies the units in which the pressure is
+defined. If not present, the default is GPa.</p>
+<p>Entry <span class="arithmatex"><span class="MathJax_Preview">R_{xx}</span><script type="math/tex">R_{xx}</script></span> is the <span class="arithmatex"><span class="MathJax_Preview">xx</span><script type="math/tex">xx</script></span>-component of the pressure, <span class="arithmatex"><span class="MathJax_Preview">R_{xy}</span><script type="math/tex">R_{xy}</script></span> the
+<span class="arithmatex"><span class="MathJax_Preview">xy</span><script type="math/tex">xy</script></span>-component etc.</p>
+<p>The default is to apply no external pressure.</p>
+<h3 id="ionic-velocities">Ionic Velocities</h3>
+<p>The initial ionic velocities may be specified in Cartesian coordinates
+in a cell definition file.</p>
+<div class="highlight"><pre><span></span><code>%BLOCK IONIC_VELOCITIES
+[units]
+CCC_1 V_{1x}  V_{1y}  V_{1z}
+CCC_2 V_{2x}  V_{2y}  V_{2z}
+...
+%ENDBLOCK IONIC_VELOCITIES
+</code></pre></div>
+<p>The first entry on a line is the chemical symbol (or atomic number) of the ionic
+species. The correct symbol will be looked up for the atomic species
+if the atomic number is specified. A symbol can have a maximum of three
+characters. The next three entries are real numbers representing the
+velocity of the ion in Cartesian coordinates.</p>
+<p><code>[units]</code> specifies the units in which the positions are
+defined. If not present, the default is Å/ps.</p>
+<p>If this keyword is not present and a molecular dynamics calculation is
+performed, the ionic velocities will be randomly initialised with the
+appropriate temperature.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Pseudopotentials/otfg_string/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OTFG string" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              OTFG string
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../param_file/" class="md-footer__link md-footer__link--next" aria-label="Next: param file" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              param file
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
