@@ -68,10 +68,14 @@ nav:
 
 theme:
   name: material
+  features:
+    -content.code.annotate
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 markdown_extensions:
   - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all

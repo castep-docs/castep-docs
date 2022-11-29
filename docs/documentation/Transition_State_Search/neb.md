@@ -3,7 +3,7 @@
 The nudged elastic band method is a widely-used method for finding a minimum energy pathway between two structures. 
 You can use the method to estimate the barrier for the system to transition between the two structures. 
 
-TODO: more about the theory? 
+<!-- TODO: more about the theory?  -->
 
 In our NEB implementation the update rule for atomic position is given by:
 
@@ -44,7 +44,7 @@ The relevant `.param` keywords are summarised in the table below:
 | `TSSEARCH_METHOD`              | `LSTQST`                                                        | Basic        | The search method used to locate transition states. Must be set to `NEB` to perform a NEB calculation. Previous default retained for backwards compatibility. Modifiable: restart only Allowed values: `LSTQST`, `NEB` Default value : `LSTQST`                                                                                           |
 | `TSSEARCH_FORCE_TOL`           | Same as `GEOM_FORCE_TOL`                                        | Basic        | Tolerance for accepting convergence of the maximum \|ionic force\| during QST search. Modifiable: restart and on the fly                                                                                                                                                                                                                  |
 | `TSSEARCH_MAX_PATH_POINTS`     | 20                                                              | Intermediate | The maximum number of path points for NEB search. Modifiable: restart and on the fly Allowed values: (any integer) > 0                                                                                                                                                                                                                    |
-| `TSSEARCH_NEB_METHOD`          | [ODE12R][3]                     | Intermediate | Method used to optimize the NEB shape. Modifiable: restart and on the fly. Allowed values: [`GRAD_BB`][1], [`FIRE`][2], [`ODE12R`][3]                                                                                                                     |
+| `TSSEARCH_NEB_METHOD`          | [ODE12R][3]                                                     | Intermediate | Method used to optimize the NEB shape. Modifiable: restart and on the fly. Allowed values: [`GRAD_BB`][1], [`FIRE`][2], [`ODE12R`][3]                                                                                                                                                                                                     |
 | `TSSEARCH_NEB_TANGENT_MODE`    | `SPLINE`                                                        | Basic        | Method used to calculate the tangents of the NEB. Modifiable: restart and on the fly. Allowed values: `NONE`, `BISECT`, `HIGH_E`, `SPLINE`                                                                                                                                                                                                |
 | `TSSEARCH_NEB_SPRING_CONSTANT` | 0.1 eV/ang2                                                     | Basic        | Spring constant used between the images in NEB search. Modifiable: restart and on the fly. Allowed values: (any) > 0.0                                                                                                                                                                                                                    |
 | `TSSEARCH_NEB_CLIMBING`        | FALSE                                                           | Basic        | If TRUE then the central bead in NEB search climbs up the potential and `TSSEARCH_MAX_PATH_POINTS` must be odd (may be increased by +1). If FALSE then the central bead in NEB search slides down the potential. Modifiable: restart only. Allowed values: TRUE or FALSE Default value: FALSE                                             |
@@ -65,6 +65,75 @@ However, it's advisable to also:
 - think about the relevant force criterion to be used (`TSSEARCH_FORCE_TOL`).
 
 For a more practical guide on how to use the NEB method in CASTEP, see the [tutorial](../../tutorials/NEB/neb_tutorial.md).
+
+
+
+## Output files
+
+In addition to the information in the `.castep` file, a `.ts` file will be generated during the coarse of a transition state search calculation. Below is the start of a typical `.ts` file, with annotations explaing what each line means (you can see these by clicking on the (:heavy_plus_sign:) symbols).
+
+
+
+!!! note 
+        The `.ts` file, like the `.geom` and the `.md` files, use atomic units (Ha for energies, Bohr for distances and Bohr/Ha for forces etc.). 
+
+``` yaml
+ TSTYPE TSConfirmation # (1)!
+ REA     1      0.00000000E+000 # (2)!
+              -1.19447739E+001     -1.19447739E+001                       <-- E #(3)!
+               1.32280829E+001      0.00000000E+000      0.00000000E+000  <-- h #(4)!
+               8.09986468E-016      1.32280829E+001      0.00000000E+000  <-- h
+               8.09986468E-016      8.09986468E-016      1.32280829E+001  <-- h
+ H           1      6.61419707E+000      8.39780193E+000      5.86117838E+000  <-- R #(5)!
+ H           2      8.15635294E+000      5.72185774E+000      5.85777350E+000  <-- R
+ H           3      5.06964224E+000      5.72278559E+000      5.86095165E+000  <-- R
+ N           1      6.61404144E+000      6.61404144E+000      6.61404144E+000  <-- R
+ H           1      8.47021636E-007      3.11793289E-005      2.28609226E-005  <-- F #(6)!
+ H           2      1.38512779E-006     -2.45087447E-005     -4.65186359E-005  <-- F
+ H           3     -4.12781162E-005     -4.76763241E-006      1.75643331E-005  <-- F
+ N           1      3.90459667E-005     -1.90295182E-006      6.09338019E-006  <-- F
+  
+ PRO    1      1.00000000E+000 #(7)!
+              -1.19447351E+001     -1.19447351E+001                       <-- E
+               1.32280829E+001      0.00000000E+000      0.00000000E+000  <-- h
+               8.09986468E-016      1.32280829E+001      0.00000000E+000  <-- h
+               8.09986468E-016      8.09986468E-016      1.32280829E+001  <-- h
+ H           1      6.61608080E+000      8.39796599E+000      7.36585209E+000  <-- R
+ H           2      8.15724653E+000      5.72090835E+000      7.36726384E+000  <-- R
+ H           3      5.07119891E+000      5.72404366E+000      7.37171850E+000  <-- R
+ N           1      6.61404144E+000      6.61404144E+000      6.61404144E+000  <-- R
+ H           1      6.09749957E-005      4.97392811E-005     -4.85624696E-005  <-- F
+ H           2      6.57602570E-005     -1.92918456E-005     -3.12188543E-005  <-- F
+ H           3     -5.16484028E-005      2.80445001E-005      5.83274956E-005  <-- F
+ N           1     -7.50868499E-005     -5.84919355E-005      2.14538282E-005  <-- F
+  
+ TST    1      1.25000056E-001 #(8)!
+              -1.19415297E+001     -1.19415297E+001                       <-- E
+               1.32280829E+001      0.00000000E+000      0.00000000E+000  <-- h
+               8.09986468E-016      1.32280829E+001      0.00000000E+000  <-- h
+               8.09986468E-016      8.09986468E-016      1.32280829E+001  <-- h
+ H           1      6.61443264E+000      8.39782206E+000      6.04926187E+000  <-- R
+ H           2      8.15646486E+000      5.72173929E+000      6.04646018E+000  <-- R
+ H           3      5.06983587E+000      5.72294304E+000      6.04979810E+000  <-- R
+ N           1      6.61404144E+000      6.61404144E+000      6.61404144E+000  <-- R
+ H           1     -9.19085803E-006      2.32501273E-002     -1.04092397E-002  <-- F
+ H           2      2.02903385E-002     -1.17660606E-002     -1.06346944E-002  <-- F
+ H           3     -2.03961322E-002     -1.17795791E-002     -1.05604406E-002  <-- F
+ N           1      1.14984498E-004      2.95512341E-004      3.16043747E-002  <-- F
+  
+
+```
+
+1. This is a comment line informing the user what type of calculation was carried out.
+2. This is the initial (i.e. the **REA** ctant) configuration. The integer indicates it's the configuration for the first NEB iteration. However, note that as the REActant (and PROduct) configurations stay the same for every NEB iteration, they are only printed out once. The float at the end of the line is a measure of where the configuration lies between 0 (reactant) and 1 (product). TODO: be more precise.
+3. `<-- E` is the total energy and enthalpy of the system, in atomic units.
+4. `<-- h` is the unit cell matrix (atomic units).
+5. `<-- R` are the atomic coordinates (Cartesian), in atomic units.
+6. `<-- F` are the forces (atomic units). TODO: do these include NEB forces?
+7. This is the end-point (or **PRO** duct) configuration for iteration 1 of the NEB. Note that as the REActant and PROduct configurations stay the same for every NEB iteration, they are only printed out once. 
+8. This is the first of the transition state configurations (NEB images) for iteration 1 of the NEB. For example, if you have 7 images, then there will be 7 blocks that start with `TST    1 `. 
+
+
 
 
 [1]: https://doi.org/10.1093/imanum/8.1.141 "GRAD_BB reference"

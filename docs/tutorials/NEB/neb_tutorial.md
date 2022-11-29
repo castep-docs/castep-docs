@@ -29,13 +29,13 @@ You can find all the files needed for this tutorial here: [neb_tutorial.tar.gz](
 ## Setting up the structures
 
 ### Setting up the initial and final states
-These and the local minima structures you want find the barrier between. They can be equivalent structures with e.g. a translation between them or they can be configurations with different energies (in which case your forward and reverse barriers will not be the same!). There are two crucial things to set up **before running the NEB** though:
+These are the local minima structures you want to find the barrier between. They can be equivalent structures with e.g. a translation between them or they can be configurations with different energies (in which case your forward and reverse barriers will not be the same!). There are two crucial things to set up **before running the NEB** though:
 
 1. The end point structures must be fully relaxed (geometry optimised) before you start the NEB.
 2. The atoms must be in the correct order. A very common mistake is to use some third party tool to generate the final state from the initial state and end up with atoms that don't match the initial atom order. When CASTEP then goes to interpolate between the two structures, you end up with atoms "passing through each other", causing the calculation to blow up. Always check that the atoms connect up in the way you expect. 
 
 
-The initial state is specified in the same way as the normal ionic positions in a .cell file. e.g.:
+The initial state is specified in the same way as the normal ionic positions in a .cell file, e.g.:
 
 ```
 %BLOCK positions_frac
@@ -47,7 +47,7 @@ The initial state is specified in the same way as the normal ionic positions in 
 ```
 
 
-The final state is specified using a similar block in the same .cell file but with `_product` appended to the name. e.g.:
+The final state is specified using a similar block in the same .cell file but with `_product` appended to the name of the block, e.g.:
 
 ```
 %BLOCK positions_frac_product
@@ -157,8 +157,9 @@ Common convergence issues include:
 
 - Not having consistent order in the initial and final structures -> non-physical initial path
 - Too many (or too few) images
+- Initial or final state (endpoints) not being fully relaxed structures
 
-### Restarting
+### Restarting / Continuing 
 
 Sometimes the calculation will run out of time/number of iterations before the NEB calculation is finished. 
 You will probably see a "Failed to converge" message in the .castep output in that case; always read through your output files!
@@ -286,6 +287,6 @@ In many cases, particularly when lighter atoms are involved, the energy barrier 
  
 The simplest way to do this is in the harmonic approximation. You need to estimate the harmonic zero-point energy at the start, transition and final configurations.
 
-For the particular case (ammonia) we have been looking at, it turns out to actually explain the observed transition rate between the two 'umbrella' configurations, we need to go beyond the harmonic approximation. [REF]
+For the particular case (ammonia) we have been looking at, it turns out that to actually explain the observed transition rate between the two 'umbrella' configurations, we need to go beyond the harmonic approximation ([see Wikipedia](https://en.wikipedia.org/wiki/Pyramidal_inversion#Quantum_effects)).
 
 TODO: add instructions for harmonic ZPE corrections.
