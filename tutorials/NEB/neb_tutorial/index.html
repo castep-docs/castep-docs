@@ -1,0 +1,2006 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>Nudged elastic band - CASTEP Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nudged-elastic-band-tutorial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="CASTEP Docs" class="md-header__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CASTEP Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Nudged elastic band
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="CASTEP Docs" class="md-nav__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CASTEP Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/built_in_help/" class="md-nav__link">
+        Command line help
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/running_castep/" class="md-nav__link">
+        Running CASTEP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/basic_cell_file/" class="md-nav__link">
+        cell File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/basic_param_file/" class="md-nav__link">
+        param File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Getting_Started/restarting/" class="md-nav__link">
+        Checkpoint and Restart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Ground State
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ground State" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ground State
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Groundstate/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Groundstate/dftd/" class="md-nav__link">
+        Dispersion Corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Groundstate/soc/" class="md-nav__link">
+        Spin Orbit Coupling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Geometry Optimisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Geometry Optimisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Geometry Optimisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Geometry_Optimisation/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Molecular Dynamics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Molecular Dynamics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Molecular Dynamics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Molecular_Dynamics/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Transition State Search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Transition State Search" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Transition State Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Transition_State_Search/neb/" class="md-nav__link">
+        Nudged elastic band
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Exchange-Correlation (XC)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exchange-Correlation (XC)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Exchange-Correlation (XC)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XC/XCoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XC/XC/" class="md-nav__link">
+        Controlling XC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XC/libXC/" class="md-nav__link">
+        libXC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Spectral
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spectral" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Spectral
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Spectral/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Spectral/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Spectral/restarts/" class="md-nav__link">
+        Restarts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Vibrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vibrations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Vibrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Vibrations/overview/" class="md-nav__link">
+        Vibrations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          NMR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          NMR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/NMR/NMR_overview/" class="md-nav__link">
+        NMR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          EPR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="EPR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          EPR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/EPR/overview/" class="md-nav__link">
+        EPR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/XRD/overview/" class="md-nav__link">
+        XRD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          TDDFT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TDDFT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          TDDFT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/TDDFT/overview/" class="md-nav__link">
+        TDDFT Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          Pseudopotentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pseudopotentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Pseudopotentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/theory/" class="md-nav__link">
+        Theory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/reading_headers/" class="md-nav__link">
+        Headers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Pseudopotentials/otfg_string/" class="md-nav__link">
+        OTFG string
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          Input Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input Files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Input Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Input_Files/cell_file/" class="md-nav__link">
+        cell file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Input_Files/param_file/" class="md-nav__link">
+        param file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Input_Files/cell_keywords/" class="md-nav__link">
+        cell keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_15">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Troubleshooting/troubleshooting/" class="md-nav__link">
+        Common errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Troubleshooting/linux_path/" class="md-nav__link">
+        Linux help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Bonding and Charge
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bonding and Charge" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bonding and Charge
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bonding_and_Charge/charge_density/" class="md-nav__link">
+        Plotting Charge Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bonding_and_Charge/mulliken_population/" class="md-nav__link">
+        Population Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Bands and DOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bands and DOS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bands and DOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/plotting_perl/" class="md-nav__link">
+        Plotting - CASTEP tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/plotting_sumo/" class="md-nav__link">
+        Plotting - SUMO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/semiconductors/" class="md-nav__link">
+        Semiconductors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/metals/" class="md-nav__link">
+        Metals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bands_and_DOS/magnetic/" class="md-nav__link">
+        Magnetic Materials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dispersion_corrections/castep-ase-dispersion-tutorial/" class="md-nav__link">
+        Dispersion corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Nudged elastic band
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Nudged elastic band
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-and-background" class="md-nav__link">
+    Overview and background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-structures" class="md-nav__link">
+    Setting up the structures
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up the structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-initial-and-final-states" class="md-nav__link">
+    Setting up the initial and final states
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-transition-state-guess" class="md-nav__link">
+    Setting up the transition state guess
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-images-do-i-need" class="md-nav__link">
+    How many images do I need?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-climbing-neb" class="md-nav__link">
+    Do I need climbing NEB?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-neb" class="md-nav__link">
+    Running the NEB
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the NEB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallelisation" class="md-nav__link">
+    Parallelisation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-calculation-converging" class="md-nav__link">
+    Is the calculation converging?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restarting-continuing" class="md-nav__link">
+    Restarting / Continuing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero-point-energy-corrections" class="md-nav__link">
+    Zero-point energy corrections
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NMR_shielding.md" class="md-nav__link">
+        NMR Shielding
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-and-background" class="md-nav__link">
+    Overview and background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-structures" class="md-nav__link">
+    Setting up the structures
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up the structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-initial-and-final-states" class="md-nav__link">
+    Setting up the initial and final states
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-transition-state-guess" class="md-nav__link">
+    Setting up the transition state guess
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-images-do-i-need" class="md-nav__link">
+    How many images do I need?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-climbing-neb" class="md-nav__link">
+    Do I need climbing NEB?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-neb" class="md-nav__link">
+    Running the NEB
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the NEB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallelisation" class="md-nav__link">
+    Parallelisation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-calculation-converging" class="md-nav__link">
+    Is the calculation converging?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restarting-continuing" class="md-nav__link">
+    Restarting / Continuing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero-point-energy-corrections" class="md-nav__link">
+    Zero-point energy corrections
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="nudged-elastic-band-tutorial">Nudged elastic band tutorial</h1>
+<h2 id="overview-and-background">Overview and background</h2>
+<p>The nudged elastic band (NEB) approach is a widely-used method for finding a minimum energy pathway between two configurations of atoms. 
+You can use the method to estimate the barrier for the system to transition between the two structures. </p>
+<p>The technique starts with two fixed end points which are fully relaxed (local) minima: the initial and final configurations. It then connects these end points with a series of "images" via fictitious springs that "pull" the structures taut over one or more intermediate transition states. </p>
+<p>In this tutorial, we will use the well-known example of an ammonia molecule's <a href="https://en.wikipedia.org/wiki/Pyramidal_inversion#Energy_barrier">pyramidal inversion</a></p>
+<p><img alt="NH3 inversion diagram from wikipedia" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Nitrogen-inversion-3D-balls.png" /></p>
+<p>We will cover:</p>
+<ul>
+<li>How to set up the initial, final (and intermediate) structures</li>
+<li>How to actually run the NEB calculation efficiently</li>
+<li>How to analyse the results</li>
+<li>Other tips and tricks</li>
+</ul>
+<h2 id="files">Files</h2>
+<p>You can find all the files needed for this tutorial here: <a href="../neb_tutorial.tar.gz">neb_tutorial.tar.gz</a></p>
+<h2 id="setting-up-the-structures">Setting up the structures</h2>
+<h3 id="setting-up-the-initial-and-final-states">Setting up the initial and final states</h3>
+<p>These are the local minima structures you want to find the barrier between. They can be equivalent structures, e.g. differing by a symmetry operation, such reflection through a mirror plane, or they can be configurations with different energies (in which case your forward and reverse barriers will not be the same!). Two crucial conditions must be met <strong>before running the NEB calculation</strong>:</p>
+<ol>
+<li>The end point structures must be fully relaxed (geometry optimised) before you start the NEB. Note that both the initial relaxations and the actual NEB calculation must use consistent parameters (e.g. basis set, pseudopotentials, k-points, XC functional etc.).</li>
+<li>The atoms must be in the correct order. A common mistake is to use a software tool to generate the final state from the initial state and end up with atoms that don't match the initial atom order. Atoms then "pass through each other" when CASTEP interpolates between the two structures, causing the calculation to blow up. Always check that the atoms connect up in the way you expect. </li>
+</ol>
+<p>The initial state is specified in the same way as a normal .cell file, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%BLOCK positions_frac
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   H              0.500011764912384       0.634846485697942       0.443086003907125
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   H              0.616593728396204       0.432553816946042       0.442828605918639
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   H              0.383248448613152       0.432623959245757       0.443068863520867
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   N              0.500000000000000       0.500000000000000       0.500000000000000
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>%ENDBLOCK positions_frac
+</code></pre></div>
+<p>The final state is specified using a similar block in the same .cell file but with <code>_product</code> appended to the name of the block, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>%BLOCK positions_frac_product
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   H              0.500154169007758       0.634858887961251       0.556834437330747
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>   H              0.616661280589956       0.432482046338754       0.556941161085851
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   H              0.383366127862304       0.432719065607707       0.557277918851780
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   N              0.500000000000000       0.500000000000000       0.500000000000000
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>%ENDBLOCK positions_frac_product
+</code></pre></div>
+<h3 id="setting-up-the-transition-state-guess">Setting up the transition state guess</h3>
+<p>CASTEP will linearly interpolate between the initial and final structures provided to generate the first guess of the minimum energy pathway.
+This works well in many cases. However, if your minimum energy pathway contains e.g. a rotation of a (group of) atom(s) around a bond or something similar, then the linear path between initial and final configurations may be a bad starting guess/non-physical structure. For example, if your end points correspond to a C2 rotation, then a linearly interpolated intermediate structure would not be a physical one. It's important to visualise or otherwise check all of your structures before running a calculation.</p>
+<p>Intermediate structures can also be chosen in such a way as to bias your results to one pathway over another.</p>
+<p>CASTEP allows you to provide <strong>one</strong> intermediate structure between the initial and final configurations in order to get the NEB on the right track. The intermediate configuration is added using, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>%BLOCK POSITIONS_ABS_INTERMEDIATE
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ang
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>N  3.500000  3.500000  3.500000
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>H  3.500000  4.443968  3.500000
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>H  4.316393  3.027626  3.500000
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>H  2.683149  3.028701  3.501215
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>%ENDBLOCK POSITIONS_ABS_INTERMEDIATE
+</code></pre></div>
+<h3 id="how-many-images-do-i-need">How many images do I need?</h3>
+<p>It depends... It's usually preferable to start with a small number of images and increase the number if you need to. Starting small can quickly give you a rough sense of the energy landscape and that will determine the actual number of images needed. </p>
+<p>In addition, if you start with too many images then you might never get close to the converged TS because the optimisation takes too long. If you instead start with a small number and get a reasonable TS structure, you can then use that as your initial intermediate structure in a restarted calculation with more images.</p>
+<p>Using many (i.e. &gt; 15) will result in slow convergence, but may lead to a more accurate minimum energy pathway for complex barriers. If you do find a particularly complex pathway, however, you might be better off splitting the work up into more than one NEB calculation, each with fewer images. Just remember to always fully relax the end points (even if the end point is a meta-stable local minimum)!  </p>
+<p>Using too few (i.e. &lt; 5) might fail to find the minimum energy pathway if the energy landscape is complex.</p>
+<p>TODO: add guidance on odd vs even number of images (touching on how the spacing is calculated) and on how many you need for this simple example -- maybe an exercise for the user? You can actually get the same barrier height with just one image in this simple case! </p>
+<p>Some questions to help answer how many images you need:</p>
+<ul>
+<li>How complex is the landscape between the initial and final state? For example, if you expect more than one maximum between the end points, you probably need more images than for the single peak example we look at here.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The number of images is the number of structures <em>between</em> the end points. The total number of structures in the path (i.e. including the end points) is therefore the number of images + 2.</p>
+</div>
+<h3 id="constraints">Constraints</h3>
+<p>We can often dramatically improve the efficiency of the transition state search by imposing constraints on the atomic positions, although this must be done with care so as not to introduce artifacts. For example, when looking at NEB barriers for adsorbates on a surface slab, we can usefully constrain the bottom slab layers, but probably want the top layer(s) unconstrained.</p>
+<p>In the ammonia case, we can constrain the N atom position without affecting the physical set up by adding the block:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>%BLOCK IONIC_CONSTRAINTS
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     1   N   1   1 0 0
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>     2   N   1   0 1 0
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>     3   N   1   0 0 1
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>%ENDBLOCK IONIC_CONSTRAINTS
+</code></pre></div>
+<p>to the <code>nh3.cell</code> file.  <em>[Isn't there a more compact way now to specify a fixed atom?]</em></p>
+<p>You should then see something like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>  --- Initialising NEB constraints ---
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>     Fixed            3  degrees of freedom
+</code></pre></div>
+<p>in the <code>.castep</code> output file.</p>
+<h3 id="do-i-need-climbing-neb">Do I need climbing NEB?</h3>
+<p>The climbing NEB method modifies the force on the highest-energy image such that it tries to climb <em>up</em> the barrier. 
+This is very useful to get accurate barrier estimates, but care must be taken when more complex pathways (i.e. with multiple maxima) are found.  <em>[Don't get this!]</em></p>
+<p>In our example the path is quite straightforward and it makes sense to use the climbing image method. We therefore set:</p>
+<p><code>TSSEARCH_NEB_CLIMBING: TRUE</code></p>
+<p>in the .param file.</p>
+<p>TODO: clarify what happens when you set climbing to true.  </p>
+<p>TODO: include advice/explanation about starting with regular NEB and turning on climbing image after a few steps. </p>
+<h2 id="running-the-neb">Running the NEB</h2>
+<h3 id="parallelisation">Parallelisation</h3>
+<p>Because the NEB calculation essentially involves <em>N</em> independent CASTEP calculations (where <em>N</em> is the number of images), we can make very efficient use of high-performance computers. This is done via "task farming", running the calculations for the <em>N</em> images independently. For example, if one CASTEP calculation fits on one node, and you have 7 images, then you could run on a total of 7 nodes by setting the keyword:</p>
+<p><code>NUM_FARMS: 7</code></p>
+<p>in the .param file. </p>
+<p>A good rule of thumb is to aim for <code>NUM_FARMS</code> = number of NEB images. That way each 'farm' is responsible for one NEB image. Since each farm will effectively run a series of single-point calculations on each NEB image they are responsible for, the compute resources of that farm should be appropriately sized for such calculations. Too small and you could get an out-of-memory error, too large and you might end up over-parallelising, leading to reduced overall performance. i.e. you should aim to run on a total of <code>NUM_FARMS</code> times as many cores as you would use for a single-point calculation on one of the structures.  </p>
+<p>This also assumes that your available compute resources can be neatly split into <code>NUM_FARMS</code>. The easy case is when each farm can run on a single node; i.e. <code>NUM_FARMS</code> = number of NEB images = number of nodes. Note that the total number of cores available must be divisible by <code>NUM_FARMS</code>. </p>
+<p>If you choose <code>NUM_FARMS</code> &lt; number of images, each of the images will run sequentially on one farm as soon as that farm becomes available. If the number of images is not a multiple of <code>NUM_FARMS</code>, some farms will end up being responsible for more images than others, leading poor overall efficiency.</p>
+<p>If you choose <code>NUM_FARMS</code> &gt; number of images, then some farms will be left with nothing to do, resulting in poor overall efficiency.</p>
+<p>Setting <code>NUM_FARMS = 1</code> is equivalent to not setting <code>NUM_FARMS</code>.</p>
+<p>You will notice that if you enable task farming, the seedname.castep output file will look relatively empty, as most output is split into the different task farm .castep files. The first indexed one contains the most important information (for example, the "Max NEB force") and will be called e.g. <code>seedname_farm001.castep</code>. </p>
+<h3 id="is-the-calculation-converging">Is the calculation converging?</h3>
+<p>You can monitor the convergence by searching for "Max NEB force" within the .castep output file.</p>
+<p>Common convergence issues include:</p>
+<ul>
+<li>Not having consistent order in the initial and final structures, i.e. non-physical initial path</li>
+<li>Too many (or too few) images  <em>[As above - not clear what this means, so looks odd.]</em></li>
+<li>Initial or final state (endpoints) not being fully relaxed structures</li>
+</ul>
+<h3 id="restarting-continuing">Restarting / Continuing</h3>
+<p>Sometimes the calculation will run out of time/number of iterations before the NEB calculation is finished. 
+You will probably see a "Failed to converge" message in the .castep output in that case; always read through your output files!
+<em>[Not obvious in .ts file? Shouldn't need to positively check for unconverged results.]</em></p>
+<p>If you re-run the calculation without changing anything, it will simply start from the beginning again -- probably not what you want!</p>
+<p>In order restart the NEB from the last checkpointed state, you need to <strong>explicitly</strong> set the name of the .check file you want to continue from in your .param file. In our example that would be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>continuation: nh3.check
+</code></pre></div>
+<p>In the .castep output you would then see: <code>Coordinates of NEB images loaded from checkpoint file</code>. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unlike other CASTEP tasks, setting <code>continuation: default</code> does not seem to work for continuing/restarting NEB calculations! You must explicitly set the name of checkpoint file.</p>
+</div>
+<h2 id="analysis">Analysis</h2>
+<p>Once you have a converged NEB, the provided Python utility <code>readTS</code> can be used to parse and analyse the NEB. 
+To add the readTS module to your PYTHONPATH, you can find a setup.py script in the <code>castep/Utilities/readts</code> directory of your CASTEP source directory. Running <code>python setup.py</code> should install the module to your path. You can also manually add it by inserting the following line into your ~/.bashrc or equivalent and restarting the terminal: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;/path/to/castep/Utilities/readts:</span><span class="nv">$PYTHONPATH</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>(changing the <code>/path/to/castep/</code> bit to wherever CASTEP is on your machine).</p>
+<p>You can then extract the NEB path using something like this python code:  <em>[This looks sufficiently general that you could supply the analysis.py script?]</em></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">## get this by adding castep/Utilities/readts to your PYTHONPATH</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">readts</span> <span class="kn">import</span> <span class="n">TSFile</span> 
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span> <span class="nn">ase.neb</span> <span class="kn">import</span> <span class="n">NEBTools</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">def</span> <span class="nf">get_images</span><span class="p">(</span><span class="n">tsfile</span><span class="p">):</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="sd">   Function to extract the </span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="sd">   final NEB images from a tsfile object</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="sd">   Args: </span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="sd">        tsfile (TSFile): tsfile object</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="sd">   Returns:</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="sd">        images (list): list of ASE atoms objects</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="sd">   &#39;&#39;&#39;</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="n">diam_tst</span> <span class="o">=</span> <span class="n">tsfile</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="s1">&#39;TST&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>    <span class="n">diam_i</span> <span class="o">=</span> <span class="n">tsfile</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="s1">&#39;REA&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    <span class="n">diam_f</span> <span class="o">=</span> <span class="n">tsfile</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="s1">&#39;PRO&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="n">nbeads</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">diam_tst</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>    <span class="n">max_idx</span> <span class="o">=</span> <span class="n">diam_tst</span><span class="o">.</span><span class="n">last_index</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>    <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">diam_i</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>    <span class="n">images</span> <span class="o">+=</span> <span class="p">[</span><span class="n">diam_tst</span><span class="p">[</span><span class="n">max_idx</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">atoms</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nbeads</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diam_f</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>    <span class="k">return</span> <span class="n">images</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="k">def</span> <span class="nf">plot_band</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;neb.png&#39;</span><span class="p">):</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>    <span class="n">nt</span> <span class="o">=</span> <span class="n">NEBTools</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>    <span class="n">energies</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">get_barrier</span><span class="p">()</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Barrier height:      </span><span class="si">{</span><span class="n">energies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">16.5f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;E_final - E_initial: </span><span class="si">{</span><span class="n">energies</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">16.5f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>    <span class="n">nebplot</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">plot_band</span><span class="p">()</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>    <span class="n">nebplot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>    <span class="kn">import</span> <span class="nn">sys</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>    <span class="n">seedname</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>    <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a>    <span class="n">tolerant</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a>        <span class="n">tolerant</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>    <span class="n">tsfile</span> <span class="o">=</span> <span class="n">TSFile</span><span class="p">(</span><span class="n">seedname</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">tolerant</span><span class="o">=</span><span class="n">tolerant</span><span class="p">)</span>
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a>    <span class="n">images</span> <span class="o">=</span> <span class="n">get_images</span><span class="p">(</span><span class="n">tsfile</span><span class="p">)</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a>    <span class="n">plot_band</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>    <span class="c1"># we can use ASE to write out the structure </span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a>    <span class="c1"># in whatever format we want</span>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image</span><span class="se">\t\t</span><span class="s1"> Energy (eV)&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">atoms</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+<a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">03d</span><span class="si">}</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span><span class="si">:</span><span class="s1">16.5f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a>        <span class="c1">## this format includes the energy of the image</span>
+<a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a>        <span class="n">atoms</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;image-</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">03d</span><span class="si">}</span><span class="s1">.xyz&#39;</span><span class="p">)</span> 
+<a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a>
+<a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a>
+<a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a>    <span class="c1">## We can also use the ASE GUI to </span>
+<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a>    <span class="c1">## view the images and analyse the NEB path.</span>
+<a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a>    <span class="c1">## Select Tools -&gt; NEB Plot</span>
+<a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a>    <span class="c1"># from ase.visualize import view</span>
+<a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a>    <span class="c1"># view(images)</span>
+</code></pre></div>
+<p>If we save this script as analysis.py and run it in the directory containing both the nh3.cell and nh3.ts files like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>analysis.py<span class="w"> </span>nh3
+</code></pre></div>
+<p>we will get an .xyz file for each structure in the optimised NEB path and the energy of each image. We will also get the barrier estimate and a NEB plot showing the barrier.</p>
+<p>The ASE GUI can also be used to plot the NEB band (uncomment the last two lines in the above script and Select Tools → NEB Plot from the GUI). </p>
+<p>The ASE-generated plot looks like this:</p>
+<p><img alt="NEB Plot" src="../../../img/neb.png" /></p>
+<p>The green lines show the tangents at those points; these can be useful indicators of convergence. </p>
+<p>The barrier we obtained is about 0.23 eV, which compares well with the value of 0.25 eV (24.2 kJ/mol) <a href="https://en.wikipedia.org/wiki/Pyramidal_inversion#Energy_barrier">from Wikipedia</a>.</p>
+<p>We might also notice the slight difference in energy between the two end-points of the path (about 1 meV). These should be identical, so any difference can be used as a very rough guide for the amount of numerical noise in the geometry optimisations.
+If equivalent structures (the end-points in this example) were found to have very different energies, you would need to go back and tighten up your convergence criteria or force/energy tolerances in the initial geometry optimisations and re-run the NEB calculation with these tightened parameters. </p>
+<p>Using our favourite visualisation software (here we used the <a href="https://wiki.fysik.dtu.dk/ase/ase/io/io.html#examples">ASE POV-Ray interface</a>), we can then look at how the structure evolves along the minimum energy pathway found via the NEB.</p>
+<p><img alt="NEB structures" src="../../../img/nh3_neb.gif" /></p>
+<h3 id="zero-point-energy-corrections">Zero-point energy corrections</h3>
+<p>In many cases, particularly when lighter atoms are involved, the energy barrier estimates obtained above need to be corrected for quantum-nuclear effects. </p>
+<p>The simplest way to do this is in the harmonic approximation. You need to estimate the harmonic zero-point energy at the start, transition and final configurations.</p>
+<p>TODO: replace the section on zero-point energy corrections by a note that highlights that the NEB will provide a Delta E (this is exact), while the transition rates will depend on Delta E_0.</p>
+<p>TODO: add instructions for harmonic ZPE corrections.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../dispersion_corrections/castep-ase-dispersion-tutorial/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dispersion corrections" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Dispersion corrections
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": "-content.code.annotate", "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
