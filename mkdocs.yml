@@ -21,6 +21,8 @@ nav:
         - 'Tools': 'documentation/Geometry_Optimisation/tools.md'
       - 'Molecular Dynamics':
         - 'Overview': 'documentation/Molecular_Dynamics/overview.md'
+      - 'Transition State Search':
+        - 'Nudged elastic band': 'documentation/Transition_State_Search/neb.md'
       - 'Exchange-Correlation (XC)':
         - 'Overview': 'documentation/XC/XCoverview.md'
         - 'Controlling XC': 'documentation/XC/XC.md'
@@ -61,14 +63,19 @@ nav:
         -  'Metals':      'tutorials/Bands_and_DOS/metals.md'
         -  'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
       - 'Dispersion corrections': 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
+      - 'Nudged elastic band': 'tutorials/NEB/neb_tutorial.md'
       - 'NMR Shielding': 'tutorials/NMR_shielding.md'
 
 theme:
   name: material
+  features:
+    -content.code.annotate
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 markdown_extensions:
   - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
