@@ -49,6 +49,7 @@ nav:
         - 'cell file':  'documentation/Input_Files/cell_file.md'
         - 'param file': 'documentation/Input_Files/param_file.md'
         - 'cell keywords': 'documentation/Input_Files/cell_keywords.md'
+        - 'output files': 'documentation/Input_Files/output_files.md'
       - 'Troubleshooting':
         - 'Common errors':  'documentation/Troubleshooting/troubleshooting.md'
         - 'Linux help':  'documentation/Troubleshooting/linux_path.md'
@@ -65,6 +66,9 @@ nav:
       - 'Dispersion corrections': 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
       - 'Nudged elastic band': 'tutorials/NEB/neb_tutorial.md'
       - 'NMR Shielding': 'tutorials/NMR_shielding.md'
+      - 'Tools':
+        - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
+
 
 theme:
   name: material
