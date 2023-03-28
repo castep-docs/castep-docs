@@ -20,7 +20,11 @@ nav:
         - 'Files': 'documentation/Geometry_Optimisation/files.md'
         - 'Tools': 'documentation/Geometry_Optimisation/tools.md'
       - 'Molecular Dynamics':
-        - 'Overview': 'documentation/Molecular_Dynamics/overview.md'
+        - 'MD Overview': 'documentation/Molecular_Dynamics/overview.md'
+        - 'MD Basics': 'documentation/Molecular_Dynamics/basics.md'
+        - 'MD Restarts': 'documentation/Molecular_Dynamics/restarts.md'
+        - 'MD Files': 'documentation/Molecular_Dynamics/files.md'
+        - 'MD Keywords': 'documentation/Molecular_Dynamics/keywords.md'
       - 'Transition State Search':
         - 'Nudged elastic band': 'documentation/Transition_State_Search/neb.md'
       - 'Exchange-Correlation (XC)':
@@ -65,7 +69,11 @@ nav:
         -  'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
       - 'Dispersion corrections': 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
       - 'Nudged elastic band': 'tutorials/NEB/neb_tutorial.md'
-      - 'NMR Shielding': 'tutorials/NMR_shielding.md'
+      - 'NMR Shielding':
+        - 'Introduction': 'tutorials/NMR/NMR_shielding.md'
+        - 'Inorganic': 'tutorials/NMR/NMR_silicate.md'
+        - 'Molecular Crystals': 'tutorials/NMR/NMR_molcrystal.md'
+        - 'J coupling': 'tutorials/NMR/NMR_shielding.md'
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
 

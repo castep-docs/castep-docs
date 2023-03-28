@@ -5,7 +5,7 @@ The X-ray structure factor (SF) intensities can be measured by diffraction exper
 
 $$F(\mathbf{H}) = \mathcal{F}[n(\mathbf{r})] = \int_\textrm{unit cell} n(\mathbf{r})\exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}) \mathrm{d}\mathbf{r},$$
 
-where $\mathbf{H} = h \mathbf{a}^* + k \mathbf{b}^* + l\mathbf{c}^*$ is the scattering vector corresponding to the $(hkl)$ plane, with $\mathbf{a}^*, \mathbf{b}^*$ and $\mathbf{c}^*$ being the reciprocal lattice vectors of the conventional unit cell. 
+where $\mathbf{H} = h \mathbf{a}^* + k \mathbf{b}^* + l\mathbf{c}^*$ is the scattering vector corresponding to the $(hkl)$ plane, with $\mathbf{a}^*, \mathbf{b}^*$ and $\mathbf{c}^*$ being the reciprocal lattice vectors of the conventional unit cell.
 
 Computation of the SF is difficult within plane-wave pseudopotential DFT codes since the total "all-electron'' electron density is not normally directly computed and the FFT grids used to house the pseudised valence electron density do not have enough spatial resolution to capture the rapid oscillations near the atomic cores of the total electron density, requiring large plane-wave energy cutoffs in the order of several thousands of eV. Within CASTEP, we have developed an efficient and accurate approach towards calculating these SFs without having to move to large FFT grids or plane-wave energy cutoffs. Details of this implementation can be found in the paper (CITE PAPER WHEN PUBLISHED) but the key observation that has enabled this development is that the electron density can be separated into atom-centred contributions which can be treated on separate radial grids. The resulting structure factor has the form[^2]:
 
@@ -16,7 +16,7 @@ where $f_j(\mathbf{H})$ is an effective atomic scattering factor of atom $j$ wit
 $$f_j (\mathbf{H}) = \int \rho_j (\mathbf{r}) \exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}) \mathrm{d}{\mathbf{r}}.$$
 
 ### Incorporating Thermal Effects
-Within experiments, thermal vibrations (i.e. phonons) can modify the (time-averaged) electron density and, hence, SFs. Making the approximation that the electron density assigned to each atom $\rho_j(\mathbf{r})$ directly follows its nuclear motion perfectly, the structure factors can incoporate these thermal vibration effects by including an atomic temperature factor $T(\mathbf{H})$:
+Within experiments, thermal vibrations (i.e. phonons) can modify the (time-averaged) electron density and, hence, SFs. Making the approximation that the electron density assigned to each atom $\rho_j(\mathbf{r})$ directly follows its nuclear motion perfectly, the structure factors can incorporate these thermal vibration effects by including an atomic temperature factor $T(\mathbf{H})$:
 
 $$F(\mathbf{H}) = \sum_j T_j(\mathbf{H}) f_j (\mathbf{H}) \exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}_j).$$
 
@@ -75,7 +75,7 @@ Alternatively, the entire anisotropic displacement tensor of each atomic species
 ```
 %block devel_code
 DW_FACTOR:
-Mg 
+Mg
 0.305 0.000 0.000
 0.000 0.305 0.000
 0.000 0.000 0.305
@@ -96,7 +96,7 @@ CALCULATE_XRD_SF:
     Structure factor calculations are a post-processing calculation, so they can be restarted from a previous DFT calculation's ``.check`` file by using the ``CONTINUATION`` parameter in CASTEP.
 
 ## Output Files
-The resulting structure factors that have been calculated will be outputted into a file named ``seed.xrd_sf``. For the following inputs: 
+The resulting structure factors that have been calculated will be outputted into a file named ``seed.xrd_sf``. For the following inputs:
 
 ```
 ! MgO.param
@@ -163,5 +163,3 @@ Label      | Description
 
 [^1]: P. Coppens, X-Ray Charge Densities and Chemical Bonding (International Union of Crystallography, New York, 1997)
 [^2]: U. Shmueli and Internationale Union für Kristallographie, editors , International Tables for Crystallography. Vol. B: Reciprocal Space, 2. ed (Kluwer Acad. Publ, Dordrecht, 2001)
-
-
