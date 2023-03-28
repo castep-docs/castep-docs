@@ -545,7 +545,63 @@
   
     <li class="md-nav__item">
       <a href="../../Molecular_Dynamics/overview/" class="md-nav__link">
-        Overview
+        MD Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Molecular_Dynamics/basics/" class="md-nav__link">
+        MD Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Molecular_Dynamics/restarts/" class="md-nav__link">
+        MD Restarts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Molecular_Dynamics/files/" class="md-nav__link">
+        MD Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Molecular_Dynamics/keywords/" class="md-nav__link">
+        MD Keywords
       </a>
     </li>
   
@@ -1496,10 +1552,85 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          NMR Shielding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR Shielding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          NMR Shielding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../../tutorials/NMR_shielding.md" class="md-nav__link">
-        NMR Shielding
+      <a href="../../../tutorials/NMR/NMR_shielding/" class="md-nav__link">
+        Introduction
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/NMR/NMR_silicate.md" class="md-nav__link">
+        Inorganic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/NMR/NMR_molcrystal.md" class="md-nav__link">
+        Molecular Crystals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/NMR/NMR_shielding/" class="md-nav__link">
+        J coupling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1639,7 +1770,7 @@
 <div class="MathJax_Preview">F(\mathbf{H}) = \mathcal{F}[n(\mathbf{r})] = \int_\textrm{unit cell} n(\mathbf{r})\exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}) \mathrm{d}\mathbf{r},</div>
 <script type="math/tex; mode=display">F(\mathbf{H}) = \mathcal{F}[n(\mathbf{r})] = \int_\textrm{unit cell} n(\mathbf{r})\exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}) \mathrm{d}\mathbf{r},</script>
 </div>
-<p>where <span class="arithmatex"><span class="MathJax_Preview">\mathbf{H} = h \mathbf{a}^* + k \mathbf{b}^* + l\mathbf{c}^*</span><script type="math/tex">\mathbf{H} = h \mathbf{a}^* + k \mathbf{b}^* + l\mathbf{c}^*</script></span> is the scattering vector corresponding to the <span class="arithmatex"><span class="MathJax_Preview">(hkl)</span><script type="math/tex">(hkl)</script></span> plane, with <span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}^*, \mathbf{b}^*</span><script type="math/tex">\mathbf{a}^*, \mathbf{b}^*</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{c}^*</span><script type="math/tex">\mathbf{c}^*</script></span> being the reciprocal lattice vectors of the conventional unit cell. </p>
+<p>where <span class="arithmatex"><span class="MathJax_Preview">\mathbf{H} = h \mathbf{a}^* + k \mathbf{b}^* + l\mathbf{c}^*</span><script type="math/tex">\mathbf{H} = h \mathbf{a}^* + k \mathbf{b}^* + l\mathbf{c}^*</script></span> is the scattering vector corresponding to the <span class="arithmatex"><span class="MathJax_Preview">(hkl)</span><script type="math/tex">(hkl)</script></span> plane, with <span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}^*, \mathbf{b}^*</span><script type="math/tex">\mathbf{a}^*, \mathbf{b}^*</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{c}^*</span><script type="math/tex">\mathbf{c}^*</script></span> being the reciprocal lattice vectors of the conventional unit cell.</p>
 <p>Computation of the SF is difficult within plane-wave pseudopotential DFT codes since the total "all-electron'' electron density is not normally directly computed and the FFT grids used to house the pseudised valence electron density do not have enough spatial resolution to capture the rapid oscillations near the atomic cores of the total electron density, requiring large plane-wave energy cutoffs in the order of several thousands of eV. Within CASTEP, we have developed an efficient and accurate approach towards calculating these SFs without having to move to large FFT grids or plane-wave energy cutoffs. Details of this implementation can be found in the paper (CITE PAPER WHEN PUBLISHED) but the key observation that has enabled this development is that the electron density can be separated into atom-centred contributions which can be treated on separate radial grids. The resulting structure factor has the form<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>:</p>
 <div class="arithmatex">
 <div class="MathJax_Preview">F(\mathbf{H}) = \sum_{j} f_{j} (\mathbf{H}) \exp(i 2\pi \mathbf{H} \cdot \mathbf{r}_{j}),</div>
@@ -1651,7 +1782,7 @@
 <script type="math/tex; mode=display">f_j (\mathbf{H}) = \int \rho_j (\mathbf{r}) \exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}) \mathrm{d}{\mathbf{r}}.</script>
 </div>
 <h3 id="incorporating-thermal-effects">Incorporating Thermal Effects</h3>
-<p>Within experiments, thermal vibrations (i.e. phonons) can modify the (time-averaged) electron density and, hence, SFs. Making the approximation that the electron density assigned to each atom <span class="arithmatex"><span class="MathJax_Preview">\rho_j(\mathbf{r})</span><script type="math/tex">\rho_j(\mathbf{r})</script></span> directly follows its nuclear motion perfectly, the structure factors can incoporate these thermal vibration effects by including an atomic temperature factor <span class="arithmatex"><span class="MathJax_Preview">T(\mathbf{H})</span><script type="math/tex">T(\mathbf{H})</script></span>:</p>
+<p>Within experiments, thermal vibrations (i.e. phonons) can modify the (time-averaged) electron density and, hence, SFs. Making the approximation that the electron density assigned to each atom <span class="arithmatex"><span class="MathJax_Preview">\rho_j(\mathbf{r})</span><script type="math/tex">\rho_j(\mathbf{r})</script></span> directly follows its nuclear motion perfectly, the structure factors can incorporate these thermal vibration effects by including an atomic temperature factor <span class="arithmatex"><span class="MathJax_Preview">T(\mathbf{H})</span><script type="math/tex">T(\mathbf{H})</script></span>:</p>
 <div class="arithmatex">
 <div class="MathJax_Preview">F(\mathbf{H}) = \sum_j T_j(\mathbf{H}) f_j (\mathbf{H}) \exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}_j).</div>
 <script type="math/tex; mode=display">F(\mathbf{H}) = \sum_j T_j(\mathbf{H}) f_j (\mathbf{H}) \exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}_j).</script>
@@ -1701,7 +1832,7 @@ then the SFs on the entire FFT grid will be written out.</p>
 <p>Alternatively, the entire anisotropic displacement tensor of each atomic species may be specified as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>%block devel_code
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>DW_FACTOR:
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Mg 
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Mg
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>0.305 0.000 0.000
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>0.000 0.305 0.000
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>0.000 0.000 0.305
@@ -1723,7 +1854,7 @@ then the SFs on the entire FFT grid will be written out.</p>
 <p>Structure factor calculations are a post-processing calculation, so they can be restarted from a previous DFT calculation's <code>.check</code> file by using the <code>CONTINUATION</code> parameter in CASTEP.</p>
 </div>
 <h2 id="output-files">Output Files</h2>
-<p>The resulting structure factors that have been calculated will be outputted into a file named <code>seed.xrd_sf</code>. For the following inputs: </p>
+<p>The resulting structure factors that have been calculated will be outputted into a file named <code>seed.xrd_sf</code>. For the following inputs:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>! MgO.param
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>xc_functional : PBE
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>

@@ -13,7 +13,7 @@
     
     
       
-        <title>Xc - CASTEP Docs</title>
+        <title>MD Basics - CASTEP Docs</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ensembles" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Xc
+              MD Basics
             
           </span>
         </div>
@@ -188,12 +193,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -359,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/" class="md-nav__link">
+      <a href="../../Groundstate/intro/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -373,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dftd/" class="md-nav__link">
+      <a href="../../Groundstate/dftd/" class="md-nav__link">
         Dispersion Corrections
       </a>
     </li>
@@ -387,7 +394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../soc/" class="md-nav__link">
+      <a href="../../Groundstate/soc/" class="md-nav__link">
         Spin Orbit Coupling
       </a>
     </li>
@@ -509,12 +516,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
       
       
       
@@ -537,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         MD Overview
       </a>
     </li>
@@ -549,11 +558,82 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/basics/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          MD Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         MD Basics
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ensembles" class="md-nav__link">
+    Ensembles
+  </a>
+  
+    <nav class="md-nav" aria-label="Ensembles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nve" class="md-nav__link">
+    NVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvt" class="md-nav__link">
+    NVT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nph" class="md-nav__link">
+    NPH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npt" class="md-nav__link">
+    NPT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -565,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/restarts/" class="md-nav__link">
+      <a href="../restarts/" class="md-nav__link">
         MD Restarts
       </a>
     </li>
@@ -579,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/files/" class="md-nav__link">
+      <a href="../files/" class="md-nav__link">
         MD Files
       </a>
     </li>
@@ -593,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/keywords/" class="md-nav__link">
+      <a href="../keywords/" class="md-nav__link">
         MD Keywords
       </a>
     </li>
@@ -1632,6 +1712,55 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ensembles" class="md-nav__link">
+    Ensembles
+  </a>
+  
+    <nav class="md-nav" aria-label="Ensembles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nve" class="md-nav__link">
+    NVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvt" class="md-nav__link">
+    NVT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nph" class="md-nav__link">
+    NPH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npt" class="md-nav__link">
+    NPT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1644,9 +1773,329 @@
                 
 
 
-  <h1>Xc</h1>
+  <h1>MD Basics</h1>
 
-
+<p>Fundamental to MD calculations is the calculation time-step. An appropriate value
+for the simulation should be specified in the parameters file in the following way.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>md_delta_t  = 2 fs
+</code></pre></div>
+<p>Any valid unit of time can be used when specifying the time-step. The number of
+time-steps to perform is specified with e.g.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>md_num_iter = 500
+</code></pre></div>
+<h2 id="ensembles">Ensembles</h2>
+<p>The following statistical ensembles can be simulated using CASTEP.</p>
+<h4 id="nve">NVE</h4>
+<p>In this ensemble the shape
+and size of the simulation cell remain constant as specified
+in the cell file. The conserved energy is the Born-Oppenheimer
+Hamiltonian</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">E = \left&lt;\Psi|\hat{H}_{e}|\Psi\right&gt; + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}}</div>
+<script type="math/tex; mode=display">E = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}}</script>
+</div>
+<p>in atomic units.</p>
+<p>This ensemble is selected using the command</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>md_ensemble  =  nve
+</code></pre></div>
+<p>in the parameters file. The actual value of the conserved energy
+will be the result of the initial self-consistent DFT calculation plus
+the kinetic energy of the initial ionic velocities.</p>
+<p>These ionic velocities are defined in one of three ways.</p>
+<ul>
+<li>
+<p>By explicit user definition of ionic velocities in the cell file, e.g.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>%BLOCK IONIC_VELOCITIES
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>auv                    
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>H  xxxxx yyyyy zzzzz
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>H  xxxxx yyyyy zzzzz
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>O  xxxxx yyyyy zzzzz
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>%ENDBLOCK IONIC_VELOCITIES
+</code></pre></div></p>
+</li>
+<li>
+<p>By definition of an initial temperature in the parameters file, e.g.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>md_temperature  =  293 K
+</code></pre></div>
+Note that this can be specified using any valid unit
+of temperature. In this case initial velocities are assigned randomly
+such that the total linear momentum is zero and the instantaneous
+temperature matches that specified. The system will reach an
+equilibrium with a somewhat different temperature.</p>
+<ul>
+<li>By continuation from an equilibrated run at the desired temperature. This
+could be a run in any of the other available ensembles. This will also use the
+cell and ionic positions from the continuation file. See the section on
+continuation for details.</li>
+</ul>
+<p>Velocities read from a continuation file will always take precedence. If no
+continuation file is used, and both <code>md_temperature</code> and an <code>IONIC_VELOCITIES</code>
+block are specified, the <code>md_temperature</code> keyword will be ignored.</p>
+<p>By default, pressure is not calculated during an NVE run. To override this
+use the command</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>calculate_stress = true
+</code></pre></div>
+<p>in the parameters file.</p>
+<h4 id="nvt">NVT</h4>
+<p>This ensemble is selected with</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>md_ensemble  =  nvt
+</code></pre></div>
+<p>The system will be evolved to a specific temperature defined using
+the <code>md_temperature</code> keyword as used above. Initial velocities
+are assigned based on this temperature, read from an <code>IONIC_VELOCITIES</code>
+block in the cell file, or read from a continuation file in the same way as
+above.</p>
+<p>Temperature control can be implemented by one of two methods, both
+of which have been shown to correctly sample the canonical ensemble. The
+first of these is the Nose-Hoover chain method of Tuckerman et al <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">3</a></sup>  and is selected with</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>md_thermostat  =  nose-hoover
+</code></pre></div>
+<p>in the parameters file. In the NVT case, a single Nose-Hoover chain
+is coupled to all particle degrees of freedom. The length of the
+chain can also be specified, e.g.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>md_nhc_length  =  5
+</code></pre></div>
+<p>for a chain of five thermostats. In the Nose-Hoover case with a chain of <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> thermostats
+acting of <span class="arithmatex"><span class="MathJax_Preview">N_{f}</span><script type="math/tex">N_{f}</script></span> ionic degrees of freedom, the conserved quantity is the pseudo-Hamiltonian</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{equation}
+\mathcal{H} = \left&lt;\Psi|\hat{H}_{e}|\Psi\right&gt; + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}}
++ \sum_{i=1}^{M}\frac{p_{\xi_{i}}^{2}}{2Q_{i}}
++ N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+\mathcal{H} = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}}
++ \sum_{i=1}^{M}\frac{p_{\xi_{i}}^{2}}{2Q_{i}}
++ N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
+\end{equation}</script>
+</div>
+<p>where the <span class="arithmatex"><span class="MathJax_Preview">Q_{i}</span><script type="math/tex">Q_{i}</script></span> are the thermostat fictitious masses assigned automatically
+from the specified ion relaxation time and <span class="arithmatex"><span class="MathJax_Preview">\xi_{i}</span><script type="math/tex">\xi_{i}</script></span> are the thermostat degrees of
+freedom. This is printed with the label
+<code>Hamilt    Energy:</code>  at each time-step.</p>
+<p>The second method of controlling temperature is the Langevin thermostat.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>md_thermostat = langevin
+</code></pre></div>
+<p>In this case the printed Hamiltonian energy is the value of
+equation above. This is not conserved by the dynamics, but should
+exhibit no long term drift from the equilibrium value.</p>
+<p>With either method, a suitable relaxation time for the thermostatic
+process should be specified. This can use any supported unit of
+time, e.g</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>md_ion_t = 2.4 ps
+</code></pre></div>
+<p>for a thermostat relaxation time of 2.4 picoseconds.</p>
+<p>As with the NVE ensemble, pressure is not calculated by default. This is
+overridden in the same way as the NVE case.</p>
+<h4 id="nph">NPH</h4>
+<p>In this ensemble the size and (if desired) shape of the simulation
+cell varies to regulate pressure. No thermostat is applied.</p>
+<p>This ensemble is specified with the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>md_ensemble = nph
+</code></pre></div>
+<p>The external pressure is set in the cell definition file using
+any valid unit of pressure. The required symmetry of the external pressure
+tensor implies that only the upper triangular components need be
+specified, e.g.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>     %block external_pressure
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>     GPa
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>     0.5   0.0  0.0
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>           0.5  0.0
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>                0.5
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>     %endblock external_pressure
+</code></pre></div>
+<p>to specify an isotropic external pressure of 0.5 Giga-Pascals. Note
+that MD currently supports only isotropic external pressure. Off-diagonal
+components are therefore ignored.</p>
+<p>Velocities are assigned such that the initial temperature is equal
+to <code>md_temperature</code>, or are read from the cell definition
+file/continuation file as in the NVE/NVT cases.</p>
+<p>Two barostat schemes are available. The first restricts the dynamics
+of the cell to isotropic expansions and contractions. This
+follows the method of Andersen<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> and Hoover<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">1</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">2</a></sup> as corrected
+by Martyna et al.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>. This is selected using:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>md_barostat = andersen-hoover
+</code></pre></div>
+<p>In this case the printed Hamiltonian energy is the enthalpy, plus the kinetic
+energy associated with the cell motion.</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{equation}
+\label{eq:AndersenNPH}
+H = \left&lt;\Psi|\hat{H}_{e}|\Psi\right&gt; + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + p_{\epsilon}^{2}/2W
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+\label{eq:AndersenNPH}
+H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + p_{\epsilon}^{2}/2W
+\end{equation}</script>
+</div>
+<p>The alternative scheme implements the method of Parrinello and Rahman<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>.
+Both the size and shape of the simulation cell are allowed to vary. The issue of
+cell rotations is eliminated by the of a symmetrised pressure tensor. Note that
+as liquids cannot sustain shear, this method should only be used with solids.
+It should also be noted that this scheme is based on the modified Parrinello-Rahman method
+of Martyna, Tobias and Klien<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup> which is modularly invariant, exactly obeys the
+appropriate tensorial virial theorem, but is only applicable to hydrostatic pressure.</p>
+<p>The following line in the parameters file selects this barostat.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>md_barostat = parrinello-rahman
+</code></pre></div>
+<p>The cell dynamics contain nine degrees of freedom (of which six are independent) leading to
+a Hamiltonian energy of</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{equation}
+\label{eq:ParRarNPH}
+H = \left&lt;\Psi|\hat{H}_{e}|\Psi\right&gt; + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + \mathrm{Tr}[{\mathbf{p}_{g}\mathbf{p}_{g}^{T}]}/2W
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+\label{eq:ParRarNPH}
+H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + \mathrm{Tr}[{\mathbf{p}_{g}\mathbf{p}_{g}^{T}]}/2W
+\end{equation}</script>
+</div>
+<p>For both schemes, a relaxation time for the cell motions should be specified
+with an appropriate unit of time, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>md_cell_t = 20 ps
+</code></pre></div>
+<p>This time is used to calculate a fictitious mass <span class="arithmatex"><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span> for the cell dynamics.</p>
+<p>The NPH equations of motion require that pressure is calculated at each
+MD time-step. The value of <code>calculate_stress</code> is therefore irrelevant
+in this case.</p>
+<p>A variable cell implies variable reciprocal lattice vectors
+which has consequences for the plane-wave basis set. As the cell changes,
+the number of plane waves required to produce the specified cut-off energy
+changes.</p>
+<p>The user therefore has two options. The first is to fix the size
+of the basis set.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>fixed_npw = true
+</code></pre></div>
+<p>The cut-off energy is now variable as is the quality of the
+basis set. This option should therefore only be used for calculations
+in which the volume changes are small and which are over converged
+with respect to the number of plane waves.</p>
+<p>The second option is to change the basis set at each time-step.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>fixed_npw = false
+</code></pre></div>
+<p>This keeps the cut-off energy approximately constant by adding
+or subtracting plane waves from the basis set at each time-step.</p>
+<p>In either case, the effect of Pulay stress is reduced
+by applying a finite basis set correction to the pressure
+at each time-step. In the case of a fixed number of plane waves, the
+constant correction to energy is ignored. With variable number
+of plane waves the energy correction is no longer constant
+and is recalculated at each step.</p>
+<h4 id="npt">NPT</h4>
+<p>The NPT ensemble is specified with the command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>md_ensemble = npt
+</code></pre></div>
+<p>Any combination of the thermostat and barostat schemes listed above
+is allowed, and is implemented in a dedicated routine. In all cases
+the dynamics can be shown to correctly sample the isothermal-isobaric ensemble<sup id="fnref3:5"><a class="footnote-ref" href="#fn:5">5</a></sup></p>
+<p>All options pertaining to the NPH and NVT ensembles apply.</p>
+<p>In the case of Langevin dynamics at NPT, the printed Hamiltonian energy is
+the same as in the NPH ensemble, i.e. that given by equation<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup>
+or <sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup>. In the case of Nose-Hoover NPT molecular dynamics, the
+Hamiltonian energy is given by</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{equation}
+\label{eq:HooverNPT}
+H = \left&lt;\Psi|\hat{H}_{e}|\Psi\right&gt; + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + p_{\epsilon}^{2}/2W
++ \sum_{i=1}^{M}\frac{p_{\xi_{i}}^{2}}{2Q_{i}}
++ N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
++ \sum_{i=1}^{M}\frac{p_{\xi_{bi}}^{2}}{2Q_{bi}}
++ k_{B}T\sum_{i=1}^{M}\xi_{bi}
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+\label{eq:HooverNPT}
+H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + p_{\epsilon}^{2}/2W
++ \sum_{i=1}^{M}\frac{p_{\xi_{i}}^{2}}{2Q_{i}}
++ N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
++ \sum_{i=1}^{M}\frac{p_{\xi_{bi}}^{2}}{2Q_{bi}}
++ k_{B}T\sum_{i=1}^{M}\xi_{bi}
+\end{equation}</script>
+</div>
+<p>in the case of isotropic cell dynamics, or</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{equation}
+\label{eq:ParRarNPT}
+H = \left&lt;\Psi|\hat{H}_{e}|\Psi\right&gt; + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + \mathrm{Tr}[{\mathbf{p}_{g}\mathbf{p}_{g}^{T}]}/2W
++ \sum_{i=1}^{M}\frac{p_{\xi_{i}}^{2}}{2Q_{i}}
++ N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
++ \sum_{i=1}^{M}\frac{p_{\xi_{bi}}^{2}}{2Q_{bi}}
++ 9k_{B}T\xi_{b1} + k_{B}T\sum_{i=2}^{M}\xi_{bi}
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+\label{eq:ParRarNPT}
+H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
+\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
+{|\mathbf{R}_{i}-\mathbf{R}_{j}|}
++\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + \mathrm{Tr}[{\mathbf{p}_{g}\mathbf{p}_{g}^{T}]}/2W
++ \sum_{i=1}^{M}\frac{p_{\xi_{i}}^{2}}{2Q_{i}}
++ N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
++ \sum_{i=1}^{M}\frac{p_{\xi_{bi}}^{2}}{2Q_{bi}}
++ 9k_{B}T\xi_{b1} + k_{B}T\sum_{i=2}^{M}\xi_{bi}
+\end{equation}</script>
+</div>
+<p>in the Parrinello-Rahman case. Note that in each case the motion of the cell degree(s) of
+freedom couple to a second Nose-Hoover chain.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:2">
+<p>W. G. Hoover. Canonical dynamics - equilibrium phase-space distributions. Phys. Rev. A, 31:1695-1697, 1985.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>W. G. Hoover. Constant-pressure equations of motion. Phys. Rev. A, 34:2499-2500, 1986.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:1">
+<p>G. J. Martyna, M. L. Klein, and M. Tuckerman. Nose-hoover chains - the canonical ensemble via continuous dynamics. J. Chem. Phys., 97:2635-2643, 1992.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>H. C. Andersen. Molecular dynamics simulations at constant pressure and/or temperature. J. Chem. Phys., 71:2384, 1980.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>G. J. Martyna, J. T. Tobias, and M. L. Klein.  Constant pressure molecular dynamics algorithms. J. Chem. Phys., 101(5):4177-4189, 1994.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>M. Parinello and A. Rahman. Crystal structure and pair potentials: A molecular-dynamics study. Phys. Rev. Lett., page 1196, 1980.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>M. Parrinello and A. Rahman. Polymorphic transitions in single-crystals - a new molecular- dynamics method. J. Appl. Phys., 52:7182-7190, 1981.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
               
             </article>
@@ -1656,6 +2105,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MD Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              MD Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../restarts/" class="md-footer__link md-footer__link--next" aria-label="Next: MD Restarts" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              MD Restarts
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

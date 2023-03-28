@@ -13,7 +13,7 @@
     
     
       
-        <title>Xc - CASTEP Docs</title>
+        <title>MD Files - CASTEP Docs</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#understanding-the-output" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Xc
+              MD Files
             
           </span>
         </div>
@@ -188,12 +193,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -359,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/" class="md-nav__link">
+      <a href="../../Groundstate/intro/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -373,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dftd/" class="md-nav__link">
+      <a href="../../Groundstate/dftd/" class="md-nav__link">
         Dispersion Corrections
       </a>
     </li>
@@ -387,7 +394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../soc/" class="md-nav__link">
+      <a href="../../Groundstate/soc/" class="md-nav__link">
         Spin Orbit Coupling
       </a>
     </li>
@@ -509,12 +516,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
       
       
       
@@ -537,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         MD Overview
       </a>
     </li>
@@ -551,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/basics/" class="md-nav__link">
+      <a href="../basics/" class="md-nav__link">
         MD Basics
       </a>
     </li>
@@ -565,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/restarts/" class="md-nav__link">
+      <a href="../restarts/" class="md-nav__link">
         MD Restarts
       </a>
     </li>
@@ -577,11 +586,130 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/files/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          MD Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         MD Files
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-output" class="md-nav__link">
+    Understanding the Output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-castep-file" class="md-nav__link">
+    The .castep file
+  </a>
+  
+    <nav class="md-nav" aria-label="The .castep file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    Header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-cell" class="md-nav__link">
+    Initial cell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iteration" class="md-nav__link">
+    Iteration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-md-file" class="md-nav__link">
+    The .md file
+  </a>
+  
+    <nav class="md-nav" aria-label="The .md file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header_1" class="md-nav__link">
+    Header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-energy-data" class="md-nav__link">
+    Time and Energy Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thermodynamic-data" class="md-nav__link">
+    Thermodynamic Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cell-data" class="md-nav__link">
+    Cell Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ionic-data" class="md-nav__link">
+    Ionic Data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -593,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/keywords/" class="md-nav__link">
+      <a href="../keywords/" class="md-nav__link">
         MD Keywords
       </a>
     </li>
@@ -1632,6 +1760,103 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-output" class="md-nav__link">
+    Understanding the Output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-castep-file" class="md-nav__link">
+    The .castep file
+  </a>
+  
+    <nav class="md-nav" aria-label="The .castep file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    Header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-cell" class="md-nav__link">
+    Initial cell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iteration" class="md-nav__link">
+    Iteration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-md-file" class="md-nav__link">
+    The .md file
+  </a>
+  
+    <nav class="md-nav" aria-label="The .md file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header_1" class="md-nav__link">
+    Header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-energy-data" class="md-nav__link">
+    Time and Energy Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thermodynamic-data" class="md-nav__link">
+    Thermodynamic Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cell-data" class="md-nav__link">
+    Cell Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ionic-data" class="md-nav__link">
+    Ionic Data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1644,9 +1869,258 @@
                 
 
 
-  <h1>Xc</h1>
+  <h1>MD Files</h1>
 
-
+<h2 id="understanding-the-output">Understanding the Output</h2>
+<p>In this chapter we shall briefly describe the output produced
+during a CASTEP calculation. Only the level of detail printed
+at iprint = 1 will be discussed.</p>
+<h2 id="the-castep-file">The .castep file</h2>
+<h4 id="header">Header</h4>
+<p>As well as the usual information printed at the top of the output file,
+the molecular dynamics data specified in the parameters file is
+presented.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a> ************************ Molecular Dynamics Parameters ************************
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> ensemble                                       : NPT
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> variable cell method                           : fixed basis quality
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> pressure                                       : see below
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> temperature                                    :  293.0       K
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> using                                          : Parrinello-Rahman barostat
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> with characteristic cell time                  :  26.00       ps
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> using                                          : Langevin thermostat
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> with characteristic ionic time                 :  16.95       ps
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a> time step                                      : 0.2000E-02   ps
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a> number of MD steps                             :     500000
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a> using best-fit first order extrapolation for wavefunctions
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a> backup results every                           :          5   steps
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a> MD SCF energy / atom convergence tol.          : 0.1000E-04   eV
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a> MD SCF convergence tolerance window            :          3   cycles
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a> *******************************************************************************
+</code></pre></div>
+<p>This amount of information presented in this section will obviously vary
+depending on the type of calculation being performed, but should
+be self-explanatory.</p>
+<h4 id="initial-cell">Initial cell</h4>
+<p>The information specified in the .cell file is then output, this will
+include the ionic positions any user specified velocities if present,
+the usual pseudo-potential and k-point information, and details
+of any constraints. The total energy of the initial cell is then
+minimised, performing a finite basis set correction along the way
+if appropriate.</p>
+<p>The message</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Starting MD
+</code></pre></div>
+<p>is then printed, and the MD calculation proper commences. As the
+first time-step will require data on forces, stress (for variable cell
+calculations) and energies, these are evaluated and printed at this point.</p>
+<p>Forces are output in the following format, using the force unit
+specified by the user, or the default of eV / \AA.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a> ******************************** Forces *********************************
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> *                                                                       *
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> *                      Cartesian components (eV/A)                      *
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a> * --------------------------------------------------------------------- *
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a> *              x                    y                    z              *
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a> *                                                                       *
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a> * Si   1     -0.02632             -0.02632             -0.02632         *
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a> * Si   2     -0.02653             -0.02617             -0.02617         *
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> * Si   3     -0.02617             -0.02617             -0.02653         *
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a> * Si   4     -0.02617             -0.02653             -0.02617         *
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a> * Si   5      0.00075              0.05164              0.00075         *
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a> * Si   6      0.05204              0.05204              0.05204         *
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a> * Si   7      0.05164              0.00075              0.00075         *
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a> * Si   8      0.00075              0.00075              0.05164         *
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a> *                                                                       *
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a> *************************************************************************
+</code></pre></div>
+<p>The stress tensor (if calculated) is output in the specified units of pressure,
+along with the corresponding scalar <span class="arithmatex"><span class="MathJax_Preview">T=0</span><script type="math/tex">T=0</script></span> pressure, i.e. one third of the trace of
+the stress tensor.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a> ***************** Stress Tensor *****************
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> *                                               *
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> *          Cartesian components (GPa)           *
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> * --------------------------------------------- *
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> *             x             y             z     *
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> *                                               *
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> *  x      0.009981      1.140649      1.140649  *
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a> *  y      1.140649      0.009981      1.140649  *
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a> *  z      1.140649      1.140649      0.009981  *
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a> *                                               *
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a> *  Pressure:   -0.0100                          *
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a> *                                               *
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a> *************************************************
+</code></pre></div>
+<p>The current time and MD energies are then printed in the
+user specified energy units. Here potential energy
+refers to the total configurational energy of electrons
+plus ions obtained from the DFT calculation. Kinetic energy
+is the classical kinetic energy of the ions. Total
+energy refers to the sum of these two energies.</p>
+<p>The enthalpy and the relevant Hamiltonian energy for the ensemble
+as quoted in section <a href="/documents/Molecular_Dynamics/basics.md">ensembles</a> is then printed.</p>
+<p>The temperature is also output at this point. Note that this
+is the ionic temperature only. If performing a calculation
+with finite temperature electrons (i.e. EDFT) the electron
+temperature may not be the same. Finally total pressure, i.e.
+the trace of the stress tensor plus the kinetic (ideal gas) pressure
+is printed in the user specified pressure units.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>x                                               MD Data:     x
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>x                                                            x
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>x              time :      0.000000                   ps     x
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>x                                                            x
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>x   Potential Energy:   -865.882944                   eV     x
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>x   Kinetic   Energy:      0.265113                   eV     x
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>x   Total     Energy:   -865.617832                   eV     x
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>x           Enthalpy:   -865.617735                   eV     x
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>x   Hamilt    Energy:   -865.617735                   eV     x
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>x                                                            x
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>x        Temperature:    293.000000                    K     x
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>x      T/=0 Pressure:      0.172231                  GPa     x
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</code></pre></div>
+<h2 id="iteration">Iteration</h2>
+<p>The MD simulation proper now begins.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>=================================================================
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a> Starting MD iteration    1 ...
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>=================================================================
+</code></pre></div>
+<p>Following this message the current cell information is printed and
+the energy is re-minimised to determine the new forces. The
+MD step is then performed and the updated force, stress and energy
+information is printed in the same manner as above.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----------------------------------------------------------------
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> ... finished MD iteration    1
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>-----------------------------------------------------------------
+</code></pre></div>
+<p>The process repeats until the calculation is killed, or the specified number
+of MD iterations is completed.</p>
+<h2 id="the-md-file">The .md file</h2>
+<p>The .md file is provided as a single source for the all the dynamical
+data produced by a CASTEP calculation. In all cases, data is printed
+in Hartree atomic units. Fortran formating data will be given here for
+all entries in this file for those who wish to import it into their
+own analysis codes.</p>
+<p>Note that unlike the .castep file, the .md file from a previous
+calculation with the same seedname will be overwritten, unless
+the new calculation is a continuation of the original.</p>
+<h4 id="header_1">Header</h4>
+<p>At the top of every .md file a header is written as below. The total
+length is four lines including blanks. The comments written are
+taken from the cell/parameter files.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a> BEGIN header
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a> This is 8 atom cubic Si cell  
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a> END header
+</code></pre></div>
+<p>This is followed by a blank line. There is a single space at the start
+of each non-blank line. This header is written once only.</p>
+<h4 id="time-and-energy-data">Time and Energy Data</h4>
+<p>The next entry will be the data for the first MD step. This begins with
+the current time on the first line, followed by the Total, Hamiltonian, and
+Kinetic energy on the second line with the label <code>&lt;-- E</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>               0.00000000E+000
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>              -3.18206146E+001     -3.18108683E+001      9.74270683E-003  &lt;-- E
+</code></pre></div>
+<p>Formatting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>format(12x,es18.8e3)
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- E&#39;)
+</code></pre></div>
+<h4 id="thermodynamic-data">Thermodynamic Data</h4>
+<p>The current temperature is then printed with the label <code>&lt;-- T</code>. If the output is from a variable cell
+calculation, or <code>calculate_stress</code> has been explicitly set to true, the pressure
+is also printed with the label <code>&lt;-- P</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>                9.27876841E-04                                            &lt;-- T
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                5.85402338E-06                                            &lt;-- P
+</code></pre></div>
+<p>Formatting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>format(12x,es18.8,T73,   &#39;  &lt;-- T&#39;)
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>format(12x,es18.8,T73,   &#39;  &lt;-- P&#39;)
+</code></pre></div>
+<h4 id="cell-data">Cell Data</h4>
+<p>For all calculations, the current matrix of cell vectors is printed with
+the label <code>&lt;-- h</code> Each row
+gives the three Cartesian components of one of the cell vectors.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>               1.01599045E+001      0.00000000E+000      0.00000000E+000  &lt;-- h
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>               1.29430839E-017      1.01599045E+001      0.00000000E+000  &lt;-- h
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>               1.29430839E-017      1.29430839E-017      1.01599045E+001  &lt;-- h
+</code></pre></div>
+<p>Formatting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- h&#39;)
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- h&#39;)
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- h&#39;)
+</code></pre></div>
+<p>The remaining cell data is only printed for variable cell calculations, regardless
+of the value of <code>calculate_stress</code>. First the velocity of each cell vector
+is printed with the label <code>&lt;-- hv</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>               2.80052926E-008     -1.42751448E-007     -1.35787248E-007  &lt;-- hv
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>              -1.42751448E-007      2.76907508E-008     -1.44694219E-007  &lt;-- hv
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>              -1.35787248E-007     -1.44694219E-007      2.71532850E-008  &lt;-- hv
+</code></pre></div>
+<p>Formatting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- hv&#39;)
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- hv&#39;)
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- hv&#39;)
+</code></pre></div>
+<p>The full pressure tensor (including kinetic contributions) is then printed
+with the label <code>&lt;-- S</code> in a similar fashion.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>              -6.21684372E-006      3.03062374E-005      3.23291890E-005  &lt;-- S
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>               3.03062374E-005     -6.06171719E-006      3.31426773E-005  &lt;-- S
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>               3.23291890E-005      3.31426773E-005     -5.79666096E-006  &lt;-- S
+</code></pre></div>
+<p>Formatting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- S&#39;)
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- S&#39;)
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- S&#39;)
+</code></pre></div>
+<h4 id="ionic-data">Ionic Data</h4>
+<p>Data on the current ionic configuration is then printed. Atoms
+are identified by their chemical symbol in the first column,
+and number of the atom within the species in the second.</p>
+<p>First the position vectors of all ions are printed with the
+label <code>&lt;-- R</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a> Si     1      1.04834750E-002      1.15560090E-002      7.82230990E-003  &lt;-- R
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a> Si     2     -3.20400394E-003      5.07172565E+000      5.10986361E+000  &lt;-- R
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a> Si     3      5.07271954E+000      5.11656710E+000     -2.45225140E-003  &lt;-- R
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a> Si     4      5.10789066E+000     -2.63240242E-002      5.09753015E+000  &lt;-- R
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a> Si     5      7.57309188E+000      2.52845762E+000      7.57612741E+000  &lt;-- R
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a> Si     6      2.55271297E+000      2.54057876E+000      2.53924276E+000  &lt;-- R
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a> Si     7      2.53422324E+000      7.64091983E+000      7.62428191E+000  &lt;-- R
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a> Si     8      7.63167143E+000      7.59610368E+000      2.52717191E+000  &lt;-- R
+</code></pre></div>
+<p>Formatting (for each atom):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),&#39;  &lt;-- R&#39;)
+</code></pre></div>
+<p>Velocities are then printed in a similar fashion.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a> Si     1      5.77278549E-005      7.23673746E-005      4.30349159E-005  &lt;-- V
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a> Si     2     -1.72415752E-005     -5.23270551E-005      1.75385181E-004  &lt;-- V
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a> Si     3     -4.17085102E-005      2.14539848E-004     -1.78769096E-005  &lt;-- V
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a> Si     4      1.58756714E-004     -1.60916056E-004      9.49147966E-005  &lt;-- V
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a> Si     5     -2.70431102E-004     -7.18757382E-005     -2.43440176E-004  &lt;-- V
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a> Si     6      7.51663795E-005      8.70332331E-008     -8.82271461E-006  &lt;-- V
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a> Si     7     -4.19898677E-005      1.31687892E-004      3.60873179E-005  &lt;-- V
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a> Si     8      7.97201068E-005     -1.33563298E-004     -7.92824105E-005  &lt;-- V
+</code></pre></div>
+<p>Formatting (for each atom):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),&#39;  &lt;-- V&#39;)
+</code></pre></div>
+<p>Finally forces are printed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Si     1     -4.23569381E-003      2.52214252E-003     -2.46018145E-003  &lt;-- F
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Si     2      3.06338418E-003     -2.16206923E-003     -5.29928454E-003  &lt;-- F
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>Si     3      7.37259995E-004     -4.73479365E-003     -2.20030945E-003  &lt;-- F
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>Si     4     -6.89050954E-003     -2.25153379E-003     -8.37626756E-003  &lt;-- F
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>Si     5      4.53551291E-003      3.34757083E-003      1.02791157E-002  &lt;-- F
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>Si     6      2.06737343E-003      2.05175887E-003      2.70990363E-003  &lt;-- F
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>Si     7     -1.41457164E-003     -9.15433604E-004      1.54850432E-003  &lt;-- F
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>Si     8      2.13724448E-003      2.14235805E-003      3.79851935E-003  &lt;-- F
+</code></pre></div>
+<p>Formatting (for each atom):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),&#39;  &lt;-- F&#39;)
+</code></pre></div>
+<p>A blank line is then printed, and the process repeats with the data from the next
+time-step.</p>
 
               
             </article>
@@ -1656,6 +2130,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../restarts/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MD Restarts" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              MD Restarts
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../keywords/" class="md-footer__link md-footer__link--next" aria-label="Next: MD Keywords" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              MD Keywords
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
