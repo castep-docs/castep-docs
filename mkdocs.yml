@@ -45,6 +45,11 @@ nav:
       - 'XRD': 'documentation/XRD/overview.md'
       - 'TDDFT':
         - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
+      - 'Delta SCF':
+        - 'Delta SCF Overview': 'documentation/Delta_SCF/overview.md'
+        - 'Delta SCF': 'documentation/Delta_SCF/delta_scf.md'
+        - 'Linear expansion DeltaSCF': 'documentation/Delta_SCF/lin_ex_delta_scf.md'
+        - 'Molecular Projected DOS': 'documentation/Delta_SCF/molpdos.md'
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
