@@ -31,3 +31,19 @@ P _ {\mu\nu} = \sum _ i f _ i \; \langle \chi _ \mu | \psi _ i \rangle \langle \
 \textrm{.}
 \end{equation}
 
+If the basis set $\boldsymbol{\chi}$ is local (i.e. functions with compact support), individual terms $(\mathbf{P} \mathbf{S}) _ {\mu\mu}$ in the total charge expression may be associated with the
+spatial region corresponding to the individual basis function $\chi _ \mu$. If these basis functions are centred on atoms, the contributions belonging to a particular atom $A$ are defined as the
+charge of $A$:
+\begin{equation}
+N _ A = \sum _ {\mu \in A} (\mathbf{P} \mathbf{S}) _ {\mu\mu}
+\textrm{.}
+\end{equation}
+Conveniently, the off-diagonal elements of $\mathbf{P} \mathbf{S}$ are partitioned into bond contributions between atoms $A$ and $B$ as
+\begin{equation}
+N _ {AB} = \sum _ {\mu \in A} \sum _ {\nu \in B} (\mathbf{P} \mathbf{S}) _ {\mu\nu}
+\textrm{.}
+\end{equation}
+
+### The CASTEP implementation
+
+
