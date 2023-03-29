@@ -13,7 +13,7 @@
     
     
       
-        <title>Elastic Constants - CASTEP Docs</title>
+        <title>Delta SCF - CASTEP Docs</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#electronic-excitations-of-the-azobenzene-molecule" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Elastic Constants
+              Delta SCF
             
           </span>
         </div>
@@ -1670,12 +1675,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" checked>
       
       
       
@@ -1696,11 +1703,48 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Delta_SCF/delta_scf/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Delta SCF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Delta SCF
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#electronic-excitations-of-the-azobenzene-molecule" class="md-nav__link">
+    Electronic excitations of the Azobenzene molecule
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1712,7 +1756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Delta_SCF/lin_ex_delta_scf/" class="md-nav__link">
+      <a href="../lin_ex_delta_scf/" class="md-nav__link">
         Linear expansion DeltaSCF
       </a>
     </li>
@@ -1726,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Delta_SCF/molpdos/" class="md-nav__link">
+      <a href="../molpdos/" class="md-nav__link">
         Molecular Projected DOS
       </a>
     </li>
@@ -1745,14 +1789,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
       
       
       
@@ -1773,19 +1815,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Tools/elastic_constants/" class="md-nav__link">
         Elastic Constants
       </a>
-      
     </li>
   
 
@@ -1822,6 +1856,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#electronic-excitations-of-the-azobenzene-molecule" class="md-nav__link">
+    Electronic excitations of the Azobenzene molecule
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1834,57 +1883,123 @@
                 
 
 
-  <h1>Elastic Constants</h1>
+  <h1>Delta SCF</h1>
 
-<p>Andrew Walker (building on work by Dan Wilson) provides some python scripts for calculating elastic constants using CASTEP, available from <a href="https://github.com/andreww/elastic-constants">https://github.com/andreww/elastic-constants</a>. The tool comes in two parts - first is generate_strain.py, this takes the results of a successful variable cell geometry optimisation and creates a set of input files to be run through CASTEP. The second part is elastics.py, which takes the CASTEP results and constructs the matrix of elastic constants, Young's modulus, Poisson's ratios and bulk and shear moduli. Usage information for each script can be obtained by using the --help option.</p>
-<p>For this exercise we will use rutile - titanium dioxide. Below are example <code>.cell</code> and <code>.param</code> files to start from. It is assumed that the scripts <code>generate_strain.py</code> and <code>elastics.py</code> are in your PATH and that python is installed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>#TiO2.cell
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> %BLOCK lattice_cart
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> 4.594 0.000 0.000
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> 0.000 4.594 0.000
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> 0.000 0.000 2.959
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> %ENDBLOCK lattice_cart
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> %BLOCK positions_frac
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> Ti  0.000  0.000  0.000
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> Ti  0.500  0.500  0.500
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a> O   0.305  0.305  0.000
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a> O  -0.305 -0.305  0.000
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a> O   0.805  0.195  0.500
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a> O  -0.805 -0.195  0.500
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a> %ENDBLOCK positions_frac
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a> symmetry_generate
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a> kpoint_mp_grid 3 3 3
+<h2 id="electronic-excitations-of-the-azobenzene-molecule">Electronic excitations of the Azobenzene molecule</h2>
+<p>In this example we calculate the first two electronic excited states of
+E-Azobenzene in a supercell.</p>
+<p>The required files are azo.cell, azo.param, azo.deltascf</p>
+<p><em>azo.param</em></p>
+<div class="highlight"><pre><span></span><code>task: SinglePoint
+
+%BLOCK DEVEL_CODE
+  DeltaSCF
+%ENDBLOCK DEVEL_CODE
+
+reuse: default
+
+spin_polarized : False
+cut_off_energy : 350.0
+elec_energy_tol : 1e-07
+fix_occupancy : False
+iprint : 1
+max_scf_cycles : 200
+metals_method : dm
+mixing_scheme : Pulay
+nextra_bands : 10
+num_dump_cycles : 0
+opt_strategy_bias : 3
+smearing_scheme : Gaussian
+smearing_width : 0.1
+xc_functional : PBE
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>#TiO2.param
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> task             : geometryoptimisation
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> cutoff_energy    : 700 eV
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> xc_functional    : PBE
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> max_scf_cycles   : 100
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a> calculate_stress : true
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a> opt_strategy     : speed
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a> num_dump_cycles  : 0
+<p><em>azo.cell</em></p>
+<div class="highlight"><pre><span></span><code>%BLOCK LATTICE_CART
+    10.0000000 0.0000000000 0.0000000000
+    0.0000000000 20.0000000 0.0000000000
+    0.0000000000 0.0000000000 10.0000000000
+%ENDBLOCK LATTICE_CART
+
+%BLOCK POSITIONS_ABS
+C         -6.72081       -1.66625        0.00000
+C         -6.64967       -0.26964        0.00000
+C         -5.40647        0.36858       -0.00000
+C         -4.23175       -0.38857       -0.00000
+C         -4.29745       -1.78579       -0.00000
+C         -5.54882       -2.43430       -0.00000
+H         -7.68820       -2.15296        0.00000
+H         -7.55879        0.31772        0.00000
+H         -5.35348        1.44963       -0.00000
+H         -3.26966        0.10734       -0.00000
+H         -3.37789       -2.35693       -0.00000
+N         -5.65342       -3.85046       -0.00000
+N         -4.64259       -4.58194       -0.00000
+C         -4.75058       -5.99808       -0.00000
+C         -6.00434       -6.64214       -0.00000
+C         -6.07567       -8.03881       -0.00000
+C         -4.90409       -8.80053       -0.00000
+C         -3.65828       -8.16721       -0.00000
+C         -3.58139       -6.77065       -0.00000
+H         -2.61200       -6.28795       -0.00000
+H         -6.92178       -6.06761       -0.00000
+H         -7.03986       -8.53061       -0.00000
+H         -4.96168       -9.88134       -0.00000
+H         -2.75170       -8.75849       -0.00000
+%ENDBLOCK POSITIONS_ABS
+
+FIX_ALL_CELL : True
+KPOINTS_MP_GRID : 1 1 1
 </code></pre></div>
-<ul>
-<li>
-<p>Task 1: Perform a variable cell geometry optimisation and make sure to include calculate_stress : true in your param file. Test the kinetic energy cut-off and k-point grid such that the stress is converged to within the default geom_stress_tol value. (Hint: Use CASTEP's built-in help utility to find the default.)</p>
-</li>
-<li>
-<p>Task 2: Use the <code>generate_strain.py</code> script to generate a set of .cell files deformed according to the appropriate strain pattern. The command <code>generate_strain.py TiO2</code> should be sufficient.
-You should now have twelve (in this case) sets of input files - individual .cell files and corresponding <code>.param</code>, symbolically linked to the original <code>TiO2.param</code> file. Notice that the new .cell files all have the <code>FIX_ALL_CELL true</code> option set.</p>
-</li>
-<li>
-<p>Task 3: Run CASTEP on each of the 12 sets of input files. Note that the cell distortions can break the symmetry of the crystal, hence changing the number of k-points in the symmetry reduced sample. The <code>-dryrun</code> option of CASTEP can be used to do a quick check for how many k-points are required. This can help when selecting how many cores to run the calculation on if you are running CASTEP in parallel.</p>
-</li>
-<li>
-<p>Task 4: Run the <code>elastics.py</code> script to obtain the elastic constants. The command <code>elastics.py TiO2</code> will print the results to the terminal. The <code>--latex</code> option generates a LaTeX formatted summary of the results and the <code>--graphics</code> option produces a graphical representation of the stress-strain fits in a .png file.</p>
-</li>
-<li>
-<p>Task 5: Investigate how the results and their errors change with smaller values of the <code>elec_energy_tol</code> parameter. Also investigate the effect of changing the <code>--strain</code> option to <code>generate_strain.py</code>. Move any old <code>*cij*.castep</code> files to another directory - the <code>elastics.py</code> script only checks the first set of data in a concatenated <code>.castep</code> file.</p>
-</li>
-</ul>
+<p><em>azo.deltascf</em></p>
+<div class="highlight"><pre><span></span><code>deltascf_mode        :  1                               
+deltascf_iprint      :  1
+# mode 1 constraints ##                                 
+#                       band  occ spin from_band to_band
+deltascf_constraint  :  34    0.5000  1   34   34       
+deltascf_constraint  :  35    0.5000  1   35   35
+</code></pre></div>
+<p>We start by calculating the total DFT ground state energy as</p>
+<div class="highlight"><pre><span></span><code>Final energy, E             =  -2597.665647686     eV
+</code></pre></div>
+<p>Now we reuse the calculated wavefunctions and switch to the DeltaSCF
+calculation</p>
+<div class="highlight"><pre><span></span><code>%BLOCK DEVEL_CODE
+  DeltaSCF
+%ENDBLOCK DEVEL_CODE
+</code></pre></div>
+<p>There are 68 valence electrons. Therefore, for this non-spin-polarized
+system the HOMO orbital is orbital no. 34. The LUMO is orbital no. 35.</p>
+<p>The first two excited states of azobenzene are known to be S1(n->pi*)
+and S2(pi->pi*) transitions between the HOMO and LUMO and the HOMO-1
+and the LUMO.</p>
+<p>The corresponding constraint sequence in azo.deltascf for the S1
+excitation is</p>
+<div class="highlight"><pre><span></span><code>deltascf_constraint  :  34    0.5000  1   34   34       
+deltascf_constraint  :  35    0.5000  1   35   35
+</code></pre></div>
+<hr />
+<p><strong>WARNING</strong></p>
+<p>:   When running non-spin-polarized calculations, orbital occupations
+    range from 0 to 1. !!When running a spin-polarized calculation, they
+    also range from 0 to 1, although they contain 0 to 2 electrons. In
+    this (non-spin-polarized) case, if we want to transfer an electron
+    from the HOMO(34) to LUMO(35) we need to enforce the occupation of
+    both to be 0.50.</p>
+<hr />
+<p>Feel free to increase the print level with deltascf_iprint to study the
+output in more detail.</p>
+<p>The corresponding total energy is</p>
+<div class="highlight"><pre><span></span><code>Final energy, E             =  -2595.702720896     eV
+</code></pre></div>
+<p>This corresponds to an S1 excitation energy of 1.96 eV.</p>
+<p>The constraint sequence for an S2 excitation is</p>
+<div class="highlight"><pre><span></span><code>deltascf_constraint  :  33    0.5000  1   33   33
+deltascf_constraint  :  35    0.5000  1   35   35
+</code></pre></div>
+<p>The resulting final energy is</p>
+<div class="highlight"><pre><span></span><code>Final energy, E             =  -2594.762182241     eV
+</code></pre></div>
+<p>The corresponding S2 excitation energy is 2.90 eV.</p>
 
               
             </article>
@@ -1898,7 +2013,7 @@ You should now have twelve (in this case) sets of input files - individual .cell
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../Delta_SCF/molpdos/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Molecular Projected DOS" rel="prev">
+        <a href="../../NMR/NMR_shielding/" class="md-footer__link md-footer__link--prev" aria-label="Previous: J coupling" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1907,11 +2022,26 @@ You should now have twelve (in this case) sets of input files - individual .cell
               <span class="md-footer__direction">
                 Previous
               </span>
-              Molecular Projected DOS
+              J coupling
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="../lin_ex_delta_scf/" class="md-footer__link md-footer__link--next" aria-label="Next: Linear expansion DeltaSCF" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Linear expansion DeltaSCF
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
