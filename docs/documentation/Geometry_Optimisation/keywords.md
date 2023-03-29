@@ -15,7 +15,7 @@ The convergence criteria have the following default values, each of which can be
 
 It is possible to change the optimisation method, and to choose a preconditioner.
 ```
-geom_method     : LBFGS (default), BFGS, DAMPEDMD,TPSD
+geom_method     : LBFGS (default), BFGS, TPSD, DAMPEDMD, FIRE
 geom_preconditioner : EXP / FF / ID  # EXPonential, Force Field, Identity (default)
 ```
 
