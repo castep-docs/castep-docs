@@ -43,9 +43,9 @@ be self-explanatory.
 
 ####Initial cell
 
-The information specified in the .cell file is then output, this will
-include the ionic positions any user specified velocities if present,
-the usual pseudo-potential and k-point information, and details
+The information specified in the .cell file is then output. This will
+include the ionic positions, any user specified velocities if present,
+the usual pseudo-potential, k-point information, and details
 of any constraints. The total energy of the initial cell is then
 minimised, performing a finite basis set correction along the way
 if appropriate.
@@ -61,7 +61,7 @@ first time-step will require data on forces, stress (for variable cell
 calculations) and energies, these are evaluated and printed at this point.
 
 Forces are output in the following format, using the force unit
-specified by the user, or the default of eV / \AA.
+specified by the user, or the default of eV / Ang.
 
 ```
  ******************************** Forces *********************************
@@ -146,9 +146,9 @@ The MD simulation proper now begins.
 =================================================================
 ```
 
-Following this message the current cell information is printed and
+Following this message the current cell information on the new configuration is printed and
 the energy is re-minimised to determine the new forces. The
-MD step is then performed and the updated force, stress and energy
+MD step is then performed and the updated forces, stress and energy
 information is printed in the same manner as above.
 
 ```
@@ -162,11 +162,15 @@ of MD iterations is completed.
 
 ##The .md file
 
-The .md file is provided as a single source for the all the dynamical
+The .md file is provided as a single source for all the dynamical
 data produced by a CASTEP calculation. In all cases, data is printed
 in Hartree atomic units. Fortran formating data will be given here for
 all entries in this file for those who wish to import it into their
 own analysis codes.
+
+The CASTEP default behaviour is to record every single configuration in the .md file. This can therefore grow to quite a 
+large size if doing a long MD run! The only exception to this, is if doing a non-DFT calculation, whereupon a sample of the 
+configurations are written if `md_sample_iter`>0, otherwise no configurations are written.
 
 Note that unlike the .castep file, the .md file from a previous
 calculation with the same seedname will be overwritten, unless
