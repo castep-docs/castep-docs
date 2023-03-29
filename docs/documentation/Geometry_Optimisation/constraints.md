@@ -46,8 +46,9 @@ freedom. For example
 %ENDBLOCK IONIC_CONSTRAINTS
 ```
 
-The 1st line says that constraint number 1 is to fix the x coordinate of Tungston atom 1. The 2nd line says that constraint number 2 is to fix the y coordinate of 
-Tungston atom 1. etc. To fix an atom in 3D requires 3 constraints to remove all 3 degrees of freedom.
+The 1st line says that constraint number 1 is to fix the x coordinate of Tungsten atom 1. The 2nd line says that constraint 
+number 2 is to fix the y coordinate of Tungsten atom 1. etc. To fix an atom in 3D requires 3 constraints to remove all 3 
+degrees of freedom.
 
 The ionic_constraints block can also be used to impose any arbitary linear constraint, such as to restrict an atom to move in a plane or along a line, or to fix the 
 centre of mass. A constraint may involve more than 1 atom, and hence can span mulitple lines, but each constraint operates on 1 degree of freedom. It cannot be used 
@@ -76,13 +77,13 @@ where $C^i$ is given by the initial conditions. For example to fix the second S 
 
 ## Cell Constraints
 
-Cell constraints can be used with all forms of geometry optimization and molecular dynamics that all the cell size/shape to vary. Some simple short cuts exist, such 
-as to keep the unit cell fixed during the optimisation
+Cell constraints can be used with all forms of geometry optimization and molecular dynamics that allow the cell size/shape 
+to vary. Some simple short cuts exist, such as to keep the unit cell fixed during the optimisation
 ```
 FIX_CELL : T
 ```
 
-To fix the volume of the unit cell
+or to fix the volume (but not the shape) of the unit cell
 ```
 FIX_VOL  : T
 ```
@@ -123,16 +124,20 @@ impose all the desired constraints explicitly.
 
 ## Non-linear Constraints
 
-CASTEP can also support non-linear constraints, such as fixed bond length, in both molecular dynamics and geometry optimization if using `GEOM_METHOD=DELOCALISED`:
+CASTEP can also support non-linear constraints, such as fixed bond length, in both molecular dynamics, and also in geometry 
+optimization if using `GEOM_METHOD=DELOCALISED`:
 ```
 %BLOCK NONLINEAR_CONSTRAINTS
     constraint_type atom1 atom2 (atom3 (atom 4))
 ...
 %ENDBLOCK NONLINEAR_CONSTRAINTS
 ```
-where the first element specifies a constraint type (distance, bend or torsion). Then depending on the type of constraint, either 2, 3 or 4 atoms need to be specified. 
-As for ionic constraints, atoms are specified by species and number within that species. In addition, it is necessary to specify which periodic image of the cell the 
-atom is located in (so constraints can straddle a cell boundary).
+where the first element specifies a constraint type (distance, bend angle or torsion angle). Then depending on the type of 
+constraint, either 2, 3 or 4 atoms need to be specified, and the corresponding quantity (distance, bend angle or torsion angle) is held 
+constant at the initial value.
+
+As for (linear) ionic constraints, atoms are specified by species and number within that 
+species. In addition, it is necessary to specify which periodic image of the cell the atom is located in (so constraints can straddle a cell boundary).
 
 For instance
 ```
