@@ -661,6 +661,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Molecular_Dynamics/tools.md" class="md-nav__link">
+        MD Tools
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1886,8 +1900,8 @@
   <h1>Files</h1>
 
 <h2 id="geom">.geom</h2>
-<p>The .geom file is the primary output file, and contains the unit cell, positions of the atoms and the forces on the atoms for each step of the geometry optimisation.
-The format of this file is the same as the .md file ()</p>
+<p>The <code>.geom</code> file is the primary output file, and contains the unit cell, positions of the atoms and the forces on the atoms 
+for each step of the geometry optimisation. The format of this file is very similar to the <code>.md</code> file.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>BEGIN header
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>END header
@@ -1933,10 +1947,10 @@ The format of this file is the same as the .md file ()</p>
 </ul>
 <p>The '&larr; c' line also reports the status of 4 convergence flags (either F=false or T=true). These are (in order):</p>
 <ul>
-<li>dE - has the energy change/atom been below geom_energy_tol for at geom_convergence_win steps?</li>
+<li>dE - has the energy change/atom been below geom_energy_tol for the last geom_convergence_win steps?</li>
 <li>Fmax - is the largest component of any force below geom_force_tol?</li>
 <li>dRmax - is the largest change in position for any atom below geom_disp_tol?</li>
-<li>Smax- is the largest component of the stress tensor below geom_stress_tol?</li>
+<li>Smax - is the largest component of the stress tensor below geom_stress_tol?</li>
 </ul>
 
               
