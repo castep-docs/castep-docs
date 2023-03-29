@@ -12,6 +12,8 @@ time-steps to perform is specified with e.g.
 ```
 md_num_iter = 500
 ```
+NB This is the number of steps to be calculated in this run. It is NOT the accumulated total number of steps in a series of 
+continuation runs. The "MD time" value in the `<seed>.castep` file records the cumulative time.
 
 ##Ensembles
 
@@ -19,9 +21,8 @@ The following statistical ensembles can be simulated using CASTEP.
 
 ####NVE
 
-In this ensemble the shape
-and size of the simulation cell remain constant as specified
-in the cell file. The conserved energy is the Born-Oppenheimer
+In this ensemble the number of atoms (N), the shape
+and volume (V) of the simulation cell and the energy (E) remain constant. The conserved energy is the Born-Oppenheimer
 Hamiltonian
 
 $$E = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
@@ -34,7 +35,7 @@ in atomic units.
 This ensemble is selected using the command
 
 ```
-md_ensemble  =  nve
+md_ensemble  =  NVE
 ```
 
 in the parameters file. The actual value of the conserved energy
@@ -53,17 +54,17 @@ H  xxxxx yyyyy zzzzz
 O  xxxxx yyyyy zzzzz
 %ENDBLOCK IONIC_VELOCITIES
 ```
+using any valid unit of velocity (auv is atomic unit of velocity), etc.
 
 * By definition of an initial temperature in the parameters file, e.g.
-
 ```
 md_temperature  =  293 K
 ```
 Note that this can be specified using any valid unit
 of temperature. In this case initial velocities are assigned randomly
 such that the total linear momentum is zero and the instantaneous
-temperature matches that specified. The system will reach an
-equilibrium with a somewhat different temperature.
+temperature matches that specified. The system will reach
+equilibrium with a somewhat different temperature due to equipartition of kinetic and potential energy.
 
 
 * By continuation from an equilibrated run at the desired temperature. This
@@ -89,7 +90,7 @@ in the parameters file.
 This ensemble is selected with
 
 ```
-md_ensemble  =  nvt
+md_ensemble  =  NVT
 ```
 
 The system will be evolved to a specific temperature defined using
@@ -98,9 +99,9 @@ are assigned based on this temperature, read from an ``IONIC_VELOCITIES``
 block in the cell file, or read from a continuation file in the same way as
 above.
 
-Temperature control can be implemented by one of two methods, both
+Temperature control can be implemented by one of several methods, all
 of which have been shown to correctly sample the canonical ensemble. The
-first of these is the Nose-Hoover chain method of Tuckerman et al [^1]  and is selected with
+first of these is the deterministic Nose-Hoover chain method of Tuckerman et al [^1]  and is selected with
 
 ```
 md_thermostat  =  nose-hoover
@@ -114,8 +115,10 @@ chain can also be specified, e.g.
 md_nhc_length  =  5
 ```
 
-for a chain of five thermostats. In the Nose-Hoover case with a chain of $M$ thermostats
-acting of $N_{f}$ ionic degrees of freedom, the conserved quantity is the pseudo-Hamiltonian
+for a chain of five thermostats. 
+
+In the Nose-Hoover case with a chain of $M$ thermostats acting of $N_{f}$ ionic degrees of freedom, the conserved quantity 
+is the pseudo-Hamiltonian
 
 \begin{equation}
 \mathcal{H} = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
@@ -129,9 +132,10 @@ acting of $N_{f}$ ionic degrees of freedom, the conserved quantity is the pseudo
 where the $Q_{i}$ are the thermostat fictitious masses assigned automatically
 from the specified ion relaxation time and $\xi_{i}$ are the thermostat degrees of
 freedom. This is printed with the label
-``Hamilt    Energy:``  at each time-step.
+``Hamilt    Energy:``  at each time-step. A Nose-Hoover thermostat with no chain (i.e. with $M$=1 ) is known to not be 
+ergodic and hence should be avoided. 
 
-The second method of controlling temperature is the Langevin thermostat.
+The second method of controlling temperature is through the stochastic Langevin thermostat.
 
 ```
 md_thermostat = langevin
@@ -141,7 +145,15 @@ In this case the printed Hamiltonian energy is the value of
 equation above. This is not conserved by the dynamics, but should
 exhibit no long term drift from the equilibrium value.
 
-With either method, a suitable relaxation time for the thermostatic
+Finally, the temperature may be controled via the Hoover-Langevin thermostat.
+
+```
+md_thermostat = hoover-langevin
+```
+which is the fusion of a deterministic Nose-Hoover thermostat acting directly on the physical system, with a Langevin 
+thermostat operating on the Nose-Hoover variables, in order to guarantee ergodicity.
+
+With each method, a suitable relaxation time for the thermostatic
 process should be specified. This can use any supported unit of
 time, e.g
 
@@ -149,7 +161,8 @@ time, e.g
 md_ion_t = 2.4 ps
 ```
 
-for a thermostat relaxation time of 2.4 picoseconds.
+for a thermostat relaxation time of 2.4 picoseconds. The Hoover-Langevin thermostat is the LEAST sensitive to the choice of 
+this value.
 
 As with the NVE ensemble, pressure is not calculated by default. This is
 overridden in the same way as the NVE case.
@@ -157,12 +170,12 @@ overridden in the same way as the NVE case.
 ####NPH
 
 In this ensemble the size and (if desired) shape of the simulation
-cell varies to regulate pressure. No thermostat is applied.
+cell varies to regulate pressure. No thermostat is applied and hence the enthalpy (H) is conserved.
 
 This ensemble is specified with the following:
 
 ```
-md_ensemble = nph
+md_ensemble = NPH
 ```
 
 The external pressure is set in the cell definition file using
@@ -179,9 +192,8 @@ specified, e.g.
      %endblock external_pressure
 ```
 
-to specify an isotropic external pressure of 0.5 Giga-Pascals. Note
-that MD currently supports only isotropic external pressure. Off-diagonal
-components are therefore ignored.
+to specify an isotropic external pressure of 0.5 Giga-Pascals. MD can also support non-isotropic pressure if using a 
+variable-shape barostat.
 
 Velocities are assigned such that the initial temperature is equal
 to ``md_temperature``, or are read from the cell definition
@@ -209,11 +221,10 @@ H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 
 The alternative scheme implements the method of Parrinello and Rahman[^6] [^7].
 Both the size and shape of the simulation cell are allowed to vary. The issue of
-cell rotations is eliminated by the of a symmetrised pressure tensor. Note that
+cell rotations is eliminated by the use of a symmetrised pressure tensor. Note that
 as liquids cannot sustain shear, this method should only be used with solids.
 It should also be noted that this scheme is based on the modified Parrinello-Rahman method
-of Martyna, Tobias and Klien[^5] which is modularly invariant, exactly obeys the
-appropriate tensorial virial theorem, but is only applicable to hydrostatic pressure.
+of Martyna, Tobias and Klien[^5].
 
 The following line in the parameters file selects this barostat.
 
@@ -233,16 +244,17 @@ H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 +\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + \mathrm{Tr}[{\mathbf{p}_{g}\mathbf{p}_{g}^{T}]}/2W
 \end{equation}
 
-For both schemes, a relaxation time for the cell motions should be specified
+For both barostats, a relaxation time for the cell motions should be specified
 with an appropriate unit of time, for example:
 
 ```
 md_cell_t = 20 ps
 ```
 
-This time is used to calculate a fictitious mass $W$ for the cell dynamics.
+This time is used to calculate a fictitious mass $W$ for the cell dynamics and should be large compared to the 
+characteristic time for the ionic dynamics.
 
-The NPH equations of motion require that pressure is calculated at each
+The NPH equations of motion require that pressure (stress) is calculated at each
 MD time-step. The value of ``calculate_stress`` is therefore irrelevant
 in this case.
 
@@ -260,16 +272,15 @@ fixed_npw = true
 
 The cut-off energy is now variable as is the quality of the
 basis set. This option should therefore only be used for calculations
-in which the volume changes are small and which are over converged
+in which the volume changes are small and which are over-converged
 with respect to the number of plane waves.
 
-The second option is to change the basis set at each time-step.
+The second option is to allow the basis set to change at each time-step.
 
 ```
 fixed_npw = false
 ```
-
-This keeps the cut-off energy approximately constant by adding
+which is the default value. This keeps the cut-off energy approximately constant by adding
 or subtracting plane waves from the basis set at each time-step.
 
 In either case, the effect of Pulay stress is reduced
@@ -285,19 +296,17 @@ and is recalculated at each step.
 The NPT ensemble is specified with the command:
 
 ```
-md_ensemble = npt
+md_ensemble = NPT
 ```
 
-Any combination of the thermostat and barostat schemes listed above
-is allowed, and is implemented in a dedicated routine. In all cases
-the dynamics can be shown to correctly sample the isothermal-isobaric ensemble[^5]
+This can use either the Nose-Hoover or Langevin thermostat, and either Andersen-Hoover or Parrinello-Rahman barostat. In 
+all cases, the dynamics can be shown to correctly sample the isothermal-isobaric ensemble[^5]
 
 All options pertaining to the NPH and NVT ensembles apply.
 
 In the case of Langevin dynamics at NPT, the printed Hamiltonian energy is
-the same as in the NPH ensemble, i.e. that given by equation[^4]
-or [^6]. In the case of Nose-Hoover NPT molecular dynamics, the
-Hamiltonian energy is given by
+the same as in the NPH ensemble, i.e. that given by the equations above. In the case of Nose-Hoover NPT molecular dynamics, 
+the Hamiltonian energy is given by
 
 \begin{equation}
 \label{eq:HooverNPT}

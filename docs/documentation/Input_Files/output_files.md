@@ -1,11 +1,12 @@
-CASTEP writes output data in a variety of files. Some of these will be in human readable ASCII format (i.e. plaintext) and can be read with commands such as `less` or `more` on linux, or with a simple text editor (textedit, notepad etc). Other files will be in binary format and are designed to be read or processed with an external program.
+CASTEP writes output data in a variety of files. Some of these will be in human readable ASCII format (i.e. plaintext) and 
+can be read with commands such as `less` or `more` on linux, or with a simple text editor (textedit, notepad etc). Other files will be in binary format and are designed to be read or processed with an external program.
 
 
 ## Groundstate
 
 
 * `.castep`
-ASCII. Castep's main outputfile.
+ASCII. CASTEP's main outputfile.
 
 * `.bib`
 ASCII. Bibtex file containing citations to the methods CASTEP has used in the calculation.

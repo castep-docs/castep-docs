@@ -1,5 +1,5 @@
 The exchange and correlation functional used for calculations in
-Castep can be specified in one of two main ways.
+CASTEP can be specified in one of two main ways.
 
 1. `xc_functional`  
 The most straightforward is with the .param file keyword
@@ -8,7 +8,7 @@ file simply use
 ```
 xc_functional : PBE
 ```
-There are a number of standard functionals that can be used in Castep
+There are a number of standard functionals that can be used in CASTEP
 with the xc_functional keyword:  
 Local density approximation:  
 `LDA`  
@@ -62,7 +62,7 @@ Recall that hybrids are (usually) a mixture of pure (or screened)
 non-local Hartree-Fock exchange, some local exchange and local
 correlation. So you could, for example, build a functional that could
 be 20% Hartree Fock, 80% LDA exchange and 100% LDA correlation. You
-can run a Castep calculation with this using
+can run a CASTEP calculation with this using
 ```
 %block xc_definition
 HF 0.2
