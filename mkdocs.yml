@@ -13,6 +13,7 @@ nav:
         - 'Overview':  'documentation/Groundstate/intro.md'
         - 'Dispersion Corrections': 'documentation/Groundstate/dftd.md'
         - 'Spin Orbit Coupling': 'documentation/Groundstate/soc.md'
+        - 'Spin Constraints': 'documentation/Groundstate/spin_constraints.md'
       - 'Geometry Optimisation':
         - 'Overview': 'documentation/Geometry_Optimisation/overview.md'
         - 'Keywords': 'documentation/Geometry_Optimisation/keywords.md'
