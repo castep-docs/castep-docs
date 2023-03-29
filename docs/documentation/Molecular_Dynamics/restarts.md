@@ -3,8 +3,8 @@
 As with any other calculation in CASTEP, checkpoint files
 are written at regular intervals. Should the calculation
 be interrupted for whatever reason, it is possible to
-continue from the point at which a checkpoint file
-was written.
+continue from the point at which the checkpoint file
+was last written.
 
 Check-pointing is performed by dumping all pertinent
 data to a .check file. The interval at which this
@@ -24,12 +24,11 @@ can be specified with:
 backup_interval = 60
 ```
 
-Both intervals can be used, i.e. a checkpoint file could be
-written every 60 seconds and every 5 MD steps. To disable
-either interval, set the corresponding parameter to zero.
+Both can be specified but `backup_interval` will be preferred over `num_backup_iter` if both are set.
+To disable either option, set the corresponding parameter to zero.
 
 The name of the checkpoint file will be the calculation seed-name
-followed by ``.check``. This can be overridden with:
+followed by ".check". This can be overridden with:
 
 ```
 checkpoint   = my_md_run.check
@@ -51,6 +50,11 @@ will suffice. To continue the run from a checkpoint file
 continuation = my_md_run.check
 ```
 
+Note the standard CASTEP behaviour is to append new data to the end of existing files (such as .castep and .md) to avoid 
+loosing data from earlier runs. This is not the case for the .check file, which is overwritten with new data. For this 
+reason, the default CASTEP behaviour is to make a backup of the .check file, before over-writing it, so as to minimize the 
+risk of data loss.
+
 ####Changing Parameters on Continuation
 
 Check-pointing is particularly useful for MD calculations where
@@ -64,10 +68,12 @@ configuration.
 
 All options described in the above sections can be changed on a restart, i.e.
 it is possible to change ensemble, thermostat and barostat schemes, relaxation
-times, time-step, constraints e.t.c by specifying new values in the input files for the new
+times, time-step, constraints, etc. by specifying new values in the input files for the new
 run. It is not possible to change the number
-of atoms/electrons in the cell. Care must be taken when changing parameters
-on a restart. For example a large discontinuous change in the specified temperature or
+of atoms/electrons in the cell upon a restart. 
+
+Care must be taken when changing parameters on a restart. For example a large discontinuous change in the specified 
+temperature or
 pressure will perturb a system away from equilibrium. In such cases the system
 should not be sampled until re-equilibrated.
 

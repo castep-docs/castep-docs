@@ -11,7 +11,7 @@ CASTEP has a wide range of Molecular Dynamics (MD) capabilities, and can do equi
 * NVT - the canonical ensemble - with constant temperature not constant energy - due to the application of a thermostat
 * NPH - constant external pressure and enthalpy - due to the application of a barostat
 * NPT - constant external pressure and temperature - due to the application of a barostat and a thermostat
-* HUG - ??
+* HUG - the Hugoniostat - a special thermo-barostat algorithm to find states on the Hugoniot curve
 
 Of these, NPT is the closest to most real-life experiments.
 
@@ -21,6 +21,9 @@ Of the different barostats, CASTEP supports the isotropic Andersen-Hoover barost
 
 CASTEP also supports the Berendsen thermostat and barostat, as a route to faster equilibration before switching to one of the above thermostats/barostats for production data.
 
-CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics (PIMD), in either NVT or NPT ensembles.
+CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics 
+(PIMD), in either NVT or NPT ensembles, using the Langevin thermostat.
 
-In all MD schemes, CASTEP can support both linear and non-linear constraints on the ionic positions and/or on the cell vectors. The detailed trajectory information is written to either  `<seed>.geom` or  `<seed>.md` files, which are structured text files, for ease of manipulation and post-calculation analysis.
+In all MD schemes, CASTEP can support both linear and non-linear constraints on the ionic positions and/or on the cell 
+vectors. The detailed trajectory information is written to a `<seed>.md` file, which is a structured text file (similar to 
+the `<seed>.geom` file), for ease of manipulation and post-calculation analysis.
