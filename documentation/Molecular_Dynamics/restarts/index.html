@@ -1854,8 +1854,8 @@
 <p>As with any other calculation in CASTEP, checkpoint files
 are written at regular intervals. Should the calculation
 be interrupted for whatever reason, it is possible to
-continue from the point at which a checkpoint file
-was written.</p>
+continue from the point at which the checkpoint file
+was last written.</p>
 <p>Check-pointing is performed by dumping all pertinent
 data to a .check file. The interval at which this
 check-pointing occurs can be controlled in two ways.</p>
@@ -1867,11 +1867,10 @@ between checkpoints.</p>
 can be specified with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>backup_interval = 60
 </code></pre></div>
-<p>Both intervals can be used, i.e. a checkpoint file could be
-written every 60 seconds and every 5 MD steps. To disable
-either interval, set the corresponding parameter to zero.</p>
+<p>Both can be specified but <code>backup_interval</code> will be preferred over <code>num_backup_iter</code> if both are set.
+To disable either option, set the corresponding parameter to zero.</p>
 <p>The name of the checkpoint file will be the calculation seed-name
-followed by <code>.check</code>. This can be overridden with:</p>
+followed by ".check". This can be overridden with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>checkpoint   = my_md_run.check
 </code></pre></div>
 <p>To continue an MD calculation from a checkpoint file, ensure
@@ -1884,6 +1883,10 @@ seed-name of the new run is the same as for the old, the command</p>
 <code>my_md_run.check</code> use:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>continuation = my_md_run.check
 </code></pre></div>
+<p>Note the standard CASTEP behaviour is to append new data to the end of existing files (such as .castep and .md) to avoid 
+loosing data from earlier runs. This is not the case for the .check file, which is overwritten with new data. For this 
+reason, the default CASTEP behaviour is to make a backup of the .check file, before over-writing it, so as to minimize the 
+risk of data loss.</p>
 <h4 id="changing-parameters-on-continuation">Changing Parameters on Continuation</h4>
 <p>Check-pointing is particularly useful for MD calculations where
 we often require many thousands of time-steps to extract
@@ -1895,10 +1898,11 @@ cell relaxation time without having to restart the run from the unequilibrated
 configuration.</p>
 <p>All options described in the above sections can be changed on a restart, i.e.
 it is possible to change ensemble, thermostat and barostat schemes, relaxation
-times, time-step, constraints e.t.c by specifying new values in the input files for the new
+times, time-step, constraints, etc. by specifying new values in the input files for the new
 run. It is not possible to change the number
-of atoms/electrons in the cell. Care must be taken when changing parameters
-on a restart. For example a large discontinuous change in the specified temperature or
+of atoms/electrons in the cell upon a restart. </p>
+<p>Care must be taken when changing parameters on a restart. For example a large discontinuous change in the specified 
+temperature or
 pressure will perturb a system away from equilibrium. In such cases the system
 should not be sampled until re-equilibrated.</p>
 <p>Although it is possible to change electronic minimisation schemes/parameters

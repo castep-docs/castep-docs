@@ -1770,14 +1770,17 @@
 <li>NVT - the canonical ensemble - with constant temperature not constant energy - due to the application of a thermostat</li>
 <li>NPH - constant external pressure and enthalpy - due to the application of a barostat</li>
 <li>NPT - constant external pressure and temperature - due to the application of a barostat and a thermostat</li>
-<li>HUG - ??</li>
+<li>HUG - the Hugoniostat - a special thermo-barostat algorithm to find states on the Hugoniot curve</li>
 </ul>
 <p>Of these, NPT is the closest to most real-life experiments.</p>
 <p>Of the different thermostats, CASTEP supports Nose-Hoover, Nose-Hoover chains, Langevin and Hoover-Langevin.</p>
 <p>Of the different barostats, CASTEP supports the isotropic Andersen-Hoover barostat, and the anisotropic Parrinello-Rahman barostat.</p>
 <p>CASTEP also supports the Berendsen thermostat and barostat, as a route to faster equilibration before switching to one of the above thermostats/barostats for production data.</p>
-<p>CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics (PIMD), in either NVT or NPT ensembles.</p>
-<p>In all MD schemes, CASTEP can support both linear and non-linear constraints on the ionic positions and/or on the cell vectors. The detailed trajectory information is written to either  <code>&lt;seed&gt;.geom</code> or  <code>&lt;seed&gt;.md</code> files, which are structured text files, for ease of manipulation and post-calculation analysis.</p>
+<p>CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics 
+(PIMD), in either NVT or NPT ensembles, using the Langevin thermostat.</p>
+<p>In all MD schemes, CASTEP can support both linear and non-linear constraints on the ionic positions and/or on the cell 
+vectors. The detailed trajectory information is written to a <code>&lt;seed&gt;.md</code> file, which is a structured text file (similar to 
+the <code>&lt;seed&gt;.geom</code> file), for ease of manipulation and post-calculation analysis.</p>
 
               
             </article>

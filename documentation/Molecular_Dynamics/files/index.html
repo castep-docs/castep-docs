@@ -2007,9 +2007,9 @@ presented.</p>
 depending on the type of calculation being performed, but should
 be self-explanatory.</p>
 <h4 id="initial-cell">Initial cell</h4>
-<p>The information specified in the .cell file is then output, this will
-include the ionic positions any user specified velocities if present,
-the usual pseudo-potential and k-point information, and details
+<p>The information specified in the .cell file is then output. This will
+include the ionic positions, any user specified velocities if present,
+the usual pseudo-potential, k-point information, and details
 of any constraints. The total energy of the initial cell is then
 minimised, performing a finite basis set correction along the way
 if appropriate.</p>
@@ -2020,7 +2020,7 @@ if appropriate.</p>
 first time-step will require data on forces, stress (for variable cell
 calculations) and energies, these are evaluated and printed at this point.</p>
 <p>Forces are output in the following format, using the force unit
-specified by the user, or the default of eV / \AA.</p>
+specified by the user, or the default of eV / Ang.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a> ******************************** Forces *********************************
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> *                                                                       *
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> *                      Cartesian components (eV/A)                      *
@@ -2090,9 +2090,9 @@ is printed in the user specified pressure units.</p>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a> Starting MD iteration    1 ...
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>=================================================================
 </code></pre></div>
-<p>Following this message the current cell information is printed and
+<p>Following this message the current cell information on the new configuration is printed and
 the energy is re-minimised to determine the new forces. The
-MD step is then performed and the updated force, stress and energy
+MD step is then performed and the updated forces, stress and energy
 information is printed in the same manner as above.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----------------------------------------------------------------
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> ... finished MD iteration    1
@@ -2101,11 +2101,14 @@ information is printed in the same manner as above.</p>
 <p>The process repeats until the calculation is killed, or the specified number
 of MD iterations is completed.</p>
 <h2 id="the-md-file">The .md file</h2>
-<p>The .md file is provided as a single source for the all the dynamical
+<p>The .md file is provided as a single source for all the dynamical
 data produced by a CASTEP calculation. In all cases, data is printed
 in Hartree atomic units. Fortran formating data will be given here for
 all entries in this file for those who wish to import it into their
 own analysis codes.</p>
+<p>The CASTEP default behaviour is to record every single configuration in the .md file. This can therefore grow to quite a 
+large size if doing a long MD run! The only exception to this, is if doing a non-DFT calculation, whereupon a sample of the 
+configurations are written if <code>md_sample_iter</code>&gt;0, otherwise no configurations are written.</p>
 <p>Note that unlike the .castep file, the .md file from a previous
 calculation with the same seedname will be overwritten, unless
 the new calculation is a continuation of the original.</p>
