@@ -80,6 +80,10 @@ nav:
         - 'Inorganic': 'tutorials/NMR/NMR_silicate.md'
         - 'Molecular Crystals': 'tutorials/NMR/NMR_molcrystal.md'
         - 'J coupling': 'tutorials/NMR/NMR_shielding.md'
+      - 'Delta SCF':
+        - 'Delta SCF': 'tutorials/Delta_SCF/delta_scf.md'
+        - 'Linear expansion DeltaSCF': 'tutorials/Delta_SCF/lin_ex_delta_scf.md'
+        - 'Molecular Projected DOS': 'tutorials/Delta_SCF/molpdos.md'
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
 
