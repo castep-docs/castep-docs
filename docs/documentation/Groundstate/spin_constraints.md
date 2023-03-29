@@ -29,7 +29,9 @@ This is a local potential that pushes the density towards the constrained state.
 
 The energy penalty constant ($\lambda$) must be large enough to overcome any natural features of the energy landscape. That is, it must be big enough to make the target minimum be the actual minimum of the system. 
 
-On the other hand, making this value too big causes the numerics to become difficult to solve. Castep is built to solve things that act like physical systems and various parameters have been tuned to make it fast at this. Values that are too big, push the system away from being like a physical system and make it take a very long time to converge. 
+On the other hand, making this value too big causes the numerics to become difficult to solve. CASTEP is built to solve 
+things 
+that act like physical systems and various parameters have been tuned to make it fast at this. Values that are too big, push the system away from being like a physical system and make it take a very long time to converge. 
 
 There are a few tricks that we can play to speed this up. The first is to start with a low value of the $\lambda$ and then increase it gradually. We do this by starting with a very low value, waiting until the system is converged, and then checking if the constraints are actually fulfilled (ie $\mathbf{M}_I = \mathbf{e}_I$. If not, we double $\lambda$ and converge again. We repeat this until the constraint is obeyed. 
 
