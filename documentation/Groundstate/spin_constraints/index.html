@@ -13,7 +13,7 @@
     
     
       
-        <title>Keywords - CASTEP Docs</title>
+        <title>Spin Constraints - CASTEP Docs</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Keywords
+              Spin Constraints
             
           </span>
         </div>
@@ -333,12 +338,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
       
       
       
@@ -361,7 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Groundstate/intro/" class="md-nav__link">
+      <a href="../intro/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -375,7 +382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Groundstate/dftd/" class="md-nav__link">
+      <a href="../dftd/" class="md-nav__link">
         Dispersion Corrections
       </a>
     </li>
@@ -389,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Groundstate/soc/" class="md-nav__link">
+      <a href="../soc/" class="md-nav__link">
         Spin Orbit Coupling
       </a>
     </li>
@@ -401,11 +408,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Groundstate/spin_constraints/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Spin Constraints
       </a>
+      
     </li>
   
 
@@ -750,14 +767,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
       
       
       
@@ -780,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../Spectral/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -792,19 +807,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Spectral/keywords/" class="md-nav__link">
         Keywords
       </a>
-      
     </li>
   
 
@@ -816,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../restarts/" class="md-nav__link">
+      <a href="../../Spectral/restarts/" class="md-nav__link">
         Restarts
       </a>
     </li>
@@ -1657,6 +1664,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1670,30 +1679,63 @@
                 
 
 
-  <h1>Keywords</h1>
-
-<p><code>SPECTRAL_TASK</code> - determines what will be calculated. All tasks will compute the eigenenergies (aka bands). The list of tasks, and the extra  properties calculated are as follows:</p>
-<ul>
-<li><code>bandstructure</code>   </li>
-<li><code>dos</code>         band gradients</li>
-<li><code>optics</code>     optical matrix elements</li>
-<li><code>pdos</code>  atomic projections</li>
-<li><code>coreloss</code> dipole matrix elements with core states    </li>
-</ul>
-<p>Most spectral calculations will involve the calculation of unoccupied states. One of the following parameters should be set to determine the number of states calculated.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SPECTRAL_NEXTRA_BANDS            number of extra spectral bands
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>SPECTRAL_PERC_EXTRA_BANDS        percentage of extra spectral bands
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>SPECTRAL_NBANDS                  number of bands/k-point in spectral calc
-</code></pre></div>
-<p>It is possible to use a different exchange-correlation functional to the one used for the groundstate. An example might be when a semi-local functional (such as PBE) is used for the groundstate, and a more expensive non-local functional (e.g. PBE0) is used for the spectral calculation. This is an approximation and should be done with cuation. To set the xc functional use one of the two keywords.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SPECTRAL_XC_FUNCTIONAL           spectral exchange-correlation functional
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>SPECTRAL_XC_DEFINITION           spectral exchange-correlation functional
-</code></pre></div>
-<p>To change the convergence tolerance for the eigenvalues set
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SPECTRAL_EIGENVALUE_TOL          ! default: 10E-6 eV
+<h1 id="introduction">Introduction</h1>
+<p>Spin constraints allow you to ‘fix’ the spins within DFT by adding an energy penalty to states which do not obey the constraint. These change the minimum energy state from being the normal ground state to only those which have the target spin.</p>
+<h1 id="theory">Theory</h1>
+<h2 id="energy-penalty-function">Energy Penalty Function</h2>
+<p>The easiest constraint is to fix the vector direction of the spin on a target atom. The energy penalty has the form:</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">E_\text{con} =  \lambda\left(|\mathbf{M}_I| - \mathbf{e}_I \cdot \mathbf{M}_I\right) \geq 0</span><script type="math/tex">E_\text{con} =  \lambda\left(|\mathbf{M}_I| - \mathbf{e}_I \cdot \mathbf{M}_I\right) \geq 0</script></span>                 (eq1),</p>
+<p>where  is the penalty constant, <span class="arithmatex"><span class="MathJax_Preview">\mathbf{M}_I</span><script type="math/tex">\mathbf{M}_I</script></span> is the magnetic moment of atom <span class="arithmatex"><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span>, defined by</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">\mathbf{M}_I = \int_\Omega \mathbf{m}(\mathbf{r}) F_I(\mathbf{r}) d^3r</span><script type="math/tex">\mathbf{M}_I = \int_\Omega \mathbf{m}(\mathbf{r}) F_I(\mathbf{r}) d^3r</script></span></p>
+<p>where <span class="arithmatex"><span class="MathJax_Preview">m(r)</span><script type="math/tex">m(r)</script></span> is the magnetization of the electrons at <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, and <span class="arithmatex"><span class="MathJax_Preview">F_I(r)</span><script type="math/tex">F_I(r)</script></span> is a function approximating the electronic density of the atom <span class="arithmatex"><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span>. This integral sums up the total magnetic moments in a region around the atom.</p>
+<p>Eq (1) goes to zero as <span class="arithmatex"><span class="MathJax_Preview">\mathbf{M}_I</span><script type="math/tex">\mathbf{M}_I</script></span> goes to <span class="arithmatex"><span class="MathJax_Preview">\mathbf{e}_I</span><script type="math/tex">\mathbf{e}_I</script></span> and it is positive otherwise, so this leaves the target state unchanged and increases the energy of other states. </p>
+<p>The potential that arises from this can be found by taking the derivative of (1) with respect to the density:</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">V_\text{con}(\mathbf{r}) = \lambda  F_I(\mathbf{r}) \left[\left(\frac{\mathbf{M}_I}{|\mathbf{M}_I|} - \mathbf{e}_I \right) \cdot \sigma\ \right]</span><script type="math/tex">V_\text{con}(\mathbf{r}) = \lambda  F_I(\mathbf{r}) \left[\left(\frac{\mathbf{M}_I}{|\mathbf{M}_I|} - \mathbf{e}_I \right) \cdot \sigma\ \right]</script></span></p>
+<p>This is a local potential that pushes the density towards the constrained state. The strength of this “push” is changed by the penalty constant . Due to the factor (the spin operator), the potential only has components in the spin space and tries to rotate the direction of spin, but not change the magnitude. </p>
+<h2 id="energy-penalty-constant">Energy Penalty Constant</h2>
+<p>The energy penalty constant (<span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>) must be large enough to overcome any natural features of the energy landscape. That is, it must be big enough to make the target minimum be the actual minimum of the system. </p>
+<p>On the other hand, making this value too big causes the numerics to become difficult to solve. Castep is built to solve things that act like physical systems and various parameters have been tuned to make it fast at this. Values that are too big, push the system away from being like a physical system and make it take a very long time to converge. </p>
+<p>There are a few tricks that we can play to speed this up. The first is to start with a low value of the <span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> and then increase it gradually. We do this by starting with a very low value, waiting until the system is converged, and then checking if the constraints are actually fulfilled (ie <span class="arithmatex"><span class="MathJax_Preview">\mathbf{M}_I = \mathbf{e}_I</span><script type="math/tex">\mathbf{M}_I = \mathbf{e}_I</script></span>. If not, we double <span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> and converge again. We repeat this until the constraint is obeyed. </p>
+<h1 id="using-magnetic-constraints">Using Magnetic Constraints</h1>
+<p>To apply a constraint to an atom, you must specify the spin in the cell file and add the extra tag FIX_SPIN for each atom on which you want to apply a constraint to block positions_frac or positions_abs in cell:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%block positions_frac
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Fe 0.0 0.0 0.0 spin  2 0 0 FIX_SPIN
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Ni 0.5 0.5 0.5 spin  1 1 0 
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Mn 0.3 0.4 0.0 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>%endblock positions_frac
 </code></pre></div></p>
-<p>SPECTRAL_MAX_ITER                maximum iterations in spectral calculation
-SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation</p>
+<p>This will set the system up with two Fe atoms as follows: </p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Initial Spin</th>
+<th>Spin Constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fe</td>
+<td>2 0 0</td>
+<td>Along 1 0 0</td>
+</tr>
+<tr>
+<td>Ni</td>
+<td>1 1 0</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Mn</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>It will then do the procedure mentioned in the previous section, doubling <span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> to achieve the target constraints. You can only add FIX_SPIN to any atom that you have specified the spin for.</p>
+<h2 id="convergence">Convergence</h2>
+<p>Some of the magnetic states can be difficult to converge, as the penalty potential still does not end up looking like a physical system. This causes the calculation to take a huge number of steps to reach convergence (if it even gets there!)</p>
+<p>You almost certainly need to decrease the value of spin_mix_amp which has a default of 0.8 but should be much lower (eg 0.5 or even less) for many of these systems. </p>
+<p>Alternatively, you can use metals_method: EDFT which uses EDFT instead of density mixing and this can improve the convergence.</p>
 
               
             </article>
@@ -1707,7 +1749,7 @@ SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation<
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <a href="../soc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spin Orbit Coupling" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1716,20 +1758,20 @@ SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation<
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Spin Orbit Coupling
             </div>
           </div>
         </a>
       
       
         
-        <a href="../restarts/" class="md-footer__link md-footer__link--next" aria-label="Next: Restarts" rel="next">
+        <a href="../../Geometry_Optimisation/overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Restarts
+              Overview
             </div>
           </div>
           <div class="md-footer__button md-icon">
