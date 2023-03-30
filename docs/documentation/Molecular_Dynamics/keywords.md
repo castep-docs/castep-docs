@@ -16,7 +16,7 @@ To control the conditions for the dynamics
 * `md_barostat` :    Barostat to use if not a constant volume ensemble. Values: ANDERSEN-HOOVER (default), PARRINELLO-RAHMAN
 * `md_temperature` : Temperature to use if not a constant energy ensemble
 
-For the Huginot Thermostat
+For the Hugoniot Thermostat
 
 * `md_hug_method` :                    Hugoniostat method. Values: NONE (default), NVHUG, NPHUG
 * `md_hug_dir` :                       Hugoniostat compression direction. Values: XDIR, YDIR, ZDIR, ISO (default)
@@ -31,9 +31,6 @@ For the Huginot Thermostat
 * MD_PATHINT_INIT                  PIMD initialisation method
 * MD_PATHINT_STAGING               PIMD staging modes on/off
 * MD_PATHINT_NUM_STAGES            PIMD number of stages
-
-
-ionic_velocities ??
 
 
 ### Advanced settings

@@ -349,3 +349,27 @@ format(1x,a3,1x,i4,3(3x,es18.8e3),'  <-- F')
 
 A blank line is then printed, and the process repeats with the data from the next
 time-step.
+
+##The .hug file
+
+If you are using the Hugoniostat predictor-corrector method to generate a Hugoniot curve, each different state point 
+generated has a different compression etc. This is summarized in the `.hug` file as follows:
+
+```
+  0.990000000000       36.31531287        0.41888602        0.15771481  <-- cTPE
+  0.943272613764       40.07750465        0.63662992        1.62298398  <-- cTPE
+  0.865294155381       58.07130958        1.30346964        6.92736406  <-- cTPE
+```
+
+The 4 data fields are:
+
+c - the ratio of the compressed to original cell vectors
+
+T - the temperature (in user units) - calculated as a time average of the instantaneous temperature of the configurations 
+at this compression
+
+P - the pressure (in user units) - calculated as a time average
+
+E - the energy (in user units) - calculated as a time average
+
+

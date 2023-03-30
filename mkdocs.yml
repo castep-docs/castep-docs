@@ -27,6 +27,7 @@ nav:
         - 'MD Files': 'documentation/Molecular_Dynamics/files.md'
         - 'MD Keywords': 'documentation/Molecular_Dynamics/keywords.md'
         - 'MD Tools': 'documentation/Molecular_Dynamics/tools.md'
+        - 'PIMD': 'documentation/Molecular_Dynamics/pimd.md'
       - 'Transition State Search':
         - 'Nudged elastic band': 'documentation/Transition_State_Search/neb.md'
       - 'Exchange-Correlation (XC)':
