@@ -31,7 +31,7 @@ This page contains a listing of third-party codes that are known to interoperate
 
 * [NOMAD](https://repository.nomad-coe.eu/) supports CASTEP and its users. The service includes uploading, downloading, sharing, assigning DOIs, and more. Storing is guaranteed for at least 10 years, a requirement set by several funding agencies. The NOMAD Repository is also the only repository in Computational Materials Science that is recommended by NATURE Scientific Data. The repository currently contains over 10<sup>8</sup> entries - see the [archive](https://metainfo.nomad-coe.eu/nomadmetainfo_public/archive.html) for the latest data.
 
-# Structure Prediction
+## Structure Prediction
 
 * [AIRSS](https://www.mtg.msm.cam.ac.uk/Codes/AIRSS) (''Ab initio Random Structure Searching'') is a very simple, yet powerful and highly parallel, approach to structure prediction. It generates random sensible structures and relaxes them to nearby minima. The sensible random structures are constructed so that they have reasonable densities, and atomic separations. Additionally they may embody crystallographic, chemical or prior experimental/computational knowledge. Beyond these explicit constraints the emphasis is on a broad, uniform, sampling of structure space. It is tightly integrated with CASTEP and has been used in a number of landmark studies to find novel phases of materials.
 * [Calypso](http://www.calypso.cn/) (''Crystal structure AnaLYsis by Particle Swarm Optimization'') is an efficient structure prediction code. The approach requires only chemical compositions for a given compound to predict stable or metastable structures at given external conditions and can be used to predict/determine the crystal structure and design multi-functional materials.
