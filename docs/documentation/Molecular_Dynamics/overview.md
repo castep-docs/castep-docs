@@ -21,6 +21,9 @@ Of the different barostats, CASTEP supports the isotropic Andersen-Hoover barost
 
 CASTEP also supports the Berendsen thermostat and barostat, as a route to faster equilibration before switching to one of the above thermostats/barostats for production data.
 
+As well as generating different classical ensembles, CASTEP can also generate a state on the Hugoniot using the Hugoniostat 
+algorithm. In fact, CASTEP can generate multiple sets of points on the Hugoniot curve in a single calculation.
+ 
 CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics 
 (PIMD), in either NVT or NPT ensembles, using the Langevin thermostat.
 
