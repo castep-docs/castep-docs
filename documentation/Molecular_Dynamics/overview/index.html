@@ -633,8 +633,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools.md" class="md-nav__link">
+      <a href="../tools/" class="md-nav__link">
         MD Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pimd/" class="md-nav__link">
+        PIMD
       </a>
     </li>
   
@@ -1865,6 +1879,8 @@
 <p>Of the different thermostats, CASTEP supports Nose-Hoover, Nose-Hoover chains, Langevin and Hoover-Langevin.</p>
 <p>Of the different barostats, CASTEP supports the isotropic Andersen-Hoover barostat, and the anisotropic Parrinello-Rahman barostat.</p>
 <p>CASTEP also supports the Berendsen thermostat and barostat, as a route to faster equilibration before switching to one of the above thermostats/barostats for production data.</p>
+<p>As well as generating different classical ensembles, CASTEP can also generate a state on the Hugoniot using the Hugoniostat 
+algorithm. In fact, CASTEP can generate multiple sets of points on the Hugoniot curve in a single calculation.</p>
 <p>CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics 
 (PIMD), in either NVT or NPT ensembles, using the Langevin thermostat.</p>
 <p>In all MD schemes, CASTEP can support both linear and non-linear constraints on the ionic positions and/or on the cell 

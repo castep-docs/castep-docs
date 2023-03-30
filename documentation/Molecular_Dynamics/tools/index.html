@@ -13,7 +13,7 @@
     
     
       
-        <title>Keywords - CASTEP Docs</title>
+        <title>MD Tools - CASTEP Docs</title>
       
     
     
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Keywords
+              MD Tools
             
           </span>
         </div>
@@ -525,12 +525,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
       
       
       
@@ -553,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         MD Overview
       </a>
     </li>
@@ -567,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/basics/" class="md-nav__link">
+      <a href="../basics/" class="md-nav__link">
         MD Basics
       </a>
     </li>
@@ -581,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/restarts/" class="md-nav__link">
+      <a href="../restarts/" class="md-nav__link">
         MD Restarts
       </a>
     </li>
@@ -595,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/files/" class="md-nav__link">
+      <a href="../files/" class="md-nav__link">
         MD Files
       </a>
     </li>
@@ -609,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/keywords/" class="md-nav__link">
+      <a href="../keywords/" class="md-nav__link">
         MD Keywords
       </a>
     </li>
@@ -621,11 +623,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/tools/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         MD Tools
       </a>
+      
     </li>
   
 
@@ -637,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Molecular_Dynamics/pimd/" class="md-nav__link">
+      <a href="../pimd/" class="md-nav__link">
         PIMD
       </a>
     </li>
@@ -778,14 +788,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
       
       
       
@@ -808,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../Spectral/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -820,19 +828,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Spectral/keywords/" class="md-nav__link">
         Keywords
       </a>
-      
     </li>
   
 
@@ -844,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../restarts/" class="md-nav__link">
+      <a href="../../Spectral/restarts/" class="md-nav__link">
         Restarts
       </a>
     </li>
@@ -1862,30 +1862,10 @@
                 
 
 
-  <h1>Keywords</h1>
+  <h1>MD Tools</h1>
 
-<p><code>SPECTRAL_TASK</code> - determines what will be calculated. All tasks will compute the eigenenergies (aka bands). The list of tasks, and the extra  properties calculated are as follows:</p>
-<ul>
-<li><code>bandstructure</code>   </li>
-<li><code>dos</code>         band gradients</li>
-<li><code>optics</code>     optical matrix elements</li>
-<li><code>pdos</code>  atomic projections</li>
-<li><code>coreloss</code> dipole matrix elements with core states    </li>
-</ul>
-<p>Most spectral calculations will involve the calculation of unoccupied states. One of the following parameters should be set to determine the number of states calculated.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SPECTRAL_NEXTRA_BANDS            number of extra spectral bands
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>SPECTRAL_PERC_EXTRA_BANDS        percentage of extra spectral bands
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>SPECTRAL_NBANDS                  number of bands/k-point in spectral calc
-</code></pre></div>
-<p>It is possible to use a different exchange-correlation functional to the one used for the groundstate. An example might be when a semi-local functional (such as PBE) is used for the groundstate, and a more expensive non-local functional (e.g. PBE0) is used for the spectral calculation. This is an approximation and should be done with cuation. To set the xc functional use one of the two keywords.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SPECTRAL_XC_FUNCTIONAL           spectral exchange-correlation functional
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>SPECTRAL_XC_DEFINITION           spectral exchange-correlation functional
-</code></pre></div>
-<p>To change the convergence tolerance for the eigenvalues set
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SPECTRAL_EIGENVALUE_TOL          ! default: 10E-6 eV
-</code></pre></div></p>
-<p>SPECTRAL_MAX_ITER                maximum iterations in spectral calculation
-SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation</p>
+<p>JMol can read a .md file and animate the motion of the atoms.</p>
+<p>See the tutorials for examples of more tools for MD.</p>
 
               
             </article>
@@ -1899,7 +1879,7 @@ SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation<
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <a href="../keywords/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MD Keywords" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1908,20 +1888,20 @@ SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation<
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              MD Keywords
             </div>
           </div>
         </a>
       
       
         
-        <a href="../restarts/" class="md-footer__link md-footer__link--next" aria-label="Next: Restarts" rel="next">
+        <a href="../pimd/" class="md-footer__link md-footer__link--next" aria-label="Next: PIMD" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Restarts
+              PIMD
             </div>
           </div>
           <div class="md-footer__button md-icon">

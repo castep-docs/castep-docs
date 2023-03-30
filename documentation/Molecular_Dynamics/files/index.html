@@ -720,6 +720,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-hug-file" class="md-nav__link">
+    The .hug file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -749,8 +756,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools.md" class="md-nav__link">
+      <a href="../tools/" class="md-nav__link">
         MD Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pimd/" class="md-nav__link">
+        PIMD
       </a>
     </li>
   
@@ -2047,6 +2068,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-hug-file" class="md-nav__link">
+    The .hug file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2316,6 +2344,19 @@ label <code>&lt;-- R</code>.</p>
 </code></pre></div>
 <p>A blank line is then printed, and the process repeats with the data from the next
 time-step.</p>
+<h2 id="the-hug-file">The .hug file</h2>
+<p>If you are using the Hugoniostat predictor-corrector method to generate a Hugoniot curve, each different state point 
+generated has a different compression etc. This is summarized in the <code>.hug</code> file as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>  0.990000000000       36.31531287        0.41888602        0.15771481  &lt;-- cTPE
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>  0.943272613764       40.07750465        0.63662992        1.62298398  &lt;-- cTPE
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>  0.865294155381       58.07130958        1.30346964        6.92736406  &lt;-- cTPE
+</code></pre></div>
+<p>The 4 data fields are:</p>
+<p>c - the ratio of the compressed to original cell vectors</p>
+<p>T - the temperature (in user units) - calculated as a time average of the instantaneous temperature of the configurations 
+at this compression</p>
+<p>P - the pressure (in user units) - calculated as a time average</p>
+<p>E - the energy (in user units) - calculated as a time average</p>
 
               
             </article>
