@@ -12,7 +12,7 @@ molecular orbital and subsequently enforce occupation of this state.
 This idea is referred to as linear expansion $\Delta$SCF and has first
 been proposed by Gavnholt *et al*. Phys. Rev. B 78, 075441 (2008).
 
-The here presented implementation is described in J. Chem. Phys. 139,
+The CASTEP implementation is described in J. Chem. Phys. 139,
 014708 (2013). Herein, we constrain the occupation of a so-called
 resonance state built from a linear combination of Kohn-Sham states
 instead of a single KS state. We expand an abitrary reference state
@@ -31,43 +31,29 @@ of this state with the effect of describing an excitation of a specific
 molecular orbital. This is done in every SCF step until the calculation
 is converged.
 
-For the le $\Delta$SCF calculation, we have to add following keyword to
-<seed\>.param
+For a le $\Delta$SCF calculation, we have to set `deltascf_method = linear expansion` in the 
+`<seed>.param` file. The constraint must also be specifed, as discussed in the 
+[overview](overview.md) section.
 
-    %BLOCK DEVEL_CODE
-     DeltaSCF
-    %ENDBLOCK DEVEL_CODE
+The only additional relevant $\Delta$SCF keywords is `deltascf_overlap_cutoff`
 
-and add following keyword to <seed\>.deltascf
-
-    deltascf_mode        :  3
-
-### Keywords allowed in <seed\>.deltascf
-
-In the .deltascf file, the keyword title plus colon takes exactly 23
-columns (A20,3X). The keyword content starts after that. Lines with
-``#`` are ignored.
-
-| keyword           | multiple appearance | arguments and FORTRAN format          |
-| ------------------ | ---------- | --------------------------------------- |
-| deltascf_iprint              | > No    | <integer I\>                            |
-| deltascf_file  | > No    | <string\>                               |
-| delta_scf_constraint          | > Yes   | <#state I5\>1X<occ. F8.4\>1X<spinI4\>      |
-| overlap_cutoff | > No    | <float F8.4\>, default: 0.01            |
-| deltascf_mixing              | > No    | <float F8.4\>, default: mix_charge_amp  |
+Example `.param` file:
 
 
-Example .deltascf file:
+```
+reuse               : <base>.check
+calculate_deltascf  : true
+deltascf_checkpoint : <base>.check
+deltascf_method     : linear expansion
+deltascf_overlap_cutoff : 0.01
 
-    deltascf_mode        :  1                               
-    deltascf_file        :  bla.check                               
-    deltascf_iprint      :  1                               
-    # mode 3 constraints ##                                 
-    #                       band  occ  spin
-    deltascf_constraint  :  35    1.0000  1
-    overlap_cutoff       :  0.01                            
+#band  occ  spin
+%block deltascf_constraints
+35    1.0000  1
+%endblock deltascf_constraints
+```
 
-In this example, we take state 35 from wavefunction file bla.check and
+In this example, we take state 35 from wavefunction file `<base>.check` and
 enforce an occupation of 1.00 electrons. In this runmode we do not have
 to pick constraints that yield a net change in charge equal to 0. Charge
 neutrality will be satisfied by modifying the Fermi level accordingly.
