@@ -64,6 +64,8 @@ nav:
         - 'param file': 'documentation/Input_Files/param_file.md'
         - 'cell keywords': 'documentation/Input_Files/cell_keywords.md'
         - 'output files': 'documentation/Input_Files/output_files.md'
+      - 'Tools':
+        - 'Third Party Tools': 'documentation/Tools/tools.md'
       - 'Troubleshooting':
         - 'Common errors':  'documentation/Troubleshooting/troubleshooting.md'
         - 'Linux help':  'documentation/Troubleshooting/linux_path.md'
