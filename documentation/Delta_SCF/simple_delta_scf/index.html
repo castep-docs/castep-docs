@@ -13,7 +13,7 @@
     
     
       
-        <title>Keywords - CASTEP Docs</title>
+        <title>Simple Delta SCF - CASTEP Docs</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#conventional-delta-self-consistent-field-dft-calculations" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Keywords
+              Simple Delta SCF
             
           </span>
         </div>
@@ -792,14 +797,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
       
       
       
@@ -822,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../Spectral/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -834,19 +837,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Spectral/keywords/" class="md-nav__link">
         Keywords
       </a>
-      
     </li>
   
 
@@ -858,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../restarts/" class="md-nav__link">
+      <a href="../../Spectral/restarts/" class="md-nav__link">
         Restarts
       </a>
     </li>
@@ -1079,12 +1074,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" checked>
       
       
       
@@ -1107,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Delta_SCF/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         Delta SCF Overview
       </a>
     </li>
@@ -1119,11 +1116,52 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Delta_SCF/simple_delta_scf/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Simple Delta SCF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Simple Delta SCF
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    Basics
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1135,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Delta_SCF/lin_ex_delta_scf/" class="md-nav__link">
+      <a href="../lin_ex_delta_scf/" class="md-nav__link">
         Linear expansion DeltaSCF
       </a>
     </li>
@@ -1149,7 +1187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Delta_SCF/mo_delta_scf/" class="md-nav__link">
+      <a href="../mo_delta_scf/" class="md-nav__link">
         MO Delta SCF
       </a>
     </li>
@@ -1163,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Delta_SCF/molpdos/" class="md-nav__link">
+      <a href="../molpdos/" class="md-nav__link">
         Molecular Projected DOS
       </a>
     </li>
@@ -1877,6 +1915,23 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    Basics
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1890,30 +1945,46 @@
                 
 
 
-  <h1>Keywords</h1>
-
-<p><code>SPECTRAL_TASK</code> - determines what will be calculated. All tasks will compute the eigenenergies (aka bands). The list of tasks, and the extra  properties calculated are as follows:</p>
-<ul>
-<li><code>bandstructure</code>   </li>
-<li><code>dos</code>         band gradients</li>
-<li><code>optics</code>     optical matrix elements</li>
-<li><code>pdos</code>  atomic projections</li>
-<li><code>coreloss</code> dipole matrix elements with core states    </li>
-</ul>
-<p>Most spectral calculations will involve the calculation of unoccupied states. One of the following parameters should be set to determine the number of states calculated.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SPECTRAL_NEXTRA_BANDS            number of extra spectral bands
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>SPECTRAL_PERC_EXTRA_BANDS        percentage of extra spectral bands
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>SPECTRAL_NBANDS                  number of bands/k-point in spectral calc
+<h1 id="conventional-delta-self-consistent-field-dft-calculations">Conventional Delta-Self-Consistent-Field-DFT Calculations</h1>
+<h2 id="basics">Basics</h2>
+<p>In <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF-DFT we calculate electronic excited states by assuming a
+certain non-equilibrium orbital occupation and by self-consistently
+solving the Kohn-Sham equations with this excited state population.</p>
+<p>The excitation energy is then simply the energy difference between the
+ground state KS-DFT calculation and the <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF-DFT calculation:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\Delta E = E(\Delta SCF)-E(DFT)</div>
+<script type="math/tex; mode=display">\Delta E = E(\Delta SCF)-E(DFT)</script>
+</div>
+<p>We therefore need to perform two calculations, the ground state DFT
+calculation and the DeltaSCF calculation. For a more detailed
+explanation, see J. Chem. Phys. 135, 224303 (2011)</p>
+<p>For this simple <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF calculation, we have to set <code>deltascf_method = simple</code> in the 
+<code>&lt;seed&gt;.param</code> file. The constraint must also be specifed, as discussed in the 
+<a href="../overview/">overview</a> section.</p>
+<p>The only additional relevant <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF keywords is <code>deltascf_smearing</code></p>
+<p>Example <code>.param</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>reuse               : &lt;base&gt;.check
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>calculate_deltascf  : true
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>deltascf_checkpoint : &lt;base&gt;.check
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>deltascf_method     : simple
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>deltascf_smearing   : 0.01
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>#band  occ spin from_band to_band
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>%block deltascf_constraints
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>34    0.0000  1   34   34
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>35    1.0000  1   35   35
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>%endblock deltascf_constraints
 </code></pre></div>
-<p>It is possible to use a different exchange-correlation functional to the one used for the groundstate. An example might be when a semi-local functional (such as PBE) is used for the groundstate, and a more expensive non-local functional (e.g. PBE0) is used for the spectral calculation. This is an approximation and should be done with cuation. To set the xc functional use one of the two keywords.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SPECTRAL_XC_FUNCTIONAL           spectral exchange-correlation functional
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>SPECTRAL_XC_DEFINITION           spectral exchange-correlation functional
-</code></pre></div>
-<p>To change the convergence tolerance for the eigenvalues set
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SPECTRAL_EIGENVALUE_TOL          ! default: 10E-6 eV
-</code></pre></div></p>
-<p>SPECTRAL_MAX_ITER                maximum iterations in spectral calculation
-SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation</p>
+<p>In this example, we enforce an occupation of 0.00 electrons in the
+electronic state 34, spin channel 1 and an occupation of 1.00 electrons
+in the electronic state 35, spin channel 1. The last two numbers in each
+line specify a window of states in which the corresponding state is
+searched if it changes its position between SCF cycles. In that way we
+can ensure that we constrain the correct state. </p>
+<p><code>deltascf_smearing</code> is a mechanism which relaxes the constraints minimally to facilitate
+convergence. Sometimes, especially in the case of degenerate states, <code>deltascf_smearing</code> is 
+necessary.</p>
 
               
             </article>
@@ -1927,7 +1998,7 @@ SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation<
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Delta SCF Overview" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1936,20 +2007,20 @@ SPECTRAL_MAX_STEPS_PER_ITER      maximum steps per iter in spectral calculation<
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Delta SCF Overview
             </div>
           </div>
         </a>
       
       
         
-        <a href="../restarts/" class="md-footer__link md-footer__link--next" aria-label="Next: Restarts" rel="next">
+        <a href="../lin_ex_delta_scf/" class="md-footer__link md-footer__link--next" aria-label="Next: Linear expansion DeltaSCF" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Restarts
+              Linear expansion DeltaSCF
             </div>
           </div>
           <div class="md-footer__button md-icon">

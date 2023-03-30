@@ -1118,8 +1118,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../delta_scf/" class="md-nav__link">
-        Delta SCF
+      <a href="../simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
       </a>
     </li>
   
@@ -1134,6 +1134,20 @@
     <li class="md-nav__item">
       <a href="../lin_ex_delta_scf/" class="md-nav__link">
         Linear expansion DeltaSCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mo_delta_scf/" class="md-nav__link">
+        MO Delta SCF
       </a>
     </li>
   
@@ -1188,15 +1202,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#keywords-allowed-in-deltascf" class="md-nav__link">
-    Keywords allowed in .deltascf
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keywords-allowed-in-seedmolpdos" class="md-nav__link">
-    Keywords allowed in &lt;seed>.molpdos
+  <a href="#keywords-allowed-in-molpdos" class="md-nav__link">
+    Keywords allowed in .molpdos
   </a>
   
 </li>
@@ -1808,8 +1815,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/Delta_SCF/delta_scf/" class="md-nav__link">
-        Delta SCF
+      <a href="../../../tutorials/Delta_SCF/simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
       </a>
     </li>
   
@@ -1939,15 +1946,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#keywords-allowed-in-deltascf" class="md-nav__link">
-    Keywords allowed in .deltascf
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keywords-allowed-in-seedmolpdos" class="md-nav__link">
-    Keywords allowed in &lt;seed>.molpdos
+  <a href="#keywords-allowed-in-molpdos" class="md-nav__link">
+    Keywords allowed in .molpdos
   </a>
   
 </li>
@@ -1974,47 +1974,27 @@
 <h1 id="molecular-orbital-mo-projected-density-of-states-molpdos">Molecular Orbital (MO) projected Density-of-States - MolPDOS</h1>
 <h2 id="basics">Basics</h2>
 <p>This mode allows to generate projections and pDOS plots with respect to
-any molecular orbital (MO). To run it one has to add following keyword
-to <code>&lt;seed&gt;.param</code></p>
-<div class="highlight"><pre><span></span><code>%BLOCK DEVEL_CODE
-  MolPDOS
-%ENDBLOCK DEVEL_CODE
-</code></pre></div>
+any molecular orbital (MO). To run it one just has to add <code>calculate_modos=true</code> keyword
+to <code>&lt;seed&gt;.param</code> file.</p>
 <p>The projection data is produced by CASTEP after the SCF task and is
-written to files called <code>&lt;seed&gt;.[molpdos_state]()&lt;#&gt;_&lt;#&gt;</code>, where
+written to files called <code>&lt;seed&gt;.modos_state_&lt;#&gt;_&lt;#&gt;</code>, where
 the two numbers correspond to the number and the spin of the specified
 reference orbital from the reference checkfile.</p>
 <p>At the end of the <code>&lt;seed&gt;.castep</code> file the projection is commented in
 the following way:</p>
-<div class="highlight"><pre><span></span><code>Successfully read .deltascf file!
-              Calculating MolPDOS weights
-+-------------------INPUT PARAMETERS-------------------+
-Taking band from model    gasphase
-MolPDOS state               1
-MolPDOS band  nr.           4
-MolPDOS band has spin      1
-MolPDOS state               2
-MolPDOS band  nr.           5
-MolPDOS band has spin      1
-MolPDOS state               3
-MolPDOS band  nr.           6
-MolPDOS band has spin      1
-MolPDOS state               4
-MolPDOS band  nr.           4
-MolPDOS band has spin      2
-MolPDOS state               5
-MolPDOS band  nr.           5
-MolPDOS band has spin      2
-MolPDOS state               6
-MolPDOS band  nr.           6
-MolPDOS band has spin      2
-|DeltaSCF| Reading projection data from model file gs.check
-Writing file   no.molpdos_state_4_1
-Writing file   no.molpdos_state_5_1
-Writing file   no.molpdos_state_6_1
-Writing file   no.molpdos_state_4_2
-Writing file   no.molpdos_state_5_2
-Writing file   no.molpdos_state_6_2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>             Calculating MODOS weights               
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> +-------------------INPUT PARAMETERS-------------------+
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Taking band from model   N2-base.check                                                                                                                                                                                                                                                   
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  MODOS state               1
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  MODOS band  nr.           5
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  MODOS band has spin       1
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  MODOS state               2
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  MODOS band  nr.           6
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  MODOS band has spin       1
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>|DeltaSCF| Population of state:     5     1   1.000000
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>|DeltaSCF| Population of state:     6     1   0.000000
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a> Writing file   N2-modos.modos_state_5_1
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a> Writing file   N2-modos.modos_state_6_1
 </code></pre></div>
 <p>These files, together with the <code>&lt;seed&gt;.bands</code> file can be post-processed
 with the MolPDOS program with the following command</p>
@@ -2034,10 +2014,10 @@ with the MolPDOS program with the following command</p>
 <p>In addition it will write files for the total DOS (Total-DOS.dat), for
 the two spin channels if the calculation was spin polarized
 (Total-DOS_spin1.dat, Total-DOS_spin2.dat), and for the MolPDOS (
-<code>&lt;#&gt;_spin&lt;#&gt;_&lt;output_filename)</code>. The keywords for the .deltascf and
-.molpdos files can be found below.</p>
-<h3 id="keywords-allowed-in-deltascf">Keywords allowed in <seed>.deltascf</h3>
-<p>In the .deltascf and .molpdos files, the keyword title plus colon takes
+<code>&lt;#&gt;_spin&lt;#&gt;_&lt;output_filename)</code>. </p>
+<p>The keywords for the <code>.molpdos</code> input file can be found below.</p>
+<h3 id="keywords-allowed-in-molpdos">Keywords allowed in <seed>.molpdos</h3>
+<p>In the .molpdos files, the keyword title plus colon takes
 exactly 23 columns (A20,3X). The keyword content starts after that.
 Lines with <code>#</code> are ignored.</p>
 <table>
@@ -2050,76 +2030,38 @@ Lines with <code>#</code> are ignored.</p>
 </thead>
 <tbody>
 <tr>
-<td>deltascf_iprint</td>
-<td>&gt; No</td>
-<td>&lt;integer I></td>
-</tr>
-<tr>
 <td>molpdos_state</td>
-<td>&gt; Yes</td>
-<td>&lt;# of ref. state I6>1X&lt;spin of ref. state I6></td>
-</tr>
-<tr>
-<td>deltascf_file</td>
-<td>&gt; No</td>
-<td>&lt;string len=40 filename without  .check></td>
-</tr>
-</tbody>
-</table>
-<p>Example .deltascf file:</p>
-<div class="highlight"><pre><span></span><code>deltascf_iprint      :  2
-deltascf_file        :  gasphase.check
-molpdos_state        :  31     1
-molpdos_state        :  33     1
-molpdos_state        :  35     1
-molpdos_state        :  36     2
-</code></pre></div>
-<p>In this example, 4 different MOs with the indices 31, 33, 35, and 36
-contained in the wavefunction file gasphase.check are projected from the
-wavefunction of the current system.</p>
-<h3 id="keywords-allowed-in-seedmolpdos">Keywords allowed in &lt;seed>.molpdos</h3>
-<table>
-<thead>
-<tr>
-<th>keyword</th>
-<th>multiple appearance</th>
-<th>arguments and FORTRAN format</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>molpdos_state</td>
-<td>&gt; Yes</td>
+<td>Yes</td>
 <td>&lt;# of ref. state I6>1X&lt;spin of ef. state I6></td>
 </tr>
 <tr>
 <td>molpdos_bin_with</td>
-<td>&gt; No</td>
+<td>No</td>
 <td>real number, default=0.01</td>
 </tr>
 <tr>
 <td>molpdos_smearing</td>
-<td>&gt; No</td>
+<td>No</td>
 <td>real number, default=0.05</td>
 </tr>
 <tr>
 <td>molpdos_scaling</td>
-<td>&gt; No</td>
+<td>No</td>
 <td>real number, default=1.0, scales  MolPDOSes</td>
 </tr>
 <tr>
 <td>no_fermi_shift</td>
-<td>&gt; No</td>
+<td>No</td>
 <td>no argument, logical, removes  fermishift</td>
 </tr>
 <tr>
 <td>ax is_energy_margin</td>
-<td>&gt; No</td>
+<td>No</td>
 <td>real in eV default=0.0eV</td>
 </tr>
 <tr>
 <td>output_filename</td>
-<td>&gt; No</td>
+<td>No</td>
 <td>&lt;string len=40 filename></td>
 </tr>
 </tbody>
@@ -2148,7 +2090,7 @@ output_filename      :  MolPDOS.dat
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../lin_ex_delta_scf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Linear expansion DeltaSCF" rel="prev">
+        <a href="../mo_delta_scf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MO Delta SCF" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2157,7 +2099,7 @@ output_filename      :  MolPDOS.dat
               <span class="md-footer__direction">
                 Previous
               </span>
-              Linear expansion DeltaSCF
+              MO Delta SCF
             </div>
           </div>
         </a>

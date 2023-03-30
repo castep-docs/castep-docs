@@ -1118,8 +1118,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../delta_scf/" class="md-nav__link">
-        Delta SCF
+      <a href="../simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
       </a>
     </li>
   
@@ -1170,25 +1170,26 @@
     Basics
   </a>
   
-    <nav class="md-nav" aria-label="Basics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#keywords-allowed-in-seeddeltascf" class="md-nav__link">
-    Keywords allowed in &lt;seed>.deltascf
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mo_delta_scf/" class="md-nav__link">
+        MO Delta SCF
+      </a>
     </li>
   
 
@@ -1801,8 +1802,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/Delta_SCF/delta_scf/" class="md-nav__link">
-        Delta SCF
+      <a href="../../../tutorials/Delta_SCF/simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
       </a>
     </li>
   
@@ -1928,19 +1929,6 @@
     Basics
   </a>
   
-    <nav class="md-nav" aria-label="Basics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#keywords-allowed-in-seeddeltascf" class="md-nav__link">
-    Keywords allowed in &lt;seed>.deltascf
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1967,7 +1955,7 @@ more realistic excitation constraint would be to project on a gasphase
 molecular orbital and subsequently enforce occupation of this state.</p>
 <p>This idea is referred to as linear expansion <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF and has first
 been proposed by Gavnholt <em>et al</em>. Phys. Rev. B 78, 075441 (2008).</p>
-<p>The here presented implementation is described in J. Chem. Phys. 139,
+<p>The CASTEP implementation is described in J. Chem. Phys. 139,
 014708 (2013). Herein, we constrain the occupation of a so-called
 resonance state built from a linear combination of Kohn-Sham states
 instead of a single KS state. We expand an abitrary reference state
@@ -1987,65 +1975,23 @@ contributions from all other states. We can now constrain the occupation
 of this state with the effect of describing an excitation of a specific
 molecular orbital. This is done in every SCF step until the calculation
 is converged.</p>
-<p>For the le <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF calculation, we have to add following keyword to
-&lt;seed>.param</p>
-<div class="highlight"><pre><span></span><code>%BLOCK DEVEL_CODE
- DeltaSCF
-%ENDBLOCK DEVEL_CODE
+<p>For a le <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF calculation, we have to set <code>deltascf_method = linear expansion</code> in the 
+<code>&lt;seed&gt;.param</code> file. The constraint must also be specifed, as discussed in the 
+<a href="../overview/">overview</a> section.</p>
+<p>The only additional relevant <span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>SCF keywords is <code>deltascf_overlap_cutoff</code></p>
+<p>Example <code>.param</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>reuse               : &lt;base&gt;.check
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>calculate_deltascf  : true
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>deltascf_checkpoint : &lt;base&gt;.check
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>deltascf_method     : linear expansion
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>deltascf_overlap_cutoff : 0.01
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>#band  occ  spin
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>%block deltascf_constraints
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>35    1.0000  1
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>%endblock deltascf_constraints
 </code></pre></div>
-<p>and add following keyword to &lt;seed>.deltascf</p>
-<div class="highlight"><pre><span></span><code>deltascf_mode        :  3
-</code></pre></div>
-<h3 id="keywords-allowed-in-seeddeltascf">Keywords allowed in &lt;seed>.deltascf</h3>
-<p>In the .deltascf file, the keyword title plus colon takes exactly 23
-columns (A20,3X). The keyword content starts after that. Lines with
-<code>#</code> are ignored.</p>
-<table>
-<thead>
-<tr>
-<th>keyword</th>
-<th>multiple appearance</th>
-<th>arguments and FORTRAN format</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>deltascf_iprint</td>
-<td>&gt; No</td>
-<td>&lt;integer I></td>
-</tr>
-<tr>
-<td>deltascf_file</td>
-<td>&gt; No</td>
-<td>&lt;string></td>
-</tr>
-<tr>
-<td>delta_scf_constraint</td>
-<td>&gt; Yes</td>
-<td>&lt;#state I5>1X&lt;occ. F8.4>1X&lt;spinI4></td>
-</tr>
-<tr>
-<td>overlap_cutoff</td>
-<td>&gt; No</td>
-<td>&lt;float F8.4>, default: 0.01</td>
-</tr>
-<tr>
-<td>deltascf_mixing</td>
-<td>&gt; No</td>
-<td>&lt;float F8.4>, default: mix_charge_amp</td>
-</tr>
-</tbody>
-</table>
-<p>Example .deltascf file:</p>
-<div class="highlight"><pre><span></span><code>deltascf_mode        :  1                               
-deltascf_file        :  bla.check                               
-deltascf_iprint      :  1                               
-# mode 3 constraints ##                                 
-#                       band  occ  spin
-deltascf_constraint  :  35    1.0000  1
-overlap_cutoff       :  0.01
-</code></pre></div>
-<p>In this example, we take state 35 from wavefunction file bla.check and
+<p>In this example, we take state 35 from wavefunction file <code>&lt;base&gt;.check</code> and
 enforce an occupation of 1.00 electrons. In this runmode we do not have
 to pick constraints that yield a net change in charge equal to 0. Charge
 neutrality will be satisfied by modifying the Fermi level accordingly.
@@ -2063,7 +2009,7 @@ However, this is only strictly sensible for metallic systems.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../delta_scf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Delta SCF" rel="prev">
+        <a href="../simple_delta_scf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Simple Delta SCF" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2072,20 +2018,20 @@ However, this is only strictly sensible for metallic systems.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Delta SCF
+              Simple Delta SCF
             </div>
           </div>
         </a>
       
       
         
-        <a href="../molpdos/" class="md-footer__link md-footer__link--next" aria-label="Next: Molecular Projected DOS" rel="next">
+        <a href="../mo_delta_scf/" class="md-footer__link md-footer__link--next" aria-label="Next: MO Delta SCF" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Molecular Projected DOS
+              MO Delta SCF
             </div>
           </div>
           <div class="md-footer__button md-icon">
