@@ -50,8 +50,9 @@ nav:
         - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
       - 'Delta SCF':
         - 'Delta SCF Overview': 'documentation/Delta_SCF/overview.md'
-        - 'Delta SCF': 'documentation/Delta_SCF/delta_scf.md'
+        - 'Simple Delta SCF': 'documentation/Delta_SCF/simple_delta_scf.md'
         - 'Linear expansion DeltaSCF': 'documentation/Delta_SCF/lin_ex_delta_scf.md'
+        - 'MO Delta SCF': 'documentation/Delta_SCF/mo_delta_scf.md'
         - 'Molecular Projected DOS': 'documentation/Delta_SCF/molpdos.md'
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
@@ -84,7 +85,7 @@ nav:
         - 'Molecular Crystals': 'tutorials/NMR/NMR_molcrystal.md'
         - 'J coupling': 'tutorials/NMR/NMR_shielding.md'
       - 'Delta SCF':
-        - 'Delta SCF': 'tutorials/Delta_SCF/delta_scf.md'
+        - 'Simple Delta SCF': 'tutorials/Delta_SCF/simple_delta_scf.md'
         - 'Linear expansion DeltaSCF': 'tutorials/Delta_SCF/lin_ex_delta_scf.md'
         - 'Molecular Projected DOS': 'tutorials/Delta_SCF/molpdos.md'
       - 'Tools':
