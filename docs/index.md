@@ -14,4 +14,4 @@ and a downloadable
 [pdf user guide](http://www-users.york.ac.uk/~mijp1/MS_CASTEP_Guide.pdf)
 
 ### Contributors: 
-Albert Bartok-Partay, Stewart Clark, Phil Hasnip, Chris Pickard, Matt Probert, Keith Refson, Kane Shenton, Benjamin Shi, Jonathan Yates
+Albert Bartók-Pártay, Stewart Clark, Phil Hasnip, Chris Pickard, Matt Probert, Keith Refson, Kane Shenton, Benjamin Shi, Jonathan Yates
