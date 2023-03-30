@@ -141,7 +141,8 @@ spin channels, and the MolPDOS peaks.
 
 The following image shows the Total DOS and the two spin channels.
 
-![alternate text](DOS1.png){.align-center}
+
+![Total DOS and Two Spin Channels](../../img/DOS1.png)
 
 The next picture shows the frontier orbitals of spin channel 1 projected
 on the total DOS. Especially the LUMO shows strong hybridization with
@@ -149,11 +150,9 @@ the Nickel d-bands and also is partially occupied. The left scale refers
 to the total DOS, whereas the right y-scale shows the peak height of the
 projected MOs.
 
-![alternate text](DOS2.png){.align-center}
+![Frontier orbitals of spin channel 1 projected on the total DOS](../../img/DOS2.png)
 
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--Example
-5: Putting it all together: CO on Cu(100)
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
+## Putting it all together: CO on Cu(100)
 
 For this example we analyze the electronic structure of a CO molecule in
 a c(2x2) overlayer on Cu(100), before we use this information to
@@ -276,8 +275,8 @@ of CO on Cu(100).
 
 **GOOD TO KNOW**
 
-:   If you ever forget the correct input for \<seed\>.deltascf or
-    \<seed\>.molpdos, just run the MolPDOS tool without seed. The
+:   If you ever forget the correct input for <seed\>.deltascf or
+    <seed\>.molpdos, just run the MolPDOS tool without seed. The
     printed information is all you need!
 
 ------------------------------------------------------------------------

@@ -1,0 +1,67 @@
+This page contains a listing of third-party codes that are known to interoperate with CASTEP. Some of these programs require additional interface codes/scripts to take CASTEP output as their input, etc.
+
+
+## Pre-processing Tools
+
+* [c2x](http://www.c2x.org.uk/) reads and writes a selection of file formats which relate to DFT electronic structure codes to perform manipulations and analysis. It can interpolate densities via a combination of trilinear and Fourier interpolation, integrate densities and calculate their dipole moments, and analyse bands for inversion symmetry. It can be used to produce output formats compatible with XCrysDen, VESTA, VMD and Jmol amongst others, and can also produce 1D data in a format suitable for gnuplot.
+* [Cif2Cell](https://sourceforge.net/projects/cif2cell/) is a tool to generate the geometrical setup for various electronic structure codes from a CIF (Crystallographic Information Framework) file. Also supports supercell generation and formats for visualisation tools.
+* [SeeK-path](https://www.materialscloud.org/work/tools/seekpath) is a k-path finder that provides band paths compatible with space group symmetry, and an interactive 3D visualiser.
+
+## Post-processing Tools
+
+
+* [Abins](http://docs.mantidproject.org/v3.9.1/algorithms/Abins-v1.html) is a plugin for Mantid which allows scientists to compare experimental and theoretical inelastic neutron scattering spectra. AbINS uses the phonon data calculated by DFT programs, such as CASTEP, to generate an INS spectra of a powder sample, which makes it easier to establish a connection between theory and experiments.
+* dispersion.pl and dos.pl (part of CASTEP distribution) are tools for producing band-structure and density of states plots from a CASTEP .bands file. They also support creating phonon dispersion and DOS plots.
+* [OCLIMAX](https://sites.google.com/site/ornliceman/download) is a free program for simulation of inelastic neutron scattering using vibrational frequencies and polarization vectors as input. It can perform simulations on both powder and single crystal samples, and the input phonon data can be obtained from first-principles or empirical calculations.
+* [OptaDOS](http://www.tcm.phy.cam.ac.uk/~ajm255/optados/) is a code for calculating optical, core-level excitation spectra along with full, partial and joint electronic density of states (DOS).
+* [phonopy](https://phonopy.github.io/phonopy/) is an open source package for phonon calculations at harmonic and quasi-harmonic levels.
+* [phono3py](https://phonopy.github.io/phono3py/) calculates phonon-phonon interaction and related properties using the supercell approach. These properties include the lattice thermal conductivity, joint density of states and the phonon lifetimes.
+* bs_sc2pc (part of CASTEP distribution)  is a band structure unfolding tool for CASTEP. It implements the effective band structure method described by Popescu and Zunger http://dx.doi.org/10.1103/PhysRevB.85.085201|10.1103/PhysRevB.85.085201, and is distributed as part of the CASTEP academic distribution. Peter Brommer and David Quigley (2014) "Automated effective band structures for defective and mismatched supercells." J. Phys.: Condens. Matter 26 485501. http://dx.doi.org/10.1088/0953-8984/26/48/485501|10.1088/0953-8984/26/48/485501.
+
+## Visualisation
+
+* [CrystalMaker](http://crystalmaker.com/crystalmaker/specs/index.html) is a visualisation suite for designing and investigating crystal and molecular structures. It also provides support for modelling and animation of atomistic and electronic properties.
+* [JMOL](http://jmol.sourceforge.net/) is an open-source browser-based HTML5 viewer and stand-alone Java viewer for chemical structures in 3D with features for molecules, crystals, materials, and biomolecules.
+* [MagresView](https://www.ccpnc.ac.uk/magresview/magresview/magres_view.html) is a tool for visualization and processing of computed solid-state NMR parameters.
+* [OVITO](https://ovito.org/) is a scientific visualization and analysis software for atomistic and particle simulation data.
+* [VESTA](http://jp-minerals.org/vesta/en/) is a 3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies.
+* [XCrysDen](http://www.xcrysden.org/) is a crystalline and molecular structure visualisation program aiming at display of isosurfaces and contours, which can be superimposed on crystalline structures and interactively rotated and manipulated.
+
+## Databases and Big Data
+
+* [NOMAD](https://repository.nomad-coe.eu/) supports CASTEP and its users. The service includes uploading, downloading, sharing, assigning DOIs, and more. Storing is guaranteed for at least 10 years, a requirement set by several funding agencies. The NOMAD Repository is also the only repository in Computational Materials Science that is recommended by NATURE Scientific Data. The repository currently contains over 10<sup>8</sup> entries - see the [archive](https://metainfo.nomad-coe.eu/nomadmetainfo_public/archive.html) for the latest data.
+
+# Structure Prediction
+
+* [AIRSS](https://www.mtg.msm.cam.ac.uk/Codes/AIRSS) (''Ab initio Random Structure Searching'') is a very simple, yet powerful and highly parallel, approach to structure prediction. It generates random sensible structures and relaxes them to nearby minima. The sensible random structures are constructed so that they have reasonable densities, and atomic separations. Additionally they may embody crystallographic, chemical or prior experimental/computational knowledge. Beyond these explicit constraints the emphasis is on a broad, uniform, sampling of structure space. It is tightly integrated with CASTEP and has been used in a number of landmark studies to find novel phases of materials.
+* [Calypso](http://www.calypso.cn/) (''Crystal structure AnaLYsis by Particle Swarm Optimization'') is an efficient structure prediction code. The approach requires only chemical compositions for a given compound to predict stable or metastable structures at given external conditions and can be used to predict/determine the crystal structure and design multi-functional materials.
+* [USPEX](http://uspex-team.org/) (''Universal Structure Predictor: Evolutionary Xtallography'') is a method developed by the Oganov laboratory for crystal structure prediction. It can very efficiently handle molecular crystals (including those with flexible and very complex molecules) and can predict stable chemical compositions and corresponding crystal structures, given just the names of the chemical elements. In addition to this fully non-empirical search, USPEX allows one to predict also a large set of robust metastable structures and perform several types of simulations using various degrees of prior knowledge.
+* [XtalOPT](http://xtalopt.github.io/)  is a free and truly open source evolutionary algorithm designed for a priori crystal structure prediction implemented as an extension to the [Avogadro](http://avogadro.cc/) molecular editor.
+
+## MD analysis
+
+* [MDANSE](https://mdanse.org/) (''Molecular Dynamics Analysis for Neutron Scattering Experiments'') is a python application designed for computing properties that can be directly compared with neutron scattering experiments such as the coherent and incoherent intermediate scattering functions and their Fourier transforms, the elastic incoherent structure factor, the static coherent structure factor or the radial distribution function.
+* [MDTEP](http://www.tcm.phy.cam.ac.uk/castep/MD/node19.html) is a simple code for analysing MD trajectories and calculating thermodynamic properties such as the heat capacity and the velocity autocorrelation function.
+
+## Transport
+
+* [ShengBTE](http://www.shengbte.org/) is a software package for solving the Boltzmann Transport Equation for phonons. Its main purpose is to compute the lattice contribution to the thermal conductivity of bulk crystalline solids, but nanowires can also be treated under a hypothesis of diffusive boundary conditions.
+* [AlmaBTA](http://www.almabte.eu/|AlmaBTE) extends the ShengBTE approach currently employed for homogeneous bulk materials, into the mesoscale, to fully describe thermal transport from the electronic ab initio level, through the atomistic one, all the way into the mesoscopic structure level.
+* [BoltzTraP](https://www.imc.tuwien.ac.at//forschungsbereich_theoretische_chemie/forschungsgruppen/prof_dr_gkh_madsen_theoretical_materials_chemistry/boltztrap/) is a program for calculating the semi-classic transport coefficients.
+* [BoltzTrap2](https://www.tuwien.at/en/tch/tc/theoretical-materials-chemistry/boltztrap2) is a modern implementation of the smoothed Fourier interpolation algorithm for electronic bands that formed the base of the original and widely used BoltzTraP code. One of the most typical uses of BoltzTraP is the calculation of thermoelectric transport coefficients as functions of temperature and chemical potential in the rigid-band picture. However, many other features are available, including 3D plots of Fermi surfaces based on the reconstructed bands.
+* [EMC](https://github.com/afonari/emc) (''Effective Mass Calculator'') implements calculation of the effective masses at the bands extrema using finite difference method. There are two versions of the program: written in FORTRAN and Python.
+
+## Miscellaneous
+
+* [ASE](https://wiki.fysik.dtu.dk/ase/index.html) is a set of tools and Python modules for setting up, manipulating, running, visualizing and analyzing atomistic simulations. The code is freely available under the GNU LGPL license. It can interface with many different electronic structure codes.
+* [Bader](http://theory.cm.utexas.edu/henkelman/code/bader/) is a tool to perform Bader charge analysis on a charge density grid. Typically in molecular systems, the charge density reaches a minimum between atoms and this is a natural place to separate atoms from each other. Besides being an intuitive scheme for visualizing atoms in molecules, Bader's definition is often useful for charge analysis. For example, the charge enclosed within the Bader volume is a good approximation to the total electronic charge of an atom.
+* [ATAT](https://www.brown.edu/Departments/Engineering/Labs/avdw/atat/) (Alloy Theoretic Automated Toolkit) is a collection of alloy theory tools developed by Axel van de Walle.
+* [CASINO](https://vallico.net/casinoqmc/) is a computer program system for performing quantum Monte Carlo (QMC) electronic structure calculations that has been developed by members of the Theory of Condensed Matter group in the Cambridge University physics department, and their collaborators, over more than 20 years.  It is capable of calculating incredibly accurate solutions to the Schrödinger equation of quantum mechanics for realistic systems built from atoms.
+* [CellSymm](http://www.c2x.org.uk/cellsym.html) is a simple C front-end for the spglib symmetry finding code. Its functionality has since been rolled into c2x.
+* Emacs mode is an emacs major mode for CASTEP input files with datatype based syntax highlighting and inbuilt help functionality.  
+* [Soprano](https://ccp-nc.github.io/soprano/) is a Python library meant to help crystallographers with the search and classification of new crystal forms for a given material. It provides a number of classes and functions to handle large amounts of candidate structures, compare them, sort them and cluster them.
+
+## Commercial Codes
+
+
+[BIOVIA Materials Studio](https://www.3ds.com/products-services/biovia/products/molecular-modeling-simulation/biovia-materials-studio/) is a suite of graphical tools and codes for quantum and classical simulation of materials, and is how CASTEP is distributed commercially.
