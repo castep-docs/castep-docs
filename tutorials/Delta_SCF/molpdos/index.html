@@ -1364,12 +1364,59 @@
       
       
         <label class="md-nav__link" for="__nav_2_16">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation/Tools/tools/" class="md-nav__link">
+        Third Party Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_17">
           Troubleshooting
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_16">
+        <label class="md-nav__title" for="__nav_2_17">
           <span class="md-nav__icon md-icon"></span>
           Troubleshooting
         </label>
@@ -1825,6 +1872,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-co-on-cu100" class="md-nav__link">
+    Putting it all together: CO on Cu(100)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1921,6 +1975,13 @@
         <li class="md-nav__item">
   <a href="#no-molecule-on-ni001" class="md-nav__link">
     NO molecule on Ni(001)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-co-on-cu100" class="md-nav__link">
+    Putting it all together: CO on Cu(100)
   </a>
   
 </li>
@@ -2072,16 +2133,14 @@ and gasphase.cell files, we execute CASTEP and post-process with
 MolPDOS. This will write x-y data files for the Total DOS, the separate
 spin channels, and the MolPDOS peaks.</p>
 <p>The following image shows the Total DOS and the two spin channels.</p>
-<p><img alt="alternate text" src="DOS1.png" />{.align-center}</p>
+<p><img alt="Total DOS and Two Spin Channels" src="../../img/DOS1.png" /></p>
 <p>The next picture shows the frontier orbitals of spin channel 1 projected
 on the total DOS. Especially the LUMO shows strong hybridization with
 the Nickel d-bands and also is partially occupied. The left scale refers
 to the total DOS, whereas the right y-scale shows the peak height of the
 projected MOs.</p>
-<p><img alt="alternate text" src="DOS2.png" />{.align-center}</p>
-<p>---------------------------------------Example
-5: Putting it all together: CO on Cu(100)
----------------------------------------</p>
+<p><img alt="Frontier orbitals of spin channel 1 projected on the total DOS" src="../../img/DOS2.png" /></p>
+<h2 id="putting-it-all-together-co-on-cu100">Putting it all together: CO on Cu(100)</h2>
 <p>For this example we analyze the electronic structure of a CO molecule in
 a c(2x2) overlayer on Cu(100), before we use this information to
 calculate the correct electronic transitions.</p>
@@ -2191,8 +2250,8 @@ the ground state of the gasphase molecule and by analyzing the MOlPDOS
 of CO on Cu(100).</p>
 <hr />
 <p><strong>GOOD TO KNOW</strong></p>
-<p>:   If you ever forget the correct input for \&lt;seed>.deltascf or
-    \&lt;seed>.molpdos, just run the MolPDOS tool without seed. The
+<p>:   If you ever forget the correct input for &lt;seed>.deltascf or
+    &lt;seed>.molpdos, just run the MolPDOS tool without seed. The
     printed information is all you need!</p>
 <hr />
 <p>TO DO</p>
