@@ -10,16 +10,23 @@ molecule
 
 In the following, the required input files are:
 
-no-on-ni001.param, no-on-ni001.cell, no-on-ni001.deltascf,
+no-on-ni001.param, no-on-ni001.cell, 
 gasphase.cell, gasphase.param, gasphase.check
 
 *no-on-ni001.param*
 
-    #%BLOCK DEVEL_CODE
-    #DeltaSCF
-    #%ENDBLOCK DEVEL_CODE
-
+```
     #reuse: default
+    calculate_deltascf  : true
+    deltascf_method     : linear expansion
+    deltascf_checkpoint : gasphase.check
+    
+#band  occ spin
+%block deltascf_constraints
+5    0.0000  1
+6    1.0000  2
+%endblock deltascf_constraints
+ 
     task: SinglePoint
 
     spin_polarized : True
@@ -37,9 +44,11 @@ gasphase.cell, gasphase.param, gasphase.check
     smearing_scheme : Gaussian
     smearing_width : 0.15
     xc_functional : RPBE
+```
 
 *no-on-ni001.cell*
 
+```
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -81,17 +90,11 @@ gasphase.cell, gasphase.param, gasphase.check
     FIX_ALL_CELL : True
     KPOINTS_MP_GRID : 2 2 1
     KPOINTS_MP_OFFSET : 0.25 0.25 0.25
-
-*no-on-ni001.deltascf*
-
-    deltascf_file        :  gasphase.check
-    deltascf_iprint      :  1
-    deltascf_mode        :  3
-    deltascf_constraint  :  5     0.0000  1                 
-    deltascf_constraint  :  6     1.0000  2
+```
 
 *gasphase.cell*
 
+```
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -106,9 +109,11 @@ gasphase.cell, gasphase.param, gasphase.check
     FIX_ALL_CELL : True
     KPOINTS_MP_GRID : 2 2 1
     KPOINTS_MP_OFFSET : 0.25 0.25 0.25
+```
 
 *gasphase.param*
 
+```
     task: SinglePoint
 
     spin_polarized : True
@@ -125,6 +130,7 @@ gasphase.cell, gasphase.param, gasphase.check
     smearing_scheme : Gaussian
     smearing_width : 0.1
     xc_functional : RPBE
+```
 
 The workflow is as follows:
 
@@ -133,14 +139,22 @@ The workflow is as follows:
 -   Calculate the ground state of NO on Ni(001)
 
 
+```
     Final energy, E             =  -7867.950085034     eV
+```
 
 -   Calculate the leDeltaSCF excitation
 
 We calculate a charge transfer from the molecule to the surface by
 removing an electron from the HOMO in the majority spin channel
 
-    deltascf_constraint  :  5     0.0000  1
+```
+#band  occ spin
+%block deltascf_constraints
+5    0.0000  1
+%endblock deltascf_constraints
+ 
+```
 
 ------------------------------------------------------------------------
 
@@ -159,16 +173,25 @@ removing an electron from the HOMO in the majority spin channel
 
 The resulting excitation energy is 0.46 eV.
 
+```
     Final energy, E             =  -7867.487338823     eV
+```
 
 We can calculate an intramolecular triplet excitation from HOMO to LUMO
 with the following constraint sequence in \<seed\>.deltascf. This
 excites 1 electron from the HOMO in the majority spin channel to the
 LUMO in the minority spin channel.
 
-    deltascf_constraint  :  5     0.0000  1
-    deltascf_constraint  :  6     1.0000  2
+```
+#band  occ spin
+%block deltascf_constraints
+5     0.0000  1
+6     1.0000  2
+%endblock deltascf_constraints
+```
 
 The resulting excitation energy is 9.17 eV.
 
+```
     Final energy, E             =  -7858.779610351     eV
+```

@@ -4,17 +4,23 @@
 In this example we calculate the first two electronic excited states of
 E-Azobenzene in a supercell.
 
-The required files are azo.cell, azo.param, azo.deltascf
+The required files are azo.cell and azo.param:
 
 *azo.param*
 
+```
     task: SinglePoint
 
-    %BLOCK DEVEL_CODE
-      DeltaSCF
-    %ENDBLOCK DEVEL_CODE
-
     reuse: default
+    calculate_deltascf  : true
+    deltascf_method     : simple
+    deltascf_smearing   : 0.01
+
+#band  occ spin from_band to_band
+%block deltascf_constraints
+34    0.5000  1   34   34       
+35    0.5000  1   35   35
+%endblock deltascf_constraints
 
     spin_polarized : False
     cut_off_energy : 350.0
@@ -30,9 +36,11 @@ The required files are azo.cell, azo.param, azo.deltascf
     smearing_scheme : Gaussian
     smearing_width : 0.1
     xc_functional : PBE
+```
 
 *azo.cell*
 
+```
     %BLOCK LATTICE_CART
         10.0000000 0.0000000000 0.0000000000
         0.0000000000 20.0000000 0.0000000000
@@ -68,26 +76,16 @@ The required files are azo.cell, azo.param, azo.deltascf
 
     FIX_ALL_CELL : True
     KPOINTS_MP_GRID : 1 1 1
-
-*azo.deltascf*
-
-    deltascf_mode        :  1                               
-    deltascf_iprint      :  1
-    # mode 1 constraints ##                                 
-    #                       band  occ spin from_band to_band
-    deltascf_constraint  :  34    0.5000  1   34   34       
-    deltascf_constraint  :  35    0.5000  1   35   35      
+```
 
 We start by calculating the total DFT ground state energy as
 
+```
     Final energy, E             =  -2597.665647686     eV
+```
 
 Now we reuse the calculated wavefunctions and switch to the DeltaSCF
-calculation
-
-    %BLOCK DEVEL_CODE
-      DeltaSCF
-    %ENDBLOCK DEVEL_CODE
+calculation (param file above)
 
 There are 68 valence electrons. Therefore, for this non-spin-polarized
 system the HOMO orbital is orbital no. 34. The LUMO is orbital no. 35.
@@ -99,8 +97,13 @@ and the LUMO.
 The corresponding constraint sequence in azo.deltascf for the S1
 excitation is
 
-    deltascf_constraint  :  34    0.5000  1   34   34       
-    deltascf_constraint  :  35    0.5000  1   35   35      
+```
+#band  occ spin from_band to_band
+%block deltascf_constraints
+  34    0.5000  1   34   34       
+  35    0.5000  1   35   35      
+%endblock deltascf_constraints
+```
 
 ------------------------------------------------------------------------
 
@@ -115,22 +118,31 @@ excitation is
 
 ------------------------------------------------------------------------
 
-Feel free to increase the print level with deltascf_iprint to study the
+Feel free to increase the print level with iprint to study the
 output in more detail.
 
 The corresponding total energy is
 
+```
     Final energy, E             =  -2595.702720896     eV
+```
 
 This corresponds to an S1 excitation energy of 1.96 eV.
 
 The constraint sequence for an S2 excitation is
 
-    deltascf_constraint  :  33    0.5000  1   33   33
-    deltascf_constraint  :  35    0.5000  1   35   35      
+```
+#band  occ spin from_band to_band
+%block deltascf_constraints
+33    0.5000  1   33   33
+35    0.5000  1   35   35      
+%endblock deltascf_constraints
+```
 
 The resulting final energy is
 
+```
     Final energy, E             =  -2594.762182241     eV
+```
 
 The corresponding S2 excitation energy is 2.90 eV.
