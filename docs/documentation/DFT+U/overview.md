@@ -13,31 +13,31 @@ Some functionals perform slightly better than others, and some even try to accou
 
 ## A solution
 ### The Hubbard U model
-The Hubbard model discusses the hopping of electrons between different sites in a lattice. The penalty for electrons to hop to another site containing an electron is denoted by the parameter, $U$. See **a**. In a crystal, this repulsion term introduces a gap in the density of states proportional to $U$. See **b**.
+The Hubbard model discusses the hopping of electrons between different sites in a lattice. The penalty for electrons to hop to another site is denoted by the parameter, $U$. See **a**. In a crystal, this repulsion term introduces a gap in the density of states proportional to $U$. See **b**.
 
 | ![Hubbard_model](../../img/hubbard-model.png) |
 | :--: |
 | The Hubbard model that inspires the DFT+U method. |
 
-This energetic penality for the delocalisation of electrons is given by,
+This energetic penality for the delocalisation of electrons can be appended to the DFT potential, to give the DFT+U functional,
 
 $$ E_{\text{DFT+U}} = E_{\text{DFT}} + \frac{U}{2}\sum_{i}q_{i}\left(1-q_{i}\right), $$
 
-where $q_{i}$ is the occupancy of orbital $i$. This promotes completely empty ($q\simeq0$) or fully filled ($q\simeq1$) orbitals. This potential would typically be applied to the d or f electrons of the transition metal(s) or rare-earth metal(s) in the compound of investigation.
+where $q_{i}$ is the occupancy of orbital $i$. This potential encourages completely empty ($q\simeq0$) or fully filled ($q\simeq1$) orbitals. This term would typically be applied to the d or f electrons of the transition metal(s) or rare-earth metal(s) in the compound of investigation.
 
 !!! Note
-    This formulation is derivable by imposing that the magnetic interactions are $0$, or alternatively that their effects are described through an effective $U_\text{eff}$ of both Coulombic and magnetic potentials. In short, the Hubbard $J$ is set to $0$.
+    This formulation is derivable by imposing that the magnetic interactions are $0$, or alternatively that some portion of their effects are described through an effective $U_\text{eff}$ of both Coulombic and magnetic potentials. In short, the Hubbard $J$ is set to $0$ here.
 
 ### Motivation
 A fractional occupancy of electrons should be described by a statistical mixture of energies,
 
 $$ E = \left(1-\omega\right) E_{N} + \omega E_{N+1}, $$
 
-where $N$ is an integer and $0\lt\omega\lt1$. We expect, therefore, the energy with respect to occupancy to be given by a series of straight-line segments. However, DFT alone gives unphysical curvature and spurious minima of the energy with respect to the occupancy. DFT+U attempts to correct this:
+where $N$ is an integer and $0\lt\omega\lt1$. We expect, therefore, the energy with respect to occupancy to be given by a series of straight-line segments. However, DFT alone gives an unphysical curvature and spurious minima of the energy with respect to the occupancy. DFT+U attempts to correct this:
 
 | ![Energy_wrt_q](../../img/dft-energy-curve.png) |
 | :--: |
-| The total energy with respect to the number of electrons.[^1] DFT+U provides the correction to map DFT to the true energy. |
+| The total energy with respect to the number of electrons.[^1] DFT+U provides a correction to map DFT to the exact energy. |
 
 
 ### Orbital basis
