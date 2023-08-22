@@ -5,7 +5,7 @@ It is often difficult to answer the question: 'what value of $U$ should we use?'
 
 ## Determination of U via a Linear Response method
 ### Background
-As discussed in [DFT+U Overview](overview.md), the $U$ value parameterises the correction to the unphysical curvature of the energy with respect to occupancy given by DFT. One may write down the conjecture that a given $U_{I}$ value, for the atom/$\ell$ $I$, is found through an equation akin to,
+As discussed in [DFT+U - Theory](dftu-theory.md), the $U$ value parameterises the correction to the unphysical curvature of the energy with respect to occupancy given by DFT. One may write down the conjecture that a given $U_{I}$ value, for the atom/$\ell$ $I$, is found through an equation akin to,
 
 $$ U_{I}\sim\frac{\partial^{2}E}{\partial q_{I}^{2}}. $$
 
