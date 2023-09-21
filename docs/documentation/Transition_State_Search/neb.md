@@ -39,23 +39,23 @@ The relevant `.param` keywords are summarised in the table below:
 
 | Parameter                      | Default                                                         | Level        | Notes                                                                                                                                                                                                                                                                                                                                     |
 | ------------------------------ | --------------------------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TASK`                         | `SINGLEPOINT`                                                   | Basic        | Set to `TRANSITIONSTATESEARCH` to perform a transition state calculation.                                                                                                                                                                                                                                                  |
-| `TSSEARCH_METHOD`              | `LSTQST`                                                        | Basic        | The search method used to locate transition states. Must be set to `NEB` to perform a NEB calculation. Previous default retained for backwards compatibility. Modifiable: restart only. Allowed values: `LSTQST`, `NEB` Default value : `LSTQST`                                                                                           |
+| `TASK`                         | `SINGLEPOINT`                                                   | Basic        | Set to `TRANSITIONSTATESEARCH` to perform a transition state calculation.                                                                                                                                                                                                                                                                 |
+| `TSSEARCH_METHOD`              | `LSTQST`                                                        | Basic        | The search method used to locate transition states. Must be set to `NEB` to perform a NEB calculation. Previous default retained for backwards compatibility. Modifiable: restart only. Allowed values: `LSTQST`, `NEB` Default value : `LSTQST`                                                                                          |
 | `TSSEARCH_FORCE_TOL`           | Same as `GEOM_FORCE_TOL`                                        | Basic        | Tolerance for accepting convergence of the maximum \|ionic force\| during QST search. Modifiable: restart and on the fly                                                                                                                                                                                                                  |
-| `TSSEARCH_MAX_PATH_POINTS`     | 20                                                              | Intermediate | The maximum number of path points for NEB search. Modifiable: restart and on the fly. Allowed values: (any integer) > 0                                                                                                                                                                                                                    |
+| `TSSEARCH_MAX_PATH_POINTS`     | 20                                                              | Intermediate | The maximum number of path points for NEB search. Modifiable: restart and on the fly. Allowed values: (any integer) > 0                                                                                                                                                                                                                   |
 | `TSSEARCH_NEB_METHOD`          | [ODE12R][3]                                                     | Intermediate | Method used to optimize the NEB shape. Modifiable: restart and on the fly. Allowed values: [`GRAD_BB`][1], [`FIRE`][2], [`ODE12R`][3]                                                                                                                                                                                                     |
 | `TSSEARCH_NEB_TANGENT_MODE`    | `SPLINE`                                                        | Basic        | Method used to calculate the tangents of the NEB. Modifiable: restart and on the fly. Allowed values: `NONE`, `BISECT`, `HIGH_E`, `SPLINE`                                                                                                                                                                                                |
 | `TSSEARCH_NEB_SPRING_CONSTANT` | 0.1 eV/ang2                                                     | Basic        | Spring constant used between the images in NEB search. Modifiable: restart and on the fly. Allowed values: (any) > 0.0                                                                                                                                                                                                                    |
-| `TSSEARCH_NEB_CLIMBING`        | FALSE                                                           | Basic        | If TRUE then the central bead in NEB search climbs up the potential and `TSSEARCH_MAX_PATH_POINTS` must be odd (may be increased by +1). If FALSE then the central bead in NEB search slides down the potential. Modifiable: restart only. Allowed values: TRUE or FALSE. Default value: FALSE                                             |
+| `TSSEARCH_NEB_CLIMBING`        | FALSE                                                           | Basic        | If TRUE then the central bead in NEB search climbs up the potential and `TSSEARCH_MAX_PATH_POINTS` must be odd (may be increased by +1). If FALSE then the central bead in NEB search slides down the potential. Modifiable: restart only. Allowed values: TRUE or FALSE. Default value: FALSE                                            |
 | `TSSEARCH_NEB_MAX_ITER`        | 20                                                              | Intermediate | The maximum number of steps during NEB search. Modifiable: restart and on the fly. Allowed values: (any integer) > 0                                                                                                                                                                                                                      |
 | `TSSEARCH_NEB_NORMED`          | FALSE if `TSSEARCH_NEB_TANGENT_MODE` = `SPLINE`, TRUE otherwise | Expert       | If TRUE then the spring forces applied along the tangents in the NEB are normed to the displacement between beads. If FALSE then the spring forces are projected along the tangents in the NEB and may result in null forces if displacements are orthogonal to the NEB tangents. Modifiable: restart only. Allowed values: TRUE or FALSE |
 
 
 
 As a minimum, you need to specify `TASK: TRANSITIONSTATESEARCH` and `TSSEARCH_METHOD: NEB` in the .param file 
-and specify the product (final) ionic positions (using e.g. the `POSITIONS_ABS_PRODUCT` block) in the .cell file, in addition to the normal `POSITIONS_ABS` block.
-
-CASTEP will then linearly interpolate between the initial and product configuration and begin the NEB calculation. 
+and specify the product (final) ionic positions (using e.g. the `POSITIONS_ABS_PRODUCT` block) and a transition state guess configuration (using e.g. the `POSITIONS_ABS_INTERMEDIATE` block) in the .cell file, in addition to the normal `POSITIONS_ABS` block.
+CASTEP will then linearly interpolate from the initial to intermediate and from the intermediate to product configurations to begin the NEB calculation. 
+<!-- TODO: in future versions of CASTEP, you won't be required to manually specify an intermediate structure. If not present, castep will linearly interpolate between start and end -->
 
 However, it's advisable to also:
 
@@ -124,15 +124,18 @@ In addition to information in the `.castep` file, a `.ts` file will be generated
 ```
 
 1. This is a comment line stating what type of calculation was carried out.
-2. This is the initial (i.e. the **REA** ctant) configuration. The integer indicates it is the configuration for the first NEB iteration. As the REActant (and PROduct) configurations are the same for every NEB iteration, they are only printed out once. The float at the end of the line is a measure of where the configuration lies between 0 (reactant) and 1 (product). TODO: be more precise.
+2. This is the initial (i.e. the **REA** ctant) configuration. The integer indicates it is the configuration for the first NEB iteration. As the REActant (and PROduct) configurations are the same for every NEB iteration, they are only printed out once. The float at the end of the line is a measure of where the configuration lies between 0 (reactant) and 1 (product).
 3. `<-- E` is the total energy and enthalpy of the system, in atomic units.
 4. `<-- h` is the unit cell matrix (atomic units).
 5. `<-- R` are the atomic coordinates (Cartesian), in atomic units.
-6. `<-- F` are the forces (atomic units). TODO: do these include NEB forces?
+6. `<-- F` are the forces (atomic units).
 7. This is the end-point (or **PRO** duct) configuration for the first iteration. As this is the same for every NEB iteration, it is only printed out once. 
 8. This is the first of the transition state configurations (NEB images) for iteration 1 of the NEB. For example, if you have 7 images, then there will be 7 blocks that start with `TST    1 `. 
 
-
+<!-- TODOs: 
+- be more precise about the meaning of the 'distance' between images
+- clarify what forces these are (do they include the spring forces?)
+-  -->
 
 
 [1]: https://doi.org/10.1093/imanum/8.1.141 "GRAD_BB reference"
