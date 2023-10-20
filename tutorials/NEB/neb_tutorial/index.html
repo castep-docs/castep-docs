@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.2.16">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.2.16">
     
     
       
@@ -1811,19 +1811,6 @@
     Analysis
   </a>
   
-    <nav class="md-nav" aria-label="Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#zero-point-energy-corrections" class="md-nav__link">
-    Zero-point energy corrections
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -2179,19 +2166,6 @@
     Analysis
   </a>
   
-    <nav class="md-nav" aria-label="Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#zero-point-energy-corrections" class="md-nav__link">
-    Zero-point energy corrections
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -2229,7 +2203,7 @@ You can use the method to estimate the barrier for the system to transition betw
 <p>These are the local minima structures you want to find the barrier between. They can be equivalent structures, e.g. differing by a symmetry operation, such reflection through a mirror plane, or they can be configurations with different energies (in which case your forward and reverse barriers will not be the same!). Two crucial conditions must be met <strong>before running the NEB calculation</strong>:</p>
 <ol>
 <li>The end point structures must be fully relaxed (geometry optimised) before you start the NEB. Note that both the initial relaxations and the actual NEB calculation must use consistent parameters (e.g. basis set, pseudopotentials, k-points, XC functional etc.).</li>
-<li>The atoms must be in the correct order. A common mistake is to use a software tool to generate the final state from the initial state and end up with atoms that don't match the initial atom order. Atoms then "pass through each other" when CASTEP interpolates between the two structures, causing the calculation to blow up. Always check that the atoms connect up in the way you expect. </li>
+<li>The atoms must be in the correct order. A common mistake is to use a software tool to generate the final state from the initial state and end up with atoms that don't match the initial atom order. Atoms then "pass through each other" when CASTEP interpolates between the two structures, causing the calculation to blow up. Always check that the atoms connect up in the way you expect. Note that, for CASTEP, only the atom order within a given species matters, not the order of the species themselves. In this example, we make sure that the H atoms are in the same order in the initial, final and intermediate structures and we can have the N coordinate either before or after the H atom coordinates.</li>
 </ol>
 <p>The initial state is specified in the same way as a normal .cell file, e.g.:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%BLOCK positions_frac
@@ -2248,10 +2222,7 @@ You can use the method to estimate the barrier for the system to transition betw
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>%ENDBLOCK positions_frac_product
 </code></pre></div>
 <h3 id="setting-up-the-transition-state-guess">Setting up the transition state guess</h3>
-<p>CASTEP will linearly interpolate between the initial and final structures provided to generate the first guess of the minimum energy pathway.
-This works well in many cases. However, if your minimum energy pathway contains e.g. a rotation of a (group of) atom(s) around a bond or something similar, then the linear path between initial and final configurations may be a bad starting guess/non-physical structure. For example, if your end points correspond to a C2 rotation, then a linearly interpolated intermediate structure would not be a physical one. It's important to visualise or otherwise check all of your structures before running a calculation.</p>
-<p>Intermediate structures can also be chosen in such a way as to bias your results to one pathway over another.</p>
-<p>CASTEP allows you to provide <strong>one</strong> intermediate structure between the initial and final configurations in order to get the NEB on the right track. The intermediate configuration is added using, e.g.:</p>
+<p>CASTEP requires you to provide <strong>one</strong> intermediate structure between the initial and final configurations in order to get the NEB on the right track. The intermediate configuration is added using, e.g.:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>%BLOCK POSITIONS_ABS_INTERMEDIATE
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ang
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>N  3.500000  3.500000  3.500000
@@ -2260,12 +2231,18 @@ This works well in many cases. However, if your minimum energy pathway contains 
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>H  2.683149  3.028701  3.501215
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>%ENDBLOCK POSITIONS_ABS_INTERMEDIATE
 </code></pre></div>
+<p>CASTEP will linearly interpolate from the initial to intermediate and the intermediate to final structures provided to generate the rest of the path, depending on the number of images you have chosen.</p>
+<p>In many cases, a suitable transition state guess structure is simply the halfway point between the initial and final structures (a linear interpolation between the coordinates). However, if your minimum energy pathway contains e.g. a rotation of a (group of) atom(s) around a bond or something similar, then the linear path between initial and final configurations may be a bad starting guess/non-physical structure. For example, if your end points correspond to a C2 rotation, then a linearly interpolated intermediate structure would not be a physical one. It's important to visualise or otherwise check all of your structures before running a calculation.</p>
+<p>Intermediate structures can also be chosen in such a way as to bias your results to one pathway over another.</p>
+<!-- TODO: change this in future castep release where this is no longer a required block -->
+
 <h3 id="how-many-images-do-i-need">How many images do I need?</h3>
 <p>It depends... It's usually preferable to start with a small number of images and increase the number if you need to. Starting small can quickly give you a rough sense of the energy landscape and that will determine the actual number of images needed. </p>
 <p>In addition, if you start with too many images then you might never get close to the converged TS because the optimisation takes too long. If you instead start with a small number and get a reasonable TS structure, you can then use that as your initial intermediate structure in a restarted calculation with more images.</p>
 <p>Using many (i.e. &gt; 15) will result in slow convergence, but may lead to a more accurate minimum energy pathway for complex barriers. If you do find a particularly complex pathway, however, you might be better off splitting the work up into more than one NEB calculation, each with fewer images. Just remember to always fully relax the end points (even if the end point is a meta-stable local minimum)!  </p>
 <p>Using too few (i.e. &lt; 5) might fail to find the minimum energy pathway if the energy landscape is complex.</p>
-<p>TODO: add guidance on odd vs even number of images (touching on how the spacing is calculated) and on how many you need for this simple example -- maybe an exercise for the user? You can actually get the same barrier height with just one image in this simple case! </p>
+<p>The TS guess structure that you specify in the .cell file will be assigned to the middle image, with the other images being initially linearly interpolated between the initial, TS guess and final structures. If you choose an even number of images, the 'middle' one is taken to be the one to the right of the centre. e.g. for 6 images, the TS guess will be assigned to image 4. This will make your initial NEB asymmetric in the sense that there will be more images to the left of the TS guess than to the right. If the TS guess is estimated to be in the geometric centre of the minimum energy pathway, then it's probably best to use an odd number of images.</p>
+<p>As the minimum energy pathway is very simple in this example, we can actually get away with just one image. However, we'll use 7 images here to illustrate the process. As an exercise, you can try running the same calculation with <code>tssearch_max_path_points:</code> 1, 2, 3, 4, 5 images and note how the results change.</p>
 <p>Some questions to help answer how many images you need:</p>
 <ul>
 <li>How complex is the landscape between the initial and final state? For example, if you expect more than one maximum between the end points, you probably need more images than for the single peak example we look at here.</li>
@@ -2278,12 +2255,10 @@ This works well in many cases. However, if your minimum energy pathway contains 
 <p>We can often dramatically improve the efficiency of the transition state search by imposing constraints on the atomic positions, although this must be done with care so as not to introduce artifacts. For example, when looking at NEB barriers for adsorbates on a surface slab, we can usefully constrain the bottom slab layers, but probably want the top layer(s) unconstrained.</p>
 <p>In the ammonia case, we can constrain the N atom position without affecting the physical set up by adding the block:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>%BLOCK IONIC_CONSTRAINTS
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     1   N   1   1 0 0
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>     2   N   1   0 1 0
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>     3   N   1   0 0 1
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>%ENDBLOCK IONIC_CONSTRAINTS
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> fix: N
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>%ENDBLOCK IONIC_CONSTRAINTS
 </code></pre></div>
-<p>to the <code>nh3.cell</code> file.  <em>[Isn't there a more compact way now to specify a fixed atom?]</em></p>
+<p>to the <code>nh3.cell</code> file.</p>
 <p>You should then see something like:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>  --- Initialising NEB constraints ---
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>     Fixed            3  degrees of freedom
@@ -2291,12 +2266,24 @@ This works well in many cases. However, if your minimum energy pathway contains 
 <p>in the <code>.castep</code> output file.</p>
 <h3 id="do-i-need-climbing-neb">Do I need climbing NEB?</h3>
 <p>The climbing NEB method modifies the force on the highest-energy image such that it tries to climb <em>up</em> the barrier. 
-This is very useful to get accurate barrier estimates, but care must be taken when more complex pathways (i.e. with multiple maxima) are found.  <em>[Don't get this!]</em></p>
-<p>In our example the path is quite straightforward and it makes sense to use the climbing image method. We therefore set:</p>
+This is very useful to get an accurate estimate of the transition state configuration and barrier since you ensure that one image sits exactly at the saddle point of the minimum energy pathway. However, care must be taken when exploring more complex pathways (i.e. with multiple maxima) since it might become ambiguous as to which image should be the one to "climb".</p>
+<p>In our example the path is quite straightforward and will not make a large difference whether we use the climbing or regular NEB method. We can set:</p>
 <p><code>TSSEARCH_NEB_CLIMBING: TRUE</code></p>
-<p>in the .param file.</p>
-<p>TODO: clarify what happens when you set climbing to true.  </p>
-<p>TODO: include advice/explanation about starting with regular NEB and turning on climbing image after a few steps. </p>
+<p>in the .param file. Though it's not necessary in this case, we will use it here to illustrate the process.</p>
+<p>To illustrate a case in which climbing NEB is more important, consider briefly another example: that of the HCN - HNC isomerisation. In this case, the minimum energy pathway is not a simple linear interpolation between the initial and final states and the minimum energy pathway is not symmetric. The climbing NEB method is very important to get an accurate estimate of the barrier and transition state structure. In Fig 1., we compare the regular and climbing NEB methods using 7 images. While we can find similar barrier heights using both methods if we use a suitable interpolation scheme for the regular NEB, the regular NEB does not find the correct transition state structure. The climbing NEB, on the other hand, finds the correct transition state structure and barrier height.</p>
+<p><img alt="Fig1. NEB vs Climbing NEB for HCN -&gt; HNC" src="../../../img/neb_vs_climbingneb.png" /></p>
+<figure fig1>
+  <figcaption>Fig1. Comparison of the regular NEB (left) and the climbing NEB (right) methods for the case of an HCN - HNC isomerisation. The red circle markers indicate the highest-energy structure in each case. The initial, transition state and final configurations are shown for the climbing NEB, with white, blue and brown spheres representing H, N and C respectively. Note that these are not converged calculations, but are simply provided as a simple comparison of the NEB methods. </figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The climbing image method in CASTEP requires an odd number total number of images. Therefore, if you choose an even number of images in your <code>.param</code> file, CASTEP will automatically add one more image.</p>
+</div>
+<!-- TODO: clarify what happens when you set climbing to true.   -->
+
+<!-- TODO: include advice/explanation about starting with regular NEB and turning on climbing image after a few steps.  -->
+
 <h2 id="running-the-neb">Running the NEB</h2>
 <h3 id="parallelisation">Parallelisation</h3>
 <p>Because the NEB calculation essentially involves <em>N</em> independent CASTEP calculations (where <em>N</em> is the number of images), we can make very efficient use of high-performance computers. This is done via "task farming", running the calculations for the <em>N</em> images independently. For example, if one CASTEP calculation fits on one node, and you have 7 images, then you could run on a total of 7 nodes by setting the keyword:</p>
@@ -2312,14 +2299,13 @@ This is very useful to get accurate barrier estimates, but care must be taken wh
 <p>You can monitor the convergence by searching for "Max NEB force" within the .castep output file.</p>
 <p>Common convergence issues include:</p>
 <ul>
-<li>Not having consistent order in the initial and final structures, i.e. non-physical initial path</li>
-<li>Too many (or too few) images  <em>[As above - not clear what this means, so looks odd.]</em></li>
+<li>Not having consistent atom order in the initial and final structures, i.e. non-physical initial path. This is one of the more common reasons for failed calculation. It's always important to visualise the initial and final structures and check that the atoms connect up in the way you expect.</li>
+<li>Too many (or too few) images. Too many images can lead to slow convergence, too few can lead to the calculation failing to find the minimum energy pathway.</li>
 <li>Initial or final state (endpoints) not being fully relaxed structures</li>
 </ul>
 <h3 id="restarting-continuing">Restarting / Continuing</h3>
 <p>Sometimes the calculation will run out of time/number of iterations before the NEB calculation is finished. 
-You will probably see a "Failed to converge" message in the .castep output in that case; always read through your output files!
-<em>[Not obvious in .ts file? Shouldn't need to positively check for unconverged results.]</em></p>
+You will probably see a "Failed to converge" message in the .castep output in that case; always read through your output files!</p>
 <p>If you re-run the calculation without changing anything, it will simply start from the beginning again -- probably not what you want!</p>
 <p>In order restart the NEB from the last checkpointed state, you need to <strong>explicitly</strong> set the name of the .check file you want to continue from in your .param file. In our example that would be:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>continuation: nh3.check
@@ -2335,7 +2321,7 @@ To add the readTS module to your PYTHONPATH, you can find a setup.py script in t
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;/path/to/castep/Utilities/readts:</span><span class="nv">$PYTHONPATH</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>(changing the <code>/path/to/castep/</code> bit to wherever CASTEP is on your machine).</p>
-<p>You can then extract the NEB path using something like this python code:  <em>[This looks sufficiently general that you could supply the analysis.py script?]</em></p>
+<p>You can then extract the NEB path using something like this python code:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">## get this by adding castep/Utilities/readts to your PYTHONPATH</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">readts</span> <span class="kn">import</span> <span class="n">TSFile</span> 
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span> <span class="nn">ase.neb</span> <span class="kn">import</span> <span class="n">NEBTools</span>
@@ -2412,11 +2398,17 @@ To add the readTS module to your PYTHONPATH, you can find a setup.py script in t
 If equivalent structures (the end-points in this example) were found to have very different energies, you would need to go back and tighten up your convergence criteria or force/energy tolerances in the initial geometry optimisations and re-run the NEB calculation with these tightened parameters. </p>
 <p>Using our favourite visualisation software (here we used the <a href="https://wiki.fysik.dtu.dk/ase/ase/io/io.html#examples">ASE POV-Ray interface</a>), we can then look at how the structure evolves along the minimum energy pathway found via the NEB.</p>
 <p><img alt="NEB structures" src="../../../img/nh3_neb.gif" /></p>
-<h3 id="zero-point-energy-corrections">Zero-point energy corrections</h3>
-<p>In many cases, particularly when lighter atoms are involved, the energy barrier estimates obtained above need to be corrected for quantum-nuclear effects. </p>
-<p>The simplest way to do this is in the harmonic approximation. You need to estimate the harmonic zero-point energy at the start, transition and final configurations.</p>
-<p>TODO: replace the section on zero-point energy corrections by a note that highlights that the NEB will provide a Delta E (this is exact), while the transition rates will depend on Delta E_0.</p>
-<p>TODO: add instructions for harmonic ZPE corrections.</p>
+<div class="admonition note">
+<p class="admonition-title">Zero point energy corrections</p>
+<div class="highlight"><pre><span></span><code>All of the above calculations were done while treating the nuclei as classical particles. In many cases, particularly when lighter atoms are involved, the energy barrier estimates would need to be corrected for quantum-nuclear effects.
+
+The simplest approach to accounting for the true quantum nature of nuclei is to compute the vibrational frequencies of the nuclei within the harmonic approximation. You need would need to do this for the reactant and transition state configurations and use, for example, equation 2 from [J. Chem. Phys. 124, 044706 (2006)](http://theory.cm.utexas.edu/henkelman/pubs/henkelman06_044706.pdf) to obtain the Harmonic quantum correction to the barrier.
+</code></pre></div>
+</div>
+<!-- 
+### Zero-point energy corrections
+
+TODO: add instructions for harmonic ZPE corrections. -->
 
               
             </article>

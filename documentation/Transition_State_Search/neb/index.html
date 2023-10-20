@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.2.16">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.2.16">
     
     
       
@@ -2017,8 +2017,9 @@
   <h1>Nudged elastic band</h1>
 
 <div class="admonition note">
-<p class="admonition-title">Note<p>The NEB functionality in CASTEP was overhauled in version 22, with more efficient algorithms available. In order to use this new functionality, make sure you're <strong>using CASTEP 22 or later</strong>. </p>
-</p>
+<p class="admonition-title">Note</p>
+<div class="highlight"><pre><span></span><code>The NEB functionality in CASTEP was overhauled in version 22, with more efficient algorithms available. In order to use this new functionality, make sure you&#39;re **using CASTEP 22 or later**.
+</code></pre></div>
 </div>
 <h2 id="background-and-theory">Background and theory</h2>
 <p>The nudged elastic band method is a widely-used method for finding a minimum energy pathway between two structures. 
@@ -2116,8 +2117,10 @@ one based on minimising the change in the residual force from one step to the ne
 </tbody>
 </table>
 <p>As a minimum, you need to specify <code>TASK: TRANSITIONSTATESEARCH</code> and <code>TSSEARCH_METHOD: NEB</code> in the .param file 
-and specify the product (final) ionic positions (using e.g. the <code>POSITIONS_ABS_PRODUCT</code> block) in the .cell file, in addition to the normal <code>POSITIONS_ABS</code> block.</p>
-<p>CASTEP will then linearly interpolate between the initial and product configuration and begin the NEB calculation. </p>
+and specify the product (final) ionic positions (using e.g. the <code>POSITIONS_ABS_PRODUCT</code> block) and a transition state guess configuration (using e.g. the <code>POSITIONS_ABS_INTERMEDIATE</code> block) in the .cell file, in addition to the normal <code>POSITIONS_ABS</code> block.
+CASTEP will then linearly interpolate from the initial to intermediate and from the intermediate to product configurations to begin the NEB calculation. </p>
+<!-- TODO: in future versions of CASTEP, you won't be required to manually specify an intermediate structure. If not present, castep will linearly interpolate between start and end -->
+
 <p>However, it's advisable to also:</p>
 <ul>
 <li>change the number of images used (<code>TSSEARCH_MAX_PATH_POINTS</code>), </li>
@@ -2128,8 +2131,9 @@ and specify the product (final) ionic positions (using e.g. the <code>POSITIONS_
 <h2 id="output-files">Output files</h2>
 <p>In addition to information in the <code>.castep</code> file, a <code>.ts</code> file will be generated during a transition state search calculation. Below is the start of a typical <code>.ts</code> file, with annotations explaing what each line means (you can see these by clicking on the (<img alt="➕" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2795.svg" title=":heavy_plus_sign:" />) symbols).</p>
 <div class="admonition note">
-<p class="admonition-title">Note<p>Like <code>.geom</code> and <code>.md</code> files, <code>.ts</code> files use atomic units (Ha for energies, Bohr for distances and Bohr/Ha for forces etc.). </p>
-</p>
+<p class="admonition-title">Note</p>
+<div class="highlight"><pre><span></span><code>Like `.geom` and `.md` files, `.ts` files use atomic units (Ha for energies, Bohr for distances and Bohr/Ha for forces etc.).
+</code></pre></div>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TSTYPE TSConfirmation</span><span class="w"> </span><span class="c1"># (1)!</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REA     1      0.00000000E+000</span><span class="w"> </span><span class="c1"># (2)!</span>
@@ -2176,14 +2180,18 @@ and specify the product (final) ionic positions (using e.g. the <code>POSITIONS_
 </code></pre></div>
 <ol>
 <li>This is a comment line stating what type of calculation was carried out.</li>
-<li>This is the initial (i.e. the <strong>REA</strong> ctant) configuration. The integer indicates it is the configuration for the first NEB iteration. As the REActant (and PROduct) configurations are the same for every NEB iteration, they are only printed out once. The float at the end of the line is a measure of where the configuration lies between 0 (reactant) and 1 (product). TODO: be more precise.</li>
+<li>This is the initial (i.e. the <strong>REA</strong> ctant) configuration. The integer indicates it is the configuration for the first NEB iteration. As the REActant (and PROduct) configurations are the same for every NEB iteration, they are only printed out once. The float at the end of the line is a measure of where the configuration lies between 0 (reactant) and 1 (product).</li>
 <li><code>&lt;-- E</code> is the total energy and enthalpy of the system, in atomic units.</li>
 <li><code>&lt;-- h</code> is the unit cell matrix (atomic units).</li>
 <li><code>&lt;-- R</code> are the atomic coordinates (Cartesian), in atomic units.</li>
-<li><code>&lt;-- F</code> are the forces (atomic units). TODO: do these include NEB forces?</li>
+<li><code>&lt;-- F</code> are the forces (atomic units).</li>
 <li>This is the end-point (or <strong>PRO</strong> duct) configuration for the first iteration. As this is the same for every NEB iteration, it is only printed out once. </li>
 <li>This is the first of the transition state configurations (NEB images) for iteration 1 of the NEB. For example, if you have 7 images, then there will be 7 blocks that start with <code>TST    1</code>. </li>
 </ol>
+<!-- TODOs: 
+- be more precise about the meaning of the 'distance' between images
+- clarify what forces these are (do they include the spring forces?)
+-  -->
 
               
             </article>
