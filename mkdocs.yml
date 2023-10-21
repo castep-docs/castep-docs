@@ -92,7 +92,8 @@ nav:
         - 'Molecular Projected DOS': 'tutorials/Delta_SCF/molpdos.md'
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
-
+   - 'Developer':
+      - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
 
 theme:
   name: material
