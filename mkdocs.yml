@@ -94,6 +94,7 @@ nav:
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
    - 'Developer':
+      - 'Using Devel Codes': 'developer/using_devel_codes.md'
       - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
 
 theme:
