@@ -1,3 +1,11 @@
+# CASTEP Docs
+
+Documentation for the general-purpose plane-wave DFT code CASTEP.
+
+The documentation itself is available at https://castep-docs.github.io/castep-docs/
+
+## Contributing
+
 You need python3 set as default then
 ```
  pip install mkdocs-material
