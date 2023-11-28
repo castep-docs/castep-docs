@@ -1,0 +1,2487 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>Adding empirical potentials - CASTEP Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adding-empirical-potentials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CASTEP Docs" class="md-header__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CASTEP Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Adding empirical potentials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CASTEP Docs" class="md-nav__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CASTEP Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/built_in_help/" class="md-nav__link">
+        Command line help
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/running_castep/" class="md-nav__link">
+        Running CASTEP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/basic_cell_file/" class="md-nav__link">
+        cell File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/basic_param_file/" class="md-nav__link">
+        param File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/restarting/" class="md-nav__link">
+        Checkpoint and Restart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Ground State
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ground State" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ground State
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/dftd/" class="md-nav__link">
+        Dispersion Corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/soc/" class="md-nav__link">
+        Spin Orbit Coupling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/spin_constraints/" class="md-nav__link">
+        Spin Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/population_analysis/" class="md-nav__link">
+        Population analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Geometry Optimisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Geometry Optimisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Geometry Optimisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Molecular Dynamics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Molecular Dynamics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Molecular Dynamics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/overview/" class="md-nav__link">
+        MD Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/basics/" class="md-nav__link">
+        MD Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/restarts/" class="md-nav__link">
+        MD Restarts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/files/" class="md-nav__link">
+        MD Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/keywords/" class="md-nav__link">
+        MD Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/tools/" class="md-nav__link">
+        MD Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/pimd/" class="md-nav__link">
+        PIMD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/hugoniostat/" class="md-nav__link">
+        Hugoniostat
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Transition State Search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Transition State Search" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Transition State Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Transition_State_Search/neb/" class="md-nav__link">
+        Nudged elastic band
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Exchange-Correlation (XC)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exchange-Correlation (XC)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Exchange-Correlation (XC)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XC/XCoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XC/XC/" class="md-nav__link">
+        Controlling XC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XC/libXC/" class="md-nav__link">
+        libXC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Spectral
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spectral" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Spectral
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Spectral/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Spectral/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Spectral/restarts/" class="md-nav__link">
+        Restarts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Vibrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vibrations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Vibrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Vibrations/overview/" class="md-nav__link">
+        Vibrations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          NMR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          NMR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/NMR/NMR_overview/" class="md-nav__link">
+        NMR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          EPR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="EPR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          EPR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/EPR/overview/" class="md-nav__link">
+        EPR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XRD/overview/" class="md-nav__link">
+        XRD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          TDDFT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TDDFT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          TDDFT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/TDDFT/overview/" class="md-nav__link">
+        TDDFT Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          Delta SCF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Delta SCF" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Delta SCF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/overview/" class="md-nav__link">
+        Delta SCF Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/lin_ex_delta_scf/" class="md-nav__link">
+        Linear expansion DeltaSCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/mo_delta_scf/" class="md-nav__link">
+        MO Delta SCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/molpdos/" class="md-nav__link">
+        Molecular Projected DOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          Pseudopotentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pseudopotentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Pseudopotentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/theory/" class="md-nav__link">
+        Theory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/reading_headers/" class="md-nav__link">
+        Headers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/otfg_string/" class="md-nav__link">
+        OTFG string
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_15">
+          Input Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input Files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          Input Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/cell_file/" class="md-nav__link">
+        cell file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/param_file/" class="md-nav__link">
+        param file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/cell_keywords/" class="md-nav__link">
+        cell keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/output_files/" class="md-nav__link">
+        output files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_16">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Tools/tools/" class="md-nav__link">
+        Third Party Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_17">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Troubleshooting/troubleshooting/" class="md-nav__link">
+        Common errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Troubleshooting/linux_path/" class="md-nav__link">
+        Linux help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Bonding and Charge
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bonding and Charge" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bonding and Charge
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bonding_and_Charge/charge_density/" class="md-nav__link">
+        Plotting Charge Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bonding_and_Charge/mulliken_population/" class="md-nav__link">
+        Population Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Bands and DOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bands and DOS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bands and DOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/plotting_perl/" class="md-nav__link">
+        Plotting - CASTEP tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/plotting_sumo/" class="md-nav__link">
+        Plotting - SUMO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/semiconductors/" class="md-nav__link">
+        Semiconductors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/metals/" class="md-nav__link">
+        Metals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/magnetic/" class="md-nav__link">
+        Magnetic Materials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/dispersion_corrections/castep-ase-dispersion-tutorial/" class="md-nav__link">
+        Dispersion corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NEB/neb_tutorial/" class="md-nav__link">
+        Nudged elastic band
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          NMR Shielding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR Shielding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          NMR Shielding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_shielding/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_silicate.md" class="md-nav__link">
+        Inorganic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_molcrystal.md" class="md-nav__link">
+        Molecular Crystals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_shielding/" class="md-nav__link">
+        J coupling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Delta SCF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Delta SCF" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Delta SCF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Delta_SCF/simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Delta_SCF/lin_ex_delta_scf/" class="md-nav__link">
+        Linear expansion DeltaSCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Delta_SCF/molpdos/" class="md-nav__link">
+        Molecular Projected DOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Tools/elastic_constants/" class="md-nav__link">
+        Elastic Constants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Developer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Developer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Adding empirical potentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Adding empirical potentials
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-parameters" class="md-nav__link">
+    Setting up parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allocation-and-deallocation" class="md-nav__link">
+    Allocation and deallocation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialising-variables" class="md-nav__link">
+    Initialising variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-the-calculation-routine" class="md-nav__link">
+    Writing the calculation routine
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing the calculation routine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spins" class="md-nav__link">
+    Spins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-the-contribution" class="md-nav__link">
+    Adding the contribution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-parameters" class="md-nav__link">
+    Setting up parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allocation-and-deallocation" class="md-nav__link">
+    Allocation and deallocation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialising-variables" class="md-nav__link">
+    Initialising variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-the-calculation-routine" class="md-nav__link">
+    Writing the calculation routine
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing the calculation routine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spins" class="md-nav__link">
+    Spins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-the-contribution" class="md-nav__link">
+    Adding the contribution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="adding-empirical-potentials">Adding Empirical potentials</h1>
+<p>If you have access to the source, it is possible to add a new formulation for an
+empirical potential easily. The idea of the module is that this should be
+trivial even to a beginner programmer with no expert knowledge of Fortran.</p>
+<p>A summary of how to do this is in the header of the <code>pair_pot.f90</code> source,
+a more in-depth description is below.</p>
+<h2 id="setting-up-parameters">Setting up parameters</h2>
+<p>First we need to make the <code>pair_pot_type</code> aware of your potential. There are
+several key things we need to update in order to use our potential. First, we
+need to update the number of potentials our code is looking for:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">BEFORE</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">num_pot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">AFTER</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">num_pot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+</code></pre></div>
+<p>Next we need to tell the code what our potential's keyword is and its
+internal ID. This will be the highest number which isn't occupied.
+(NOTE: Keywords have to have a length of 4 characters and must be padded
+with spaces to this length):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">BEFORE</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lj</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">buck</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">coul</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">dz</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">pol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">bb</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">bs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">sw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">mors</span><span class="o">=</span><span class="mi">9</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">num_pot</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">&amp;</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;LJ  &#39;</span><span class="p">,</span><span class="s1">&#39;BUCK&#39;</span><span class="p">,</span><span class="s1">&#39;COUL&#39;</span><span class="p">,</span><span class="s1">&#39;DZ  &#39;</span><span class="p">,</span><span class="s1">&#39;POL &#39;</span><span class="p">,</span><span class="s1">&#39;BB  &#39;</span><span class="p">,</span><span class="s1">&#39;BS  &#39;</span><span class="p">,</span><span class="s1">&#39;SW  &#39;</span><span class="p">,</span><span class="s1">&#39;MORS&#39;</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">AFTER</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lj</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">buck</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">coul</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">dz</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">pol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">bb</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">bs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">sw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">mors</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">new</span><span class="o">=</span><span class="mi">10</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">num_pot</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">&amp;</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;LJ  &#39;</span><span class="p">,</span><span class="s1">&#39;BUCK&#39;</span><span class="p">,</span><span class="s1">&#39;COUL&#39;</span><span class="p">,</span><span class="s1">&#39;DZ  &#39;</span><span class="p">,</span><span class="s1">&#39;POL &#39;</span><span class="p">,</span><span class="s1">&#39;BB  &#39;</span><span class="p">,</span><span class="s1">&#39;BS  &#39;</span><span class="p">,</span><span class="s1">&#39;SW  &#39;</span><span class="p">,</span><span class="s1">&#39;MORS&#39;</span><span class="p">,</span><span class="s1">&#39;NEW &#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>We then need to add the parameters that our potential will use to the
+<code>pair_pot_type</code>. The style of these parameters should be:</p>
+<ul>
+<li>
+<p>The variable name should be the keyword of your potential followed by an
+    underscore, followed by the name or symbol for the parameter.</p>
+</li>
+<li>
+<p>They should be of type <code>real(kind=dp)</code>.</p>
+</li>
+<li>
+<p>They should be allocatable, and of dimensions equivalent to the number of
+    particles involved in the interaction (i.e. 2-body <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow{}</span><script type="math/tex">\Rightarrow{}</script></span>
+    <code>dimension(:,:)</code>; 3-body <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow{}</span><script type="math/tex">\Rightarrow{}</script></span> <code>dimension(:,:,:)</code>).</p>
+</li>
+<li>
+<p>They should have a comment describing the full name and form of your
+    potential.</p>
+</li>
+<li>
+<p>It is also important to note that Fortran is case-insensitive, meaning it
+    does not distinguish between upper and lower cases in variable names.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c">!New example potential of the form b*exp(rij^-qi)*exp(rik^-qi) + (cos(rijk) - cos(s))</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">new_q</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">new_b</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:,:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">new_s</span>
+</code></pre></div>
+</li>
+</ul>
+<p>We should now go into <code>pair_pot_print</code> and add our potential to the 1- and 2-
+(and possibly 3-)body sections of the potential printing. This is of the form:</p>
+<ul>
+<li>
+<p>1-Body</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot</span><span class="p">%</span><span class="n">cut_off</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;q&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">end if</span>
+</code></pre></div>
+</li>
+<li>
+<p>2-Body</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">202</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot_print_combinations</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">cut_off</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">,</span><span class="w"> </span><span class="p">:,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">202</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot_print_combinations</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">,</span><span class="w"> </span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">end if</span>
+</code></pre></div>
+</li>
+<li>
+<p>3-Body</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">301</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="n">ispec_name</span><span class="p">,</span><span class="w"> </span><span class="n">jspec_name</span><span class="p">,</span><span class="w"> </span><span class="n">kspec_name</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;S&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">(</span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">,</span><span class="w"> </span><span class="n">kspec</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">end if</span>
+</code></pre></div>
+</li>
+</ul>
+<p>And with that we should be done with setting up our potential in
+<code>pair_pot_type</code>, things like cut-off and the activation of the potential are
+handled automatically based on the potential keyword, although for some
+specialised potentials advanced rules can be necessary.</p>
+<h2 id="allocation-and-deallocation">Allocation and deallocation</h2>
+<p>It is important in Fortran to ensure that our parameter arrays are allocated. We
+need to go into the routine <code>pair_pot_allocate</code> and add our new parameters to
+it. For our example potential, the syntax is as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">),</span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_allocate_abort</span><span class="p">(</span><span class="s1">&#39;new_q&#39;</span><span class="p">,</span><span class="s1">&#39;pair_pot_allocate&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">),</span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_allocate_abort</span><span class="p">(</span><span class="s1">&#39;new_b&#39;</span><span class="p">,</span><span class="s1">&#39;pair_pot_allocate&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">),</span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_allocate_abort</span><span class="p">(</span><span class="s1">&#39;new_s&#39;</span><span class="p">,</span><span class="s1">&#39;pair_pot_allocate&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">end if</span>
+</code></pre></div>
+<p>We also need to do the same for cleaning up our potential at the end, in the
+routine <code>pair_pot_deallocate</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">   deallocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_abort</span><span class="p">(</span><span class="s1">&#39;Error deallocating new_q in pair_pot_deallocate&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">end if</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">   deallocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_abort</span><span class="p">(</span><span class="s1">&#39;Error deallocating new_b in pair_pot_deallocate&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">end if</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">   deallocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_abort</span><span class="p">(</span><span class="s1">&#39;Error deallocating new_s in pair_pot_deallocate&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="k">end if</span>
+</code></pre></div>
+<h2 id="initialising-variables">Initialising variables</h2>
+<p>We need to be able to set the values for our parameters. For this we need to add
+an initialisation subroutine. The details can be found in the sample file,
+available on request. For three-body routines it is necessary to set the
+<code>pair_pot%three_body</code> flag on initialisation, and also to add a species triplet
+loop.</p>
+<h2 id="writing-the-calculation-routine">Writing the calculation routine</h2>
+<p>This is the only bit which is down to the the creator to consider how it
+should be set up. The subroutine should obey the follow:</p>
+<ul>
+<li>
+<p>The name of the routine should be <code>pair_pot_&lt;new_potential&gt;</code></p>
+</li>
+<li>
+<p>The potential should have a header referencing the origin of the
+    potential and the form of the potential.</p>
+</li>
+<li>
+<p>Two-body potentials should obey the following input structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">subroutine </span><span class="n">pair_pot_new</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">,</span><span class="w"> </span><span class="n">rij</span><span class="p">,</span><span class="w"> </span><span class="n">mod_rij_2</span><span class="p">,</span><span class="w"> </span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">[,</span><span class="w"> </span><span class="n">spins</span><span class="p">],</span><span class="w"> </span><span class="n">dfij</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">)</span>
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li>
+<p><code>pair_pot</code> is of type <code>pair_pot_type</code> and contains the initialised
+    parameters of your new potential.</p>
+</li>
+<li>
+<p><code>rij</code> is of type <code>real(kind=dp)</code> of dimension(3) and is the vector
+    between the two particles.</p>
+</li>
+<li>
+<p><code>mod_rij_2</code> is of type <code>real(kind=dp)</code> and is the distance between the
+    two particles.</p>
+</li>
+<li>
+<p><code>ispec</code> is of type <code>integer</code> and is the species of atom i.</p>
+</li>
+<li>
+<p><code>jspec</code> is of type <code>integer</code> and is the species of atom j.</p>
+</li>
+<li>
+<p><code>spins</code> [optional] is of type <code>real(kind=dp)</code> of dimension(4,2) and is
+    the pair of spin vectors of (x, y, z, magnitude)</p>
+</li>
+<li>
+<p><code>dfij</code> is of type <code>real(kind=dp)</code> of dimension(3) and is the vector
+    force between the two particles.</p>
+</li>
+<li>
+<p><code>de</code> is of type <code>real(kind=dp)</code> and is the contribution to the total
+    potential energy of the two particles.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>To reference two-body terms you should use the following syntax:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">(</span><span class="n">ispec</span><span class="p">,</span><span class="n">jspec</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Three-body potentials should obey the following input structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">subroutine </span><span class="n">pair_pot_new</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">,</span><span class="w"> </span><span class="n">dr</span><span class="p">,</span><span class="w"> </span><span class="n">mod_dr_2</span><span class="p">,</span><span class="w"> </span><span class="n">rcjk</span><span class="p">,</span><span class="w"> </span><span class="n">include_cjk</span><span class="p">,</span><span class="w"> </span><span class="n">spec</span><span class="p">[,</span><span class="w"> </span><span class="n">spins</span><span class="p">],</span><span class="w"> </span><span class="n">dfij</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">,</span><span class="w"> </span><span class="n">stress</span><span class="p">)</span>
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li>
+<p><code>pair_pot</code> is of type <code>pair_pot_type</code> and contains the
+    initialised parameters of your new potential.</p>
+</li>
+<li>
+<p><code>dr</code> is of type <code>real(kind=dp)</code> of dimension(3,3) and is the
+    vectors of the triplet of pairs of particles.</p>
+</li>
+<li>
+<p><code>mod_dr_2</code> is of type <code>real(kind=dp)</code> of dimension(3) and is the
+    distance between the triplet of particles.</p>
+</li>
+<li>
+<p><code>rcjk</code> is of type <code>real(kind=dp)</code> of dimension(3,3) and is the
+    absolute positions of the particles in the cell.</p>
+</li>
+<li>
+<p><code>include_cjk</code> is of type <code>logical</code> of dimension(3) and is
+    whether the magnitude of distances between particles is less
+    than that of the cut-off.</p>
+</li>
+<li>
+<p><code>spec</code> is of type <code>integer</code> of dimension(3) and is the species
+    of the particles.</p>
+</li>
+<li>
+<p><code>spins</code> [optional] is of type <code>real(kind=dp)</code> of dimension(4,3) and is
+    the triplet of spin vectors of (x, y, z, magnitude)</p>
+</li>
+<li>
+<p><code>dfij</code> is of type <code>real(kind=dp)</code> of dimension(3,3) and is the
+    vector force between the triplet of particles.</p>
+</li>
+<li>
+<p><code>de</code> is of type <code>real(kind=dp)</code> and is the contribution to the total
+    potential energy of the interactions.</p>
+</li>
+<li>
+<p><code>stress</code> is of type <code>real(kind=dp)</code> of dimension(6) and is the upper
+    triangle of stress contributions of the particles.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>To reference three-body terms you should use the following syntax:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">(</span><span class="n">spec</span><span class="p">(</span><span class="n">i_atom</span><span class="p">),</span><span class="w"> </span><span class="n">spec</span><span class="p">(</span><span class="n">j_atom</span><span class="p">),</span><span class="w"> </span><span class="n">spec</span><span class="p">(</span><span class="n">k_atom</span><span class="p">))</span>
+</code></pre></div>
+</li>
+</ul>
+<h3 id="spins">Spins</h3>
+<p>If your potential uses spin as part of the force-field these are passed into the
+calculation routines as a set of 4-vectors (2 for 2-body, 3 for 3-body) where
+the 4 parameters are the 3 directions and the magnitude.</p>
+<h2 id="adding-the-contribution">Adding the contribution</h2>
+<p>To actually tell the code to calculate the contribution of your potential to the
+system, we need to add it to the <code>pair_pot_contribution</code> routine, this has the
+following syntax for two-body potentials:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pot_include</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">   call </span><span class="n">pair_pot_new</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">,</span><span class="w"> </span><span class="n">rij</span><span class="p">,</span><span class="w"> </span><span class="n">mod_rij_2</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">species</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">dfij</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">   </span><span class="n">e_cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e_cont</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">de</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">   </span><span class="n">fij</span><span class="p">(:)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fij</span><span class="p">(:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dfij</span><span class="p">(:)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">end if</span>
+</code></pre></div>
+<p>Three-body potentials are currently trickier and must currently be manually
+inserted into the loop in <code>pair_pot_calc</code>, there are aims to simplify this in
+future releases.</p>
+<h2 id="testing">Testing</h2>
+<p>We should now be able to activate your potential by adding <code>NEW=T</code> into the
+devel code block and can set all the parameters just as for other potentials.</p>
+<p>To verify that you potential is working as expected, there are several built-in
+methods to check for developers.</p>
+<ol>
+<li>
+<p>The first is the <code>FD_CHECK</code> devel code which enables finite difference
+   evaluation alongside the potential evaluation and dumps the output to a file
+   <code>&lt;seedname&gt;.fd</code>. It aso prints warnings if the analytic and finite difference
+   derivatives do not match. You should verify that the finite difference
+   evaluated forces are the same as the analytic derivative.</p>
+</li>
+<li>
+<p>The second is the <code>PRINT_POT</code> devel code which evaluates your potential over
+   1000 evenly spaced points between 0 and your cut-off and dumps the computed
+   forces and energies to a series of files of the form
+   <code>&lt;seedname&gt;_&lt;species_1&gt;_&lt;species_2&gt;_&lt;species_3&gt;_&lt;spin&gt;.pot</code> these are just
+   3-column tabular data of the form <code>Distance Energy Force</code> ready to be
+   plotted.</p>
+</li>
+<li>
+<p>Tests should be added to the test suite to compute the value of your new
+   potential at known points.</p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../tutorials/Tools/elastic_constants/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Elastic Constants" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Elastic Constants
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": "-content.code.annotate", "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
