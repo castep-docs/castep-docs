@@ -24,8 +24,8 @@ than just a string one has to parse themselves.
 
 ### Devel code sub-blocks
 
-Devel codes can be more explicitly subdivided into sub-blocks which
-are usually named related to the module or functions they support.
+Devel codes are divided into sub-blocks which are usually named related to the
+module or functions they support.
 
 Examples include:
 
@@ -33,14 +33,20 @@ Examples include:
 - `FIRE` - Relating to the FIRE geometry optimisation method
 - `ELECTRONIC` - Relating to electronic minimisation
 
-However they can be anything the developer wants. Keeping it related
-to the module where they are used is useful for remembering how to
-call them, but is not necessary. Indeed, it may be desirable to have a
-block dedicated to a particular algorithm or as a structured block in
-the style of `%block ... %endblock` ready for integration into the
-main parameters when the feature is complete.
+However they can be anything the developer wants.
 
-The structure of a sub-block in the devel code (here `XYZ`) is as follows:
+!!! note
+
+    While in principle block names are general and arbitrary,
+    keeping them related to the module where they are used or their
+    functionality is useful for remembering how to call them.
+
+Another use of blocks is to have a block dedicated to a particular algorithm
+or as a structured block in the style of `.cell` style blocks (i.e.
+`%block ... %endblock`) ready for integration into the main parameters when
+the feature is complete.
+
+The structure of a sub-block in the `.param` file (here `XYZ`) is as follows:
 
 ```
 %block devel_code
@@ -54,38 +60,38 @@ The devel code block is converted upon reading the param file into
 `parameters :: current_params%devel_code`. This block can then be
 parsed using the following functions:
 
-- `parameters :: io_code_present(code, key[, block])`
+- `io :: io_code_present(code, key, block)`
 
     Check whether a particular parameter `key` is present in block
     `block`. If block is not given check the top-level devel-code.
 
-- `parameters :: io_code_block(code, block)`
+- `io :: io_code_block(code, block)`
 
     Return the entire block `block` as a character array allowing you
     to manually process the data. Most useful for situations where the
     final parameter will be a block of data.
 
-- `parameters :: io_code_logical(code, key[, block])`
+- `io :: io_code_logical(code, key, block)`
 
     Parse given parameter  `key` in block `block` as a logical
     according to list-directed Fortran logical rules.
 
-- `parameters :: io_code_integer(code, key[, block])`
+- `io :: io_code_integer(code, key, block)`
 
     Parse given parameter `key` in block `block` as an integer according
     to list-directed Fortran integer rules.
 
-- `parameters :: io_code_real(code, key[, block])`
+- `io :: io_code_real(code, key, block)`
 
     Parse given parameter `key` in block `block` as an real according
     to list-directed Fortran real rules.
 
-- `parameters :: io_code_complex(code, key[, block])`
+- `io :: io_code_complex(code, key, block)`
 
     Parse given parameter `key` in block `block` as an complex according
     to list-directed Fortran complex rules.
 
-- `parameters :: io_code_string(code, key[, block])`
+- `io :: io_code_string(code, key, block)`
 
     Parse given parameter `key` in block `block` as a character string.
 
@@ -112,6 +118,8 @@ module my_module
    function use_devel_code()
       ! Ensure the devel_codes are available
       use parameters, only: current_params
+      ! Ensure we can parse the devel-codes
+      use io, only: io_code_present, io_code_integer
       ! Have the param available
       integer :: param
 
