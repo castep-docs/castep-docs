@@ -1,0 +1,3373 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>Style Guide - CASTEP Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CASTEP Docs" class="md-header__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CASTEP Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Style Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CASTEP Docs" class="md-nav__button md-logo" aria-label="CASTEP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CASTEP Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/built_in_help/" class="md-nav__link">
+        Command line help
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/running_castep/" class="md-nav__link">
+        Running CASTEP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/basic_cell_file/" class="md-nav__link">
+        cell File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/basic_param_file/" class="md-nav__link">
+        param File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Getting_Started/restarting/" class="md-nav__link">
+        Checkpoint and Restart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Ground State
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ground State" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ground State
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/dftd/" class="md-nav__link">
+        Dispersion Corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/soc/" class="md-nav__link">
+        Spin Orbit Coupling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/spin_constraints/" class="md-nav__link">
+        Spin Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Groundstate/population_analysis/" class="md-nav__link">
+        Population analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Geometry Optimisation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Geometry Optimisation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Geometry Optimisation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Geometry_Optimisation/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Molecular Dynamics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Molecular Dynamics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Molecular Dynamics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/overview/" class="md-nav__link">
+        MD Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/basics/" class="md-nav__link">
+        MD Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/restarts/" class="md-nav__link">
+        MD Restarts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/files/" class="md-nav__link">
+        MD Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/keywords/" class="md-nav__link">
+        MD Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/tools/" class="md-nav__link">
+        MD Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/pimd/" class="md-nav__link">
+        PIMD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Molecular_Dynamics/hugoniostat/" class="md-nav__link">
+        Hugoniostat
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Transition State Search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Transition State Search" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Transition State Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Transition_State_Search/neb/" class="md-nav__link">
+        Nudged elastic band
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Exchange-Correlation (XC)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exchange-Correlation (XC)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Exchange-Correlation (XC)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XC/XCoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XC/XC/" class="md-nav__link">
+        Controlling XC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XC/libXC/" class="md-nav__link">
+        libXC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Spectral
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spectral" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Spectral
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Spectral/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Spectral/keywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Spectral/restarts/" class="md-nav__link">
+        Restarts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          Vibrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vibrations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Vibrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Vibrations/overview/" class="md-nav__link">
+        Vibrations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          NMR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          NMR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/NMR/NMR_overview/" class="md-nav__link">
+        NMR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          EPR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="EPR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          EPR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/EPR/overview/" class="md-nav__link">
+        EPR Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/XRD/overview/" class="md-nav__link">
+        XRD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          TDDFT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TDDFT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          TDDFT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/TDDFT/overview/" class="md-nav__link">
+        TDDFT Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          Delta SCF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Delta SCF" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          Delta SCF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/overview/" class="md-nav__link">
+        Delta SCF Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/lin_ex_delta_scf/" class="md-nav__link">
+        Linear expansion DeltaSCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/mo_delta_scf/" class="md-nav__link">
+        MO Delta SCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Delta_SCF/molpdos/" class="md-nav__link">
+        Molecular Projected DOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          Pseudopotentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pseudopotentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          Pseudopotentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/theory/" class="md-nav__link">
+        Theory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/reading_headers/" class="md-nav__link">
+        Headers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Pseudopotentials/otfg_string/" class="md-nav__link">
+        OTFG string
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_15">
+          Input Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Input Files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          Input Files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/cell_file/" class="md-nav__link">
+        cell file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/param_file/" class="md-nav__link">
+        param file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/cell_keywords/" class="md-nav__link">
+        cell keywords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Input_Files/output_files/" class="md-nav__link">
+        output files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_16">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Tools/tools/" class="md-nav__link">
+        Third Party Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_17">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Troubleshooting/troubleshooting/" class="md-nav__link">
+        Common errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/Troubleshooting/linux_path/" class="md-nav__link">
+        Linux help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Bonding and Charge
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bonding and Charge" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bonding and Charge
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bonding_and_Charge/charge_density/" class="md-nav__link">
+        Plotting Charge Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bonding_and_Charge/mulliken_population/" class="md-nav__link">
+        Population Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Bands and DOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bands and DOS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bands and DOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/plotting_perl/" class="md-nav__link">
+        Plotting - CASTEP tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/plotting_sumo/" class="md-nav__link">
+        Plotting - SUMO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/semiconductors/" class="md-nav__link">
+        Semiconductors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/metals/" class="md-nav__link">
+        Metals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Bands_and_DOS/magnetic/" class="md-nav__link">
+        Magnetic Materials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/dispersion_corrections/castep-ase-dispersion-tutorial/" class="md-nav__link">
+        Dispersion corrections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NEB/neb_tutorial/" class="md-nav__link">
+        Nudged elastic band
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          NMR Shielding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NMR Shielding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          NMR Shielding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_shielding/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_silicate.md" class="md-nav__link">
+        Inorganic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_molcrystal.md" class="md-nav__link">
+        Molecular Crystals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/NMR/NMR_shielding/" class="md-nav__link">
+        J coupling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Delta SCF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Delta SCF" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Delta SCF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Delta_SCF/simple_delta_scf/" class="md-nav__link">
+        Simple Delta SCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Delta_SCF/lin_ex_delta_scf/" class="md-nav__link">
+        Linear expansion DeltaSCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Delta_SCF/molpdos/" class="md-nav__link">
+        Molecular Projected DOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/Tools/elastic_constants/" class="md-nav__link">
+        Elastic Constants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Developer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Developer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_devel_codes/" class="md-nav__link">
+        Using Devel Codes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adding_pair_pots/" class="md-nav__link">
+        Adding empirical potentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Style Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Style Guide
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-the-specification-document" class="md-nav__link">
+    Writing to the Specification Document
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing to the Specification Document">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-does-exactly-what-it-says-on-the-tin" class="md-nav__link">
+    "It does exactly what it says on the tin"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-not-assume-anything-that-is-not-written-in-the-specification-document" class="md-nav__link">
+    Do not assume anything that is not written in the specification document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-robustly-for-errors" class="md-nav__link">
+    Code robustly for errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-on-execution" class="md-nav__link">
+    Conditions on execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors-and-warnings" class="md-nav__link">
+    Errors and Warnings
+  </a>
+  
+    <nav class="md-nav" aria-label="Errors and Warnings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-stderr-from-any-node" class="md-nav__link">
+    Use stderr from any node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-iprint-consistently" class="md-nav__link">
+    Use iprint consistently
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficiency-issues" class="md-nav__link">
+    Efficiency Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Efficiency Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    Libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortran-array-intrinsics" class="md-nav__link">
+    Fortran array intrinsics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-arrays-to-subprograms" class="md-nav__link">
+    Passing arrays to subprograms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-specific-code" class="md-nav__link">
+    Machine-Specific Code
+  </a>
+  
+    <nav class="md-nav" aria-label="Machine-Specific Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid" class="md-nav__link">
+    Avoid!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-thoroughly-to-prevent" class="md-nav__link">
+    Test thoroughly to prevent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-handling" class="md-nav__link">
+    File handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compilerpreprocessor-directives" class="md-nav__link">
+    Compiler/preprocessor directives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fortran90-features" class="md-nav__link">
+    Fortran90 Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Fortran90 Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-of-dynamic-arrays" class="md-nav__link">
+    Use of dynamic arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointers" class="md-nav__link">
+    Pointers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-of-control" class="md-nav__link">
+    Flow of control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-use" class="md-nav__link">
+    Use of use
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-numbers" class="md-nav__link">
+    Line numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-features" class="md-nav__link">
+    General features
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auxiliary-modules" class="md-nav__link">
+    Auxiliary modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#style-and-layout" class="md-nav__link">
+    Style and Layout
+  </a>
+  
+    <nav class="md-nav" aria-label="Style and Layout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-the-module-template" class="md-nav__link">
+    Use the module template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    Layout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    Case
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#names" class="md-nav__link">
+    Names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-format" class="md-nav__link">
+    Free format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spaces" class="md-nav__link">
+    Spaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-cleanly" class="md-nav__link">
+    Code cleanly
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#be-aware-of-vectorisation" class="md-nav__link">
+    Be aware of vectorisation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal" class="md-nav__link">
+    Internal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external" class="md-nav__link">
+    External
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-program" class="md-nav__link">
+    Test Program
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    Reference data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-template" class="md-nav__link">
+    Module Template
+  </a>
+  
+    <nav class="md-nav" aria-label="Module Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general_1" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-public-and-private" class="md-nav__link">
+    Use of public and private
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-the-specification-document" class="md-nav__link">
+    Writing to the Specification Document
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing to the Specification Document">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-does-exactly-what-it-says-on-the-tin" class="md-nav__link">
+    "It does exactly what it says on the tin"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-not-assume-anything-that-is-not-written-in-the-specification-document" class="md-nav__link">
+    Do not assume anything that is not written in the specification document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-robustly-for-errors" class="md-nav__link">
+    Code robustly for errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-on-execution" class="md-nav__link">
+    Conditions on execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors-and-warnings" class="md-nav__link">
+    Errors and Warnings
+  </a>
+  
+    <nav class="md-nav" aria-label="Errors and Warnings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-stderr-from-any-node" class="md-nav__link">
+    Use stderr from any node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-iprint-consistently" class="md-nav__link">
+    Use iprint consistently
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficiency-issues" class="md-nav__link">
+    Efficiency Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Efficiency Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    Libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortran-array-intrinsics" class="md-nav__link">
+    Fortran array intrinsics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-arrays-to-subprograms" class="md-nav__link">
+    Passing arrays to subprograms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-specific-code" class="md-nav__link">
+    Machine-Specific Code
+  </a>
+  
+    <nav class="md-nav" aria-label="Machine-Specific Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid" class="md-nav__link">
+    Avoid!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-thoroughly-to-prevent" class="md-nav__link">
+    Test thoroughly to prevent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-handling" class="md-nav__link">
+    File handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compilerpreprocessor-directives" class="md-nav__link">
+    Compiler/preprocessor directives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fortran90-features" class="md-nav__link">
+    Fortran90 Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Fortran90 Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-of-dynamic-arrays" class="md-nav__link">
+    Use of dynamic arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointers" class="md-nav__link">
+    Pointers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-of-control" class="md-nav__link">
+    Flow of control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-use" class="md-nav__link">
+    Use of use
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-numbers" class="md-nav__link">
+    Line numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-features" class="md-nav__link">
+    General features
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auxiliary-modules" class="md-nav__link">
+    Auxiliary modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#style-and-layout" class="md-nav__link">
+    Style and Layout
+  </a>
+  
+    <nav class="md-nav" aria-label="Style and Layout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-the-module-template" class="md-nav__link">
+    Use the module template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    Layout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    Case
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#names" class="md-nav__link">
+    Names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-format" class="md-nav__link">
+    Free format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spaces" class="md-nav__link">
+    Spaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-cleanly" class="md-nav__link">
+    Code cleanly
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#be-aware-of-vectorisation" class="md-nav__link">
+    Be aware of vectorisation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal" class="md-nav__link">
+    Internal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external" class="md-nav__link">
+    External
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-program" class="md-nav__link">
+    Test Program
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    Reference data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-template" class="md-nav__link">
+    Module Template
+  </a>
+  
+    <nav class="md-nav" aria-label="Module Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general_1" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-public-and-private" class="md-nav__link">
+    Use of public and private
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Style Guide</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>The CASTEP code has been designed from conception to achieve various goals -
+including efficiency and maintainability. The following are some simple
+guidelines on writing code for inclusion within CASTEP. These are intended to
+enable the writing of correct, efficient code, and to ensure a consistent style
+for multiple authors throughout the code that is straightforward for others to
+maintain in the future. Fortran 2003 has been chosen as the language that all
+the code will be written in, as it has many modern features which enable the
+writing of clean, modular code without compromising efficiency and portability.</p>
+<p>In this document, there is a <a href="#template">template for writing modules</a>, and for
+writing subprograms within a module. These templates are designed to enforce
+good programming practice and documentation of routine function and
+side-effects.  It is important that all routines be written with these
+templates. The general guidelines about style addressed here, the use of module
+templates, the completeness of the documentation, etc. all help to make writing
+new code and maintaining the existing code a simple task.</p>
+<p>It is also the programmer's responsibility to ensure that each routine is coded
+as efficiently as possible. Whilst it is tempting to use some of the new
+built-in features of Fortran 2003, experience has shown that discretion is
+required in their usage so as not to compromise efficiency. Therefore,
+guidelines on the use of such features has also been included.</p>
+<h2 id="writing-to-the-specification-document">Writing to the Specification Document</h2>
+<h3 id="it-does-exactly-what-it-says-on-the-tin">"It does exactly what it says on the tin"</h3>
+<p>Obviously, it is of paramount importance to make sure that any routine that you
+are responsible for does exactly what the specification says that it should do,
+particularly with regard to exit conditions, side-effects, etc.</p>
+<p>Routines and variables that are covered by the specification are <code>public</code> whilst
+other routines and variables are <code>private</code>. The specification says nothing about
+the rôle or meaning of private routines. Private routines and variables are
+only accessible within the module in which they occur.</p>
+<h3 id="do-not-assume-anything-that-is-not-written-in-the-specification-document">Do not assume anything that is not written in the specification document</h3>
+<p>If the specification does not say that a particular routine will preserve the
+input values on exit, then you cannot presume that whoever coded it will do
+likewise! Even if that routine was written by you...</p>
+<p>Similarly, it may seem obvious that a particular variable has a particular
+meaning, but if it is not defined in the specification, then it cannot be
+presumed. Future revisions of the code may change non-specified routines
+freely. If all code sticks to the specification at all times, then maintaining
+the code is much simpler.</p>
+<p>Note that the specification does not say anything about private routines or
+variables in any module. For this reason, great care must be taken when using
+such routines. The <a href="#template">subprogram template</a> is there to remind you to
+document all side-effects of each routine!</p>
+<h3 id="code-robustly-for-errors">Code robustly for errors</h3>
+<p>That is, the user should never see a Fortran run-time error message - your code
+should check for possible error conditions, and either correct the error or
+print a nice, meaningful error message and do a graceful exit via <code>io_abort</code>.</p>
+<h3 id="conditions-on-execution">Conditions on execution</h3>
+<p>Conditions given in the specification must be true for correct execution of each
+routine. Obviously, these should be tested for to ensure correctness, but this
+may introduce a considerable performance penalty, particularly for <code>Utility</code> or
+<code>Fundamental</code> routines. For this reason, it is recommended to use a single
+<code>#ifdef debug</code> block at the start of each routine to test these conditions where
+appropriate and call <code>io_abort</code> as necessary. The code can then be compiled
+either with or without full error checking as appropriate.</p>
+<h2 id="errors-and-warnings">Errors and Warnings</h2>
+<h3 id="use-stderr-from-any-node">Use <code>stderr</code> from any node</h3>
+<p>Unlike normal messages, any node can write an error or warning message. Any
+such message is to be written to <code>stderr</code> from the relevant node. The
+routine shall then call <code>io_abort</code> to terminate the program neatly.</p>
+<h3 id="use-iprint-consistently">Use <code>iprint</code> consistently</h3>
+<p>Normal output, including warning messages and debugging information, should
+only by written to <code>stdout</code> by the root node. The level of detail is
+controlled by the <code>iprint</code> variable:</p>
+<ul>
+<li>
+<p><code>0</code> -  Minimal output - just the basic parameters controlling the run and
+  the answers!</p>
+</li>
+<li>
+<p><code>1</code> - Default output - breakdown of energies and forces into components,
+  etc. but no debugging output.</p>
+</li>
+<li>
+<p><code>2</code> - Minimal debugging - values of all significant parameters, etc. Not
+  printing all the arrays.</p>
+</li>
+<li>
+<p><code>3</code> -  Maximal debugging - the works!</p>
+</li>
+</ul>
+<h2 id="efficiency-issues">Efficiency Issues</h2>
+<h3 id="libraries">Libraries</h3>
+<p>The use of BLAS and LAPACK libraries are recommended, as these are freely
+available libraries and often come in vendor-optimised versions for each
+platform. For efficiency, it is also recommended that you do not use BLAS "level
+0 routines" as there are little efficiency gains to be made, and the equivalent
+fortran is often much neater and easier to read.</p>
+<h3 id="fortran-array-intrinsics">Fortran array intrinsics</h3>
+<p>Beware the use of fortran array intrinsics - they can be inefficient and may cause
+memory problems, e.g. <code>result=matmul(a,matmul(b,c))</code> requires an implicit
+dynamic memory allocation. Wherever practical use BLAS instead. Some intrinsics
+may also impede compiler optimisation, particularly on a vector
+machine. Similarly, do not use functions such as <code>transfer</code> or <code>mold</code> - these
+can be very inefficient.</p>
+<h3 id="passing-arrays-to-subprograms">Passing arrays to subprograms</h3>
+<p>This is a tricky subject, which can easily lead to confusion and inefficient
+code. The main problem is that there are multiple ways of passing arrays, and
+these are not in general equivalent!</p>
+<p>The best practice is to always pass the whole array together with its size, such
+as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">call </span><span class="n">foo</span><span class="p">(</span><span class="n">int_array</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="n">N2</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">...</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">subroutine </span><span class="n">foo</span><span class="p">(</span><span class="n">int_array</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="n">N2</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">implicit none</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="n">N2</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">int_array</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">...</span>
+</code></pre></div>
+<p>as this does not cause any copying of the array and allows the compiler to do
+bound-checking etc.</p>
+<p>The use of <strong>assumed-shape arrays</strong>, such as <code>int_array(:, :)</code> is less efficient
+as this has an explicit rank, but an implicit shape. This requires the use of
+functions such as <code>size(int_array,1)</code> and may prevent certain compiler
+optimisations. However, it does allow the compiler to do bound-checking.</p>
+<p>Care must be taken in passing the array though. If an array section is to be
+passed then it is much better to use <strong>assumed-size arrays</strong> (i.e. the old
+fashioned way), that is</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">call </span><span class="n">foo2</span><span class="p">(</span><span class="n">int_array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">))</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">...</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">subroutine </span><span class="n">foo2</span><span class="p">(</span><span class="n">int_array</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">implicit none</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">int_array</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">...</span>
+</code></pre></div>
+<p>than to pass <code>int_array(:, N)</code> and receive <code>int_array(:)</code> as this will create a
+copy of the array on the stack which will rapidly lead to "out of memory"
+errors.</p>
+<p>The use of assumed-size arrays, such as <code>int_array(*)</code> is useful if you want to
+write a general purpose routine that will work with any size and/or rank
+array. Note however, that it will not in general work with scalars, nor does it
+allow bounds-checking. However, it does not cause the creation of any copies of
+the array.</p>
+<h2 id="machine-specific-code">Machine-Specific Code</h2>
+<h3 id="avoid">Avoid!</h3>
+<p>Write in standard fortran without vendor extensions and without using any system
+routines wherever possible, for maximum portability. The one exception that is
+allowed to this is in the <code>Utility</code> modules, where all the low-level
+input/output and communications are handled.</p>
+<h3 id="test-thoroughly-to-prevent">Test thoroughly to prevent</h3>
+<p>Always test your routines on several different platforms and with several
+different compilers to be sure that you have not inadvertently relied upon some
+default behaviour of one specific compiler. The CI system will handle
+compilation for all supported compilers once submitted as a merge request into
+the Bitbucket repository, but these should be performed beforehand to minimise
+the effort in bugfixing.</p>
+<h3 id="file-handling">File handling</h3>
+<p>One obvious area of machine dependency is that of file handling. For this reason,
+the <code>io</code> module should be used to handle the opening of all files. The programmer
+is responsible for reading / writing the data and closing the file. Files are
+not to be kept open for any longer than strictly necessary.</p>
+<h3 id="compilerpreprocessor-directives">Compiler/preprocessor directives</h3>
+<p>These should be avoided wherever possible as they hinder portability. They
+should only be used in the <code>Utility</code> modules for machine specific code. All
+module filenames should be given the extension <code>.f90</code>, with the exception of
+<code>Utility</code> modules, where <code>.F90</code> is permitted, but generally only if
+preproccesing is used.</p>
+<h2 id="fortran90-features">Fortran90 Features</h2>
+<h3 id="use-of-dynamic-arrays">Use of dynamic arrays</h3>
+<p>Each routine is responsible for allocating/using/deallocating its own workspace.
+We recommend that such <code>allocate</code>/<code>deallocate</code>s only occur once in a routine -
+never inside a loop as this will produce a significant performance penalty. You
+must ensure that you always <code>deallocate</code> local work arrays on termination of the
+routine. Obviously, care needs to be taken if there are multiple exit points
+from a routine.</p>
+<h3 id="pointers">Pointers</h3>
+<p>Always accept passed arrays in subprograms as arrays and not as pointers. This
+will force automatic dereferencing of the array and enable better optimisations
+by the compiler.</p>
+<h3 id="flow-of-control">Flow of control</h3>
+<p>Use of constructs such as <code>select case</code> and <code>do ... end do</code>, with labelling of
+"do loops", etc. is recommended for clarity. Use of <code>cycle</code> and <code>exit</code> is OK -
+but only use to move a maximum of one level of nesting where possible. Do NOT
+use <code>goto</code>.</p>
+<h3 id="functions">Functions</h3>
+<p>A function subprogram should be "pure", i.e. generate no side-effects through
+modification of variables in argument list or module variables through "use
+association". Avoid recursion.</p>
+<h3 id="use-of-use">Use of <code>use</code></h3>
+<p>Use modules with an <code>only</code> clause if only a small number of variables
+required. Put appropriate <code>use</code> statements into each subroutine required, NOT
+into the module header, in order to keep track of module variable modification.</p>
+<h3 id="line-numbers">Line numbers</h3>
+<p>Avoid where possible. Line numbers are only to be used for format statements,
+and <code>end=</code> or <code>err=</code> in file handling. Do not use <code>continue</code>.</p>
+<h3 id="general-features">General features</h3>
+<p>Avoid multiple statement lines unless trivially simple.</p>
+<h2 id="modules">Modules</h2>
+<h3 id="general">General</h3>
+<p>All code is to be contained within modules.</p>
+<h3 id="usage">Usage</h3>
+<p>Each module described in the specification is to be one source file. All
+routines given in the specification for this module are to be in this file.</p>
+<h3 id="auxiliary-modules">Auxiliary modules</h3>
+<p>CASTEP also encourages the use of the more recent (Fortran 2008)
+<code>submodule</code>s. Submodules allow the programmatic subdivision of a module enabling
+the compiler to precompile interfaces, reduce required compilation if only the
+submodule has changed and allowing the developer to more effectively control
+scope of module internals.</p>
+<p>For clarity, and to keep the module from being excessively long, the module may
+also use auxiliary modules, which can be in separate files (again with one file
+per module). Any auxiliary modules must be used in only one specified module,
+i.e. no auxiliary code reuse in other specified modules as the auxiliary
+routines are not specified!</p>
+<p>The naming convention of any auxiliary modules is to be inherited from the
+specified module to make it clear where the auxiliary routines are to be used,
+e.g. if the specified module is called <code>me.F90</code> with routines called <code>me_sub</code>,
+etc. then an auxiliary module would be <code>me_extra.F90</code> with routines called
+<code>me_extra_sub</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Rather than using full auxilliary modules in modern CASTEP, <code>submodule</code>s are
+encouraged.</p>
+</div>
+<h2 id="style-and-layout">Style and Layout</h2>
+<h3 id="use-the-module-template">Use the module template</h3>
+<p><a href="#template">The module template</a> gives the recommended layout for a module and
+for a subprogram. This is available in the CASTEP source at
+<code>Source/template.f90</code>. In particular, note the layout and contents of the
+comment header, and the order of declarations. Everything is to be private
+unless explicitly specified as public! This also makes it simple to check the
+code against the specification.</p>
+<h3 id="layout">Layout</h3>
+<p>All code is to use indentation as generated by GNU-Emacs f90-mode. Use any
+editor you like to create the code, but please ensure that whatever goes into
+the Bitbucket repository has been passed through Emacs f90-mode indentation at
+the finished stage. To assist in Emacs usage, <a href="#template">the module template</a>
+contains Emacs directives to set f90-mode, etc.</p>
+<h3 id="case">Case</h3>
+<p>Use lower case for keywords and use capitalisation as given in the specification
+for all routines and variables mentioned therein. For private routines and variables
+use lower case in general. However, you may use upper case to differentiate
+words within a name, e.g. <code>userInputData</code> - as long as you are consistent
+throughout the module.</p>
+<p>Use upper case, with stripped spaces, for the value of string variables that are
+passed between routines, e.g. <code>run_type='MOLECULARDYNAMICS'</code> not
+<code>'MolecularDynamics</code>' or <code>'molecular dynamics'</code> etc. to simplify string
+comparisons.</p>
+<h3 id="names">Names</h3>
+<p>For clarity, don't change variable name on passing to a different routine
+wherever possible. Avoid short (1 or 2 letter) variable names except for simple
+loop counters. Use new form <code>end subroutine name</code> etc. not older form
+<code>end subroutine</code>.</p>
+<h3 id="types">Types</h3>
+<p>Do NOT use implicit typing. Similarly, you do not have to stick to the old rules
+for implicit typing - you can have integer names beginning with "<code>c</code>" etc! Do
+not give type as <code>double precision</code> - use <code>real(kind=dp)</code> instead, as <code>dp</code> is a
+constant in the Constants module and this will make porting to other
+architectures (e.g. Cray) much simpler. Remember that all machine-specific code
+stays in the Utility routines. Similarly, when declaring a constant, use
+<code>1.234_dp</code> NOT <code>1.234d0</code>.</p>
+<h3 id="free-format">Free format</h3>
+<p>Use free-format f90, with a maximum line length of 132 characters.</p>
+<h3 id="spaces">Spaces</h3>
+<p>Use spaces between keywords e.g. <code>end if</code> not <code>endif</code>.</p>
+<h3 id="code-cleanly">Code cleanly</h3>
+<p>Obviously, to ensure correctness and make it easier for others to maintain the
+code. If the obvious way to code a routine is inefficient, whilst the efficient
+way is obscure, then this is allowed as long as the routine is well documented
+internally, with a discussion as to the design decisions made.</p>
+<h3 id="be-aware-of-vectorisation">Be aware of vectorisation</h3>
+<p>When coding, be aware that the code is almost always executed upon vector
+architectures.  Therefore code with a style that enables good vectorisation -
+e.g. don't put <code>if</code> statements inside nested loops wherever possible.</p>
+<h2 id="documentation">Documentation</h2>
+<h3 id="internal">Internal</h3>
+<p>Each module, based upon <a href="#template">the module template</a>, is to have a header block
+describing its overall purpose and function.</p>
+<p>Each routine, written to the template, is to have a header block describing
+its function, the variables required and how modified, the necessary conditions
+for correct operation, etc. These comments should be clear and easy to understand.</p>
+<p>Each routine is also to contain lots of comments within the code. Comments are
+to be either on the same line(s) as the feature being comment upon, or in a
+block of lines above the feature.</p>
+<p>Comment density should be comparable to code density.</p>
+<p>All comments are to be in English and obey standard rules of English grammar.</p>
+<h3 id="external">External</h3>
+<p>A module (or any modifications) is only considered complete when additional
+documentation has been supplied for inclusion. Documentation must be provided in
+the appropriate module and function header blocks, explaining the function of
+the module and each routine, the physics behind the code, the algorithms used,
+the key variables and data structures, and appropriate references to the
+literature.</p>
+<h2 id="testing">Testing</h2>
+<h3 id="test-program">Test Program</h3>
+<p>Each module shall be tested for correctness before being added to the Bitbucket
+repository. To this end a set of tests shall be provided, which must compile and
+execute correctly in the CI system. The purpose of these tests is to verify the
+correct operation of every specified routine in the module.</p>
+<p>CASTEP uses the <a href="https://testcode.readthedocs.io/en/latest/"><code>testcode</code></a> testing
+platform which allows automated generation of benchmark data from a set of valid
+CASTEP input files.</p>
+<p>Please see <a href="adding_testing.md">Testing</a> for more information on how to do this.</p>
+<h3 id="reference-data">Reference data</h3>
+<p>The module test program shall come with both appropriate input datafiles and
+reference output results. Correct operation of the test shall be verified by
+comparing the actual output against the reference output results.</p>
+<h2 id="module-template">Module Template</h2>
+<h3 id="general_1">General</h3>
+<p>Note particularly the order of declaration, use of <code>implicit none</code> and
+<code>private</code>, and the standard comment header, for internal documentation.  All
+lines in comment headers are to be 80 characters wide. Not all sections of the
+header will be relevant to all subprograms and so can be deleted. It is very
+important that the header is kept up-to-date and as complete as possible.</p>
+<h3 id="use-of-public-and-private">Use of <code>public</code> and <code>private</code></h3>
+<p>Each module uses an initial <code>private</code> statement to force all entities
+in the module to be private by default. Then have explicit <code>public</code> statements
+to expose those datatypes, variables and (overloaded) routine names, as listed
+in the specification document. This makes it easy to compare the code to the
+specification document.</p>
+<h3 id="template">Template</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c">! -*- mode: F90 ; mode: font-lock ; column-number-mode: true ; vc-back-end: git -*-</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c">!=============================================================================!</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c">!                          D U M M Y                                          !</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c">!=============================================================================!</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c">!                                                                             !</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c">! $Id$</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c">!                                                                             !</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c">!-----------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c">! Overall explanation of purpose and function of module.                      !</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c">!                                                                             !</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c">!-----------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c">! Written from  &quot;Module Specification for New Plane Wave Code&quot;,  M. Segall,   !</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c">!    P. Lindan, M. Probert, C. Pickard, P. Hasnip, S. Clark and M. Payne      !</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c">!                           Copyright 1999/2000                               !</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c">!-----------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c">! Written by author, version, date                                            !</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c">!-----------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c">!                                                                             !</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c">!</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="c">!                                                                             !</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="c">!=============================================================================!</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="k">module </span><span class="n">dummy</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="k">use </span><span class="n">constants</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">dp</span><span class="w">                      </span><span class="c">!Minimal useage where practical</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span><span class="k">implicit none</span><span class="w">                                 </span><span class="c">!Impose strong typing</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="k">private</span><span class="w">                                       </span><span class="c">!Everything is private ...</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="c">!                       P u b l i c   R o u t i n e s                       !</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">routine_name</span><span class="w"> </span><span class="p">...</span><span class="w">                    </span><span class="c">!... unless exposed here.</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="k">interface </span><span class="n">routine_name</span><span class="w">                        </span><span class="c">!Overloaded routines, etc.</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">     </span><span class="p">...</span><span class="w">                                        </span><span class="c">!(specific names are private)</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">  </span><span class="k">end interface</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">  </span><span class="c">!                        P u b l i c   V a r i a b l e s                    !</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">  </span><span class="k">public </span><span class="n">datatypes</span><span class="w"> </span><span class="p">...</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">  </span><span class="k">public </span><span class="n">variables</span><span class="w"> </span><span class="p">...</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">  </span><span class="c">!                      P r i v a t e   R o u t i n e s                      !</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">  </span><span class="c">!                      P r i v a t e   V a r i a b l e s                    !</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">  </span><span class="c">!---------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">  </span><span class="n">datatypes</span><span class="w"> </span><span class="p">...</span><span class="w">                                 </span><span class="c">!Private data for all routines</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">  </span><span class="n">variables</span><span class="w"> </span><span class="p">..</span><span class="w">                                  </span><span class="c">!in this module ...</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">  </span><span class="p">...</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="k">contains</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="k">  subroutine </span><span class="n">public1</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span><span class="n">var2</span><span class="p">,...)</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">    </span><span class="c">!=========================================================================!</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">    </span><span class="c">! Explanation of purpose of routine                                       !</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">    </span><span class="c">! ...                                                                     !</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">    </span><span class="c">!-------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">    </span><span class="c">! Arguments:                                                              !</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">    </span><span class="c">!   var1, intent, meaning                                                 !</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">    </span><span class="c">! ...       (in order of call list)                                       !</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">    </span><span class="c">!-------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">    </span><span class="c">! Parent module variables used:                                           !</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">    </span><span class="c">!   globalvar1, meaning                                                   !</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">    </span><span class="c">! ...                                                                     !</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="w">    </span><span class="c">!-------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="w">    </span><span class="c">! Modules used:                                                           !</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">    </span><span class="c">!   other_module used,                                                    !</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="w">    </span><span class="c">!   other_vars, meanings, changes                                         !</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="w">    </span><span class="c">! ...                                                                     !</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="w">    </span><span class="c">!-------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="w">    </span><span class="c">! Key Internal Variables:                                                 !</span>
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="w">    </span><span class="c">!   intvar1, meaning                                                      !</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="w">    </span><span class="c">! ...                                                                     !</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="w">    </span><span class="c">!-------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="w">    </span><span class="c">! Necessary conditions:                                                   !</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="w">    </span><span class="c">! ...                                                                     !</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="w">    </span><span class="c">!-------------------------------------------------------------------------!</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a><span class="w">    </span><span class="c">! Written by author, version, date                                        !</span>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="w">    </span><span class="c">!=========================================================================!</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="w">    </span><span class="k">use </span><span class="n">other_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">other_var1</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="w">    </span><span class="k">use </span><span class="n">my_module</span>
+<a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="w">    </span><span class="k">implicit none</span>
+<a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a>
+<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a><span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">var1</span><span class="w">        </span><span class="c">!Variables in call order</span>
+<a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a><span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">var2</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="k">call </span><span class="n">list</span><span class="p">)</span>
+<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a>
+<a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a><span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">my_var1</span><span class="o">=</span><span class="mf">2.7182818_dp</span><span class="w">             </span><span class="c">!base of natural logs</span>
+<a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a><span class="w">    </span><span class="kt">complex</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">my_work1</span>
+<a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="n">internal</span><span class="w"> </span><span class="n">variables</span><span class="p">)</span>
+<a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a>
+<a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a><span class="cp">#ifdef debug</span>
+<a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="w"> </span><span class="n">checks</span><span class="p">)</span>
+<a id="__codelineno-2-98" name="__codelineno-2-98" href="#__codelineno-2-98"></a><span class="cp">#endif</span>
+<a id="__codelineno-2-99" name="__codelineno-2-99" href="#__codelineno-2-99"></a><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a>
+<a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a><span class="w">    </span><span class="k">return</span>
+<a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a><span class="k">  end subroutine </span><span class="n">public1</span>
+<a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a>
+<a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a><span class="w">  </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="k">public </span><span class="n">subroutines</span><span class="p">)</span>
+<a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a>
+<a id="__codelineno-2-106" name="__codelineno-2-106" href="#__codelineno-2-106"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">private1</span><span class="p">(....)</span>
+<a id="__codelineno-2-107" name="__codelineno-2-107" href="#__codelineno-2-107"></a><span class="w">    </span><span class="c">!=========================================================================!</span>
+<a id="__codelineno-2-108" name="__codelineno-2-108" href="#__codelineno-2-108"></a><span class="w">    </span><span class="c">! Explanation of purpose of routine                                       !</span>
+<a id="__codelineno-2-109" name="__codelineno-2-109" href="#__codelineno-2-109"></a><span class="w">    </span><span class="c">! ...                                                                     !</span>
+<a id="__codelineno-2-110" name="__codelineno-2-110" href="#__codelineno-2-110"></a><span class="w">    </span><span class="c">! (etc, as for public routines)                                           !</span>
+<a id="__codelineno-2-111" name="__codelineno-2-111" href="#__codelineno-2-111"></a><span class="w">    </span><span class="c">!=========================================================================!</span>
+<a id="__codelineno-2-112" name="__codelineno-2-112" href="#__codelineno-2-112"></a><span class="w">    </span><span class="p">....</span>
+<a id="__codelineno-2-113" name="__codelineno-2-113" href="#__codelineno-2-113"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">private1</span>
+<a id="__codelineno-2-114" name="__codelineno-2-114" href="#__codelineno-2-114"></a>
+<a id="__codelineno-2-115" name="__codelineno-2-115" href="#__codelineno-2-115"></a><span class="k">end module </span><span class="n">dummy</span>
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../adding_pair_pots/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adding empirical potentials" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Adding empirical potentials
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": "-content.code.annotate", "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
