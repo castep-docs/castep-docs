@@ -29,6 +29,7 @@ nav:
         - 'MD Keywords': 'documentation/Molecular_Dynamics/keywords.md'
         - 'MD Tools': 'documentation/Molecular_Dynamics/tools.md'
         - 'PIMD': 'documentation/Molecular_Dynamics/pimd.md'
+        - 'Hugoniostat': 'documentation/Molecular_Dynamics/hugoniostat.md'
       - 'Transition State Search':
         - 'Nudged elastic band': 'documentation/Transition_State_Search/neb.md'
       - 'Exchange-Correlation (XC)':
@@ -99,7 +100,10 @@ nav:
         - 'Molecular Projected DOS': 'tutorials/Delta_SCF/molpdos.md'
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
-
+   - 'Developer':
+      - 'Using Devel Codes': 'developer/using_devel_codes.md'
+      - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
+      - 'Style Guide': 'developer/style_guide.md'
 
 theme:
   name: material
