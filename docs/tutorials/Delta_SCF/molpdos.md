@@ -141,7 +141,7 @@ spin channels, and the MolPDOS peaks.
 The following image shows the Total DOS and the two spin channels.
 
 
-![Total DOS and Two Spin Channels](../../img/DOS1.png)
+![Total DOS and Two Spin Channels](../img/DOS1.png)
 
 The next picture shows the frontier orbitals of spin channel 1 projected
 on the total DOS. Especially the LUMO shows strong hybridization with
@@ -149,7 +149,7 @@ the Nickel d-bands and also is partially occupied. The left scale refers
 to the total DOS, whereas the right y-scale shows the peak height of the
 projected MOs.
 
-![Frontier orbitals of spin channel 1 projected on the total DOS](../../img/DOS2.png)
+![Frontier orbitals of spin channel 1 projected on the total DOS](../img/DOS2.png)
 
 ------------------------------------------------------------------------
 
