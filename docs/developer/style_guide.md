@@ -472,10 +472,6 @@ specification document.
 !=============================================================================!
 !                          D U M M Y                                          !
 !=============================================================================!
-!                                                                             !
-! $Id$
-!                                                                             !
-!-----------------------------------------------------------------------------!
 ! Overall explanation of purpose and function of module.                      !
 !                                                                             !
 !-----------------------------------------------------------------------------!
@@ -486,7 +482,6 @@ specification document.
 ! Written by author, version, date                                            !
 !-----------------------------------------------------------------------------!
 !                                                                             !
-!
 !                                                                             !
 !=============================================================================!
 
@@ -551,21 +546,19 @@ contains
     !-------------------------------------------------------------------------!
     ! Written by author, version, date                                        !
     !=========================================================================!
+    use my_module, only : some_other_function
     use other_module, only : other_var1
-    use my_module
     implicit none
 
     integer, intent(in), dimension(:,:) :: var1        !Variables in call order
-    real, kind(dp), intent(in), parameter :: var2
+    real(kind=dp), intent(in), parameter :: var2
     ... (other variables in call list)
 
-    real, kind(dp) :: my_var1=2.7182818_dp             !base of natural logs
-    complex, kind(dp), allocatable, dimension(:) :: my_work1
+    real(kind=dp) :: my_var1=2.7182818_dp             !base of natural logs
+    complex(kind=dp), allocatable, dimension(:) :: my_work1
     ... (other internal variables)
 
-#ifdef debug
     ... (condition checks)
-#endif
     ... (actual code)
 
     return
