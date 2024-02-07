@@ -49,6 +49,10 @@ nav:
       - 'XRD': 'documentation/XRD/overview.md'
       - 'TDDFT':
         - 'TDDFT Overview': 'documentation/TDDFT/overview.md'
+      - 'Elastic Constants':
+        - 'Overview' : 'documentation/Elastic_Constants/overview.md'
+        - 'Python Scripts' : 'documentation/Elastic_Constants/Python_scripts.md'
+        - 'Pertubation Theory Approach' : 'documentation/Elastic_Constants/Cij_DFPT.md'
       - 'Delta SCF':
         - 'Delta SCF Overview': 'documentation/Delta_SCF/overview.md'
         - 'Simple Delta SCF': 'documentation/Delta_SCF/simple_delta_scf.md'
