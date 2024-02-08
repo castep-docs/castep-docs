@@ -23,6 +23,51 @@ built-in features of Fortran 2003, experience has shown that discretion is
 required in their usage so as not to compromise efficiency. Therefore,
 guidelines on the use of such features has also been included.
 
+## CASTEP linter
+
+The CASTEP linter is a Python tool which checks your CASTEP build for any issues
+related to the CASTEP style. It should be used after making any major
+modifications.
+
+!!!note
+
+    The linter is also run on the CASTEP CI system and will warn you if any new
+    issues arise from your modifications. Should any new issues be in your PR, it
+    may not be accepted.
+
+### Using the CASTEP linter
+
+The linter is available on [PyPI](https://pypi.org/project/castep-linter/) and
+can be installed on your system using `pip`:
+
+```shell
+python -m pip install castep-linter
+```
+
+Following the install, it should be possible to run the linter by running:
+
+```shell
+castep-lint <file>
+```
+
+e.g.
+
+```shell
+castep-lint Source/Functional/pair_pot.f90
+```
+
+For further information, type
+
+```shell
+castep-lint -h
+```
+
+It is also possible to use the CASTEP linter in
+[emacs](https://www.gnu.org/software/emacs/) through a [`flycheck`
+extension](https://github.com/byornski/castep-linter/blob/main/utils/flycheck-castep.el). To
+use this you must install the `flycheck` package which can be done through the
+[`MELPA`](https://melpa.org/#/getting-started) emacs package repository.
+
 
 ## Writing to the Specification Document
 
