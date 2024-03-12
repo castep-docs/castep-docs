@@ -302,7 +302,7 @@ A unified density-functional treatment of dynamical, nondynamical, and dispersio
 
 Restrictions: 
 
-* Default XDM parameters are available for the following XC functionals:
+* Default XDM parameters are available for the following XC functionals: B86PBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN
 
 **`SEDC_SCHEME : XDM`**    
 [J. Chem. Phys. 127, 124108 (2007)](https://doi.org/10.1063/1.2768530)
