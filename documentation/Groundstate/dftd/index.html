@@ -2293,7 +2293,6 @@
 <li>are the aperiodic versions of TSSCS and MBD still a thing? </li>
 <li>What elements are supported for D3? </li>
 <li>General recommendations for types of systems -- are these ok? Add others?   </li>
-<li>Check note about small cells and the TS, XDM abd MBD methods. Is the solution just to use a bigger supercell? Rule of thumb?</li>
 </ul>
 <h2 id="background">Background</h2>
 <h3 id="why-and-when-are-long-range-dispersion-methods-needed">Why and when are long range-dispersion methods needed?</h3>
@@ -2327,8 +2326,8 @@ Finally, the many-body correlated motion of electrons can be, to some extent, ca
 </ul>
 <p><span class="arithmatex"><span class="MathJax_Preview">^*</span><script type="math/tex">^*</script></span> See note below for how to include the three-body terms in the CASTEP D3 correction. </p>
 <p>Again, please do your own testing and consult relevant reviews and benchmarking papers. </p>
-<p>For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). In such cases, try to use larger unit cells until your dispersion correction converges. <code>TODO: any other solutions?</code></p>
-<p>Not all <code>XC_FUNCTIONAL</code> values are supported for all schemes - if in doubt use PBE.    </p>
+<p>For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). This has been fixed in academic CASTEP v24.1 for TS and MBD, and in v25 for XDM. If you are using an older version of CASTEP, then you should try to use larger unit cells until your dispersion correction converges.</p>
+<p>Not all <code>XC_FUNCTIONAL</code> values are supported for all schemes - if in doubt use PBE. The primary 'XC_FUNCTIONAL' for XDM is B86PBE.    </p>
 <p>Each scheme has default parameters defined for a subset of elements (see <a href="#table">table</a> below). For other elements you need to define custom parameters using the <code>SEDC_CUSTOM_PARAMS</code> keyword in the .cell file. </p>
 <h2 id="using-dispersion-corrections-in-castep">Using dispersion corrections in CASTEP</h2>
 <h3 id="param-file-keywords">.param file keywords</h3>
@@ -2422,7 +2421,7 @@ Finally, the many-body correlated motion of electrons can be, to some extent, ca
 <tr>
 <td><a href="#XDM">XDM</a></td>
 <td>CASTEP 20</td>
-<td>PBE</td>
+<td>B86PBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN</td>
 <td>Up to Z=102</td>
 <td>Analytic</td>
 <td>FD</td>
@@ -2587,18 +2586,16 @@ Finally, the many-body correlated motion of electrons can be, to some extent, ca
 <p>For CASTEP 20, the D3 library is included in the distribution and the setting the flag above should be sufficient. </p>
 </details>
 <h4 id="exchange-dipole-moment-xdm-method">Exchange-dipole moment (XDM) method <a name="XDM"></a></h4>
+<p>A unified density-functional treatment of dynamical, nondynamical, and dispersion correlations.</p>
+<p>Restrictions: </p>
+<ul>
+<li>Default XDM parameters are available for the following XC functionals:</li>
+</ul>
 <p><strong><code>SEDC_SCHEME : XDM</code></strong>  <br />
-A unified density-functional treatment of dynamical, nondynamical, and dispersion correlations.</p>
-<p><a href="https://doi.org/10.1063/1.2768530">J. Chem. Phys. 127, 124108 (2007)</a></p>
-<p>To use this correction with the <strong>PBE</strong> functional, you need to set: 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SEDC_APPLY  = TRUE
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>SEDC_SCHEME = XDM
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>SEDC_SC_XDM = 1.0 
-</code></pre></div></p>
-<p>where the <code>SEDC_SC_XDM</code> parameter is a global scaling factor. </p>
-<p>For other functionals you need to specify the following additional parameters: </p>
+<a href="https://doi.org/10.1063/1.2768530">J. Chem. Phys. 127, 124108 (2007)</a></p>
+<p>For functionals that are not in this list, you need to specify the following additional parameters: </p>
 <details class="keyword">
-<summary>Customisation keywords for XDM</summary>
+<summary>Customisation keywords</summary>
 <p><strong>.param file</strong>   </p>
 <p><code>SEDC_A1_XDM</code>  <br />
   Type: Real (float)  <br />
@@ -2635,13 +2632,14 @@ A unified density-functional treatment of dynamical, nondynamical, and dispersio
   Allowed values: <code>TRUE</code> or <code>FALSE</code>  <br />
   Default is <code>FALSE</code></p>
 </details>
-<p>Note that the specific parameters found here: <a href="http://schooner.chem.dal.ca/wiki/XDM">http://schooner.chem.dal.ca/wiki/XDM</a> are might not be directly transferable to CASTEP and careful further testing is necessary.  </p>
+<p>Note that if you wish to experiment with these values, for example to test a new functional, then careful further testing is necessary.  </p>
 <h4 id="other-schemes">Other Schemes</h4>
 <p><strong><code>SEDC_SCHEME : OBS</code></strong> # (Ortmann, Bechstedt and Schmidt)<a name="OBS"></a>    </p>
 <p>Semiempirical van der Waals correction to the density functional description of solids and molecular structures</p>
 <p><a href="https://doi.org/10.1103/PhysRevB.73.205101">Phys. Rev. B 73, 205101, (2006)</a></p>
 <details class="keyword">
 <summary>Customisation keywords</summary>
+<p><strong>.param file</strong>   </p>
 <p>"<code>SEDC_LAMBDA_OBS</code>" <br />
     Type: Real (float) <br />
     Level: Expert <br />
@@ -2663,6 +2661,7 @@ A unified density-functional treatment of dynamical, nondynamical, and dispersio
 <p><a href="https://doi.org/10.1002/jcc.20570">J. Comput. Chem. 28, 555, (2007)</a></p>
 <details class="keyword">
 <summary>Customisation keywords</summary>
+<p><strong>.param file</strong>   </p>
 <p><code>SEDC_SR_JCHS</code>  <br />
   Type: Real (float)  <br />
   Level: Expert <br />
