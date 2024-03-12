@@ -6,7 +6,6 @@
  * are the aperiodic versions of TSSCS and MBD still a thing? 
  * What elements are supported for D3? 
  * General recommendations for types of systems -- are these ok? Add others?   
- * Check note about small cells and the TS, XDM abd MBD methods. Is the solution just to use a bigger supercell? Rule of thumb?
 
 
 ## Background
@@ -57,10 +56,10 @@ $^*$ See note below for how to include the three-body terms in the CASTEP D3 cor
 Again, please do your own testing and consult relevant reviews and benchmarking papers. 
 
 
-For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). In such cases, try to use larger unit cells until your dispersion correction converges. `TODO: any other solutions?`
+For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). This has been fixed in academic CASTEP v24.1 for TS and MBD, and in v25 for XDM. If you are using an older version of CASTEP, then you should try to use larger unit cells until your dispersion correction converges.
 
 
-Not all `XC_FUNCTIONAL` values are supported for all schemes - if in doubt use PBE.    
+Not all `XC_FUNCTIONAL` values are supported for all schemes - if in doubt use PBE. The primary 'XC_FUNCTIONAL' for XDM is B86PBE.    
 
 Each scheme has default parameters defined for a subset of elements (see [table](#table) below). For other elements you need to define custom parameters using the `SEDC_CUSTOM_PARAMS` keyword in the .cell file. 
 
@@ -85,7 +84,7 @@ In the `.param` file, set:
 | [D3-BJ](#D3-BJ)           | CASTEP 20 ([Compilation instructions](#D3compilation)) | PBE, PBE0, HF                                            |                                       | Analytic | FD        |
 | [OBS](#OBS)               | Predates 2012                                          | LDA, PW91                                                | Up to Z=57                            | Analytic | DFPT & FD |
 | [JCHS](#JCHS)             | Predates 2012                                          | PBE, BLYP, B3LYP, TPSS                                   | H, C, N, O, F, Cl, Br                 | Analytic | DFPT & FD |
-| [XDM](#XDM)               | CASTEP 20                                              | PBE                                                      | Up to Z=102                           | Analytic | FD        |
+| [XDM](#XDM)               | CASTEP 20                                              | B86PBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN         | Up to Z=102                           | Analytic | FD        |
 <sup>*</sup> DFPT: Density functional perturbation theory; FD: finite displacement.    
 
 
@@ -230,6 +229,7 @@ Note that default D2 parameters are available only for the PBE, BLYP, BP86, B3LY
 [J. Comput. Chem. 27, 1787, (2006)](https://doi.org/10.1002/jcc.20495)
 
 ??? keyword "Customisation keywords G06"
+
       **.param file**   
     
       `SEDC_S6_G06`    
@@ -297,23 +297,20 @@ This is the Grimme D3 scheme with Becke-Johnson damping.
 
 #### Exchange-dipole moment (XDM) method <a name="XDM"></a>
 
-**`SEDC_SCHEME : XDM`**    
 A unified density-functional treatment of dynamical, nondynamical, and dispersion correlations.
 
+
+Restrictions: 
+
+* Default XDM parameters are available for the following XC functionals:
+
+**`SEDC_SCHEME : XDM`**    
 [J. Chem. Phys. 127, 124108 (2007)](https://doi.org/10.1063/1.2768530)
 
-To use this correction with the **PBE** functional, you need to set: 
-```
-SEDC_APPLY  = TRUE
-SEDC_SCHEME = XDM
-SEDC_SC_XDM = 1.0 
-```
+For functionals that are not in this list, you need to specify the following additional parameters: 
 
-where the `SEDC_SC_XDM` parameter is a global scaling factor. 
+??? keyword "Customisation keywords"
 
-For other functionals you need to specify the following additional parameters: 
-
-??? keyword "Customisation keywords for XDM"
       **.param file**   
 
       `SEDC_A1_XDM`    
@@ -355,7 +352,7 @@ For other functionals you need to specify the following additional parameters:
       Default is `FALSE`
 
 
-Note that the specific parameters found here: http://schooner.chem.dal.ca/wiki/XDM are might not be directly transferable to CASTEP and careful further testing is necessary.  
+Note that if you wish to experiment with these values, for example to test a new functional, then careful further testing is necessary.  
 
 #### Other Schemes
 **`SEDC_SCHEME : OBS`** # (Ortmann, Bechstedt and Schmidt)<a name="OBS"></a>    
@@ -364,6 +361,9 @@ Semiempirical van der Waals correction to the density functional description of 
 
 [Phys. Rev. B 73, 205101, (2006)](https://doi.org/10.1103/PhysRevB.73.205101)
 ??? keyword "Customisation keywords"
+
+    **.param file**   
+
     "`SEDC_LAMBDA_OBS`"   
         Type: Real (float)   
         Level: Expert   
@@ -387,6 +387,9 @@ Semiempirical van der Waals correction to the density functional description of 
 [J. Comput. Chem. 28, 555, (2007)](https://doi.org/10.1002/jcc.20570)
 
 ??? keyword "Customisation keywords"
+
+    **.param file**   
+
     `SEDC_SR_JCHS`    
       Type: Real (float)    
       Level: Expert   
