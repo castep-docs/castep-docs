@@ -60,3 +60,5 @@ Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
           ```
 
     2. On the website interface, click "merge". Then change the merge strategy to "Squash". You will then get an opportunity to edit the commit message.
+
+13. Switch back to the default branch ``git switch default.`` Do not do any further work on your foo branch and attempt any merging, or you risk creating a "spaghetti" of loops in the commit graph. You may re-use the name of your branch if you delete the old one with ``git branch -D``.
