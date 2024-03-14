@@ -15,6 +15,7 @@ nav:
         - 'Spin Orbit Coupling': 'documentation/Groundstate/soc.md'
         - 'Spin Constraints': 'documentation/Groundstate/spin_constraints.md'
         - 'Population analysis': 'documentation/Groundstate/population_analysis.md'
+        - 'ELF': 'documentation/Groundstate/ELF.md'
       - 'Geometry Optimisation':
         - 'Overview': 'documentation/Geometry_Optimisation/overview.md'
         - 'Keywords': 'documentation/Geometry_Optimisation/keywords.md'
@@ -98,6 +99,7 @@ nav:
       - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
       - 'Style Guide': 'developer/style_guide.md'
       - 'Testing': 'developer/adding_testing.md'
+      - 'Git workflow': 'developer/git_workflow.md'
 
 theme:
   name: material
@@ -131,3 +133,18 @@ markdown_extensions:
   - footnotes
 extra_css:
   - stylesheets/extra.css
+plugins:
+  - search
+  - bibtex:
+      # `bib_file` takes precedence over `bib_dir`, if `bib_file` is defined,
+      # the bibtex plugin will use an absolute path to the file, meaning that
+      # we can only execute `mkdocs build` in the folder `REPO_root/docs`.
+      # With `bib_dir` the bibtex plugin will use a relative path to the
+      # `mkdocs.yml` file, and search recursively for all the bib files.
+      # Therefore, it is possible to execute `mkdocs build` in both the
+      # `REPO_root` and the `REPO_root/docs` folder, then readthedocs can build
+      # the docs (since readthedocs always builds the docs in the `REPO_root`).
+      bib_file: refs.bib
+      # default "{number}", to avoid conflict with user-defined footnotes
+      footnote_format: "ref{number}"
+
