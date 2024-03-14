@@ -24,26 +24,16 @@ Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
 
 9.  If planned destination branch (usually default) has changed:
 
-    1.      Fetch from official ``git fetch upstream default`` [NB: reference to “upstream” might be different if   your remote aliases are configured differently]. This only
-     collects the upstream changes, nothing is yet applied to your local clone.
+    1.      Fetch from official ``git fetch upstream default:default`` [NB: reference to “upstream” might be different if   your remote aliases are configured differently]. This not only performs the fetch but also updates the local "default" branch to sync with the upstream.
 
-    2. Switch to destination (default) branch (``git switch default`` or ``git switch``) - if default was the branch you    were previously on
-
-    3. Pull (equivalent of hg update, i.e. bring any upstream changes in default into your local copy):
-       ```
-      git pull --ff-only upstream default
-       ```
-
-    4. Switch back to previous branch (``git switch`` - or ``git switch foo``)
-
-    5. Rebase using destination (default) branch ``git rebase default``. This makes it so that your changes are sitting on top of the latest “official” default.
+    2. Rebase using destination (default) branch ``git rebase default``. This makes it so that your changes are sitting on top of the latest “official” default.
     NB If your branch contains many PRs then better to do an interactive rebase to squash the history, as "squash merge" is not working properly on bitbucket. Hence, instead of 'git rebase default' do
     ```
     git rebase -i default
     ```
     and then in your editor, leave the first line as 'pick ....' and then change all subsequent lines from 'pick ...' to 'squash ...'. Save the file and then you will get a squashed history for this PR.
 
-    6. Fix conflicts if needed ``git mergetool tool=kdiff3`` [kdiff3 is just my personal preference] and then:
+    3. Fix conflicts if needed ``git mergetool tool=kdiff3`` [kdiff3 is just my personal preference] and then:
                         ``git rebase --continue`` (and commit)
 
 10.      Push branch to fork (``git push myfork foo``) This is a very good habit to get used to: always specify the remote and branch so you know exactly what you’re trying to push and where!
@@ -55,14 +45,19 @@ Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
 11.      Create pull request (bitbucket web, from fork)
                 "Delete this branch after merge" should be checked in most cases. The exception is with long-term development branches and release branches.
 
-12.      What to do if another PR is merged first:
+12.      If another PR is merged first, you have two choices:
 
-    1. *Do NOT* click “Sync now” on the PR page as this does a merge and commit, which breaks our --ffonly policy
 
-    2. At your local clone, go back to step 9
+    1. &nbsp;
 
-    3. Similar to step 10, except this is a “force” push as the rebase has changed the commit history:
-    ```
-    git push --force myfork foo
-    git push myfork default
-    ```
+          1. *Do NOT* click “Sync now” on the PR page as this does a merge and commit, which breaks our --ffonly policy
+
+          2. At your local clone, go back to step 9
+
+          3. Similar to step 10, except this is a “force” push as the rebase has changed the commit history:
+          ```
+          git push --force myfork foo
+          git push myfork default
+          ```
+
+    2. On the website interface, click "merge". Then change the merge strategy to "Squash". You will then get an opportunity to edit the commit message.
