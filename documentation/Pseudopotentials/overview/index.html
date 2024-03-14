@@ -2147,7 +2147,7 @@ to select the ultrasoft pseudopotentials from CASTEP version 17. You can also sp
 <td>USP definitions, CASTEP 17.0 (C17)</td>
 </tr>
 <tr>
-<td>NCP19</td>
+<td>NCP17</td>
 <td>Set of Norm Conserving pseudopotentials CASTEP 17.0 (NCP17)</td>
 </tr>
 <tr>
@@ -2160,11 +2160,15 @@ to select the ultrasoft pseudopotentials from CASTEP version 17. You can also sp
 </tr>
 <tr>
 <td>C19</td>
-<td>USP definitions, CASTEP 19.0 (C19) delta=0.442 meV</td>
+<td>USP definitions, CASTEP 19.0 (C19) delta=0.442 meV (default for CASTEPv19 up to and including CASTEPv24) <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup></td>
 </tr>
 <tr>
 <td>NCP19</td>
 <td>Norm Conserving pseudopotentials CASTEP 19.0 (NCP19) delta=1.098 meV</td>
+</tr>
+<tr>
+<td>C19mk2</td>
+<td>USP definitions. Updated Lanthanide and Actinide definitions, but otherwise identical to C19. Default for CASTEPv25 and later <sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup></td>
 </tr>
 </tbody>
 </table>
@@ -2197,6 +2201,17 @@ to select the ultrasoft pseudopotentials from CASTEP version 17. You can also sp
 </tbody>
 </table>
 <p>Note that properties using PAW augmentation will not be available when using file based pseudopotentials (OTFG is required) - this includes all NMR/EPR properties and EELS spectra.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:ref1">
+<p>Kurt Lejaeghere, Gustav Bihlmayer, Torbjörn Björkman, Peter Blaha, Stefan Blügel, Volker Blum, Damien Caliste, Ivano E. Castelli, Stewart J. Clark, Andrea Dal Corso, Stefano de Gironcoli, Thierry Deutsch, John Kay Dewhurst, Igor Di Marco, Claudia Draxl, Marcin Dułak, Olle Eriksson, José A. Flores-Livas, Kevin F. Garrity, Luigi Genovese, Paolo Giannozzi, Matteo Giantomassi, Stefan Goedecker, Xavier Gonze, Oscar Grånäs, E. K. U. Gross, Andris Gulans, François Gygi, D. R. Hamann, Phil J. Hasnip, N. A. W. Holzwarth, Diana Iuşan, Dominik B. Jochym, François Jollet, Daniel Jones, Georg Kresse, Klaus Koepernik, Emine Küçükbenli, Yaroslav O. Kvashnin, Inka L. M. Locht, Sven Lubeck, Martijn Marsman, Nicola Marzari, Ulrike Nitzsche, Lars Nordström, Taisuke Ozaki, Lorenzo Paulatto, Chris J. Pickard, Ward Poelmans, Matt I. J. Probert, Keith Refson, Manuel Richter, Gian-Marco Rignanese, Santanu Saha, Matthias Scheffler, Martin Schlipf, Karlheinz Schwarz, Sangeeta Sharma, Francesca Tavazza, Patrik Thunström, Alexandre Tkatchenko, Marc Torrent, David Vanderbilt, Michiel J. van Setten, Veronique Van Speybroeck, John M. Wills, Jonathan R. Yates, Guo-Xu Zhang, and Stefaan Cottenier. Reproducibility in density functional theory calculations of solids. <em>Science</em>, 351(6280):aad3000, 2016. URL: <a href="https://www.science.org/doi/abs/10.1126/science.aad3000">https://www.science.org/doi/abs/10.1126/science.aad3000</a>, <a href="https://arxiv.org/abs/https://www.science.org/doi/pdf/10.1126/science.aad3000">arXiv:https://www.science.org/doi/pdf/10.1126/science.aad3000</a>, <a href="https://doi.org/10.1126/science.aad3000">doi:10.1126/science.aad3000</a>.&#160;<a class="footnote-backref" href="#fnref:ref1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ref2">
+<p>Sebastiaan P. Huber, Emanuele Bosoni, Marnik Bercx, Jens Bröder, Augustin Degomme, Vladimir Dikan, Kristjan Eimre, Espen Flage-Larsen, Alberto Garcia, Luigi Genovese, Dominik Gresch, Conrad Johnston, Guido Petretto, Samuel Poncé, Gian-Marco Rignanese, Christopher J. Sewell, Berend Smit, Vasily Tseplyaev, Martin Uhrin, Daniel Wortmann, Aliaksandr V. Yakutovich, Austin Zadoks, Pezhman Zarabadi-Poor, Bonan Zhu, Nicola Marzari, and Giovanni Pizzi. Common workflows for computing material properties using different quantum engines. <em>npj Computational Materials</em>, 7(1):136, Aug 2021. URL: <a href="https://doi.org/10.1038/s41524-021-00594-6">https://doi.org/10.1038/s41524-021-00594-6</a>, <a href="https://doi.org/10.1038/s41524-021-00594-6">doi:10.1038/s41524-021-00594-6</a>.&#160;<a class="footnote-backref" href="#fnref:ref2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
               
             </article>
