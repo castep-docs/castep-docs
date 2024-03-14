@@ -98,6 +98,7 @@ nav:
       - 'Using Devel Codes': 'developer/using_devel_codes.md'
       - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
       - 'Style Guide': 'developer/style_guide.md'
+      - 'Testing': 'developer/adding_testing.md'
       - 'Git workflow': 'developer/git_workflow.md'
 
 theme:
@@ -108,6 +109,7 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 markdown_extensions:
   - admonition
+  - def_list
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.arithmatex
