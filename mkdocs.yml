@@ -56,6 +56,13 @@ nav:
         - 'Linear expansion DeltaSCF': 'documentation/Delta_SCF/lin_ex_delta_scf.md'
         - 'MO Delta SCF': 'documentation/Delta_SCF/mo_delta_scf.md'
         - 'Molecular Projected DOS': 'documentation/Delta_SCF/molpdos.md'
+      - 'DFT+U':
+        - 'DFT+U - Theory': 'documentation/DFT+U/dftu-theory.md'
+        - 'DFT+U - Input' : 'documentation/DFT+U/dftu-input.md'
+        - 'U from Linear Response - Theory': 'documentation/DFT+U/alpha-theory.md'
+        - 'U from Linear Response - Input': 'documentation/DFT+U/alpha-input.md'
+        - 'U from Linear Response - Output': 'documentation/DFT+U/alpha-output.md'
+        - 'U from Linear Response - Warnings/Errors': 'documentation/DFT+U/alpha-warnings-errors.md'
       - 'Pseudopotentials':
         - 'Theory':   'documentation/Pseudopotentials/theory.md'
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
