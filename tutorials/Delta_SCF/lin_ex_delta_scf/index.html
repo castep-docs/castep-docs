@@ -2045,6 +2045,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../developer/adding_testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../developer/git_workflow/" class="md-nav__link">
         Git workflow
       </a>
@@ -2241,15 +2255,19 @@ removing an electron from the HOMO in the majority spin channel</p>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>%endblock deltascf_constraints
 </code></pre></div>
 <hr />
-<p><strong>WARNING</strong></p>
-<p>:   A sufficient number of virtual states in the calculation, controlled
-    by the keyword nextra_states, is very important. The more virtual
-    states are used explicitly, the more complete is the projection onto
-    the space of KS states. Sometimes states are almost degenerate and
-    we also need to constrain the occupation of the other state to
-    ensure that the population doesn\'t just switch between the two. In
-    some cases, convergence can be very slow and a large number of SCF
-    steps is necessary.</p>
+<dl>
+<dt><strong>WARNING</strong></dt>
+<dd>
+<p>A sufficient number of virtual states in the calculation, controlled
+by the keyword nextra_states, is very important. The more virtual
+states are used explicitly, the more complete is the projection onto
+the space of KS states. Sometimes states are almost degenerate and
+we also need to constrain the occupation of the other state to
+ensure that the population doesn\'t just switch between the two. In
+some cases, convergence can be very slow and a large number of SCF
+steps is necessary.</p>
+</dd>
+</dl>
 <hr />
 <p>The resulting excitation energy is 0.46 eV.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>    Final energy, E             =  -7867.487338823     eV
