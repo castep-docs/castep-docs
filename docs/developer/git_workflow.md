@@ -26,8 +26,7 @@ Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
 
     1.      Fetch from official ``git fetch upstream default:default`` [NB: reference to “upstream” might be different if   your remote aliases are configured differently]. This not only performs the fetch but also updates the local "default" branch to sync with the upstream.
 
-    2. Rebase using destination (default) branch ``git rebase default``. This makes it so that your changes are sitting on top of the latest “official” default.
-    NB If your branch contains many PRs then better to do an interactive rebase to squash the history, as "squash merge" is not working properly on bitbucket. Hence, instead of 'git rebase default' do
+    2. Rebase using destination (default) branch ``git rebase default``. This makes it so that your changes are sitting on top of the latest “official” default. If your branch contains many PRs it may be better to "squash", using the bitbucket merge option "squash merge", or
     ```
     git rebase -i default
     ```
