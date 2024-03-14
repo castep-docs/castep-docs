@@ -320,7 +320,7 @@ For functionals that are not in this list, you need to specify the following add
             Customisable A1 value for the damping function in the XDM
             semi-empirical dispersion/van der Waals correction scheme.       
       Modifiable: restart and on the fly        
-      Default is determined by `XC_FUNCTIONAL`.
+      Default: 1.0.
 
       `SEDC_A2_XDM`    
       Type: Physical (float)    

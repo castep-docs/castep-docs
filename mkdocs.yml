@@ -15,6 +15,7 @@ nav:
         - 'Spin Orbit Coupling': 'documentation/Groundstate/soc.md'
         - 'Spin Constraints': 'documentation/Groundstate/spin_constraints.md'
         - 'Population analysis': 'documentation/Groundstate/population_analysis.md'
+        - 'ELF': 'documentation/Groundstate/ELF.md'
       - 'Geometry Optimisation':
         - 'Overview': 'documentation/Geometry_Optimisation/overview.md'
         - 'Keywords': 'documentation/Geometry_Optimisation/keywords.md'
