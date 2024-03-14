@@ -98,6 +98,7 @@ nav:
       - 'Using Devel Codes': 'developer/using_devel_codes.md'
       - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
       - 'Style Guide': 'developer/style_guide.md'
+      - 'Git workflow': 'developer/git_workflow.md'
 
 theme:
   name: material
