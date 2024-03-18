@@ -97,6 +97,7 @@ nav:
    - 'Developer':
       - 'Using Devel Codes': 'developer/using_devel_codes.md'
       - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
+      - 'Build System': 'developer/build-system.md'
       - 'Style Guide': 'developer/style_guide.md'
       - 'Testing': 'developer/adding_testing.md'
       - 'Git workflow': 'developer/git_workflow.md'
