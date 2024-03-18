@@ -13,7 +13,7 @@
     
     
       
-        <title>Adding empirical potentials - CASTEP Docs</title>
+        <title>Release Procedure - CASTEP Docs</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adding-empirical-potentials" class="md-skip">
+        <a href="#castep-new-release-procedure" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Adding empirical potentials
+              Release Procedure
             
           </span>
         </div>
@@ -1976,100 +1976,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Adding empirical potentials
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../adding_pair_pots/" class="md-nav__link">
         Adding empirical potentials
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-parameters" class="md-nav__link">
-    Setting up parameters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#allocation-and-deallocation" class="md-nav__link">
-    Allocation and deallocation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#initialising-variables" class="md-nav__link">
-    Initialising variables
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#writing-the-calculation-routine" class="md-nav__link">
-    Writing the calculation routine
-  </a>
-  
-    <nav class="md-nav" aria-label="Writing the calculation routine">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spins" class="md-nav__link">
-    Spins
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-the-contribution" class="md-nav__link">
-    Adding the contribution
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    Testing
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2121,11 +2032,94 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../release_procedure/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Release Procedure
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Release Procedure
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    Initial setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    Functionality
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-libraries" class="md-nav__link">
+    External Libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-tools" class="md-nav__link">
+    External Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licences" class="md-nav__link">
+    Licences
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finalisation" class="md-nav__link">
+    Finalisation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2164,56 +2158,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-parameters" class="md-nav__link">
-    Setting up parameters
+  <a href="#initial-setup" class="md-nav__link">
+    Initial setup
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#allocation-and-deallocation" class="md-nav__link">
-    Allocation and deallocation
+  <a href="#functionality" class="md-nav__link">
+    Functionality
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#initialising-variables" class="md-nav__link">
-    Initialising variables
+  <a href="#external-libraries" class="md-nav__link">
+    External Libraries
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#writing-the-calculation-routine" class="md-nav__link">
-    Writing the calculation routine
-  </a>
-  
-    <nav class="md-nav" aria-label="Writing the calculation routine">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spins" class="md-nav__link">
-    Spins
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-the-contribution" class="md-nav__link">
-    Adding the contribution
+  <a href="#external-tools" class="md-nav__link">
+    External Tools
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    Testing
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licences" class="md-nav__link">
+    Licences
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finalisation" class="md-nav__link">
+    Finalisation
   </a>
   
 </li>
@@ -2232,283 +2220,104 @@
                 
 
 
-<h1 id="adding-empirical-potentials">Adding Empirical potentials</h1>
-<p>If you have access to the source, it is possible to add a new formulation for an
-empirical potential easily. The idea of the module is that this should be
-trivial even to a beginner programmer with no expert knowledge of Fortran.</p>
-<p>A summary of how to do this is in the header of the <code>pair_pot.f90</code> source,
-a more in-depth description is below.</p>
-<h2 id="setting-up-parameters">Setting up parameters</h2>
-<p>First we need to make the <code>pair_pot_type</code> aware of your potential. There are
-several key things we need to update in order to use our potential. First, we
-need to update the number of potentials our code is looking for:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">BEFORE</span><span class="p">:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">num_pot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">AFTER</span><span class="p">:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">num_pot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
-</code></pre></div>
-<p>Next we need to tell the code what our potential's keyword is and its
-internal ID. This will be the highest number which isn't occupied.
-(NOTE: Keywords have to have a length of 4 characters and must be padded
-with spaces to this length):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">BEFORE</span><span class="p">:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lj</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">buck</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">coul</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">dz</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">pol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">bb</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">bs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">sw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">mors</span><span class="o">=</span><span class="mi">9</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">num_pot</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">&amp;</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;LJ  &#39;</span><span class="p">,</span><span class="s1">&#39;BUCK&#39;</span><span class="p">,</span><span class="s1">&#39;COUL&#39;</span><span class="p">,</span><span class="s1">&#39;DZ  &#39;</span><span class="p">,</span><span class="s1">&#39;POL &#39;</span><span class="p">,</span><span class="s1">&#39;BB  &#39;</span><span class="p">,</span><span class="s1">&#39;BS  &#39;</span><span class="p">,</span><span class="s1">&#39;SW  &#39;</span><span class="p">,</span><span class="s1">&#39;MORS&#39;</span><span class="p">]</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">AFTER</span><span class="p">:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lj</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">buck</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">coul</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">dz</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">pol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">bb</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">bs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">sw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">mors</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">new</span><span class="o">=</span><span class="mi">10</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">num_pot</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">&amp;</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;LJ  &#39;</span><span class="p">,</span><span class="s1">&#39;BUCK&#39;</span><span class="p">,</span><span class="s1">&#39;COUL&#39;</span><span class="p">,</span><span class="s1">&#39;DZ  &#39;</span><span class="p">,</span><span class="s1">&#39;POL &#39;</span><span class="p">,</span><span class="s1">&#39;BB  &#39;</span><span class="p">,</span><span class="s1">&#39;BS  &#39;</span><span class="p">,</span><span class="s1">&#39;SW  &#39;</span><span class="p">,</span><span class="s1">&#39;MORS&#39;</span><span class="p">,</span><span class="s1">&#39;NEW &#39;</span><span class="p">]</span>
-</code></pre></div>
-<p>We then need to add the parameters that our potential will use to the
-<code>pair_pot_type</code>. The style of these parameters should be:</p>
-<ul>
-<li>
-<p>The variable name should be the keyword of your potential followed by an
-    underscore, followed by the name or symbol for the parameter.</p>
+<h1 id="castep-new-release-procedure">CASTEP new release procedure</h1>
+<h2 id="initial-setup">Initial setup</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Open an issue containing this checklist</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Open bug fix/release branch</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Cherry pick appropriate bug-fixes from <code>default</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update version number in <code>license.F90</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ensure BIOVIA release is tagged</li>
+</ul>
+<h2 id="functionality">Functionality</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check OTFG features exposed in <code>cell</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check CI</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create dedicated pipeline for release branch on ANVIL</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run full build tests on Make and CMake</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check <code>make dist</code> works -- Including unpacking and building from dist only!</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check that <code>cmake -t dist</code> also compiles and includes everything</p>
 </li>
-<li>
-<p>They should be of type <code>real(kind=dp)</code>.</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ensure checkpoints forward &amp; backward compatible</p>
 </li>
-<li>
-<p>They should be allocatable, and of dimensions equivalent to the number of
-    particles involved in the interaction (i.e. 2-body <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow{}</span><script type="math/tex">\Rightarrow{}</script></span>
-    <code>dimension(:,:)</code>; 3-body <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow{}</span><script type="math/tex">\Rightarrow{}</script></span> <code>dimension(:,:,:)</code>).</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ensure compatibility between Academic and BIOVIA releases</p>
 </li>
-<li>
-<p>They should have a comment describing the full name and form of your
-    potential.</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check CASTEP builds and runs on ARCHER2 -- Both GNU and CMake</p>
 </li>
-<li>
-<p>It is also important to note that Fortran is case-insensitive, meaning it
-    does not distinguish between upper and lower cases in variable names.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c">!New example potential of the form b*exp(rij^-qi)*exp(rik^-qi) + (cos(rijk) - cos(s))</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">new_q</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">new_b</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:,:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">new_s</span>
-</code></pre></div>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check GPU build on Tier-1 machines -- Both GNU and CMake</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check supported compilers for oldest and latest and update README.install
+      appropriately</p>
 </li>
 </ul>
-<p>We should now go into <code>pair_pot_print</code> and add our potential to the 1- and 2-
-(and possibly 3-)body sections of the potential printing. This is of the form:</p>
-<ul>
-<li>
-<p>1-Body</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot</span><span class="p">%</span><span class="n">cut_off</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;q&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">end if</span>
-</code></pre></div>
-</li>
-<li>
-<p>2-Body</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">202</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot_print_combinations</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">cut_off</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">,</span><span class="w"> </span><span class="p">:,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">202</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot_print_combinations</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">,</span><span class="w"> </span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">end if</span>
-</code></pre></div>
-</li>
-<li>
-<p>3-Body</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">301</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="n">ispec_name</span><span class="p">,</span><span class="w"> </span><span class="n">jspec_name</span><span class="p">,</span><span class="w"> </span><span class="n">kspec_name</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="n">unit_out</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">)</span><span class="w"> </span><span class="n">pre_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;S&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">(</span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">,</span><span class="w"> </span><span class="n">kspec</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;NEW&#39;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">end if</span>
-</code></pre></div>
-</li>
-</ul>
-<p>And with that we should be done with setting up our potential in
-<code>pair_pot_type</code>, things like cut-off and the activation of the potential are
-handled automatically based on the potential keyword, although for some
-specialised potentials advanced rules can be necessary.</p>
-<h2 id="allocation-and-deallocation">Allocation and deallocation</h2>
-<p>It is important in Fortran to ensure that our parameter arrays are allocated. We
-need to go into the routine <code>pair_pot_allocate</code> and add our new parameters to
-it. For our example potential, the syntax is as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">pot_present</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">)</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">),</span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_allocate_abort</span><span class="p">(</span><span class="s1">&#39;new_q&#39;</span><span class="p">,</span><span class="s1">&#39;pair_pot_allocate&#39;</span><span class="p">)</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">),</span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_allocate_abort</span><span class="p">(</span><span class="s1">&#39;new_b&#39;</span><span class="p">,</span><span class="s1">&#39;pair_pot_allocate&#39;</span><span class="p">)</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">nspec</span><span class="p">),</span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_allocate_abort</span><span class="p">(</span><span class="s1">&#39;new_s&#39;</span><span class="p">,</span><span class="s1">&#39;pair_pot_allocate&#39;</span><span class="p">)</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">end if</span>
-</code></pre></div>
-<p>We also need to do the same for cleaning up our potential at the end, in the
-routine <code>pair_pot_deallocate</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">   deallocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_q</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_abort</span><span class="p">(</span><span class="s1">&#39;Error deallocating new_q in pair_pot_deallocate&#39;</span><span class="p">)</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">end if</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">   deallocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_abort</span><span class="p">(</span><span class="s1">&#39;Error deallocating new_b in pair_pot_deallocate&#39;</span><span class="p">)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">end if</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">   deallocate</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">io_abort</span><span class="p">(</span><span class="s1">&#39;Error deallocating new_s in pair_pot_deallocate&#39;</span><span class="p">)</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="k">end if</span>
-</code></pre></div>
-<h2 id="initialising-variables">Initialising variables</h2>
-<p>We need to be able to set the values for our parameters. For this we need to add
-an initialisation subroutine. The details can be found in the sample file,
-available on request. For three-body routines it is necessary to set the
-<code>pair_pot%three_body</code> flag on initialisation, and also to add a species triplet
-loop.</p>
-<h2 id="writing-the-calculation-routine">Writing the calculation routine</h2>
-<p>This is the only bit which is down to the the creator to consider how it
-should be set up. The subroutine should obey the follow:</p>
-<ul>
-<li>
-<p>The name of the routine should be <code>pair_pot_&lt;new_potential&gt;</code></p>
-</li>
-<li>
-<p>The potential should have a header referencing the origin of the
-    potential and the form of the potential.</p>
-</li>
-<li>
-<p>Two-body potentials should obey the following input structure:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">subroutine </span><span class="n">pair_pot_new</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">,</span><span class="w"> </span><span class="n">rij</span><span class="p">,</span><span class="w"> </span><span class="n">mod_rij_2</span><span class="p">,</span><span class="w"> </span><span class="n">ispec</span><span class="p">,</span><span class="w"> </span><span class="n">jspec</span><span class="p">[,</span><span class="w"> </span><span class="n">spins</span><span class="p">],</span><span class="w"> </span><span class="n">dfij</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">)</span>
-</code></pre></div>
-<p>Where:</p>
-<ul>
-<li>
-<p><code>pair_pot</code> is of type <code>pair_pot_type</code> and contains the initialised
-    parameters of your new potential.</p>
-</li>
-<li>
-<p><code>rij</code> is of type <code>real(kind=dp)</code> of dimension(3) and is the vector
-    between the two particles.</p>
-</li>
-<li>
-<p><code>mod_rij_2</code> is of type <code>real(kind=dp)</code> and is the distance between the
-    two particles.</p>
-</li>
-<li>
-<p><code>ispec</code> is of type <code>integer</code> and is the species of atom i.</p>
-</li>
-<li>
-<p><code>jspec</code> is of type <code>integer</code> and is the species of atom j.</p>
-</li>
-<li>
-<p><code>spins</code> [optional] is of type <code>real(kind=dp)</code> of dimension(4,2) and is
-    the pair of spin vectors of (x, y, z, magnitude)</p>
-</li>
-<li>
-<p><code>dfij</code> is of type <code>real(kind=dp)</code> of dimension(3) and is the vector
-    force between the two particles.</p>
-</li>
-<li>
-<p><code>de</code> is of type <code>real(kind=dp)</code> and is the contribution to the total
-    potential energy of the two particles.</p>
-</li>
+<h2 id="external-libraries">External Libraries</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check linked/included library versions for updates</li>
+<li>Current libraries:<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> dl_mg</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> simple-dftd3</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> d4</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> spglib</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> libxc</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> FoxXML</li>
 </ul>
 </li>
-<li>
-<p>To reference two-body terms you should use the following syntax:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_b</span><span class="p">(</span><span class="n">ispec</span><span class="p">,</span><span class="n">jspec</span><span class="p">)</span>
-</code></pre></div>
-</li>
-<li>
-<p>Three-body potentials should obey the following input structure:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">subroutine </span><span class="n">pair_pot_new</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">,</span><span class="w"> </span><span class="n">dr</span><span class="p">,</span><span class="w"> </span><span class="n">mod_dr_2</span><span class="p">,</span><span class="w"> </span><span class="n">rcjk</span><span class="p">,</span><span class="w"> </span><span class="n">include_cjk</span><span class="p">,</span><span class="w"> </span><span class="n">spec</span><span class="p">[,</span><span class="w"> </span><span class="n">spins</span><span class="p">],</span><span class="w"> </span><span class="n">dfij</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">,</span><span class="w"> </span><span class="n">stress</span><span class="p">)</span>
-</code></pre></div>
-<p>Where:</p>
-<ul>
-<li>
-<p><code>pair_pot</code> is of type <code>pair_pot_type</code> and contains the
-    initialised parameters of your new potential.</p>
-</li>
-<li>
-<p><code>dr</code> is of type <code>real(kind=dp)</code> of dimension(3,3) and is the
-    vectors of the triplet of pairs of particles.</p>
-</li>
-<li>
-<p><code>mod_dr_2</code> is of type <code>real(kind=dp)</code> of dimension(3) and is the
-    distance between the triplet of particles.</p>
-</li>
-<li>
-<p><code>rcjk</code> is of type <code>real(kind=dp)</code> of dimension(3,3) and is the
-    absolute positions of the particles in the cell.</p>
-</li>
-<li>
-<p><code>include_cjk</code> is of type <code>logical</code> of dimension(3) and is
-    whether the magnitude of distances between particles is less
-    than that of the cut-off.</p>
-</li>
-<li>
-<p><code>spec</code> is of type <code>integer</code> of dimension(3) and is the species
-    of the particles.</p>
-</li>
-<li>
-<p><code>spins</code> [optional] is of type <code>real(kind=dp)</code> of dimension(4,3) and is
-    the triplet of spin vectors of (x, y, z, magnitude)</p>
-</li>
-<li>
-<p><code>dfij</code> is of type <code>real(kind=dp)</code> of dimension(3,3) and is the
-    vector force between the triplet of particles.</p>
-</li>
-<li>
-<p><code>de</code> is of type <code>real(kind=dp)</code> and is the contribution to the total
-    potential energy of the interactions.</p>
-</li>
-<li>
-<p><code>stress</code> is of type <code>real(kind=dp)</code> of dimension(6) and is the upper
-    triangle of stress contributions of the particles.</p>
-</li>
+</ul>
+<h2 id="external-tools">External Tools</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Checked shipped versions of third-party tools and utilities for updates</li>
+<li>Current tools:<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> c2x</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> cif2cell</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> optados</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> BoltzTrap</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> SHengBTE</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> emc</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> atat</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> elastic_constants</li>
 </ul>
 </li>
-<li>
-<p>To reference three-body terms you should use the following syntax:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">pair_pot</span><span class="p">%</span><span class="n">new_s</span><span class="p">(</span><span class="n">spec</span><span class="p">(</span><span class="n">i_atom</span><span class="p">),</span><span class="w"> </span><span class="n">spec</span><span class="p">(</span><span class="n">j_atom</span><span class="p">),</span><span class="w"> </span><span class="n">spec</span><span class="p">(</span><span class="n">k_atom</span><span class="p">))</span>
-</code></pre></div>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update emacs_mode keys for most recent keywords</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check that version requirement of Python components and utilities are
+      still up to date</p>
 </li>
 </ul>
-<h3 id="spins">Spins</h3>
-<p>If your potential uses spin as part of the force-field these are passed into the
-calculation routines as a set of 4-vectors (2 for 2-body, 3 for 3-body) where
-the 4 parameters are the 3 directions and the magnitude.</p>
-<h2 id="adding-the-contribution">Adding the contribution</h2>
-<p>To actually tell the code to calculate the contribution of your potential to the
-system, we need to add it to the <code>pair_pot_contribution</code> routine, this has the
-following syntax for two-body potentials:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pot_include</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">%</span><span class="n">new</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">   call </span><span class="n">pair_pot_new</span><span class="p">(</span><span class="n">pair_pot</span><span class="p">,</span><span class="w"> </span><span class="n">rij</span><span class="p">,</span><span class="w"> </span><span class="n">mod_rij_2</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">species</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">dfij</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">)</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">   </span><span class="n">e_cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e_cont</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">de</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">   </span><span class="n">fij</span><span class="p">(:)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fij</span><span class="p">(:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dfij</span><span class="p">(:)</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">end if</span>
-</code></pre></div>
-<p>Three-body potentials are currently trickier and must currently be manually
-inserted into the loop in <code>pair_pot_calc</code>, there are aims to simplify this in
-future releases.</p>
-<h2 id="testing">Testing</h2>
-<p>We should now be able to activate your potential by adding <code>NEW=T</code> into the
-devel code block and can set all the parameters just as for other potentials.</p>
-<p>To verify that you potential is working as expected, there are several built-in
-methods to check for developers.</p>
-<ol>
-<li>
-<p>The first is the <code>FD_CHECK</code> devel code which enables finite difference
-   evaluation alongside the potential evaluation and dumps the output to a file
-   <code>&lt;seedname&gt;.fd</code>. It aso prints warnings if the analytic and finite difference
-   derivatives do not match. You should verify that the finite difference
-   evaluated forces are the same as the analytic derivative.</p>
+<h2 id="documentation">Documentation</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check and update README.install docs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update release notes</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update version in Ford Docs</p>
 </li>
-<li>
-<p>The second is the <code>PRINT_POT</code> devel code which evaluates your potential over
-   1000 evenly spaced points between 0 and your cut-off and dumps the computed
-   forces and energies to a series of files of the form
-   <code>&lt;seedname&gt;_&lt;species_1&gt;_&lt;species_2&gt;_&lt;species_3&gt;_&lt;spin&gt;.pot</code> these are just
-   3-column tabular data of the form <code>Distance Energy Force</code> ready to be
-   plotted.</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check new parameters (cell and param keywords)</p>
 </li>
-<li>
-<p>Tests should be added to the test suite to compute the value of your new
-   potential at known points.</p>
-</li>
-</ol>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> New parameters have correct help text</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> New parameters are documented in the manual</li>
+</ul>
+<h2 id="licences">Licences</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update checksums file</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Upload appropriately to licences.stfc.ac.uk</li>
+</ul>
+<h2 id="finalisation">Finalisation</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tag final release commit</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pre-notify HPC providers of release</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Notify mailing list of release</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update castep.org with latest info</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check release branch for build system and documentation updates
+      and back-port to default branch if needed</li>
+</ul>
 
               
             </article>
@@ -2522,7 +2331,7 @@ methods to check for developers.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../using_devel_codes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Using Devel Codes" rel="prev">
+        <a href="../git_workflow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Git workflow" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2531,26 +2340,11 @@ methods to check for developers.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Using Devel Codes
+              Git workflow
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../style_guide/" class="md-footer__link md-footer__link--next" aria-label="Next: Style Guide" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Style Guide
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
