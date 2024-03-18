@@ -100,6 +100,7 @@ nav:
       - 'Style Guide': 'developer/style_guide.md'
       - 'Testing': 'developer/adding_testing.md'
       - 'Git workflow': 'developer/git_workflow.md'
+      - 'Release Procedure': 'developer/release_procedure.md'
 
 theme:
   name: material
