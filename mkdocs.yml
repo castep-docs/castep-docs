@@ -99,13 +99,14 @@ nav:
       - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
       - 'Style Guide': 'developer/style_guide.md'
       - 'Testing': 'developer/adding_testing.md'
+      - 'CI System': 'developer/CI.md'
       - 'Git workflow': 'developer/git_workflow.md'
       - 'Release Procedure': 'developer/release_procedure.md'
 
 theme:
   name: material
   features:
-    -content.code.annotate
+    - content.code.annotate
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 markdown_extensions:
@@ -148,4 +149,3 @@ plugins:
       bib_file: refs.bib
       # default "{number}", to avoid conflict with user-defined footnotes
       footnote_format: "ref{number}"
-
