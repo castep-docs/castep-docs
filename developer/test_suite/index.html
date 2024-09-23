@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adding-tests" class="md-skip">
+        <a href="#casteps-test-suite" class="md-skip">
           Skip to content
         </a>
       
@@ -2471,16 +2471,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#testcode" class="md-nav__link">
-    testcode
+  <a href="#overview" class="md-nav__link">
+    Overview
   </a>
   
-    <nav class="md-nav" aria-label="testcode">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-your-code" class="md-nav__link">
+    Testing your code
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing your code">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#valid-properties" class="md-nav__link">
-    Valid Properties
+  <a href="#a-complete-test-run" class="md-nav__link">
+    A complete test run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-and-incremental-testing" class="md-nav__link">
+    Partial and incremental testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-or-changing-tests" class="md-nav__link">
+    Adding or changing tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-for-choice-of-new-tests" class="md-nav__link">
+    Considerations for choice of new tests.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-the-test-suite" class="md-nav__link">
+    Profiling the test suite
   </a>
   
 </li>
@@ -2491,53 +2526,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-test-folder-structure" class="md-nav__link">
-    The Test folder structure
+  <a href="#components-of-test-suite" class="md-nav__link">
+    Components of test suite
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-tests_1" class="md-nav__link">
-    Adding Tests
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding Tests">
+    <nav class="md-nav" aria-label="Components of test suite">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#defining-new-tests" class="md-nav__link">
-    Defining new tests
-  </a>
-  
-    <nav class="md-nav" aria-label="Defining new tests">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-do-tests-look-like" class="md-nav__link">
-    What do tests look like?
+  <a href="#direct-invocation-of-testcode" class="md-nav__link">
+    Direct Invocation of testcode
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adding-tests-to-be-run" class="md-nav__link">
-    Adding tests to be run
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding tests to be run">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#userconfig" class="md-nav__link">
-    userconfig
+  <a href="#test-outputs-and-benchmarks" class="md-nav__link">
+    Test Outputs and Benchmarks
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#jobconfig" class="md-nav__link">
-    jobconfig
+  <a href="#extraction-of-properties" class="md-nav__link">
+    Extraction of Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Extraction of Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#userconfig-file" class="md-nav__link">
+    userconfig file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobconfig-file" class="md-nav__link">
+    jobconfig file
   </a>
   
 </li>
@@ -2548,31 +2575,12 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-to-ensure-stability" class="md-nav__link">
-    How to ensure stability
+  <a href="#adding-to-the-build-system" class="md-nav__link">
+    Adding to the Build System
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-test-groups" class="md-nav__link">
-    Adding Test Groups
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding Test Groups">
+    <nav class="md-nav" aria-label="Adding to the Build System">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adding-to-jobconfig" class="md-nav__link">
-    Adding to jobconfig
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#adding-to-cmake" class="md-nav__link">
@@ -2682,16 +2690,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#testcode" class="md-nav__link">
-    testcode
+  <a href="#overview" class="md-nav__link">
+    Overview
   </a>
   
-    <nav class="md-nav" aria-label="testcode">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-your-code" class="md-nav__link">
+    Testing your code
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing your code">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#valid-properties" class="md-nav__link">
-    Valid Properties
+  <a href="#a-complete-test-run" class="md-nav__link">
+    A complete test run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-and-incremental-testing" class="md-nav__link">
+    Partial and incremental testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-or-changing-tests" class="md-nav__link">
+    Adding or changing tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-for-choice-of-new-tests" class="md-nav__link">
+    Considerations for choice of new tests.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-the-test-suite" class="md-nav__link">
+    Profiling the test suite
   </a>
   
 </li>
@@ -2702,53 +2745,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-test-folder-structure" class="md-nav__link">
-    The Test folder structure
+  <a href="#components-of-test-suite" class="md-nav__link">
+    Components of test suite
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-tests_1" class="md-nav__link">
-    Adding Tests
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding Tests">
+    <nav class="md-nav" aria-label="Components of test suite">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#defining-new-tests" class="md-nav__link">
-    Defining new tests
-  </a>
-  
-    <nav class="md-nav" aria-label="Defining new tests">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-do-tests-look-like" class="md-nav__link">
-    What do tests look like?
+  <a href="#direct-invocation-of-testcode" class="md-nav__link">
+    Direct Invocation of testcode
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adding-tests-to-be-run" class="md-nav__link">
-    Adding tests to be run
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding tests to be run">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#userconfig" class="md-nav__link">
-    userconfig
+  <a href="#test-outputs-and-benchmarks" class="md-nav__link">
+    Test Outputs and Benchmarks
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#jobconfig" class="md-nav__link">
-    jobconfig
+  <a href="#extraction-of-properties" class="md-nav__link">
+    Extraction of Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Extraction of Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#userconfig-file" class="md-nav__link">
+    userconfig file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobconfig-file" class="md-nav__link">
+    jobconfig file
   </a>
   
 </li>
@@ -2759,31 +2794,12 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-to-ensure-stability" class="md-nav__link">
-    How to ensure stability
+  <a href="#adding-to-the-build-system" class="md-nav__link">
+    Adding to the Build System
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-test-groups" class="md-nav__link">
-    Adding Test Groups
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding Test Groups">
+    <nav class="md-nav" aria-label="Adding to the Build System">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adding-to-jobconfig" class="md-nav__link">
-    Adding to jobconfig
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#adding-to-cmake" class="md-nav__link">
@@ -2823,27 +2839,204 @@
                 
 
 
-<h1 id="adding-tests">Adding Tests</h1>
-<p>Following the addition of a new feature or bugfix it is essential to
-add system and unit tests that demonstrate the functionality of said
-addition.</p>
-<p>This document describes the process of adding new tests to the system
-as well as implementing your own testing groups.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Before any code is accepted into CASTEP it must have tests to
-prove its functionality and robustness.</p>
-</div>
-<h2 id="testcode"><code>testcode</code></h2>
-<p>CASTEP's test suite is built using the
+<h1 id="casteps-test-suite">CASTEP's test suite</h1>
+<h2 id="overview">Overview</h2>
+<p>The CASTEP source distribution includes a test suite to aid developers and users or HPC admins alike by</p>
+<ul>
+<li>Ensuring that new development and refactored code does not cause a crash or significantly change any results;</li>
+<li>Testing a new compiler, or new version of an existing compiler for failures due to language standard support, 
+  non-portable code or bugs in the compiler itself;</li>
+<li>Ensuring that serial and parallel execution yield the same results;</li>
+<li>Automating the tests so they may be run as a routine part of
+  development, either my the developer or routinely by the "Jenkins"
+  Continuous Integration (CI) system.</li>
+</ul>
+<p>We adopt the testing method known as <em>regression testing</em> whereby
+CASTEP is run on a large set of input decks for small calculations,
+and the result compared to a previously generated and known good
+outputs, known as the <em>benchmark</em> for each test. The automation and
+testing are performed using the
 <a href="https://testcode.readthedocs.io/en/latest/"><code>testcode</code></a> testing
-platform. This handles all of the generation of benchmarks and
-comparisons in the test suite.</p>
-<h3 id="valid-properties">Valid Properties</h3>
-<p>CASTEP's <code>extract_results.pl</code> can extract the following properties
-from the <code>.castep</code> files:</p>
-<details class="note">
-<summary>Note</summary>
+platform. This handles all of the definition of test categories, the
+selection, sequencing and running of tests, and comparison of the run
+output with a benchmark. To run CASTEP, postprocess the output and
+extract the comparison data, it invokes two scripts supplied in
+the CASTEP distribution <code>bin</code> directory named <a href="#creation-and-format-of-test-outputs-and-benchmarks"><code>run_castep_test.py</code></a> and
+<a href="#extraction-of-properties"><code>extract_results.pl</code></a>.</p>
+<p>The directory structure of the suite consists of a top-level <code>Test</code> directory containing testcode's configuration files, a GNU Makefile which contains targets to drive the tests, and a set of subdirectories dividing the tests into categories; in outline</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Test
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> |-- CMakeLists.txt
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> |-- Makefile
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> |-- jobconfig
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> |-- userconfig
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> |-- Electronic
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>         |-- Cr-AFM
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>             |-- Cr_00PBE.uspcc
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>             |-- Cr_AFM.cell
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>             |-- Cr_AFM.param
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>             |-- benchmark.out.castep-23.1.castep-python-1.0.python-3.6.9.inp=Cr_AFM.param
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>         |-- &lt;Electronic test 2&gt; 
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>|-- &lt;Category 2&gt;
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>         |-- &lt;Category 2 test 1&gt;
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>         |-- &lt;Category 2 test 2&gt;
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a> ...
+</code></pre></div>
+<h2 id="testing-your-code">Testing your code</h2>
+<h3 id="a-complete-test-run">A complete test run</h3>
+<p>A run of the test suite is started by running the testcode script <code>&lt;CASTEP_ROOT&gt;/bin/testcode.py</code> from within the Test directory, but as some options are usually required, this is most conveniently invoked via the build system by either</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nb">cd</span><span class="w"> </span>Test
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>make<span class="w"> </span>check
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span>cmake<span class="w"> </span>-t<span class="w"> </span>check
+</code></pre></div>
+<p>following a compile with either the GNU make or cmake build systems. This will produce a brief summary output along the lines of</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>make<span class="w"> </span>check<span class="w"> </span><span class="nv">COMMS_ARCH</span><span class="o">=</span>mpi
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Found<span class="w"> </span>mpirun,<span class="w"> </span>using<span class="w"> </span><span class="nv">PARALLEL_CMD</span><span class="o">=</span>mpirun<span class="w"> </span>-np<span class="w"> </span>tc.nprocs
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>rm<span class="w"> </span>-f<span class="w"> </span>*/*/*.castep<span class="w"> </span>*/*/*.dfpt_wvfn<span class="w"> </span>*/*/*.fd_wvfn<span class="w"> </span>*/*/*.wvfn.*<span class="w"> </span>*/*/*.*.err
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>../bin/testcode.py<span class="w"> </span>-q<span class="w">  </span>--processors<span class="o">=</span><span class="m">4</span><span class="w"> </span>--total-processors<span class="o">=</span><span class="m">36</span><span class="w"> </span>--user-option<span class="w"> </span>castep<span class="w"> </span>run_cmd_template<span class="w"> </span><span class="s2">&quot;../../../bin/run_castep_test.pl tc.program tc.args tc.input tc.output mpirun -np tc.nprocs&quot;</span><span class="w"> </span>-e<span class="w"> </span>/home/user/CASTEP-23.1/bin/castep.mpi<span class="w"> </span>-c<span class="w"> </span>simple<span class="w"> </span>-c<span class="w"> </span>d3-simple<span class="w"> </span>-c<span class="w"> </span>d4-simple<span class="w"> </span>-c<span class="w"> </span>md-parallel
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>.......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................<span class="w"> </span><span class="o">[</span><span class="m">487</span>/487<span class="o">]</span>
+</code></pre></div>
+<p>if everything passes. If one or more tests fails the corresponding <code>.</code> is replaced with a <code>F</code> symbol, or an <code>S</code> to flag that the test was skipped (possibly because a prerequisite test failed). </p>
+<p>In case of a failed test, more detailed information on which tests failed and why, the commands 
+<code>make compare</code>, <code>make diff</code>, <code>cmake -t compare</code>, or <code>cmake -t diff</code>
+will print a summary or detailed analysis of the failed tests to stdout.  A deeper analysis may require a direct look at the corresponding <code>&lt;test.out-...&gt;</code> file, in the <code>Test/&lt;category&gt;</code> subdirectory which will contain the <code>.castep</code> output as well as the <code>.0001.err</code> error/traceback report file in case of an <code>io_abort</code>.</p>
+<h3 id="partial-and-incremental-testing">Partial and incremental testing</h3>
+<p>During a code development process, running the entire test suite to
+check every change will be too time consuming and functionally
+unnecessary.  The tests are divided into categories, named <code>spe</code>
+,<code>bs</code> ,<code>geom</code> ,<code>md</code> ,<code>magres</code> ,<code>misc</code>
+,<code>pair-pot</code> ,<code>phonon</code> ,<code>otf</code> ,<code>pseudo</code>
+,<code>tddft</code> ,<code>ts</code> ,<code>xc</code> ,<code>nlxc</code> ,<code>libxc</code>
+,<code>solvation</code> ,<code>d3</code> ,<code>d4</code> ,<code>python</code>
+and <code>parallel</code> corresponding roughly to the subdirectories</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Test/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  |-Electronic
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  |-Excitations
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  |-Geometry
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  |-MD
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  |-Magres
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  |-Misc
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  |-Pair-Pot
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  |-Phonon
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  |-Pseudo
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>  |-TDDFT
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>  |-XC
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>  |-Solvation
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>  |-Dispersion
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>  |-Pseudopotentials
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>  |-Python
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>  |-Utilities
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>  |-LibXC
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>  |-Parallel
+</code></pre></div>
+<p>and may be run individually using</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    make check-&lt;category&gt;
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    make compare-&lt;category&gt;
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    make diff-&lt;category&gt;
+</code></pre></div>
+<p>or the targets of the same name in cmake.</p>
+<details class="keyword">
+<summary>Running individual tests</summary>
+<p>In fact the tests may be run at even finer granularity, down to the subdirectory. This is not implemented via the Makefile or cmake, and can only be accessed by invoking <code>testcode</code> directly as described <a href="#direct-invocation-of-testcode">below</a>. However the most straightforward means of doing this is to copy and paste the testcode invocation command printed by <code>make check-spe</code> including all of the run and argument setup and change the argument of the <code>-c</code> option to <code>&lt;directory&gt;/&lt;subdirectory&gt;</code>.</p>
+</details>
+<h3 id="adding-or-changing-tests">Adding or changing tests</h3>
+<p>Code sustainability requires that when developing any new functionality or extending existing capabilities, the test suite is also enhanced to test any new outputs.</p>
+<p>The changes required are</p>
+<ul>
+<li>(Optionally) a new test subdirectory. This will be automatically scanned by <code>testcode</code> and included if a subdirectory of one of the existing major categories. If the new output is an enhancement or option to an existing functionality, it may be appropriate to simply add the new test to an existing second-level subdirectory.</li>
+<li>When adding is a major new capability, it may be appropriate to add a new top-level category and subdirectory tree. In that case the <a href="#adding-to-make"><code>Makefile</code></a> and <a href="#adding-to-cmake"><code>CMakeLists.txt</code></a> will need to be extended to add the new <code>check</code>, <code>compare</code>, <code>diff</code> and <code>recheck</code> targets.</li>
+<li>CASTEP input files: <code>.cell</code> and <code>.param</code></li>
+<li>If any external pseudopotential files are required, these should be placed in the <code>Test/Pseudopotentials</code> subdirectory and a symbolic link made from the test subdirectory. Both the fle and the link should be added to the <code>git</code> repository. </li>
+<li>to modify <a href="#test-outputs-and-benchmarks"><code>bin/run_castep_test.py</code></a> if you need to test the contents of a new output file.</li>
+<li>if testing a new quantity, either in the <code>.castep</code> file or any other output file, you must extend the <a href="#extraction-of-properties"><code>bin/extract_results.pl</code></a> script to scan for and report the new value to be tested.</li>
+<li>A new stanza in <a href="#jobconfig-file"><code>jobconfig</code></a> will be required to specify tolerances for the comparison if the defaults in <a href="#userconfig-file"><code>userconfig</code></a> are not suitable.</li>
+<li>
+<p>a new benchmark file containing CASTEP output from a known good
+run. Unfortunately creating benchmark files still requires some manual
+intervention.  Regrettably <code>testcode</code>s option to create a new
+benchmark is unsuitable as it is too inflexible to create a single
+test without requiring updates to the entire test suite.  The easiest
+way to do this is</p>
+<p>a. Run testcode, either from Make or by hand.  The new test will
+fail because no benchmark is present for comparison.</p>
+<p>b. Copy or rename the just created test file
+<code>test.out.&lt;date&gt;?inp=&lt;seedname&gt;.param</code>    to
+<code>benchmark.out.castep-&lt;old-castep-version&gt;castep-python-1.0.python-&lt;old-python-version&gt;.inp=&lt;seedname&gt;.param</code>.
+where <code>&lt;old-castep-version&gt;</code> and <code>&lt;old-python-version&gt;</code> should be chosen to match the existing <code>benchmark.out</code> files from other tests.</p>
+</li>
+</ul>
+<h3 id="considerations-for-choice-of-new-tests">Considerations for choice of new tests.</h3>
+<p>Tests in CASTEP are generally defined via a short CASTEP run (complete
+with <code>.cell</code> and <code>.param</code> files) which is:</p>
+<ul>
+<li>Sufficient to demonstrate the functionality in question</li>
+<li>Short enough that it does not take significant time to run</li>
+<li>Stable enough that the results do not change significantly from run to
+  run.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These calculations do not necessarily need to be physically meaningful
+and in general should not, due to the time requirements.  Under-convergence is usually fine, and often required.</p>
+</div>
+<p>There are two or three common ways to achieve stability of a run with a test which may be underconverged:</p>
+<ol>
+<li>Set an explicit <code>random_seed</code> in the <code>.param</code> file</li>
+<li>Specify k-points using <code>%BLOCK KPOINT_LIST</code> rather than use a grid
+   or spacing.  This avoids the propensity of the k-point symmetry
+   reduction to generate different but equivalent sets depending on
+   hardware, compiler options and the like. Usually a very coarse set will suffice.</li>
+<li>It is frequently counterproductive to use too loose a value for 
+   <code>ELEC_ENERGY_TOL</code> as the addition or removal of a single SCF iteration between
+   benchmark and test can result in a change of, for example, forces sufficient
+   to cause a test failure.</li>
+</ol>
+<h3 id="profiling-the-test-suite">Profiling the test suite</h3>
+<p>A timing profile of the test suite may be generated following a successful run by the GNU make command</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>make<span class="w"> </span>profile<span class="w"> </span>&gt;<span class="w"> </span>profile.log
+</code></pre></div>
+<p>which writes a list of the tests executed sorted by execution time to
+the named file. If using <code>cmake</code>, the profile is generated
+unconditionally and written to a file with extension
+<code>test-profile-all.log</code> or <code>test-profile-&lt;category&gt;.log</code> in the <code>Test/</code>
+subdirectory.</p>
+<h2 id="components-of-test-suite">Components of test suite</h2>
+<h3 id="direct-invocation-of-testcode">Direct Invocation of <code>testcode</code></h3>
+<p>For a serial run, the test suite may be invoked directly from the
+command line (with <code>Test/</code> as the current directory) by</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">    </span>../bin/testcode.py<span class="w"> </span>-q<span class="w"> </span>--total-processors<span class="o">=</span><span class="m">6</span><span class="w"> </span>-e<span class="w"> </span>&lt;castep-executable&gt;<span class="w"> </span>-c<span class="w"> </span>simple<span class="w"> </span>-c<span class="w"> </span>d3-simple<span class="w"> </span>-c<span class="w"> </span>d4-simple<span class="w"> </span>-c<span class="w"> </span>solvation-simple
+</code></pre></div>
+<p>where <code>-q</code> sets the verbosity to minimal, <code>--total-processors=&lt;n&gt;</code> restricts the maximum number of test to run concurrently, <code>-c simple</code> specifies the common core set of tests.  The other <code>-c</code> options specify optional components of the CASTEP build, and should be selected to match the libraries linked in to the test executable.  For testing in MPI parallel, the invocation is more complex:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">    </span>../bin/testcode.py<span class="w"> </span>-q<span class="w">  </span>--processors<span class="o">=</span><span class="m">4</span><span class="w"> </span>--total-processors<span class="o">=</span><span class="m">6</span><span class="w"> </span>--user-option<span class="w"> </span>castep<span class="w"> </span>run_cmd_template<span class="w"> </span><span class="s2">&quot;../../../bin/run_castep_test.py tc.program tc.args tc.input tc.output -- mpirun -np tc.nprocs&quot;</span><span class="w"> </span>-e<span class="w"> </span>&lt;castep-executable&gt;<span class="w"> </span>-c<span class="w"> </span>simple<span class="w"> </span>-c<span class="w"> </span>d3-simple<span class="w"> </span>-c<span class="w"> </span>d4-simple<span class="w"> </span>-c<span class="w"> </span>solvation-simple<span class="w"> </span>-c<span class="w"> </span>parallel-simple
+</code></pre></div>
+<p>Here, the testcode option <code>run_cmd_template</code> is being explicitly specified, overriding the value in <code>userconfig</code> in order to add the <code>mpirun</code> option to the <code>run_castep_test.py</code> script's options.  Note the quoting of the strings and the use of testcodes's variables <code>tc.program</code>, <code>tc.args</code>, <code>tc.input</code>, <code>tc.output</code> and <code>tc.nprocs</code> which testcode replaces before invoking the <code>run_cmd_template</code> command.  The additional testcode options <code>--processors=&lt;n&gt;</code> specifies the maximum number of MPI processes to pass to mpirun, and we add the additional test category <code>parallel-simple</code> which contains the MPI tests.</p>
+<p>When invoking testcode in this way, the "category" argument of <code>-c</code> may be replaced by the name of a subdirectory of <code>Test</code>, for example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="w">    </span>-c<span class="w"> </span>Phonon/Si2-raman
+</code></pre></div>
+<p>which will run only the tests in that subdirectory.</p>
+<h3 id="test-outputs-and-benchmarks">Test Outputs and Benchmarks</h3>
+<p>During execution of a test suite run, individual tests are run via a
+wrapper script <code>run_castep_test.py</code>. This controls the execution of
+CASTEP, and gathers up and appends any additional output files generated 
+for this particular task.  This concatenated format is used for both the 
+test outputs (<code>test.out-...</code>) and benchmark files (<code>benchmark.out-...</code>). </p>
+<p>The invocation is</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="w">    </span>run_castep_test.py<span class="w"> </span><span class="o">[</span>-d<span class="p">|</span>--dryrun<span class="o">]</span><span class="w"> </span>-<span class="o">[</span>h<span class="p">|</span>--helpme<span class="o">]</span><span class="w"> </span>&lt;castep-executable&gt;<span class="w"> </span>&lt;param-file&gt;<span class="w"> </span>&lt;output-file&gt;<span class="w"> </span>--<span class="w"> </span><span class="o">[</span>&lt;mpirun-cmd&gt;<span class="o">]</span>
+</code></pre></div>
+<ul>
+<li><code>&lt;castep-executable&gt;</code> is the path to the serial or parallel CASTEP executable.</li>
+<li><code>&lt;param-file&gt;</code> is <code>&lt;seed&gt;.param</code> for the test to run.</li>
+<li><code>&lt;output-file&gt;</code> is the test output file name; Testcode's  format is of the form <code>test.out.&lt;date&gt;-&lt;count&gt;.inp=&lt;param-file&gt;</code></li>
+<li><code>&lt;mpirun-cmd&gt;</code> is optional followng the end of other arguments marked by <code>--</code>. This is the command that <code>run_castep_test</code> will invoke to execute <code>&lt;castep-executable&gt;</code> in parallel - usually <code>mpirun -np &lt;nprocs&gt;</code>.</li>
+</ul>
+<h3 id="extraction-of-properties">Extraction of Properties</h3>
+<p>The <code>extract_results.pl</code> script is invoked by <code>testcode.py</code> to process both 
+the test (<code>test.out-...</code>) and benchmark  (<code>benchmark.out-...</code>) files and extract 
+the specific output data for comparison.
+It can extract the following properties</p>
+<details class="known-properties">
+<summary>Known-properties</summary>
 <p>Those in <code>code-style</code> are the names for the properties,
 those without are just divisions used here</p>
 <ul>
@@ -3020,114 +3213,29 @@ those without are just divisions used here</p>
 </li>
 </ul>
 </details>
-<h2 id="the-test-folder-structure">The Test folder structure</h2>
-<p>The CASTEP test folder is structured as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Test
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> |- CMakeLists.txt
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> |- jobconfig
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> |- userconfig
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> |- README
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> |- List
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> |- Electronic
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  |- Cr-AFM
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   |- Cr_00PBE.uspcc
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   |- Cr_AFM.cell
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   |- Cr_AFM.param
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>   |- benchmark.out.castep-23.1.castep-python-1.0.python-3.6.9.inp=Cr_AFM.param
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  |- ELF
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  |- Electrostatics
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  ...
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a> |- XC
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a> ...
-</code></pre></div>
-<p>The key files in the <code>Test</code> directory are:</p>
-<dl>
-<dt><code>CMakeLists.txt</code></dt>
-<dd>
-<p>CMake source file to build test suite in the <a href="../build-system/#cmake">CMake build system</a>
-(see: <a href="#adding-tests-to-be-run">Adding tests to be run</a>)</p>
-</dd>
-<dt><code>jobconfig</code></dt>
-<dd>
-<p>Essential file for <code>testcode</code> which defines the jobs, tolerances and
-categories of tests.</p>
-</dd>
-<dt><code>userconfig</code></dt>
-<dd>
-<p>Essential file for <code>testcode</code> which defines the
-commands to run tests and where to look for benchmarks.</p>
-</dd>
-<dt><code>README</code></dt>
-<dd>
-<p>Brief documentation detailing the purpose of the test
-suite and how to construct tests.</p>
-</dd>
-</dl>
-<p>The tests themselves are generally structured in the folder tree by a
-folder representing the general category of the tests and then a
-sub-folder for the specific test case. It is, however, possible to
-have multiple test cases within these sub-folders.</p>
-<p>The structure is used by testcode to determine which properties to
-check with which tolerances.</p>
-<h2 id="adding-tests_1">Adding Tests</h2>
-<h3 id="defining-new-tests">Defining new tests</h3>
-<h4 id="what-do-tests-look-like">What do tests look like?</h4>
-<p>Tests in CASTEP are generally defined via a short CASTEP run (complete
-with <code>.cell</code> and <code>.param</code> files) which is:</p>
-<ul>
-<li>Sufficient to demonstrate the functionality in question</li>
-<li>Short enough that it does not take significant time to run</li>
-<li>Stable enough that the results do not change significantly from run to
-  run.</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These calculations do not necessarily need to be physcially meaningful
-and in general should not, due to the time requirements.</p>
-</div>
-<h4 id="adding-tests-to-be-run">Adding tests to be run</h4>
-<p><code>testcode</code> runs tests according to two files contained in the <a href="#the-test-folder-structure"><code>Test</code>
-directory</a>.</p>
-<h5 id="userconfig"><code>userconfig</code></h5>
-<p>To add tests you should not need to touch <code>userconfig</code>, so we can
-ignore that here.</p>
-<h5 id="jobconfig"><code>jobconfig</code></h5>
-<p>If we are adding a new test folder we need to modify <code>jobconfig</code> to
-include the new test folder, as well as define tolerances on the
-various properties we might measure within the tests.</p>
+<h4 id="userconfig-file"><code>userconfig</code> file</h4>
+<p>This is one of the two configuration files read by testcode (<a href="https://testcode.readthedocs.io/en/latest/userconfig.html">documentation</a>) and sets up the testcode default options including the run commands to invoke CASTEP via the <code>run_castep_test.py</code>  script in serial and parallel.</p>
+<p>It also contains the default tolerances for each individual property, which may be overridden on a per-test basis in the <code>jobconfig</code> file.</p>
+<h4 id="jobconfig-file"><code>jobconfig</code> file</h4>
+<p>The second of testcode's configuration files (<a href="https://testcode.readthedocs.io/en/latest/jobconfig.html">documentation</a>) specifies the category- and test-specific quantities including overrides for the default property tolerances, and specifications of the parallelism required.</p>
 <p>The structure of the <code>jobconfig</code> is as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Run all tests on this folder and all subfolders with the given settings.</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">[Electronic/*]</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">run_concurrent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1"># (1)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">tolerance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">(0.015,  None, &#39;Spin&#39;)</span><span class="w"> </span><span class="c1"># (2)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Override the settings of the general folder for a specific case.</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">[Electronic/Si2-fine-grid]</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="na">tolerance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">(0.0003, None, &#39;Energy&#39;), (0.0003, None, &#39;PS_Energy&#39;)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Run all tests on this folder and all subfolders with the given settings.</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">[Electronic/*]</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="na">run_concurrent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1"># (1)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="na">tolerance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">(0.015,  None, &#39;Spin&#39;)</span><span class="w"> </span><span class="c1"># (2)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Override the settings of the general folder for a specific case.</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">[Electronic/Si2-fine-grid]</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="na">tolerance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">(0.0003, None, &#39;Energy&#39;), (0.0003, None, &#39;PS_Energy&#39;)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="k">[categories]</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="na">spe-simple</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s">Electronic/*</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="na">bs-simple</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">Excitations/*</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="na">phonon-simple</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">Phonon/*</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="na">...</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="na">simple</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s">spe-simple bs-simple phonon-simple [...]</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="na">...</span>
 </code></pre></div>
-<ol>
-<li>Enable running tests within this folder in parallel.</li>
-<li>Set the tolerance for a given <a href="#valid-properties">property</a>.</li>
-</ol>
-<h4 id="how-to-ensure-stability">How to ensure stability</h4>
-<p>CASTEP tests generally want to have a fixed seed using:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>rand_seed: 1234567890
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The actual value of the <code>rand_seed</code> doesn't matter, only that
-it is fixed.</p>
-</div>
-<p>The test should also generally be a short run of a small crystal structure to
-avoid any potential noise accumulating in the answer. The run does not need
-tight tolerances on <span class="arithmatex"><span class="MathJax_Preview">E_{\text{cut}}</span><script type="math/tex">E_{\text{cut}}</script></span> or <span class="arithmatex"><span class="MathJax_Preview">\mathbf{k}</span><script type="math/tex">\mathbf{k}</script></span>-point meshes, only
-sufficient to ensure that the answer produced is not noise itself.</p>
-<h3 id="adding-test-groups">Adding Test Groups</h3>
-<h4 id="adding-to-jobconfig">Adding to <code>jobconfig</code></h4>
-<p>At the end of the <code>jobconfig</code> file, there is a section called <code>categories</code> which
-contains the list of categories <code>testcode</code> knows about. The structure is:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nc">category_name</span><span class="p">&gt;</span> := <span class="p">&lt;</span><span class="nc">path_to_tests</span><span class="p">&gt;</span>|<span class="p">&lt;</span><span class="nc">other categories</span><span class="p">&gt;</span>
-</code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code>&lt;path_to_tests&gt;</code> can contain wildcards, or absolute paths</p>
@@ -3137,28 +3245,28 @@ contains the list of categories <code>testcode</code> knows about. The structure
 <p>All paths are relative to the location of <code>jobconfig</code> in CASTEP's
 case that is the <code>&lt;root&gt;/Test</code></p>
 </div>
-<p>Example format of the categories</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[categories]</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">spe-simple</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s">Electronic/*</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">bs-simple</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">Excitations/*</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">phonon-simple</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">Phonon/*</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">...</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="na">simple</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s">spe-simple bs-simple phonon-simple [...]</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="na">...</span>
+<p>At the end of the <code>jobconfig</code> file, there is a section called <code>categories</code> which
+contains the list of categories testcode knows about. The structure is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nc">category_name</span><span class="p">&gt;</span> := <span class="p">&lt;</span><span class="nc">path_to_tests</span><span class="p">&gt;</span>|<span class="p">&lt;</span><span class="nc">other categories</span><span class="p">&gt;</span>
 </code></pre></div>
+<ol>
+<li>Enable running tests within this folder in parallel.</li>
+<li>Set the tolerance for a given <a href="#valid-properties">property</a>.</li>
+</ol>
+<h3 id="adding-to-the-build-system">Adding to the Build System</h3>
 <h4 id="adding-to-cmake">Adding to CMake</h4>
 <p>To add the tests to be compatible with the <a href="../build-system/#cmake">CMake build system</a> you need to modify the <code>CMakeLists.txt</code> at
 <code>Test/CMakeLists.txt</code> and add the category to the list on line 157, which looks like:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">foreach</span><span class="w"> </span><span class="p">(</span><span class="s">CASTEP_TEST_CATEGORY</span><span class="w"> </span><span class="s2">&quot;spe&quot;</span><span class="w"> </span><span class="s2">&quot;bs&quot;</span><span class="w"> </span><span class="s2">&quot;phonon&quot;</span><span class="w"> </span><span class="s">...</span><span class="p">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nb">ADD_CATEGORY_TARGETS</span><span class="p">(</span><span class="o">${</span><span class="nv">CASTEP_TEST_CATEGORY</span><span class="o">}</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">endforeach</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">foreach</span><span class="w"> </span><span class="p">(</span><span class="s">CASTEP_TEST_CATEGORY</span><span class="w"> </span><span class="s2">&quot;spe&quot;</span><span class="w"> </span><span class="s2">&quot;bs&quot;</span><span class="w"> </span><span class="s2">&quot;phonon&quot;</span><span class="w"> </span><span class="s">...</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nb">ADD_CATEGORY_TARGETS</span><span class="p">(</span><span class="o">${</span><span class="nv">CASTEP_TEST_CATEGORY</span><span class="o">}</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">endforeach</span><span class="p">()</span>
 </code></pre></div>
 <h4 id="adding-to-make">Adding to Make</h4>
-<p>To add the tests properly to the <a href="../build-system/#gnu-make">GNU make build system</a>) you need to modify the <code>Makefile</code> at
+<p>To add the tests properly to the <a href="../build-system/#gnu-make">GNU make build system</a> you need to modify the <code>Makefile</code> at
 <code>Test/Makefile</code> and add the category in several places.</p>
-<p>Add it to the list of <code>.PHONY</code> :
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">check</span> <span class="n">check</span>-<span class="n">simple</span> <span class="n">check</span>-<span class="n">spe</span>-<span class="n">simple</span> ...
-</code></pre></div></p>
+<p>Add it to the list of <code>.PHONY</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">check</span> <span class="n">check</span>-<span class="n">simple</span> <span class="n">check</span>-<span class="n">spe</span>-<span class="n">simple</span> ...
+</code></pre></div>
 <p>and create an entry in the appropriate lists for each of the five classes of test jobs:</p>
 <ol>
 <li><code>check</code></li>
@@ -3168,8 +3276,8 @@ case that is the <code>&lt;root&gt;/Test</code></p>
 <li><code>diff</code></li>
 </ol>
 <p>to call your tests when the target is called e.g.:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">check-solvation</span><span class="o">:</span><span class="w"> </span><span class="n">exe</span>-<span class="n">exists</span> <span class="n">prepare</span>-<span class="n">clean</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">$(</span>TESTCODE<span class="k">)</span><span class="w"> </span><span class="k">$(</span>QUIET_FLAG<span class="k">)</span><span class="w">  </span><span class="k">$(</span>PARALLEL<span class="k">)</span><span class="w"> </span>-e<span class="w"> </span><span class="k">$(</span>CASTEPEXE<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>solvation-simple
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">check-solvation</span><span class="o">:</span><span class="w"> </span><span class="n">exe</span>-<span class="n">exists</span> <span class="n">prepare</span>-<span class="n">clean</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="k">$(</span>TESTCODE<span class="k">)</span><span class="w"> </span><span class="k">$(</span>QUIET_FLAG<span class="k">)</span><span class="w">  </span><span class="k">$(</span>PARALLEL<span class="k">)</span><span class="w"> </span>-e<span class="w"> </span><span class="k">$(</span>CASTEPEXE<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>solvation-simple
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
