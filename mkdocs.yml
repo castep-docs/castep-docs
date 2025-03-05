@@ -6,8 +6,8 @@ nav:
         - 'Introduction': 'documentation/Getting_Started/intro.md'
         - 'Command line help': 'documentation/Getting_Started/built_in_help.md'
         - 'Running CASTEP': 'documentation/Getting_Started/running_castep.md'
-        - 'cell File': 'documentation/Getting_Started/basic_cell_file.md'
-        - 'param File': 'documentation/Getting_Started/basic_param_file.md'
+        - 'Cell file': 'documentation/Getting_Started/basic_cell_file.md'
+        - 'Param file': 'documentation/Getting_Started/basic_param_file.md'
         - 'Checkpoint and Restart': 'documentation/Getting_Started/restarting.md'
       - 'Ground State':
         - 'Overview':  'documentation/Groundstate/intro.md'
@@ -70,8 +70,8 @@ nav:
         - 'Headers': 'documentation/Pseudopotentials/reading_headers.md'
         - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
       - 'Input Files':
-        - 'cell File':  'documentation/Input_Files/cell_file.md'
-        - 'param File': 'documentation/Input_Files/param_file.md'
+        - 'Cell File':  'documentation/Input_Files/cell_file.md'
+        - 'Param File': 'documentation/Input_Files/param_file.md'
         - 'Cell Keywords': 'documentation/Input_Files/cell_keywords.md'
       - 'Output Files':
         - 'Output Files': 'documentation/Output_Files/output_files.md'

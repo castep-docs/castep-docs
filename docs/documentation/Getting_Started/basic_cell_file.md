@@ -6,14 +6,14 @@ The file itself is a free-format keyword-driven text file, consisting of keyword
 
 ## Lattice ##
 
-There are two main ways to set the crystal lattice in the cell file. The `lattice_abc` block specifies the lattice constants in terms of the lengths of the lattice vectors ($\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$) and angles (alpha, beta and gamma):
+There are two main ways to set the crystal lattice in the cell file. The `lattice_abc` block specifies the lattice constants in terms of the lengths of the lattice vectors ($\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$) and angles ($\alpha$, $\beta$ and $\gamma$):
 ```
 %block lattice_abc
 a b c
 alpha beta gamma
 %endblock lattice_abc
 ```
-This doesn't specify how the cell is to be oriented in the Cartesian coordinate system, so CASTEP uses the convention that $\mathbf{a}$ is along the x-axis, and $\mathbf{b}$ is in the x-y plane.
+This doesn't specify how the cell is to be oriented in the Cartesian coordinate system, so CASTEP will choose an orientation which maximally aligns the symmetry directions of the Bravais lattice with the Cartesian XYZ frame.
 
 Alternatively, you can specify the lattice vectors $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$ directly in terms of their Cartesian components, using the lattice_cart block. Note that these are specified as *row* vectors:
 ```

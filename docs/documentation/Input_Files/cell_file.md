@@ -13,6 +13,12 @@ variables represented by $R$ are defined to be real numbers, those
 represented by $I$ are defined to be integers and those represented by
 $C$ are characters.
 
+!!! Note
+
+     Numerical values may be specified either as integer or floating-point numerals including in scientific notation, or by simple 
+     arithmetic expressions, involving the operators `+`,`-`,`*`,`/`, the functions `cos`, `sin`, `tan` (in degrees) or `sqrt`, for example
+	 `3.333e-1` `-1/3`,`0.5*sqrt(2.0)`,`cos(30)`.
+
 ### Cell Lattice Vectors ###
 
 The cell lattice vectors may be specified in Cartesian coordinates
@@ -45,14 +51,28 @@ alpha beta gamma
 %ENDBLOCK LATTICE_ABC
 ```
 
-Here `a` is the value of the lattice constant $\vert\mathbf{a}\vert$, `gamma` is the value of the cell angle $\gamma$ (in degrees) etc. If the lattice is specified in this manner, the absolute orientation is arbitrary. In this case the orientation is defined by applying the following constraints:
+Here `a` is the value of the lattice constant $\vert\mathbf{a}\vert$, `gamma` is the value of the cell angle $\gamma$ (in degrees) etc. Because the absolute orientation is undetermined if the lattice is specified in this manner, CASTEP chooses a suitable orientation which aligns the symmetry axes of the Bravais lattice with the Cartesian X, Y and Z directions. 
 
-- $\mathbf{a}$ lies along the x-axis
-- $\mathbf{b}$ lies in the xy plane
-- $\mathbf{c}$ forms a right-handed set with $\mathbf{a}$ and $\mathbf{b}$
+??? "detailed description of orientation choice"
+    Cubic, orthorhombic and tetragonal conventional cells have $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$ aligned along X, Y and Z.  
+    Body or face-centred cubic, orthorhombic and tetragonal primitive cells have $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$ of the *conventional* cell aligned along X, Y and Z.  
+    Trigonal(H) and hexagonal cells have their unique axis $\mathbf{a}$, $\mathbf{b}$ or $\mathbf{c}$ aligned along X, Y or Z respectively.  
+    Trigonal(R) cells have the unique axis aligned along Z.  
+    Monoclinic:  $\mathbf{a}$ lies along the X-axis, $\mathbf{b}$ lies along the Y-axis or in the xy plane if $\gamma$ 
+	is the unique angle and $\mathbf{c}$ lies along the Z-axis if $\gamma$ is the unique angle.  
+    Triclinic: $\mathbf{a}$ lies along the x-axis, $\mathbf{b}$ lies in the xy plane and $\mathbf{c}$ forms a 
+	right-handed set with $\mathbf{a}$ and $\mathbf{b}$.  
+
+!!! Warning
+    The exact values of lattice parameters used in the calculation may differ marginally from the input values specified in `%BLOCK LATTICE_ABC`
+	
+    `%BLOCK LATTICE_ABC` is implemented by choosing a standard set of lattice vector directions, scaled by the input parameters.
+	This has the side effect of removing any slight deviation of the cell parameters from the exact Bravais lattice, 
+	in effect performing a "snap-to-symmetry" of the lattice. This is usually advantageous!
+	
+	This does not adjust the ionic positions unless keyword `SNAP_TO_SYMMETRY	is also set to TRUE.
 
 `[units]` specifies the units in which the lattice vector magnitudes are defined. If not present, the default is Å. Angles should be specified in degrees.
-
 
 ### Ionic Positions ###
 
@@ -98,6 +118,18 @@ numbers representing the position of the ion in Cartesian coordinates.
 `[units]` specifies the units in which the positions are defined. If not present, the default is Å.
 
 The optional flag `SPIN` is defined above under `POSITIONS_FRAC`.
+
+### Pre-defined structures ###
+Alternatively CASTEP encodes a small number of pre-defined crystal structures using keyword
+
+````
+UNIT_CELL name
+````
+where *name* may be, for example `Si2`, `Si64`, `GaAs`, `Quartz`, `Graphene`, `MoS2`, `SrTiO3`.  To obtain the full list of possibilities, interrogate CASTEP's build-in help facility
+````
+CASTEP --help UNIT_CELL
+````
+This keyword is mutually exclusive to using `%BLOCK LATTICE_CART/ABC` and `%BLOCK POSITIONS_FRAC/ABS`.
 
 ### Brillouin Zone Sampling (k-points) ###
 
@@ -179,14 +211,40 @@ R_{2i} R_{2j} R_{2k}
 %ENDBLOCK SPECTRAL_KPOINT_PATH
 ```
 
-The three numbers on each line are the fractional positions of the
-k-point relative to the reciprocal space lattice vectors. The k-points
+The three numbers on each line are the fractional positions of a
+vertex k-point relative to the reciprocal space lattice vectors. These k-points
 define a continuous sequence of straight line segments, unless the
 keyword `BREAK` appears on a separate line within the sequence of
 k-points. In this case the continuous path will end at the k-point
 immediately preceding the `BREAK` keyword and resume at the k-point
 immediately following. The path will be open *unless the first and
 last point in the list are identical*.
+
+If the block is empty
+```
+%BLOCK SPECTRAL_KPOINT_PATH
+%ENDBLOCK SPECTRAL_KPOINT_PATH
+```
+CASTEP will choose a suitable default path according to the Bravais lattice.
+
+??? "Spacegroup-specific Brillouin-zone vertex names"
+	The vertex points of the k-space path may be also specified
+	using the special-point label names corresponding of the particular spagegroup.
+	For example, a suitable path for an fcc cell would be
+
+	````
+	%BLOCK SPECTRAL_KPOINT_PATH
+	G
+	X
+	U
+	Break
+	K
+	G
+	L
+	W
+	X
+	%ENDBLOCK SPECTRAL_KPOINT_PATH
+	````
 
 The maximum spacing of the points sampled along each line segment is defined by the keyword
 `SPECTRAL_KPOINT_PATH_SPACING` (default value $0.1 \times 2\pi$Å$^{-1}$). If necessary,
@@ -196,7 +254,7 @@ spacing between points on that segment.
 
 Alternatively, the k-point set for performing a band structure
 calculation can be specified in the same manner as the main k-point
-set, using version of the keywords above with BS_ prepended. The same
+set, using version of the keywords above with `SPECTRAL_` prepended. The same
 restrictions regarding mutually exclusive keywords apply. In this
 case, the k-point weight in `SPECTRAL_KPOINT_LIST` is optional. If
 omitted, the weights for each k-point are assumed to be equal.
@@ -205,9 +263,16 @@ For a phonon spectrum calculation, the k-points may be defined along a
 path through reciprocal space or a list of k-points, in the same
 manner as for a spectral calculation. The corresponding keywords
 are identical to those for the band structure specification with the
-initial `SPECTRAL_` replaced by `PHONON_`, e.g. `PHONON_KPOINT_PATH`,
-`PHONON_KPOINT_PATH_SPACING` and `PHONON_KPOINT_LIST`. The same
-restrictions regarding mutually exclusive keywords apply.
+initial `SPECTRAL_` replaced by either `PHONON_` or `PHONON_FINE_`, 
+e.g. `PHONON_KPOINT_LIST`, `PHONON_KPOINT_MP_GRID`, `PHONON_FINE_KPOINT_PATH`,
+`PHONON_FINE_KPOINT_PATH_SPACING`. 
+!!! Note
+    The first form `PHONON_KPOINT...` defines the points at which a direct
+	calculation of the dynamical matrix is performed, and the second, `PHONON_FINE_KPOINT_` 
+	specifies the set onto which Fourier interpolation is used to generate the dynamical matrices.
+	See ([[Phonons]](../../Phonons/Castep_Phonons/Running-phonon-calculations#sec:ddos)) for more details.
+
+The same restrictions regarding mutually exclusive keywords apply.
 
 The block keyword `PHONON_GAMMA_DIRECTIONS` specifies the directions
 in which the gamma point will be approached when calculating the
@@ -272,9 +337,10 @@ T_1      T_2      T_3
 ```
 
 Each of the first three lines contains 3 entries representing a row of
-a $3\times3$ array. These represent one symmetry rotation. The three
-entries on the following line contain the translation associated with
-this rotation.
+a $3\times3$ array. These represent the rotation matrix of the
+symmetry expressed in the Cartesian XYZ frame. The three entries on
+the following line contain the translation associated with this
+rotation expressed as fractions of the cell vector.
 
 
 ### Constraints ###
