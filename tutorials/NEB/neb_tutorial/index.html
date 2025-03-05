@@ -290,7 +290,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Getting_Started/basic_cell_file/" class="md-nav__link">
-        cell File
+        Cell file
       </a>
     </li>
   
@@ -304,7 +304,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Getting_Started/basic_param_file/" class="md-nav__link">
-        param File
+        Param file
       </a>
     </li>
   
@@ -1433,7 +1433,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Input_Files/cell_file/" class="md-nav__link">
-        cell File
+        Cell File
       </a>
     </li>
   
@@ -1447,7 +1447,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Input_Files/param_file/" class="md-nav__link">
-        param File
+        Param File
       </a>
     </li>
   
@@ -2914,11 +2914,11 @@ To add the readTS module to your PYTHONPATH, you can find a setup.py script in t
 <p>(changing the <code>/path/to/castep/</code> bit to wherever CASTEP is on your machine).</p>
 <p>You can then extract the NEB path using something like this python code:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">## get this by adding castep/Utilities/readts to your PYTHONPATH</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">readts</span> <span class="kn">import</span> <span class="n">TSFile</span> 
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span> <span class="nn">ase.neb</span> <span class="kn">import</span> <span class="n">NEBTools</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">readts</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSFile</span> 
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.neb</span><span class="w"> </span><span class="kn">import</span> <span class="n">NEBTools</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">def</span> <span class="nf">get_images</span><span class="p">(</span><span class="n">tsfile</span><span class="p">):</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_images</span><span class="p">(</span><span class="n">tsfile</span><span class="p">):</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="sd">   Function to extract the </span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="sd">   final NEB images from a tsfile object</span>
@@ -2940,7 +2940,7 @@ To add the readTS module to your PYTHONPATH, you can find a setup.py script in t
 <a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diam_f</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span>
 <a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>    <span class="k">return</span> <span class="n">images</span>
 <a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="k">def</span> <span class="nf">plot_band</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;neb.png&#39;</span><span class="p">):</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="k">def</span><span class="w"> </span><span class="nf">plot_band</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;neb.png&#39;</span><span class="p">):</span>
 <a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>    <span class="n">nt</span> <span class="o">=</span> <span class="n">NEBTools</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
 <a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>    <span class="n">energies</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">get_barrier</span><span class="p">()</span>
 <a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Barrier height:      </span><span class="si">{</span><span class="n">energies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">16.5f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
@@ -2951,7 +2951,7 @@ To add the readTS module to your PYTHONPATH, you can find a setup.py script in t
 <a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>
 <a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>
 <a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>    <span class="kn">import</span> <span class="nn">sys</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>    <span class="n">seedname</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>    <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
 <a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a>    <span class="n">tolerant</span> <span class="o">=</span> <span class="kc">False</span>

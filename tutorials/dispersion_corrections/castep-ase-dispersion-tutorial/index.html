@@ -290,7 +290,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Getting_Started/basic_cell_file/" class="md-nav__link">
-        cell File
+        Cell file
       </a>
     </li>
   
@@ -304,7 +304,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Getting_Started/basic_param_file/" class="md-nav__link">
-        param File
+        Param file
       </a>
     </li>
   
@@ -1433,7 +1433,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Input_Files/cell_file/" class="md-nav__link">
-        cell File
+        Cell File
       </a>
     </li>
   
@@ -1447,7 +1447,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Input_Files/param_file/" class="md-nav__link">
-        param File
+        Param File
       </a>
     </li>
   
@@ -2614,25 +2614,25 @@
 <p>For this tutorial we will use the CASTEP-ASE interface to setup and run many short calculations and analyse the results, though you can of course adapt the content here to use a scripting language of your choice. I have broken up the parts of the script to add clarification in places, but you can download the jupyter notebook with all the cells <a href="../castep-ase-dispersion-tutorial.ipynb">here</a>.</p>
 <p>We start by importing several python libraries. For more information on using the atomic simulation environment (ASE) with CASTEP, see <a href="https://wiki.fysik.dtu.dk/ase/ase/calculators/castep.html">the documentation here</a>.  </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ASE version 3.23</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">ase.io</span> <span class="kn">import</span> <span class="n">read</span><span class="p">,</span> <span class="n">write</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">ase.calculators.castep</span> <span class="kn">import</span> <span class="n">Castep</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">ase.io.castep</span> <span class="kn">import</span> <span class="n">read_seed</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">ase.visualize</span> <span class="kn">import</span> <span class="n">view</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span><span class="p">,</span> <span class="n">write</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.calculators.castep</span><span class="w"> </span><span class="kn">import</span> <span class="n">Castep</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.io.castep</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_seed</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.visualize</span><span class="w"> </span><span class="kn">import</span> <span class="n">view</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># pandas version 1.3.4</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># castep.mpi on path already, version 24.1</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">castep_cmd</span> <span class="o">=</span> <span class="s1">&#39;mpirun -n 4 castep.mpi&#39;</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># plotting</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># Python version: 3.9.5</span>
 </code></pre></div>
 <p>The CASTEP-ASE interface returns the 'Final energy' from the .castep file, though for this tutorial we will actually want the dispersion-corrected energy. The function below reads the .castep file and extracts the dispersion-corrected final energy.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span> <span class="nf">extract_dispersion_corrected_energy</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_dispersion_corrected_energy</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="sd">    Extracts the dispersion corrected final energy from a .castep file.</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>

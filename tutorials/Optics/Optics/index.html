@@ -290,7 +290,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Getting_Started/basic_cell_file/" class="md-nav__link">
-        cell File
+        Cell file
       </a>
     </li>
   
@@ -304,7 +304,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Getting_Started/basic_param_file/" class="md-nav__link">
-        param File
+        Param file
       </a>
     </li>
   
@@ -1433,7 +1433,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Input_Files/cell_file/" class="md-nav__link">
-        cell File
+        Cell File
       </a>
     </li>
   
@@ -1447,7 +1447,7 @@
   
     <li class="md-nav__item">
       <a href="../../../documentation/Input_Files/param_file/" class="md-nav__link">
-        param File
+        Param File
       </a>
     </li>
   
@@ -2833,10 +2833,10 @@ Run Castep as usual. When it is done, run Optados on Si with the Optados input f
 </script>
 </div>
 <p>To check that this is really what's going on in the absorption calculation, we can use the Python script</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">c</span> <span class="o">=</span> <span class="mf">3e8</span>  
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">hbar</span> <span class="o">=</span> <span class="mf">6.582119569e-16</span>  
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">def</span> <span class="nf">calculate_property</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_property</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">omega</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="n">hbar</span>  
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">kappa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">epsilon_1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">epsilon_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">epsilon_2</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">kappa</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span>  
@@ -2864,7 +2864,7 @@ n(\omega) = \sqrt{\frac{1}{2} \left[ \sqrt{\epsilon_1(\omega)^2 + \epsilon_2(\om
 </script>
 </div>
 <p>and the accompanying Python script to verify if this is right is also very similar: the function becomes</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span> <span class="nf">calculate_property</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_property</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">omega</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="n">hbar</span>  <span class="c1"># Convert energy (eV) to angular frequency (rad/s)</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">kappa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">epsilon_1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">epsilon_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">epsilon_2</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">kappa</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span>  <span class="c1"># Absorption coefficient (1/m)</span>
@@ -2903,11 +2903,11 @@ R = \left( \frac{\tilde{n} - 1}{\tilde{n} + 1} \right)^2
 </script>
 </div>
 <p>Where <span class="arithmatex"><span class="MathJax_Preview">\tilde{n}</span><script type="math/tex">\tilde{n}</script></span> is the complex refractive index (real + imaginary part). We can implement this in the Python script more easily by separating it into functions to find the refractive indices (like we did <a href="./#refractive_index">before</a>), and then use that to find the reflectivity.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span> <span class="nf">calculate_refractive_indices</span><span class="p">(</span><span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_refractive_indices</span><span class="p">(</span><span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">epsilon_1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">epsilon_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">epsilon_2</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">kappa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="o">-</span><span class="n">epsilon_1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">epsilon_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">epsilon_2</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="n">kappa</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">def</span> <span class="nf">calculate_property</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="p">):</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_property</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="p">):</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">n_complex</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">kappa</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">reflectivity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">n_complex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_complex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="k">return</span> <span class="n">reflectivity</span>
@@ -2920,7 +2920,7 @@ R = \left( \frac{\tilde{n} - 1}{\tilde{n} + 1} \right)^2
 <p><span class="arithmatex"><span class="MathJax_Preview">\sigma_1(\omega) = \epsilon_0 \omega \epsilon_2(\omega)</span><script type="math/tex">\sigma_1(\omega) = \epsilon_0 \omega \epsilon_2(\omega)</script></span></p>
 <p><span class="arithmatex"><span class="MathJax_Preview">\sigma_2(\omega) = -\epsilon_0 \omega (\epsilon_1(\omega) - \epsilon_\infty)</span><script type="math/tex">\sigma_2(\omega) = -\epsilon_0 \omega (\epsilon_1(\omega) - \epsilon_\infty)</script></span></p>
 <p>where <span class="arithmatex"><span class="MathJax_Preview">\sigma_1</span><script type="math/tex">\sigma_1</script></span> is the real part and <span class="arithmatex"><span class="MathJax_Preview">\sigma_2</span><script type="math/tex">\sigma_2</script></span> is the imaginary. As usual <span class="arithmatex"><span class="MathJax_Preview">\epsilon_1</span><script type="math/tex">\epsilon_1</script></span> corresponds to the real dielectric and <span class="arithmatex"><span class="MathJax_Preview">\epsilon_2</span><script type="math/tex">\epsilon_2</script></span> to the imaginary. In this calculation, <span class="arithmatex"><span class="MathJax_Preview">\epsilon_\infty</span><script type="math/tex">\epsilon_\infty</script></span> is approximated as 1. This can be implemented in our Python script as</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span> <span class="nf">calculate_conductivity</span><span class="p">(</span><span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">,</span> <span class="n">energy</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_conductivity</span><span class="p">(</span><span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">,</span> <span class="n">energy</span><span class="p">):</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">omega</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="n">hbar</span>  
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">sigma_1</span> <span class="o">=</span> <span class="n">epsilon_0</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">epsilon_2</span>  
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">sigma_2</span> <span class="o">=</span> <span class="o">-</span><span class="n">epsilon_0</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="n">epsilon_1</span> <span class="o">-</span> <span class="n">epsilon_inf</span><span class="p">)</span>
@@ -2939,7 +2939,7 @@ R = \left( \frac{\tilde{n} - 1}{\tilde{n} + 1} \right)^2
 <p>This leads to</p>
 <p><span class="arithmatex"><span class="MathJax_Preview">\text{Loss}(\omega) = \frac{\epsilon_2(\omega)}{\epsilon_1(\omega)^2 + \epsilon_2(\omega)^2}</span><script type="math/tex">\text{Loss}(\omega) = \frac{\epsilon_2(\omega)}{\epsilon_1(\omega)^2 + \epsilon_2(\omega)^2}</script></span></p>
 <p>Let's implement this into our Python script by changing the function to</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span> <span class="nf">calculate_property</span><span class="p">(</span><span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_property</span><span class="p">(</span><span class="n">epsilon_1</span><span class="p">,</span> <span class="n">epsilon_2</span><span class="p">):</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">loss_function</span> <span class="o">=</span> <span class="n">epsilon_2</span> <span class="o">/</span> <span class="p">(</span><span class="n">epsilon_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">epsilon_2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="k">return</span> <span class="n">loss_function</span>
 </code></pre></div>

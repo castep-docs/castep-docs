@@ -13,7 +13,7 @@
     
     
       
-        <title>cell File - CASTEP Docs</title>
+        <title>Cell file - CASTEP Docs</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cell File
+              Cell file
             
           </span>
         </div>
@@ -301,12 +301,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          cell File
+          Cell file
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        cell File
+        Cell file
       </a>
       
         
@@ -359,7 +359,7 @@
   
     <li class="md-nav__item">
       <a href="../basic_param_file/" class="md-nav__link">
-        param File
+        Param file
       </a>
     </li>
   
@@ -1488,7 +1488,7 @@
   
     <li class="md-nav__item">
       <a href="../../Input_Files/cell_file/" class="md-nav__link">
-        cell File
+        Cell File
       </a>
     </li>
   
@@ -1502,7 +1502,7 @@
   
     <li class="md-nav__item">
       <a href="../../Input_Files/param_file/" class="md-nav__link">
-        param File
+        Param File
       </a>
     </li>
   
@@ -2605,19 +2605,19 @@
                 
 
 
-  <h1>cell File</h1>
+  <h1>Cell file</h1>
 
 <p>This is a basic overview of the cell file. See the <a href="../../Input_Files/cell_file/">full cell file page</a> for more details.</p>
 <p>The cell file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, and atomic properties.</p>
 <p>The file itself is a free-format keyword-driven text file, consisting of keywords and blocks of information. These may be given in any order, with blocks indicated by the special <code>%block</code> and <code>%endblock</code> markers. Most of the keywords and blocks are optional, but CASTEP <em>requires</em> two block entries: a block to specify the lattice, and another to specify the atomic elements and positions within the cell.</p>
 <h2 id="lattice">Lattice</h2>
-<p>There are two main ways to set the crystal lattice in the cell file. The <code>lattice_abc</code> block specifies the lattice constants in terms of the lengths of the lattice vectors (<span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}</span><script type="math/tex">\mathbf{a}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}</span><script type="math/tex">\mathbf{b}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{c}</span><script type="math/tex">\mathbf{c}</script></span>) and angles (alpha, beta and gamma):
+<p>There are two main ways to set the crystal lattice in the cell file. The <code>lattice_abc</code> block specifies the lattice constants in terms of the lengths of the lattice vectors (<span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}</span><script type="math/tex">\mathbf{a}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}</span><script type="math/tex">\mathbf{b}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{c}</span><script type="math/tex">\mathbf{c}</script></span>) and angles (<span class="arithmatex"><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%block lattice_abc
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>a b c
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>alpha beta gamma
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>%endblock lattice_abc
 </code></pre></div>
-This doesn't specify how the cell is to be oriented in the Cartesian coordinate system, so CASTEP uses the convention that <span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}</span><script type="math/tex">\mathbf{a}</script></span> is along the x-axis, and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}</span><script type="math/tex">\mathbf{b}</script></span> is in the x-y plane.</p>
+This doesn't specify how the cell is to be oriented in the Cartesian coordinate system, so CASTEP will choose an orientation which maximally aligns the symmetry directions of the Bravais lattice with the Cartesian XYZ frame.</p>
 <p>Alternatively, you can specify the lattice vectors <span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}</span><script type="math/tex">\mathbf{a}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}</span><script type="math/tex">\mathbf{b}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{c}</span><script type="math/tex">\mathbf{c}</script></span> directly in terms of their Cartesian components, using the lattice_cart block. Note that these are specified as <em>row</em> vectors:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>%block lattice_cart
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>[unit]
@@ -2689,13 +2689,13 @@ has a comment explaining the atomic coordinates, and a single carbon atom at the
       
       
         
-        <a href="../basic_param_file/" class="md-footer__link md-footer__link--next" aria-label="Next: param File" rel="next">
+        <a href="../basic_param_file/" class="md-footer__link md-footer__link--next" aria-label="Next: Param file" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              param File
+              Param file
             </div>
           </div>
           <div class="md-footer__button md-icon">
