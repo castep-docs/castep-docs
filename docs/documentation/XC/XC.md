@@ -71,6 +71,12 @@ LDA-C 1.0
 %endblock xc_definition
 ```
 
+!!! warning
+	When specifying parameters within the `xc_definition` block, one should not
+	specify separator characters such `:` or `=` between the keyword and parameters.
+	In addition, note that functional names within XC definition are **case-sensitive**
+	and should thus be entered in uppercase.
+
 Examples:  
 1. B3LYP
 Firstly you can simply use `xc_functional : B3LYP`, however
