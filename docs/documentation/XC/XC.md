@@ -73,7 +73,7 @@ LDA-C 1.0
 
 Examples:  
 1. B3LYP
-Firstly you cansimply use `xc_functional : B3LYP`, however
+Firstly you can simply use `xc_functional : B3LYP`, however
 `B3LYP` is a hybrid functional consisting of a mixture of
 Hartree-Fock, LDA and B88 exchange, LYP and LDA correlation. This
 functional can be specified component by component:
