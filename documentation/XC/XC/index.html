@@ -2602,9 +2602,16 @@ can run a CASTEP calculation with this using
 </code></pre></div></p>
 </li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When specifying parameters within the <code>xc_definition</code> block, one should not
+specify separator characters such <code>:</code> or <code>=</code> between the keyword and parameters.
+In addition, note that functional names within XC definition are <strong>case-sensitive</strong>
+and should thus be entered in uppercase.</p>
+</div>
 <p>Examples:<br />
 1. B3LYP
-Firstly you cansimply use <code>xc_functional : B3LYP</code>, however
+Firstly you can simply use <code>xc_functional : B3LYP</code>, however
 <code>B3LYP</code> is a hybrid functional consisting of a mixture of
 Hartree-Fock, LDA and B88 exchange, LYP and LDA correlation. This
 functional can be specified component by component:

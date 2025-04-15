@@ -2731,7 +2731,7 @@ q _ A = Z' _ A - N _ A
 is calculated, where <span class="arithmatex"><span class="MathJax_Preview">Z'</span><script type="math/tex">Z'</script></span> is the pseudoatom nuclear charge.</p>
 <h3 id="the-castep-implementation">The CASTEP implementation</h3>
 <p>In CASTEP, the solution of the electronic problem results in a set of Kohn-Sham orbitals <span class="arithmatex"><span class="MathJax_Preview">\psi _ i</span><script type="math/tex">\psi _ i</script></span>, which are expressed in terms of plane-wave functions. Plane-waves are non-local, therefore not
-directly suitable for Mulliken population analysis. In order to obtain a suitable local basis, CASTEP solves the electronic problem of the isolated atom for each atomic specie present in the system,
+directly suitable for Mulliken population analysis. In order to obtain a suitable local basis, CASTEP solves the electronic problem of the isolated atom for each atomic species present in the system,
 resulting in a set of atomic orbitals <span class="arithmatex"><span class="MathJax_Preview">\chi _ \mu</span><script type="math/tex">\chi _ \mu</script></span>. Note that for this set of calculations, the same calculation settings (e.g. electronic cutoff and pseudopotentials) are used. With the atomic
 orbitals determined, the Mulliken population analysis can be performed by calculating the projections <span class="arithmatex"><span class="MathJax_Preview">\langle \chi _ \mu | \psi _ i \rangle</span><script type="math/tex">\langle \chi _ \mu | \psi _ i \rangle</script></span>.</p>
 <h3 id="castep-keywords">CASTEP keywords</h3>
