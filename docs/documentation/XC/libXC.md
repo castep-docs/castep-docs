@@ -1,8 +1,8 @@
 There are many (many!) XC functionals (of varying quality and
-applicability). LIBXC (https://www.tddft.org/programs/libxc/) is a
+applicability). LIBXC (https://libxc.gitlab.io) is a
 maintained library of functionals that is upgraded regularly. The list
 of functionals available in LIBXC is at
-https://www.tddft.org/programs/libxc/functionals/.
+https://libxc.gitlab.io/functionals/.
 
 CASTEP interfaces to this library which can be used instead of
 CASTEP's in-built library of XC functionals. Prepend the string LIBXC_
@@ -15,7 +15,7 @@ In the LIBXC library there are many functionals, covering LDAs, GGAs,
 Meta-GGAs, Hybrids, etc. Most of these are separated into exchange and
 correlation contributions. To use these functionals, build your own
 combination using CASTEP's `xc_definition` keyword in the .param
-file. Firstly at https://www.tddft.org/programs/libxc/functionals/
+file. Firstly at https://libxc.gitlab.io/functionals/ 
 find the exchange and correlation functionals that you require, note
 the name LIBXC calls is and then prepend the string LIBXC_ to them.
 
@@ -64,7 +64,7 @@ HF 0.25
 ```
 
 Note here you need to know (ie. read the HYB_GGA_XC_PBE0 reference
-given in https://www.tddft.org/programs/libxc/functionals/) what
+given in https://libxc.gitlab.io/functionals/) what
 fraction of local exchange is in the functional and so
 infer what the fraction of non-local exchange is required (here 0.25).
 
@@ -95,4 +95,4 @@ LIBXC_MGGA_C_RSCAN 1.0
 
 The `xc_definition` keyword in the .param file will allow you to mix
 and match any of the hundreds of functionals in LIBXC
-https://www.tddft.org/programs/libxc/functionals/. DO SO WITH EXTREME CAUTION!
+https://libxc.gitlab.io/functionals/ . DO SO WITH EXTREME CAUTION!
