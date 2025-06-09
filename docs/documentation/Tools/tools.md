@@ -35,6 +35,7 @@ This page lists various analysis codes (some supplied with the CASTEP distributi
 * [OCLIMAX](https://sites.google.com/site/ornliceman/download) is a free program for simulation of inelastic neutron scattering using vibrational frequencies and polarization vectors as input. It can perform simulations on both powder and single crystal samples, and the input phonon data can be obtained from first-principles or empirical calculations.
 * [phonopy](https://phonopy.github.io/phonopy/) is an open source package for phonon calculations at harmonic and quasi-harmonic levels.
 * [phono3py](https://phonopy.github.io/phono3py/) calculates phonon-phonon interaction and related properties using the supercell approach. These properties include the lattice thermal conductivity, joint density of states and the phonon lifetimes.
+* [phonon-to-json](https://github.com/theloanerkit/phonon-to-json) small python tool to transform castep `.phonon` files for use in the [TSS Physics Phonon Visualiser](https://henriquemiranda.github.io/phononwebsite/phonon.html).
 
 ## Visualisation
 
