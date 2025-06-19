@@ -1,5 +1,3 @@
-
-
 ##Understanding the Output
 
 In this chapter we shall briefly describe the output produced
@@ -110,7 +108,7 @@ is the classical kinetic energy of the ions. Total
 energy refers to the sum of these two energies.
 
 The enthalpy and the relevant Hamiltonian energy for the ensemble
-as quoted in section [ensembles](/documents/Molecular_Dynamics/basics.md) is then printed.
+as quoted in section [ensembles](basics.md#ensembles) is then printed.
 
 The temperature is also output at this point. Note that this
 is the ionic temperature only. If performing a calculation
@@ -168,8 +166,8 @@ in Hartree atomic units. Fortran formating data will be given here for
 all entries in this file for those who wish to import it into their
 own analysis codes.
 
-The CASTEP default behaviour is to record every single configuration in the .md file. This can therefore grow to quite a 
-large size if doing a long MD run! The only exception to this, is if doing a non-DFT calculation, whereupon a sample of the 
+The CASTEP default behaviour is to record every single configuration in the .md file. This can therefore grow to quite a
+large size if doing a long MD run! The only exception to this, is if doing a non-DFT calculation, whereupon a sample of the
 configurations are written if `md_sample_iter`>0, otherwise no configurations are written.
 
 Note that unlike the .castep file, the .md file from a previous
@@ -185,9 +183,9 @@ taken from the cell/parameter files.
 ```
  BEGIN header
 
- This is 8 atom cubic Si cell  
+ This is 8 atom cubic Si cell
  END header
-```  
+```
 
 This is followed by a blank line. There is a single space at the start
 of each non-blank line. This header is written once only.
@@ -352,7 +350,7 @@ time-step.
 
 ##The .hug file
 
-If you are using the Hugoniostat predictor-corrector method to generate a Hugoniot curve, each different state point 
+If you are using the Hugoniostat predictor-corrector method to generate a Hugoniot curve, each different state point
 generated has a different compression etc. This is summarized in the `.hug` file as follows:
 
 ```
@@ -365,11 +363,9 @@ The 4 data fields are:
 
 c - the ratio of the compressed to original cell vectors
 
-T - the temperature (in user units) - calculated as a time average of the instantaneous temperature of the configurations 
+T - the temperature (in user units) - calculated as a time average of the instantaneous temperature of the configurations
 at this compression
 
 P - the pressure (in user units) - calculated as a time average
 
 E - the energy (in user units) - calculated as a time average
-
-

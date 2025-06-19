@@ -1,4 +1,3 @@
-
 To perform a geometry optimisation set the task parameter
 ```
 task : geomopt

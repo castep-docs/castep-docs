@@ -1,13 +1,13 @@
 # X-ray Structure Factors
 
 ## Basic Theory
-The X-ray structure factor (SF) intensities can be measured by diffraction experiments involving either X-rays, $\gamma$-rays or electron beams. It is directly related to the electron density within the unit cell of a material, $n(\mathbf{r})$, by a Fourier transformation[^1]:
+The X-ray structure factor (SF) intensities can be measured by diffraction experiments involving either X-rays, $\gamma$-rays or electron beams. It is directly related to the electron density within the unit cell of a material, $n(\mathbf{r})$, by a Fourier transformation[@Coppens1997]:
 
 $$F(\mathbf{H}) = \mathcal{F}[n(\mathbf{r})] = \int_\textrm{unit cell} n(\mathbf{r})\exp(i 2 \pi \mathbf{H} \cdot \mathbf{r}) \mathrm{d}\mathbf{r},$$
 
 where $\mathbf{H} = h \mathbf{a}^* + k \mathbf{b}^* + l\mathbf{c}^*$ is the scattering vector corresponding to the $(hkl)$ plane, with $\mathbf{a}^*, \mathbf{b}^*$ and $\mathbf{c}^*$ being the reciprocal lattice vectors of the conventional unit cell.
 
-Computation of the SF is difficult within plane-wave pseudopotential DFT codes since the total "all-electron'' electron density is not normally directly computed and the FFT grids used to house the pseudised valence electron density do not have enough spatial resolution to capture the rapid oscillations near the atomic cores of the total electron density, requiring large plane-wave energy cutoffs in the order of several thousands of eV. Within CASTEP, we have developed an efficient and accurate approach towards calculating these SFs without having to move to large FFT grids or plane-wave energy cutoffs. Details of this implementation can be found in the paper (CITE PAPER WHEN PUBLISHED) but the key observation that has enabled this development is that the electron density can be separated into atom-centred contributions which can be treated on separate radial grids. The resulting structure factor has the form[^2]:
+Computation of the SF is difficult within plane-wave pseudopotential DFT codes since the total "all-electron'' electron density is not normally directly computed and the FFT grids used to house the pseudised valence electron density do not have enough spatial resolution to capture the rapid oscillations near the atomic cores of the total electron density, requiring large plane-wave energy cutoffs in the order of several thousands of eV. Within CASTEP, we have developed an efficient and accurate approach towards calculating these SFs without having to move to large FFT grids or plane-wave energy cutoffs. Details of this implementation can be found in the paper (CITE PAPER WHEN PUBLISHED) but the key observation that has enabled this development is that the electron density can be separated into atom-centred contributions which can be treated on separate radial grids. The resulting structure factor has the form[@Shmueli2001]:
 
 $$F(\mathbf{H}) = \sum_{j} f_{j} (\mathbf{H}) \exp(i 2\pi \mathbf{H} \cdot \mathbf{r}_{j}),$$
 
@@ -144,8 +144,8 @@ SYMMETRY_GENERATE
 We get a resulting ```seed.xrd_sf``` file with the output:
 ```
    h   k   l   Re(F_PAW)   Im(F_PAW)   Re(F_IAM)   Im(F_IAM)    Re(F_PP)    Im(F_PP)  Re(F_core)  Im(F_core)  Re(F_soft)  Im(F_soft)   Re(F_aug)   Im(F_aug)
-   1   1   1   11.115757   -0.000000   12.492143   -0.000000   10.926445   -0.000000    0.085890   -0.000000   -9.892234    0.000000   20.922101   -0.000000   
-   0   0   2   52.877502    0.000000   51.830521   -0.000000   52.626486    0.000000   15.464656   -0.000000   15.585172   -0.000000   21.827675    0.000000   
+   1   1   1   11.115757   -0.000000   12.492143   -0.000000   10.926445   -0.000000    0.085890   -0.000000   -9.892234    0.000000   20.922101   -0.000000
+   0   0   2   52.877502    0.000000   51.830521   -0.000000   52.626486    0.000000   15.464656   -0.000000   15.585172   -0.000000   21.827675    0.000000
    0   2   2   41.051122    0.000000   40.948429   -0.000000   40.609195    0.000000   14.950468   -0.000000    7.954567   -0.000000   18.146087    0.000000
 ```
 
@@ -159,7 +159,3 @@ Label      | Description
 ``F_core`` | Structure factor contribution to ``F_PAW`` due to the (frozen) core electrons
 ``F_soft`` | Structure factor contribution to ``F_PAW`` due to the soft valence charge (where augmentation charge contribute is removed)
 ``F_aug``  | Structure factor contribution due to the all-electron valence augmentation charge
-
-
-[^1]: P. Coppens, X-Ray Charge Densities and Chemical Bonding (International Union of Crystallography, New York, 1997)
-[^2]: U. Shmueli and Internationale Union für Kristallographie, editors , International Tables for Crystallography. Vol. B: Reciprocal Space, 2. ed (Kluwer Acad. Publ, Dordrecht, 2001)

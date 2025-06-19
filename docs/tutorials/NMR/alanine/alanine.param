@@ -1,0 +1,6 @@
+fix_occupancy = true
+opt_strategy : speed
+task        = magres
+magres_task = nmr
+cut_off_energy = 35 ry 
+xc_functional : PBE

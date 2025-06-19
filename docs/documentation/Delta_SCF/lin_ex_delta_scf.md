@@ -10,10 +10,10 @@ more realistic excitation constraint would be to project on a gasphase
 molecular orbital and subsequently enforce occupation of this state.
 
 This idea is referred to as linear expansion $\Delta$SCF and has first
-been proposed by Gavnholt *et al*. Phys. Rev. B 78, 075441 (2008).
+been proposed by Gavnholt *et al*[@DeltaSCF2].
 
-The CASTEP implementation is described in J. Chem. Phys. 139,
-014708 (2013). Herein, we constrain the occupation of a so-called
+The CASTEP implementation is described in Maurer and Reuer (2013)[@DeltaSCF3].
+Herein, we constrain the occupation of a so-called
 resonance state built from a linear combination of Kohn-Sham states
 instead of a single KS state. We expand an abitrary reference state
 $|\phi_c\rangle$ in the space of Kohn-Sham states as follows:
@@ -31,8 +31,8 @@ of this state with the effect of describing an excitation of a specific
 molecular orbital. This is done in every SCF step until the calculation
 is converged.
 
-For a le $\Delta$SCF calculation, we have to set `deltascf_method = linear expansion` in the 
-`<seed>.param` file. The constraint must also be specifed, as discussed in the 
+For a le $\Delta$SCF calculation, we have to set `deltascf_method = linear expansion` in the
+`<seed>.param` file. The constraint must also be specifed, as discussed in the
 [overview](overview.md) section.
 
 The only additional relevant $\Delta$SCF keywords is `deltascf_overlap_cutoff`

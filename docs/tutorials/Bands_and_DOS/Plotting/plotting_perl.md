@@ -55,7 +55,7 @@ castep si-bands
 dispersion.pl -sym fcc -xg si-bands.bands
 ```
 You should get a plot
-![Silicon bandstructure](../../img/si-bands.png)
+![Silicon bandstructure](../../../img/si-bands.png)
 
 ## Density of States
 
@@ -105,7 +105,7 @@ castep si-dos
 dos.pl -xg si-dos.bands -w 0.3
 ```
 You should get a plot like
-![Silicon bandstructure](../../img/si-dos.png)
+![Silicon bandstructure](../../../img/si-dos.png)
 
 
 !!! Note

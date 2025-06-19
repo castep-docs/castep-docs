@@ -6,8 +6,8 @@ nav:
         - 'Introduction': 'documentation/Getting_Started/intro.md'
         - 'Command line help': 'documentation/Getting_Started/built_in_help.md'
         - 'Running CASTEP': 'documentation/Getting_Started/running_castep.md'
-        - 'cell File': 'documentation/Getting_Started/basic_cell_file.md'
-        - 'param File': 'documentation/Getting_Started/basic_param_file.md'
+        - 'Cell file': 'documentation/Getting_Started/basic_cell_file.md'
+        - 'Param file': 'documentation/Getting_Started/basic_param_file.md'
         - 'Checkpoint and Restart': 'documentation/Getting_Started/restarting.md'
       - 'Ground State':
         - 'Overview':  'documentation/Groundstate/intro.md'
@@ -15,6 +15,7 @@ nav:
         - 'Spin Orbit Coupling': 'documentation/Groundstate/soc.md'
         - 'Spin Constraints': 'documentation/Groundstate/spin_constraints.md'
         - 'Population analysis': 'documentation/Groundstate/population_analysis.md'
+        - 'ELF': 'documentation/Groundstate/ELF.md'
       - 'Geometry Optimisation':
         - 'Overview': 'documentation/Geometry_Optimisation/overview.md'
         - 'Keywords': 'documentation/Geometry_Optimisation/keywords.md'
@@ -31,7 +32,7 @@ nav:
         - 'PIMD': 'documentation/Molecular_Dynamics/pimd.md'
         - 'Hugoniostat': 'documentation/Molecular_Dynamics/hugoniostat.md'
       - 'Transition State Search':
-        - 'Nudged elastic band': 'documentation/Transition_State_Search/neb.md'
+        - 'Nudged Elastic Band': 'documentation/Transition_State_Search/neb.md'
       - 'Exchange-Correlation (XC)':
         - 'Overview': 'documentation/XC/XCoverview.md'
         - 'Controlling XC': 'documentation/XC/XC.md'
@@ -40,8 +41,16 @@ nav:
         - 'Overview': 'documentation/Spectral/overview.md'
         - 'Keywords': 'documentation/Spectral/keywords.md'
         - 'Restarts': 'documentation/Spectral/restarts.md'
-      - 'Vibrations':
-        - 'Vibrations': 'documentation/Vibrations/overview.md'
+      - 'Phonons':
+        - 'Introduction': 'documentation/Phonons/Castep_Phonons/Introduction.md'
+        - 'Running-phonon-calculations': 'documentation/Phonons/Castep_Phonons/Running-phonon-calculations.md'
+        - 'Dielectric-properties': 'documentation/Phonons/Castep_Phonons/Dielectric-properties.md'
+        - 'Thermodynamic-properties': 'documentation/Phonons/Castep_Phonons/Thermodynamic-properties.md'
+        - 'Plotting-and-analysis-tools': 'documentation/Phonons/Castep_Phonons/Plotting-and-analysis-tools.md'
+        - 'Running-Large-Calculations': 'documentation/Phonons/Castep_Phonons/Running-Large-Calculations.md'
+        - 'Advanced-Topics': 'documentation/Phonons/Castep_Phonons/Advanced-Topics.md'
+        - 'Keyword-Reference': 'documentation/Phonons/Castep_Phonons/Keyword-Reference.md'
+        - 'Bibliography': 'documentation/Phonons/Castep_Phonons/Bibliography.md'
       - 'NMR':
         - 'NMR Overview': 'documentation/NMR/NMR_overview.md'
       - 'EPR':
@@ -68,12 +77,13 @@ nav:
         - 'Headers': 'documentation/Pseudopotentials/reading_headers.md'
         - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
       - 'Input Files':
-        - 'cell file':  'documentation/Input_Files/cell_file.md'
-        - 'param file': 'documentation/Input_Files/param_file.md'
-        - 'cell keywords': 'documentation/Input_Files/cell_keywords.md'
-        - 'output files': 'documentation/Input_Files/output_files.md'
-      - 'Tools':
-        - 'Third Party Tools': 'documentation/Tools/tools.md'
+        - 'Cell File':  'documentation/Input_Files/cell_file.md'
+        - 'Param File': 'documentation/Input_Files/param_file.md'
+        - 'Cell Keywords': 'documentation/Input_Files/cell_keywords.md'
+      - 'Output Files':
+        - 'Output Files': 'documentation/Output_Files/output_files.md'
+      - 'Other Codes and Tools':
+        - 'Other Codes and Tools': 'documentation/Tools/tools.md'
       - 'Troubleshooting':
         - 'Common errors':  'documentation/Troubleshooting/troubleshooting.md'
         - 'Linux help':  'documentation/Troubleshooting/linux_path.md'
@@ -81,38 +91,60 @@ nav:
       - 'Bonding and Charge':
         - 'Plotting Charge Density': 'tutorials/Bonding_and_Charge/charge_density.md'
         - 'Population Analysis': 'tutorials/Bonding_and_Charge/mulliken_population.md'
+        - 'ELF': 'tutorials/Bonding_and_Charge/ELF.md'
       - 'Bands and DOS':
-        - 'Plotting - CASTEP tools': 'tutorials/Bands_and_DOS/plotting_perl.md'
-        - 'Plotting - SUMO': 'tutorials/Bands_and_DOS/plotting_sumo.md'
-        -  'Semiconductors':      'tutorials/Bands_and_DOS/semiconductors.md'
-        -  'Metals':      'tutorials/Bands_and_DOS/metals.md'
-        -  'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
+        - 'Plotting':
+          - 'Plotting - CASTEP tools': 'tutorials/Bands_and_DOS/Plotting/plotting_perl.md'
+          - 'Plotting - SUMO': 'tutorials/Bands_and_DOS/Plotting/plotting_sumo.md'
+          - 'OptaDOS - DOS': 'tutorials/Bands_and_DOS/Plotting/Optados/DOS.md'
+          - 'OptaDOS - pDOS': 'tutorials/Bands_and_DOS/Plotting/Optados/pDOS.md'
+        - 'Semiconductors':      'tutorials/Bands_and_DOS/semiconductors.md'
+        - 'Metals':      'tutorials/Bands_and_DOS/metals.md'
+        - 'Magnetic Materials':      'tutorials/Bands_and_DOS/magnetic.md'
+      - 'Optics':
+        - 'Optics': 'tutorials/Optics/Optics.md'
+        - 'Optics - Aluminium': 'tutorials/Optics/Optics_aluminium.md'
+        - 'Optical Anisotropy': 'tutorials/Optics/Optics_ani.md'
+      - 'Coreloss':
+        - 'Coreloss': 'tutorials/Coreloss/Coreloss.md'
+        - 'JDOS': 'tutorials/Optics/JDOS.md'
       - 'Dispersion corrections': 'tutorials/dispersion_corrections/castep-ase-dispersion-tutorial.md'
       - 'Nudged elastic band': 'tutorials/NEB/neb_tutorial.md'
       - 'NMR Shielding':
-        - 'Introduction': 'tutorials/NMR/NMR_shielding.md'
-        - 'Inorganic': 'tutorials/NMR/NMR_silicate.md'
-        - 'Molecular Crystals': 'tutorials/NMR/NMR_molcrystal.md'
-        - 'J coupling': 'tutorials/NMR/NMR_shielding.md'
+        - 'Example 1 - Ethanol': 'tutorials/NMR/Example_1_-Ethanol.md'
+        - 'Example 2 - Diamond': 'tutorials/NMR/Example_2_-Diamond.md'
+        - 'Examples 3 - Alanine and Silicates': 'tutorials/NMR/Examples_3_-Alanine_and_Silicates.md'
       - 'Delta SCF':
         - 'Simple Delta SCF': 'tutorials/Delta_SCF/simple_delta_scf.md'
         - 'Linear expansion DeltaSCF': 'tutorials/Delta_SCF/lin_ex_delta_scf.md'
         - 'Molecular Projected DOS': 'tutorials/Delta_SCF/molpdos.md'
+      - 'GA':
+        - 'Silicon': 'tutorials/GA/Silicon.md'
+        - 'Introduction': 'tutorials/GA/Introduction.md'
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
    - 'Developer':
       - 'Using Devel Codes': 'developer/using_devel_codes.md'
+      - 'Using trace': 'developer/using_trace.md'
       - 'Adding empirical potentials': 'developer/adding_pair_pots.md'
+      - 'Build System': 'developer/build-system.md'
       - 'Style Guide': 'developer/style_guide.md'
+      - 'Testing': 'developer/test_suite.md'
+      - 'CI System': 'developer/CI.md'
+      - 'Git workflow': 'developer/git_workflow.md'
+      - 'Release Procedure': 'developer/release_procedure.md'
 
 theme:
   name: material
   features:
-    -content.code.annotate
+    - content.code.annotate
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 markdown_extensions:
+  - attr_list
   - admonition
+  - attr_list
+  - def_list
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.arithmatex
@@ -136,3 +168,17 @@ markdown_extensions:
   - footnotes
 extra_css:
   - stylesheets/extra.css
+plugins:
+  - search
+  - bibtex:
+      # `bib_file` takes precedence over `bib_dir`, if `bib_file` is defined,
+      # the bibtex plugin will use an absolute path to the file, meaning that
+      # we can only execute `mkdocs build` in the folder `REPO_root/docs`.
+      # With `bib_dir` the bibtex plugin will use a relative path to the
+      # `mkdocs.yml` file, and search recursively for all the bib files.
+      # Therefore, it is possible to execute `mkdocs build` in both the
+      # `REPO_root` and the `REPO_root/docs` folder, then readthedocs can build
+      # the docs (since readthedocs always builds the docs in the `REPO_root`).
+      bib_file: refs.bib
+      # default "{number}", to avoid conflict with user-defined footnotes
+      footnote_format: "ref{number}"

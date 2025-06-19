@@ -2,8 +2,8 @@
 
 The Hugoniostat is an approach to simulate shock-waves in DFT through a pseudo-ensemble which drives the temperature and
 pressure to the point on the Hugoniot line. Two Hugoniotstat methods are implemented. The constant volume
-Hugoniostat (NVHug) of Maillet *et al.*[^1] and the constant pressure/stress Hugoniostat of Ravelo
-*et al.*[^2]
+Hugoniostat (NVHug) of Maillet *et al.*[@Maillet2000] and the constant pressure/stress Hugoniostat of Ravelo
+*et al.*[@Ravelo2004].
 
 The NVHug and NPHug algorithms are a form of pseudo-ensemble which means that the do not strictly conserve a formal
 quantity, but drive the system into a desired state.
@@ -11,7 +11,7 @@ quantity, but drive the system into a desired state.
 The algorithms are implemented as other CASTEP ensembles and use many of the common [MD keywords](keywords.md) and can
 function with with any of the standard CASTEP thermostat methods (see [basics](basics.md)).
 
-Details of extended Hugoniostat methods can be found in the PhD thesis[^3] where the methods were
+Details of extended Hugoniostat methods can be found in the PhD thesis[@Wilkins2019] where the methods were
 initially implemented in CASTEP.
 
 ## Hugoniot Equation of State
@@ -140,7 +140,7 @@ $$
 where $\alpha{}$ refers to an element in the direction of a cell-vector $\vec{h}$, $\nu{}_{H}$ is the coupling of the
 thermostat to the system, $\nu{}_{P}{}$ is the coupling of the barostat piston to the system, $\sigma{}$ is the
 target pressure tensor and $P$ is the instantaneous total pressure tensor, $D$ is a scaling constant in units of
-pressure to conserve system size independence, Ravelo *et al*.[^2] suggest the equilibrium bulk modulus ($B_{0}$) .
+pressure to conserve system size independence, Ravelo *et al*.[@Ravelo2004] suggest the equilibrium bulk modulus ($B_{0}$) .
 
 #### Example
 
@@ -187,7 +187,7 @@ and more robust.
 
 ### Damping
 
-Ravelo *et al*.[^2] suggested applying damping to the "velocity" of the thermo-/barostats preventing the over-shoot of
+Ravelo *et al*.[@Ravelo2004] suggested applying damping to the "velocity" of the thermo-/barostats preventing the over-shoot of
 the ideal Hugeoniot values. This makes the thermostat NVHug formulation:
 
 $$
@@ -266,7 +266,7 @@ equilibration. It should be noted that all three converge to the same temperatur
 
 Steady compression spreads the system compression in NVHug compression over a period of time rather than compressing
 instantaneously to allow the system to equilibrate more steadily and avoid transient temperature and pressure
-spikes. This was also proposed in Ravelo *et al*.[^2] as a means of smoothing equilibration.
+spikes. This was also proposed in Ravelo *et al*.[@Ravelo2004] as a means of smoothing equilibration.
 
 k-points and wavefunction samples are determined from the compressed cell so that the NVHug can be more efficient for
 the majority of the run.
@@ -532,8 +532,3 @@ PC: PC=T TARGET_P=1.0 STEPS=2 METHOD='LIN' AV_METHOD='RUNAV' :ENDPC
 - `hist_len` : (Integer)
 
      Length of history to keep
-
-
-[^1]: J.-B. Maillet, M. Mareschal, L. Soulard, R. Ravelo, P. S. Lomdahl, T. C. Germann, and B. L. Holian. Uniaxial hugoniostat: A method for atomistic simulations of shocked materials. *Phys. Rev. E*, 63:016121, Dec 2000.
-[^2]: R. Ravelo, B. L. Holian, T. C. Germann, and P. S. Lomdahl. Constant-stress hugoniostat method for following the dynamical evolution of shocked matter. *Phys. Rev. B*, 70:014103, 2004.
-[^3]: J.S. Wilkins. Exploration of approaches to shock-wave simulations. PhD thesis, University of York, York, 2019.

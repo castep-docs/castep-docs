@@ -1,0 +1,7 @@
+cut_off_energy  = 40 ry
+xc_functional : PBE
+fix_occupancy = true
+opt_strategy : speed
+task        = magres
+magres_task = nmr 
+!elec_energy_tol = 1.0e-12 ry

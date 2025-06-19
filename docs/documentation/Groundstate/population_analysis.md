@@ -1,9 +1,15 @@
 # Population analysis
 
-At the end of a single point calculation, the ground state electron density is obtained. The electrons are distributed such that the total energy functional is minimised, meaning that they do not
-belong to individual atoms anymore. However, it is often useful as well as insightful to partition the total electron density to atomic or bond contributions. While such population analyses have no
-direct connection to experimental observables, they provide a chemical interpretation of possible charge transfer within the system. There are many flavours of charge partitioning, of which CASTEP can
-perform the [Mulliken population analysis](https://doi.org/10.1063/1.1740588) (see also [here](https://doi.org/10.1063/1.1740589), [here](https://doi.org/10.1063/1.1741876) and [here](https://doi.org/10.1063/1.1741877)) and the [Hirshfeld definition](https://doi.org/10.1007/BF00549096).
+At the end of a single point calculation, the ground state electron density is obtained. The
+electrons are distributed such that the total energy functional is minimised, meaning that they do
+not belong to individual atoms anymore. However, it is often useful as well as insightful to
+partition the total electron density to atomic or bond contributions. While such population analyses
+have no direct connection to experimental observables, they provide a chemical interpretation of
+possible charge transfer within the system. There are many flavours of charge partitioning, of which
+CASTEP can perform the Mulliken population analysis[@Mulliken1955pt1] (see also
+part II[@Mulliken1955pt2], part III[@Mulliken1955pt3] and
+part IV[@Mulliken1955pt4]) and the Hirshfeld
+definition[@Hirshfeld1977].
 
 ## Mulliken population analysis
 
@@ -20,7 +26,7 @@ The density matrix results from evaluating the density operator using the basis 
 \begin{equation}
 P _ {\mu\nu} = \langle \chi _ \mu | \hat{P} | \chi _ \nu \rangle
 \end{equation}
-where the single-particle density operator is expressed in terms of the single-particle wavefunctions $\psi _ i$ and the corresponding occupancies $f _ i$ as 
+where the single-particle density operator is expressed in terms of the single-particle wavefunctions $\psi _ i$ and the corresponding occupancies $f _ i$ as
 \begin{equation}
 \hat{P} = \sum _ i f _ i \; |\psi _ i \rangle \langle \psi _ i |
 \textrm{,}
@@ -54,7 +60,7 @@ is calculated, where $Z'$ is the pseudoatom nuclear charge.
 ### The CASTEP implementation
 
 In CASTEP, the solution of the electronic problem results in a set of Kohn-Sham orbitals $\psi _ i$, which are expressed in terms of plane-wave functions. Plane-waves are non-local, therefore not
-directly suitable for Mulliken population analysis. In order to obtain a suitable local basis, CASTEP solves the electronic problem of the isolated atom for each atomic specie present in the system,
+directly suitable for Mulliken population analysis. In order to obtain a suitable local basis, CASTEP solves the electronic problem of the isolated atom for each atomic species present in the system,
 resulting in a set of atomic orbitals $\chi _ \mu$. Note that for this set of calculations, the same calculation settings (e.g. electronic cutoff and pseudopotentials) are used. With the atomic
 orbitals determined, the Mulliken population analysis can be performed by calculating the projections $\langle \chi _ \mu | \psi _ i \rangle$.
 
@@ -105,7 +111,7 @@ w _ A(\mathbf{r}) = \frac{\rho^\textrm{isolated} _ A (\mathbf{r})}{\sum _ A \rho
 \end{equation}
 where each $\rho^\textrm{isolated} _ A$ is centred at the position $\mathbf{R} _ A$ of the nucleus of $A$.
 
-The electronic charge attributed to atom $A$ is the integral 
+The electronic charge attributed to atom $A$ is the integral
 \begin{equation}
 N _ A = \int \mathrm{d} \mathbf{r} \rho _ A(\mathbf{r})
 \textrm{,}

@@ -1,4 +1,3 @@
-
 Fundamental to MD calculations is the calculation time-step. An appropriate value
 for the simulation should be specified in the parameters file in the following way.
 
@@ -12,7 +11,7 @@ time-steps to perform is specified with e.g.
 ```
 md_num_iter = 500
 ```
-NB This is the number of steps to be calculated in this run. It is NOT the accumulated total number of steps in a series of 
+NB This is the number of steps to be calculated in this run. It is NOT the accumulated total number of steps in a series of
 continuation runs. The "MD time" value in the `<seed>.castep` file records the cumulative time.
 
 ##Ensembles
@@ -48,7 +47,7 @@ These ionic velocities are defined in one of three ways.
 * By explicit user definition of ionic velocities in the cell file, e.g.
 ```
 %BLOCK IONIC_VELOCITIES
-auv                    
+auv
 H  xxxxx yyyyy zzzzz
 H  xxxxx yyyyy zzzzz
 O  xxxxx yyyyy zzzzz
@@ -101,7 +100,7 @@ above.
 
 Temperature control can be implemented by one of several methods, all
 of which have been shown to correctly sample the canonical ensemble. The
-first of these is the deterministic Nose-Hoover chain method of Tuckerman et al [^1]  and is selected with
+first of these is the deterministic Nose-Hoover chain method of Tuckerman et al [@Martyna1992]  and is selected with
 
 ```
 md_thermostat  =  nose-hoover
@@ -115,9 +114,9 @@ chain can also be specified, e.g.
 md_nhc_length  =  5
 ```
 
-for a chain of five thermostats. 
+for a chain of five thermostats.
 
-In the Nose-Hoover case with a chain of $M$ thermostats acting of $N_{f}$ ionic degrees of freedom, the conserved quantity 
+In the Nose-Hoover case with a chain of $M$ thermostats acting of $N_{f}$ ionic degrees of freedom, the conserved quantity
 is the pseudo-Hamiltonian
 
 \begin{equation}
@@ -132,8 +131,8 @@ is the pseudo-Hamiltonian
 where the $Q_{i}$ are the thermostat fictitious masses assigned automatically
 from the specified ion relaxation time and $\xi_{i}$ are the thermostat degrees of
 freedom. This is printed with the label
-``Hamilt    Energy:``  at each time-step. A Nose-Hoover thermostat with no chain (i.e. with $M$=1 ) is known to not be 
-ergodic and hence should be avoided. 
+``Hamilt    Energy:``  at each time-step. A Nose-Hoover thermostat with no chain (i.e. with $M$=1 ) is known to not be
+ergodic and hence should be avoided.
 
 The second method of controlling temperature is through the stochastic Langevin thermostat.
 
@@ -150,7 +149,7 @@ Finally, the temperature may be controled via the Hoover-Langevin thermostat.
 ```
 md_thermostat = hoover-langevin
 ```
-which is the fusion of a deterministic Nose-Hoover thermostat acting directly on the physical system, with a Langevin 
+which is the fusion of a deterministic Nose-Hoover thermostat acting directly on the physical system, with a Langevin
 thermostat operating on the Nose-Hoover variables, in order to guarantee ergodicity.
 
 With each method, a suitable relaxation time for the thermostatic
@@ -161,7 +160,7 @@ time, e.g
 md_ion_t = 2.4 ps
 ```
 
-for a thermostat relaxation time of 2.4 picoseconds. The Hoover-Langevin thermostat is the LEAST sensitive to the choice of 
+for a thermostat relaxation time of 2.4 picoseconds. The Hoover-Langevin thermostat is the LEAST sensitive to the choice of
 this value.
 
 As with the NVE ensemble, pressure is not calculated by default. This is
@@ -192,7 +191,7 @@ specified, e.g.
      %endblock external_pressure
 ```
 
-to specify an isotropic external pressure of 0.5 Giga-Pascals. MD can also support non-isotropic pressure if using a 
+to specify an isotropic external pressure of 0.5 Giga-Pascals. MD can also support non-isotropic pressure if using a
 variable-shape barostat.
 
 Velocities are assigned such that the initial temperature is equal
@@ -201,8 +200,8 @@ file/continuation file as in the NVE/NVT cases.
 
 Two barostat schemes are available. The first restricts the dynamics
 of the cell to isotropic expansions and contractions. This
-follows the method of Andersen[^4] and Hoover[^2] [^3] as corrected
-by Martyna et al.[^5]. This is selected using:
+follows the method of Andersen[@Andersen1980] and Hoover[@Hoover1985;@Hoover1986] as corrected
+by Martyna et al.[@Martyna1994]. This is selected using:
 
 ```
 md_barostat = andersen-hoover
@@ -217,14 +216,14 @@ H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 \sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
 {|\mathbf{R}_{i}-\mathbf{R}_{j}|}
 +\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + p_{\epsilon}^{2}/2W
-\end{equation}
-
-The alternative scheme implements the method of Parrinello and Rahman[^6] [^7].
+\end{equation
+}
+The alternative scheme implements the method of Parrinello and Rahman[@Parrinello1980;@Parrinello1981].
 Both the size and shape of the simulation cell are allowed to vary. The issue of
 cell rotations is eliminated by the use of a symmetrised pressure tensor. Note that
 as liquids cannot sustain shear, this method should only be used with solids.
 It should also be noted that this scheme is based on the modified Parrinello-Rahman method
-of Martyna, Tobias and Klien[^5].
+of Martyna, Tobias and Klien[@Martyna1994].
 
 The following line in the parameters file selects this barostat.
 
@@ -251,7 +250,7 @@ with an appropriate unit of time, for example:
 md_cell_t = 20 ps
 ```
 
-This time is used to calculate a fictitious mass $W$ for the cell dynamics and should be large compared to the 
+This time is used to calculate a fictitious mass $W$ for the cell dynamics and should be large compared to the
 characteristic time for the ionic dynamics.
 
 The NPH equations of motion require that pressure (stress) is calculated at each
@@ -299,13 +298,13 @@ The NPT ensemble is specified with the command:
 md_ensemble = NPT
 ```
 
-This can use either the Nose-Hoover or Langevin thermostat, and either Andersen-Hoover or Parrinello-Rahman barostat. In 
-all cases, the dynamics can be shown to correctly sample the isothermal-isobaric ensemble[^5]
+This can use either the Nose-Hoover or Langevin thermostat, and either Andersen-Hoover or Parrinello-Rahman barostat. In
+all cases, the dynamics can be shown to correctly sample the isothermal-isobaric ensemble[@Martyna1994]
 
 All options pertaining to the NPH and NVT ensembles apply.
 
 In the case of Langevin dynamics at NPT, the printed Hamiltonian energy is
-the same as in the NPH ensemble, i.e. that given by the equations above. In the case of Nose-Hoover NPT molecular dynamics, 
+the same as in the NPH ensemble, i.e. that given by the equations above. In the case of Nose-Hoover NPT molecular dynamics,
 the Hamiltonian energy is given by
 
 \begin{equation}
@@ -336,18 +335,3 @@ H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 
 in the Parrinello-Rahman case. Note that in each case the motion of the cell degree(s) of
 freedom couple to a second Nose-Hoover chain.
-
-
-[^2]: W. G. Hoover. Canonical dynamics - equilibrium phase-space distributions. Phys. Rev. A, 31:1695-1697, 1985.
-
-[^3]: W. G. Hoover. Constant-pressure equations of motion. Phys. Rev. A, 34:2499-2500, 1986.
-
-[^1]: G. J. Martyna, M. L. Klein, and M. Tuckerman. Nose-hoover chains - the canonical ensemble via continuous dynamics. J. Chem. Phys., 97:2635-2643, 1992.
-
-[^4]: H. C. Andersen. Molecular dynamics simulations at constant pressure and/or temperature. J. Chem. Phys., 71:2384, 1980.
-
-[^5]: G. J. Martyna, J. T. Tobias, and M. L. Klein.  Constant pressure molecular dynamics algorithms. J. Chem. Phys., 101(5):4177-4189, 1994.
-
-[^6]: M. Parinello and A. Rahman. Crystal structure and pair potentials: A molecular-dynamics study. Phys. Rev. Lett., page 1196, 1980.
-
-[^7]: M. Parrinello and A. Rahman. Polymorphic transitions in single-crystals - a new molecular- dynamics method. J. Appl. Phys., 52:7182-7190, 1981.

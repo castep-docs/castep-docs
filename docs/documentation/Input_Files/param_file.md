@@ -1,4 +1,4 @@
-This is a detailed description of options for CASTEP's param file. See the [basic param file page](/documentation/Getting_Started/basic_param_file) for an overview. This page has the most frequently-used param file options, but for a full set use [CASTEP's built-in help](/documentation/Getting_Started/built_in_help).
+This is a detailed description of options for CASTEP's param file. See the [basic param file page](../Getting_Started/basic_param_file.md) for an overview. This page has the most frequently-used param file options, but for a full set use [CASTEP's built-in help](../Getting_Started/built_in_help.md).
 
 The param file is one of CASTEP's two main input files. It contains all of the information about the kind of simulation your wish CASTEP to perform, as well as details of how CASTEP should perform them and additional simulations and analyses.
 
@@ -11,11 +11,11 @@ This keyword controls what CASTEP's simulation task is. The default is
 ```
 task : energy
 ```
-which tells CASTEP to compute the ground state electronic energy and density for the input set of atoms from [the cell file](/documentation/Getting_Started/basic_cell_file).
+which tells CASTEP to compute the ground state electronic energy and density for the input set of atoms from [the cell file](../Getting_Started/basic_cell_file.md).
 
 ## Cut-off energy ##
 
-The plane-wave cut-off energy controls how large CASTEP's basis set is for representing the wavefunction. Higher values mean more plane-waves and a better representation of the wavefunction, but this consumes more computer RAM and the calculation will take more time. CASTEP calculations are always a compromise between the accuracy you require, and the computational resources the simulations will use. The cut-off energy you need will also depend on the [pseudopotentials](Pseudopotentials/overview/) you're using in the [cell file](/documentation/Getting_Started/basic_cell_file.md). You can choose from some preset values using the `basis_precision` keyword:
+The plane-wave cut-off energy controls how large CASTEP's basis set is for representing the wavefunction. Higher values mean more plane-waves and a better representation of the wavefunction, but this consumes more computer RAM and the calculation will take more time. CASTEP calculations are always a compromise between the accuracy you require, and the computational resources the simulations will use. The cut-off energy you need will also depend on the [pseudopotentials](../Pseudopotentials/overview.md) you're using in the [cell file](../Getting_Started/basic_cell_file.md). You can choose from some preset values using the `basis_precision` keyword:
 
 ```
 basis_precision : coarse|medium|fine|precise

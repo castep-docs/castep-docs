@@ -47,11 +47,14 @@ C8      |  USP definitions as of CASTEP 8.0 (C8)
 C9      | USP  definitions as of CASTEP 9.0/16.0 delta=0.5meV
 NCP9  |  Set of Norm Conserving pseudopotentials CASTEP 9.0/16.0 (NCP9)(delta=1.1meV)
 C17    |  USP definitions, CASTEP 17.0 (C17)
-NCP19 | Set of Norm Conserving pseudopotentials CASTEP 17.0 (NCP17)
+NCP17 | Set of Norm Conserving pseudopotentials CASTEP 17.0 (NCP17)
 C18     |  USP definitions, CASTEP 18.0 (C18)
 NCP18 |  Norm Conserving pseudopotentials CASTEP 18.0 (NCP18)
-C19     |  USP definitions, CASTEP 19.0 (C19) delta=0.442 meV
+C19     |  USP definitions, CASTEP 19.0 (C19) delta=0.442 meV (default for CASTEPv19 up to and including CASTEPv24) [@delta2016]
 NCP19 |  Norm Conserving pseudopotentials CASTEP 19.0 (NCP19) delta=1.098 meV
+C19mk2 | USP definitions. Updated Lanthanide and Actinide definitions, but otherwise identical to C19. Default for CASTEPv25 and later [@Huber2021]
+
+
 
 ##Pseudopotential files
 

@@ -9,7 +9,7 @@ We start by importing several python libraries. For more information on using th
 
 
 ```python
-# ASE version 3.22.1
+# ASE version 3.23
 from ase.io import read, write
 from ase.calculators.castep import Castep
 from ase.io.castep import read_seed
@@ -18,7 +18,7 @@ from ase.visualize import view
 # pandas version 1.3.4
 import pandas as pd
 
-# castep.mpi on path already, version 21.11
+# castep.mpi on path already, version 24.1
 castep_cmd = 'mpirun -n 4 castep.mpi'
 
 # plotting
@@ -27,28 +27,55 @@ from matplotlib import pyplot as plt
 
 # Python version: 3.9.5
 
-
 ```
 
-For this tutorial I will use CASTEP version 21.11. See [here](../../documentation/Groundstate/dftd.md#table) for a list of the different dispersion correction schemes and which version of CASTEP they are available from. 
+The CASTEP-ASE interface returns the 'Final energy' from the .castep file, though for this tutorial we will actually want the dispersion-corrected energy. The function below reads the .castep file and extracts the dispersion-corrected final energy.
+
+```python
+def extract_dispersion_corrected_energy(file_path):
+    """
+    Extracts the dispersion corrected final energy from a .castep file.
+
+    Parameters:
+    file_path (str): Path to the .castep file.
+
+    Returns:
+    float: The extracted energy value in eV.
+    """
+    energy = None
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+    
+    # Iterate over the lines in reverse order to find the last occurrence
+    for line in reversed(lines):
+        if "Dispersion corrected final energy" in line:
+            energy = float(line.split()[-2])
+            break
+    
+    if energy is None:
+        raise ValueError("Energy not found in the file.")
+    
+    return energy
+```
+
+
+For this tutorial I will use CASTEP version 24.1. See [here](../../documentation/Groundstate/dftd.md#table) for a list of the different dispersion correction schemes and which version of CASTEP they are available from. 
 
 
 
 ## Separation of layers: setup and run the calculations
 
 
-The script below loops over several different dispersion corrections schemes and, for each one, calculates the total energy of a 4-atom graphite cell at several different values of the c lattice constant. This effectively increases the interlayer spacing between the sheets of graphene. By separating them far enough apart, we can estimate the interlayer binding energy predicte by each method. 
+The script below loops over several different dispersion corrections schemes and, for each one, calculates the total energy of a 4-atom graphite cell at several different values of the c lattice constant. This effectively increases the interlayer spacing between the sheets of graphene. By separating them far enough apart, we can estimate the interlayer binding energy predicted by each method. 
 
 The script took about 10 minutes to run using 4 cores on a relatively powerful laptop. You can decrease the k-point sampling or basis set precision, or loop over fewer methods or c parameters in order to speed things up. 
 
 
 ```python
-# run in this directorsy
+# run in this directory
 directory = 'separate-layers-tutorial/'
 
-# k-point grid 
-# -- try coarser grid if this is too slow, 
-#    but higher if you want more reliable results! 
+# k-point grid -- not converged! 
 kpts  = [13,13,5]
 # xc functional to use
 xc = 'PBE' 
@@ -56,7 +83,7 @@ xc = 'PBE'
 crange = [4, 5, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 8.5, 10, 14, 16]
 
 #SEDC correction schemes to try:
-schemes = ['', 'G06', 'D3', 'D3-BJ', 'TS', 'MBD', 'XDM']
+schemes = ['', 'G06', 'D3', 'D3-BJ', 'D4', 'TS', 'MBD', 'XDM']
 
 # pandas dataframe to store the results
 df = pd.DataFrame({'crange' : crange})
@@ -74,15 +101,16 @@ for sedc_scheme in schemes:
         label = f'{xc}-{sedc_scheme}-{c:3.2f}'
         try:
             graphite = read_seed(directory+label)
+            
         except:
             # if the calculation doesn't already exist, we set it up and 
             # run it
 
-
-         # read in cif file (taken from here: https://materialsproject.org/materials/mp-48 )
+            # read in cif file (taken from here: https://materialsproject.org/materials/mp-48 )
             graphite = read('C_mp-48_primitive.cif')
 
-            # we could make a supercell to get more accurate results for TS, MBD and XDM schemes.  
+            # For CASTEP < 24.1 we might need a supercell to get more accurate results 
+            # for TS, MBD and XDM schemes that rely on Hirshfeld charges.  
             # graphite = graphite * (3,3,1)
 
             # scale c parameter to new value
@@ -91,19 +119,22 @@ for sedc_scheme in schemes:
             graphite.set_cell(cellpar, scale_atoms=True)
             
             # set up castep calculator
-            calc = Castep(xc = xc,
+            calc = Castep(
                         kpts = kpts, 
                         label = label, 
                         castep_command = castep_cmd, 
-                        basis_precision = 'precise',  # switch to something cheaper (e.g. FINE) to speed things up for this example..
                         directory = directory,
-                        write_checkpoint = 'None', # don't need the checkpoint files now
-                        write_cst_esp = False, # don't need the electrostatic potential file now
-                        write_bands   = False, # don't need the bands file now
                         _rename_existing_dir = False, # allows us to write all these calculations to the same directory... 
-                        symmetry_generate = True, # use symmetry to speed up the calculation
-                        snap_to_symmetry = True,  # enforce symmetry
                         )
+            
+            calc.param.xc_functional = xc
+            calc.param.basis_precision = 'precise' # switch to something cheaper (e.g. FINE) to speed things up for this example..
+            calc.param.write_checkpoint = 'None' # don't need the checkpoint files now
+            calc.param.write_cst_esp = False # don't need the electrostatic potential file now
+            calc.param.write_bands   = False # don't need the bands file now
+
+            calc.cell.symmetry_generate = True # use symmetry to speed up the calculation
+            calc.cell.snap_to_symmetry = True  # enforce symmetry
             
             # Switch on the SEDC flags 
             if sedc_scheme != '':
@@ -115,8 +146,12 @@ for sedc_scheme in schemes:
             if sedc_scheme == 'XDM':
                 calc.param.SEDC_SC_XDM = 1.0
                 
-            graphite.set_calculator(calc)
+            graphite.calc = calc
         e = graphite.get_potential_energy()
+        # If a SEDC scheme is used, 
+        # we need to extract the dispersion corrected energy
+        if sedc_scheme != '':
+            e = extract_dispersion_corrected_energy(directory+label+'.castep')
         energies.append(e)
         print(f'{c:8.3f} A\t {e:12.8f} eV')
     # save the energy wrt to furthest energy: 
@@ -159,32 +194,35 @@ dfdiff = (df.iloc[:,1:]) * 1000 / 4 # energy per atom in meV
 # the c parmeter is 2x the interlayer spacing, d
 dfdiff['c/2'] = df['crange'] / 2
 
-styles = [f'{m}-' for m in ["o","v","^","s","+","x","D"]]
+styles = [f'{m}-' for m in ["o","v","^","s", "H", "+","x","D"]]
 
-# compared to this refence (and many others!) https://doi.org/10.1039/C3RA47187J
-ax = dfdiff.plot(x='c/2', y=['PBE-','PBE-G06', 'PBE-D3', 'PBE-D3-BJ', 'PBE-TS', 'PBE-MBD', 'PBE-XDM'],
+# compared to this reference (and many others!) https://doi.org/10.1039/C3RA47187J
+ax = dfdiff.plot(x='c/2', y=['PBE-','PBE-G06', 'PBE-D3', 'PBE-D3-BJ', 'D4', 'PBE-TS', 'PBE-MBD', 'PBE-XDM'],
                  ylabel='energy/atom (meV)',
                  ylim=(-100, 80), 
                  xlabel=r'interlayer spacing d ( = c/2) (${\AA}$)',
                  figsize = (16,10),
-                 style = styles,
+                 style=styles,
                  )
 ax.axhline(0, color='0.3')
 ax.axvline(3.355, ls='--', color='0.4') 
 # Experimental binding energies reported shown in the figure are 31 ± 2, 43, 52 ± 5 and 35 (+15 to –10) meV per atom
 ax.axhspan(ymin=-57, ymax=-25, color='0.8', alpha=0.5)
+
 ax.set_title('graphite interlayer binding energy')
-plt.savefig('graphite-interlayer-binding-castep-dispersions.png')
+plt.savefig('graphite-interlayer-binding-castep-dispersions.pdf')
+plt.savefig('graphite-interlayer-binding-castep-dispersions.png', dpi=300)
 
 
 ```
 
 which produces the following figure:
 
-    
-![png](graphite-interlayer-binding-castep-dispersions.png)
 
-where the dashed vertical line is the experimental interlayer spacing and the shaded grey region is the range of experimentally obtained interlayer binding energies. Please note that these are not fully converged calculations and so do not represent the actual performance of these methods but is simply a guide for how to use them with CASTEP. 
+![Fig1. Graphite binding energy](graphite-interlayer-binding-castep-dispersions.png){width="100%"}
+<figure style="display: inline-block;">
+  <figcaption style="text-align: left;">Fig1. Graphite interlayer binding energy using the PBE XC functional with various dispersion corrections. The dashed vertical line is the experimental interlayer spacing and the shaded grey region is the range of experimentally obtained interlayer binding energies. Please note that these are not fully converged calculations and so do not represent the actual performance of these methods but is simply a guide for how to use them with CASTEP. </figcaption>
+</figure>
 
 
 We can see that the plain PBE functional severely underestimates the binding energy of graphite and that many of the dispersion-corrected results are in much better agreement. The TS scheme strongly overbinds graphite, but has been found to be accurate for other types of systems. Testing such methods carefully is always required when you encounter a new system. 
@@ -192,9 +230,8 @@ We can see that the plain PBE functional severely underestimates the binding ene
 
 ## Further suggestions
 
-1. CASTEP writes out a warning for the TS, MBD and XDM schemes about the unit cell being too small for accurate corrections. Try repeat the above calculations for these three methods using a larger supercell to see what the effect is and what sized supercell you would need to converge the dispersion correction.
 
-2. For the D3 and D3-BJ methods, try to switch on the three-body interaction term by setting:
+1. For the D3 and D3-BJ methods, try to switch on the three-body interaction term by setting:
 
     ```
     %BLOCK devel_code
@@ -204,8 +241,11 @@ We can see that the plain PBE functional severely underestimates the binding ene
 
     in the .param file. What effect does this have on the interlayer binding energy in graphite? (You may also want to set `IPRINT = 2`  to see more information about the dispersion correction parameters.)
 
+2.  Compare to other XC functionals with and without the dispersion corrections (though note that of the corrections are [only parameterised for a few functionals](../../documentation/Groundstate/dftd.md#table).) 
 
-3.  Compare to other XC functionals with and without the dispersion corrections (though note that of the corrections are [only parameterised for a few functionals](../../documentation/Groundstate/dftd.md#table).) 
+3.  For CASTEP < 24.1 we get a warning for the TS, MBD and XDM schemes about the unit cell being too small for accurate corrections. If you get this warning, try repeating the above calculations for these three methods using a larger supercell to see what the effect is and what sized supercell you would need to converge the dispersion correction.
+
+
 
 
 

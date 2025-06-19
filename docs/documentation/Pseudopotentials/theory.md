@@ -24,9 +24,9 @@ effects of the core electrons being integrated within a new ionic
 potential. The valence wavefunctions need no longer be orthogonal to
 the core states, and so the orthogonality oscillations disappear;
 hence far fewer plane waves are required to describe the valence
-wavefunctions. 
+wavefunctions.
 Numerous schemes to produce optimally soft
 pseudopotentials have been developed. Common choices are the
 norm-conserving potentials due to Troullier and
-Martins\cite{troullier91} and Vanderbilt's ultrasoft
-scheme.\cite{vanderbilt90} 
+Martins[@Troullier1991] and Vanderbilt's ultrasoft
+scheme[@Vanderbilt1990].
