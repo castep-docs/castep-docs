@@ -1,3 +1,5 @@
+!!! Note
+    The Koopmans' compliance functionality for determining the Hubbard U parameter was introduced in CASTEP version 26 - ensure you are using this version or later!
 
 
 ## Convergence

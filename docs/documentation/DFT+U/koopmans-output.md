@@ -1,3 +1,6 @@
+!!! Note
+    The Koopmans' compliance functionality for determining the Hubbard U parameter was introduced in CASTEP version 26 - ensure you are using this version or later!
+
 
 ## Work to do
 After the base $\alpha_{I}=0\;\forall\;I$ calculation, a description of the work to be performed will be written to the .castep file:
