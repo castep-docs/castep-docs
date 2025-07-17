@@ -28,12 +28,12 @@ where $q_{i}$ is the occupancy of orbital $i$. This potential encourages complet
 !!! Note
     This formulation is derivable by imposing that the magnetic interactions are $0$, or alternatively that some portion of their effects are described through an effective $U_\text{eff}$ of both Coulombic and magnetic potentials. In short, the Hubbard $J$ is set to $0$ here.
 
-### Motivation
+### Koopmans' compliance
 A fractional occupancy of electrons should be described by a statistical mixture of energies,
 
 $$ E = \left(1-\omega\right) E_{N} + \omega E_{N+1}, $$
 
-where $N$ is an integer and $0\lt\omega\lt1$. We expect, therefore, the energy with respect to occupancy to be given by a series of straight-line segments. However, DFT alone gives an unphysical curvature and spurious minima of the energy with respect to the occupancy. DFT+U attempts to correct this:
+where $N$ is an integer and $0\lt\omega\lt1$. We expect, therefore, the energy with respect to occupancy to be given by a series of straight-line segments. However, DFT alone gives an unphysical curvature and spurious minima of the energy with respect to the occupancy. DFT+U attempts to restore the piecewise linearity, which is known as **Koopmans' compliance**.
 
 | ![Energy_wrt_q](../../img/dft-energy-curve.png) |
 | :--: |

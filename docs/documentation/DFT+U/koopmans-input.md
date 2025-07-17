@@ -1,26 +1,30 @@
 
 
 ## .param file
-To specify the task for `CASTEP` to complete as the determination of the Hubbard $U$ parameter, the following development code must be specified in the .param file:
+The following keywords are available to allow specification of calculating Koopmans' compliance parameters in the .param file:
 ```
-%BLOCK devel_code
-calculate hubbard U
-%ENDBLOCK devel_code
+task : koopmans
+koopmans_method : hubbard
+koopmans_LR_method : finitedifference
 ```
-This will cause `CASTEP` to ignore any specifiation of the `task` parameter, and compute Hubbard $U$ values using the method outlined in [U from Linear Response - Theory](alpha-theory.md).
+The only currently implemented type of Koopmans' compliance technique is Hubbard, which itself only has the method of finite differences implemented. The default for the latter two parameters are thus as shown above and can therfore be omitted in this case.
+
 
 ## .cell file
-To define exactly which species are to have their Hubbard $U$ values calculated, use the `hubbard_alpha` block in the .cell file:
+To define which species are to have their Hubbard $U$ values calculated, use the `hubbard_alpha` block in the .cell file:
 ```
 %BLOCK hubbard_alpha
-Fe 1 d : 0.08 eV
+Fe
 %ENDBLOCK hubbard_alpha
 ```
-This implicitly defines the Hubbard $\alpha_{I}$ values for all Fe atoms in the system.
-!!! Note
-    The specifiation of ion $1$ here is redundant in this case as the value would be copied across to all Fe ions. This is short-hand for specifying every Fe atom individually.
-
-Once the base $\alpha_{I}=0\;\forall\;I$ calculation has been performed, an additional $6$ non-self consistent (NSC) and $6$ self consistent (SC) calculations will be computed for one of each inequivalent Fe site. These $6$ calculations will have perturbations applied to the respective ion of: $-3\alpha_{I}$, $-2\alpha_{I}$, $-\alpha_{I}$, $\alpha_{I}$, $2\alpha_{I}$ and $3\alpha_{I}$.
+This will use the default of $0.1$ eV as the `hubbard_alpha` value. To define the values yourself, use:
+```
+%BLOCK hubbard_alpha
+eV
+Fe d : 0.2
+%ENDBLOCK hubbard_alpha
+```
+This implicitly defines $\alpha_{I}$ values for all Fe atoms in the system. Once the base $\alpha_{I}=0\;\forall\;I$ calculation has been performed, an additional $6$ non-self consistent (NSC) and $6$ self consistent (SC) calculations will be computed for one of each inequivalent Fe site. These $6$ calculations will have perturbations applied to the respective ion of: $-3\alpha_{I}$, $-2\alpha_{I}$, $-\alpha_{I}$, $\alpha_{I}$, $2\alpha_{I}$ and $3\alpha_{I}$.
 
 !!! Example
     In Fe<sub>3</sub>O<sub>4</sub>, we have $2$ inequivalent Fe sites, with multiplicity of $2$ and $1$. Let's define Fe-1 and Fe-2 as equivalent, and Fe-3 unique. The $6$ NSC and $6$ SC calculations will be performed with $\alpha_{I}\neq0$ on Fe-1 (and $\alpha_{I}=0$ on all other atoms), and the corresponding occupancies obtained for use in the linear fittings. Fe-2 will then be solved via symmetry, and will not require any $\alpha_{I}\neq0$ computations. Finally, Fe-3 will have its $6$ NSC and $6$ SC calculations performed with $\alpha_{I}\neq0$.
@@ -28,16 +32,17 @@ Once the base $\alpha_{I}=0\;\forall\;I$ calculation has been performed, an addi
 If different $\alpha_{I}$ values are required for different sites:
 ```
 %BLOCK hubbard_alpha
-Fe 1 d : 0.08 eV
-Fe 2 d : 0.08 eV
-Fe 3 d : 0.12 eV
+eV
+Fe 1 d : 0.08
+Fe 2 d : 0.08
+Fe 3 d : 0.12
 %ENDBLOCK hubbard_alpha
 ```
 This is unlikely to be required, but may be used if any linear fitting warnings are spotted in the output. See [U from Linear Response - Warnings/Errors](alpha-warnings-errors.md).
 
 
 ## Farm parallelism
-Each combination (NSC and SC) of the $\alpha_{I}$ calculations is independent from all others. Therefore, due to the large number of them required, it is often beneficial to utilise farm parallelism. This can split the $\alpha_{I}$ tasks across nodes to speed up computation time. To indicate that you would like the `CASTEP` calculation to be farm parallelised, indicate this in the .param file:
+All perturbative ($\alpha_{I}\neq0$) calculations are independent from all others. Therefore, due to the large number required, it is often beneficial to utilise farm parallelism. This can split the $\alpha_{I}$ tasks across nodes to speed up computation time. To indicate that you would like the `CASTEP` calculation to be farm parallelised, indicate this in the .param file:
 ```
 num_farms = 4
 ```

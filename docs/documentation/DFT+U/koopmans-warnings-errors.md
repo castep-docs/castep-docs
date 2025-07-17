@@ -15,7 +15,7 @@ Alternatively, consider:
 ## Linear regression
 An automatic check will take place to investigate the validity of the linear fitting of the occupancies against $\alpha_{I}$ values. If you notice:
 ```
-Warning: non-negligble (> 0.01) quadratic terms for Co               1  d
+Warning: non-negligble (> 0.01) quadratic terms for Co        1  d
  Consider applying a smaller Hubbard alpha potential to this ion
 ```
 in your .castep file then consider reducing the supplied `hubbard_alpha` value for that species. This may have happened because the strength of the given $\alpha_{I}$ potential is so strong that the linear fitting scheme is no longer valid, and higher order polynomial coefficients are non-negligble.
@@ -23,6 +23,14 @@ in your .castep file then consider reducing the supplied `hubbard_alpha` value f
 If you still obtain this warning after reducing the supplied $\alpha_{I}$ value, then consider increasing the `cut_off_energy` parameter and/or density of the $\mathbf{k}$-point grid. This error may be occuring due to poor convergence with respect to these parameters.
 
 Another consideration is that the achieved ground state wavefunctions, whilst converged, are unphysical. This could be because you have used $U=0$ when a sensible ground state may only be achievable with $U>0$. Consider applying a $U$ value to the culprit species; the computed $U$ value at the end of this calculation should then be consider a **correction** to the originally input $U$ value.
+
+
+## Intercept
+An automatic check on the intercept for the non-self-consistent and self-consistent occupancy versus $\alpha_{I}$ linear fittings will take place. These lines should cross at $\alpha=0$ where the rehybridisation of the electronic density should be nil and thus equal to the base calculation. If you notice:
+```
+Warning: non-neglible (> 0.01) abs(intercept alpha value) for Co        1  d
+```
+in your .castep file then consider increasing the `cut_off_energy` parameter and/or density of the $\mathbf{k}$-point grid. This error may be occuring due to poor convergence with respect to these parameters.
 
 
 ## Matrix inversions
