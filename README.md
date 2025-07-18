@@ -27,4 +27,6 @@ Please do add any missing pages, or put a request in the issue tracker. All page
 
 See https://castep-docs.github.io/castep-docs/developer/docs_contribution for more detail.
 
-For tutorials see the Semiconductor example. The aim is to show input and output - and highlight key points. The sort of open ended questions that we use for teaching at a workshop are less helpful in this format (i.e. when we are not around to answer and discuss)
+For tutorials see the tutorials section; to begin with the [population analysis](https://castep-docs.github.io/castep-docs/tutorials/Bonding_and_Charge/mulliken_population/) follows the steps of setting up a calculation from scratch. 
+
+The aim of these is to show input and output - and highlight key points. The sort of open ended questions that we use for teaching at a workshop are less helpful in this format (i.e. when we are not around to answer and discuss)
