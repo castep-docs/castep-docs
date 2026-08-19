@@ -21,7 +21,7 @@ Generalised gradient approximations (GGA):
 `RPBE`  
 `WC`  
 `BLYP`  
-`B86PBE`  
+`B86BPBE`  
 `PBE_X`  
 `PBE_C`  
 `PBEsol_X`  
