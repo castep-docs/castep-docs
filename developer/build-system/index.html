@@ -2988,13 +2988,13 @@ stub or your main source into the compilation.</p>
 <code>obj/include_rules.mk</code>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ifneq (${MY_LIBRARY_VAR},none)
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  ifneq ($(strip $(MY_LIB_REL_LIB_DIR)), )
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    CASTEP_LIB_SEARCH_PATH += -L&quot;../$(MY_LIB_REL_LIB_DIR)&quot;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    CASTEP_LIB_SEARCH_PATH += -L"../$(MY_LIB_REL_LIB_DIR)"
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  ifdef SUN
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    CASTEP_LIB_SEARCH_PATH += -R &quot;$(abspath ../$(MY_LIB_REL_LIB_DIR))&quot;
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    CASTEP_LIB_SEARCH_PATH += -R "$(abspath ../$(MY_LIB_REL_LIB_DIR))"
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  else ifdef NAG
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    CASTEP_LIB_SEARCH_PATH += -Wl,-Wl,,-rpath=&quot;$(abspath ../$(MY_LIB_REL_LIB_DIR))&quot;
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    CASTEP_LIB_SEARCH_PATH += -Wl,-Wl,,-rpath="$(abspath ../$(MY_LIB_REL_LIB_DIR))"
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  else ifdef LINUX
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    CASTEP_LIB_SEARCH_PATH += -Wl,-rpath=&quot;$(abspath ../$(MY_LIB_REL_LIB_DIR))&quot;
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    CASTEP_LIB_SEARCH_PATH += -Wl,-rpath="$(abspath ../$(MY_LIB_REL_LIB_DIR))"
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  endif
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>  LIBS += -lmy_extra_lib
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>endif
@@ -3003,7 +3003,7 @@ stub or your main source into the compilation.</p>
 <p>The process with the CMake is similar, create a variable which selects either your source or stub based on an option.</p>
 <p>e.g.
 <code>CASTEP_ROOT/CMakeLists.txt</code>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>option(WITH_MY_LIB &quot;my lib&#39;s features&quot;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>option(WITH_MY_LIB "my lib's features")
 </code></pre></div></p>
 <p><code>cmake/extralibs.cmake</code>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>if(WITH_MY_LIB)
@@ -3025,17 +3025,17 @@ stub or your main source into the compilation.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>if(WITH_MY_LIB)
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  find_library(my_extra_lib NAMES my_extra_lib
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>               HINTS ${EXTERNAL_MY_LIB}
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>               DOC &quot;Doc&quot;)
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>               DOC "Doc")
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  if (NOT my_extra_lib)
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    message(FATAL_ERROR &quot;MY_EXTRA_LIB requested, but not found.
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>Set EXTERNAL_MY_LIB to manually specify location of libraries (currently: &#39;${EXTERNAL_MY_LIB}&#39;)&quot;)
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    message(FATAL_ERROR "MY_EXTRA_LIB requested, but not found.
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>Set EXTERNAL_MY_LIB to manually specify location of libraries (currently: '${EXTERNAL_MY_LIB}')")
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>  endif()
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>  set(MY_EXTRA_LIB ${my_extra_lib})
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>  set(MY_LIB_MOD source_name.f90)
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>else()
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>  set(MY_EXTRA_LIB &quot;&quot;)
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>  set(MY_EXTRA_LIB "")
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>  set(MY_LIB_MOD source_name.stub.f90)
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>endif()
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>

@@ -2949,7 +2949,7 @@
 <p><span class="arithmatex"><span class="MathJax_Preview">^*</span><script type="math/tex">^*</script></span> See note below for how to include the three-body terms in the CASTEP D3 correction.</p>
 <p>Again, please do your own testing and consult relevant reviews and benchmarking papers.</p>
 <p>For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). This has been fixed in academic CASTEP v24.1 for TS and MBD, and in v25 for XDM. If you are using an older version of CASTEP, then you should try to use larger unit cells until your dispersion correction converges.</p>
-<p>Not all <code>XC_FUNCTIONAL</code> values are supported for all schemes - if in doubt use PBE. The primary 'XC_FUNCTIONAL' for XDM is B86PBE.</p>
+<p>Not all <code>XC_FUNCTIONAL</code> values are supported for all schemes - if in doubt use PBE. The primary 'XC_FUNCTIONAL' for XDM is B86BPBE.</p>
 <p>Each scheme has default parameters defined for a subset of elements (see <a href="#table">table</a> below). For other elements you need to define custom parameters using the <code>SEDC_CUSTOM_PARAMS</code> keyword in the .cell file.</p>
 <h2 id="using-dispersion-corrections-in-castep">Using dispersion corrections in CASTEP</h2>
 <h3 id="param-file-keywords">.param file keywords</h3>
@@ -3051,7 +3051,7 @@
 <tr>
 <td><a href="#XDM">XDM</a> <sup id="fnref:ref21"><a class="footnote-ref" href="#fn:ref21">21</a></sup></td>
 <td>CASTEP 20</td>
-<td>B86PBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN</td>
+<td>B86BPBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN</td>
 <td>Up to Z=102</td>
 <td>Analytic</td>
 <td>FD</td>
@@ -3071,7 +3071,7 @@
 </ul>
 <p>You set them like this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%BLOCK SEDC_CUSTOM_PARAMS
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>      ! example values for test purposes only - don&#39;t use these... !
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>      ! example values for test purposes only - don't use these... !
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>      He      C6:1.00      R0:2.00
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      Ne      C6:10.00     R0:4.00
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>%ENDBLOCK SEDC_CUSTOM_PARAMS
@@ -3231,7 +3231,7 @@ Generally applicable atomic-charge dependent London dispersion correction, terme
 <p>A unified density-functional treatment of dynamical, nondynamical, and dispersion correlations.</p>
 <p>Restrictions:</p>
 <ul>
-<li>Default XDM parameters are available for the following XC functionals: B86PBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN</li>
+<li>Default XDM parameters are available for the following XC functionals: B86BPBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN</li>
 </ul>
 <p><strong><code>SEDC_SCHEME : XDM</code></strong></p>
 <p>For functionals that are not in this list, you need to specify the following additional parameters:</p>

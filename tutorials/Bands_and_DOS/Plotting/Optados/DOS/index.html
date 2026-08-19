@@ -2837,19 +2837,19 @@
 <p><img alt="AGR xmgrace plot" src="../agr_out.png" width="40%" /></p>
 <p>What is important to mention is that this <code>agr</code> file only contains the data for DoS, not integrated DoS. If you want to plot all the data, including up and down integrated DoS, run <code>xmgrace -batch other_data.bat</code> on the batch file</p>
 <p><em>other_data.bat</em>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>READ BLOCK &quot;Si.adaptive.dat&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>READ BLOCK "Si.adaptive.dat"
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>BLOCK XY &quot;1:2&quot;
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>S0 LEGEND &quot;Up DOS&quot;
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>BLOCK XY "1:2"
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>S0 LEGEND "Up DOS"
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>BLOCK XY &quot;1:3&quot;
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>S1 LEGEND &quot;Down DOS&quot;
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>BLOCK XY "1:3"
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>S1 LEGEND "Down DOS"
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>BLOCK XY &quot;1:4&quot;
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>S2 LEGEND &quot;Up IntDos&quot;
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>BLOCK XY "1:4"
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>S2 LEGEND "Up IntDos"
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>BLOCK XY &quot;1:5&quot;
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>S3 LEGEND &quot;Down IntDos&quot;
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>BLOCK XY "1:5"
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>S3 LEGEND "Down IntDos"
 </code></pre></div></p>
 <p>This should give a graph that looks like:</p>
 <p><img alt="All DOS data" src="../all_data.png" width="40%" /></p>
@@ -2883,19 +2883,19 @@
 <p><code>task : compare_dos</code></p>
 <p>and re-running Optados. This gives us 4 new output files - <code>Si_linear.dat</code> and <code>Si_fixed.dat</code>, plus their accompanying <code>agr</code> files. Let's compare them by running <code>xmgrace -batch compare.bat</code> on the batch file</p>
 <p><em>compare.bat</em>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>READ BLOCK &quot;Si.adaptive.dat&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>READ BLOCK "Si.adaptive.dat"
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>BLOCK XY &quot;1:2&quot;
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>S0 LEGEND &quot;Adaptive DOS&quot;
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>BLOCK XY "1:2"
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>S0 LEGEND "Adaptive DOS"
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>READ BLOCK &quot;Si.linear.dat&quot;
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>READ BLOCK "Si.linear.dat"
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>BLOCK XY &quot;1:2&quot;
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>S1 LEGEND &quot;Linear DOS&quot;
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>BLOCK XY "1:2"
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>S1 LEGEND "Linear DOS"
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>READ BLOCK &quot;Si.fixed.dat&quot;
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>BLOCK XY &quot;1:2&quot;
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>S2 LEGEND &quot;Fixed DOS&quot;
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>READ BLOCK "Si.fixed.dat"
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>BLOCK XY "1:2"
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>S2 LEGEND "Fixed DOS"
 <a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
 <a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>WORLD XMIN 0
 <a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>WORLD XMAX 5

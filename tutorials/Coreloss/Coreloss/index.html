@@ -2815,13 +2815,13 @@
 <p>The 1<sup>st</sup> and 2<sup>nd</sup> columns are the same, and the 3<sup>rd</sup> column is the lifetime and instrumentation (LAI) broadened core-loss results.</p>
 <p>To plot this with xmgrace, it is easiest to run <code>xmgrace -batch plot.bat</code> on the batch file</p>
 <p><em>plot.bat</em>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>READ BLOCK &quot;cbn_B1K1_core_edge.dat&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>READ BLOCK "cbn_B1K1_core_edge.dat"
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>BLOCK XY &quot;1:2&quot;
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>S0 LEGEND &quot;Unbroadened&quot;
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>BLOCK XY "1:2"
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>S0 LEGEND "Unbroadened"
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>BLOCK XY &quot;1:3&quot;
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>S1 LEGEND &quot;Broadened&quot;
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>BLOCK XY "1:3"
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>S1 LEGEND "Broadened"
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>WORLD XMIN 0
 </code></pre></div></p>
@@ -2830,7 +2830,7 @@
 <h3 id="including-a-core-hole">Including a core-hole</h3>
 <p>The above was effectively calculating the probability of an electron being able to be excited into the conduction band, corresponding to that same energy being lost from an X-ray/electron and thus XANES/EELs data. However, when calculating that, it was not accounting for the fact that there'd be a core-hole as a result (which naturally will affect energy, DOS and thus probability of occurring): that must be factored in for more realistic results.</p>
 <p>This is done rather simply by specifying the missing electron when describing the potential in the <code>cell</code> file. If you look at the <code>cbn.castep</code> file generated earlier, you may see that the pseudopotential report contains the line</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>&quot;2|1.2|12|14|16|20:21(qc=8)&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>"2|1.2|12|14|16|20:21(qc=8)"
 </code></pre></div>
 <p>This tells us what kind of pseudopotential is used for the boron. To specify that there is a 1s electron missing, all you have to do is add <code>{1s1.00}</code> at the end: with only 1 electron in the 1s shell, there is a core electron missing: a core hole.</p>
 <p>Go into <code>cbn.cell</code>, and add the lines</p>
@@ -2868,7 +2868,7 @@
 <a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>| Augmentation charge Rinner = 0.838                       |                
 <a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>| Partial core correction Rc = 0.838                       |                
 <a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>------------------------------------------------------------                
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>| &quot;2|1.2|12|14|16|20:21(qc=8){1s1.00}&quot;                     |                
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>| "2|1.2|12|14|16|20:21(qc=8){1s1.00}"                     |                
 <a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>------------------------------------------------------------                
 <a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>|      Author: Chris J. Pickard, Cambridge University      |                
 <a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>============================================================
@@ -2932,23 +2932,23 @@
 <h2 id="comparison-to-experiment">Comparison to Experiment</h2>
 <p>To get a good comparison to experiment, we will plot the results from the database and our calculation together on the same graph. You may already notice that, though the shape is similar, the x and y-axis values are very different. The y-axis corresponds to intensity (while in our calculation it is more akin to a probability), so we will scale that by just multiplying by a flat value. The x-axis needs to be adjusted by simply adding a fixed value.</p>
 <p>We can adjust our results with a simple Python script.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cbn_BExi.dat&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cbn_BExi_ss.dat&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'cbn_BExi.dat'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'cbn_BExi_ss.dat'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="p">:</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        <span class="n">columns</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="n">col1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">180</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="n">col2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000000</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">col2</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">col1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">col2</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <p>Now let's plot our Castep and the experimental results together by xmgrace with the batch file</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>READ BLOCK &quot;cbn_BExi_ss.dat&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>READ BLOCK "cbn_BExi_ss.dat"
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>BLOCK XY &quot;1:2&quot;
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>S0 LEGEND &quot;Castep&quot;
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>BLOCK XY "1:2"
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>S0 LEGEND "Castep"
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>READ BLOCK &quot;Dspec.60967.1.msa&quot;
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>READ BLOCK "Dspec.60967.1.msa"
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>BLOCK XY &quot;1:2&quot;
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>S1 LEGEND &quot;EELS Database&quot;
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>BLOCK XY "1:2"
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>S1 LEGEND "EELS Database"
 </code></pre></div>
 <p>The output should look like this:</p>
 <p><img alt="Experimental and Castep plotted together" src="../together.png" /></p>

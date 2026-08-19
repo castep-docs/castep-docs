@@ -3032,7 +3032,7 @@ Kinetic energy on the second line with the label <code>&lt;-- E</code>.</p>
 </code></pre></div>
 <p>Formatting:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>format(12x,es18.8e3)
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- E&#39;)
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>format(9x,3(3x,es18.8e3),'  &lt;-- E')
 </code></pre></div>
 <h4 id="thermodynamic-data">Thermodynamic Data</h4>
 <p>The current temperature is then printed with the label <code>&lt;-- T</code>. If the output is from a variable cell
@@ -3042,8 +3042,8 @@ is also printed with the label <code>&lt;-- P</code>.</p>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                5.85402338E-06                                            &lt;-- P
 </code></pre></div>
 <p>Formatting:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>format(12x,es18.8,T73,   &#39;  &lt;-- T&#39;)
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>format(12x,es18.8,T73,   &#39;  &lt;-- P&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>format(12x,es18.8,T73,   '  &lt;-- T')
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>format(12x,es18.8,T73,   '  &lt;-- P')
 </code></pre></div>
 <h4 id="cell-data">Cell Data</h4>
 <p>For all calculations, the current matrix of cell vectors is printed with
@@ -3054,9 +3054,9 @@ gives the three Cartesian components of one of the cell vectors.</p>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>               1.29430839E-017      1.29430839E-017      1.01599045E+001  &lt;-- h
 </code></pre></div>
 <p>Formatting:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- h&#39;)
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- h&#39;)
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- h&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>format(9x,3(3x,es18.8e3),'  &lt;-- h')
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>format(9x,3(3x,es18.8e3),'  &lt;-- h')
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>format(9x,3(3x,es18.8e3),'  &lt;-- h')
 </code></pre></div>
 <p>The remaining cell data is only printed for variable cell calculations, regardless
 of the value of <code>calculate_stress</code>. First the velocity of each cell vector
@@ -3066,9 +3066,9 @@ is printed with the label <code>&lt;-- hv</code>.</p>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>              -1.35787248E-007     -1.44694219E-007      2.71532850E-008  &lt;-- hv
 </code></pre></div>
 <p>Formatting:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- hv&#39;)
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- hv&#39;)
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- hv&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>format(9x,3(3x,es18.8e3),'  &lt;-- hv')
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>format(9x,3(3x,es18.8e3),'  &lt;-- hv')
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>format(9x,3(3x,es18.8e3),'  &lt;-- hv')
 </code></pre></div>
 <p>The full pressure tensor (including kinetic contributions) is then printed
 with the label <code>&lt;-- S</code> in a similar fashion.</p>
@@ -3077,9 +3077,9 @@ with the label <code>&lt;-- S</code> in a similar fashion.</p>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>               3.23291890E-005      3.31426773E-005     -5.79666096E-006  &lt;-- S
 </code></pre></div>
 <p>Formatting:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- S&#39;)
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- S&#39;)
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>format(9x,3(3x,es18.8e3),&#39;  &lt;-- S&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>format(9x,3(3x,es18.8e3),'  &lt;-- S')
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>format(9x,3(3x,es18.8e3),'  &lt;-- S')
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>format(9x,3(3x,es18.8e3),'  &lt;-- S')
 </code></pre></div>
 <h4 id="ionic-data">Ionic Data</h4>
 <p>Data on the current ionic configuration is then printed. Atoms
@@ -3097,7 +3097,7 @@ label <code>&lt;-- R</code>.</p>
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a> Si     8      7.63167143E+000      7.59610368E+000      2.52717191E+000  &lt;-- R
 </code></pre></div>
 <p>Formatting (for each atom):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),&#39;  &lt;-- R&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),'  &lt;-- R')
 </code></pre></div>
 <p>Velocities are then printed in a similar fashion.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a> Si     1      5.77278549E-005      7.23673746E-005      4.30349159E-005  &lt;-- V
@@ -3110,7 +3110,7 @@ label <code>&lt;-- R</code>.</p>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a> Si     8      7.97201068E-005     -1.33563298E-004     -7.92824105E-005  &lt;-- V
 </code></pre></div>
 <p>Formatting (for each atom):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),&#39;  &lt;-- V&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),'  &lt;-- V')
 </code></pre></div>
 <p>Finally forces are printed.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Si     1     -4.23569381E-003      2.52214252E-003     -2.46018145E-003  &lt;-- F
@@ -3123,7 +3123,7 @@ label <code>&lt;-- R</code>.</p>
 <a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>Si     8      2.13724448E-003      2.14235805E-003      3.79851935E-003  &lt;-- F
 </code></pre></div>
 <p>Formatting (for each atom):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),&#39;  &lt;-- F&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>format(1x,a3,1x,i4,3(3x,es18.8e3),'  &lt;-- F')
 </code></pre></div>
 <p>A blank line is then printed, and the process repeats with the data from the next
 time-step.</p>
