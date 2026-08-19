@@ -62,7 +62,7 @@ Again, please do your own testing and consult relevant reviews and benchmarking 
 For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). This has been fixed in academic CASTEP v24.1 for TS and MBD, and in v25 for XDM. If you are using an older version of CASTEP, then you should try to use larger unit cells until your dispersion correction converges.
 
 
-Not all `XC_FUNCTIONAL` values are supported for all schemes - if in doubt use PBE. The primary 'XC_FUNCTIONAL' for XDM is B86PBE.
+Not all `XC_FUNCTIONAL` values are supported for all schemes - if in doubt use PBE. The primary 'XC_FUNCTIONAL' for XDM is B86BPBE.
 
 Each scheme has default parameters defined for a subset of elements (see [table](#table) below). For other elements you need to define custom parameters using the `SEDC_CUSTOM_PARAMS` keyword in the .cell file.
 
@@ -88,7 +88,7 @@ In the `.param` file, set:
 | [D4](#D4) [@GrimmeD4-1;@GrimmeD4-2;@GrimmeD4-3]             | CASTEP 24.1                                            | PBE, RPBE, PBESOL, BLYP, PW91, RSCAN                    |                                       | Analytic | FD          |
 | [OBS](#OBS) [@Ortmann2006]                                  | Predates 2012                                          | LDA, PW91                                               | Up to Z=57                            | Analytic | DFPT & FD   |
 | [JCHS](#JCHS) [@Jurecka2007]                                | Predates 2012                                          | PBE, BLYP, B3LYP, TPSS                                  | H, C, N, O, F, Cl, Br                 | Analytic | DFPT & FD   |
-| [XDM](#XDM) [@Becke2007]                                    | CASTEP 20                                              | B86PBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN        | Up to Z=102                           | Analytic | FD          |
+| [XDM](#XDM) [@Becke2007]                                    | CASTEP 20                                              | B86BPBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN       | Up to Z=102                           | Analytic | FD          |
 
 $^*$ <a name="tab-foot"></a>DFPT: Density functional perturbation theory; FD: finite displacement.
 
@@ -308,7 +308,7 @@ A unified density-functional treatment of dynamical, nondynamical, and dispersio
 
 Restrictions:
 
-* Default XDM parameters are available for the following XC functionals: B86PBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN
+* Default XDM parameters are available for the following XC functionals: B86BPBE, PBE, BLYP, PBESOL, PW91, RPBE, WC, RSCAN
 
 **`SEDC_SCHEME : XDM`**
 
