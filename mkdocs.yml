@@ -133,6 +133,7 @@ nav:
       - 'CI System': 'developer/CI.md'
       - 'Git workflow': 'developer/git_workflow.md'
       - 'Release Procedure': 'developer/release_procedure.md'
+   - 'Contributing to these docs': 'developer/docs_contribution.md'
 
 theme:
   name: material
