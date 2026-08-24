@@ -1,135 +1,58 @@
-CASTEP writes output data in a variety of files. Some of these will be in human readable ASCII format (i.e. plaintext) and
-can be read with commands such as `less` or `more` on linux, or with a simple text editor (textedit, notepad etc). Other files will be in binary format and are designed to be read or processed with an external program.  See  [Tools](../Tools/tools.md) for software and libraries to read and analyse them.
+CASTEP writes output data in a variety of files. Some of these will be
+in human readable ASCII format (i.e. plaintext) and can be read with
+commands such as `less` or `more` on linux, or with a simple text
+editor (textedit, notepad etc). Other files will be in binary format
+and are designed to be read or processed with an external program.
+See [Tools](../Tools/tools.md) for software and libraries to read and
+analyse them.
 
-
-## Groundstate
-
-
-* `.castep`
-ASCII. CASTEP's main outputfile.
-
-* `.bib`
-ASCII. Bibtex file containing citations to the methods CASTEP has used in the calculation.
-
-* `.check`
-Binary. This checkpoint file contains the results of the calculation including the groundstate charge density and wavefunctions. It is typically a very large file. Will be read by CASTEP when performing a continuation calculation. Also read by postprocessing software such as c2x or euphonic.
-
-* `.check_bak`
-Binary. backup of the checkpoint file.
-
-* `.castep_bin`
-Binary. This file is identical to `.check` except that does not contain the wavefunctions. Therefore it is usually much smaller than the `.check` file, making it suitable for archiving a calculation. It may also be processed by euphonic, c2x or other software which can read checkpoint file.
-
-* `.cst_esp`
-Binary. The local part of the Kohn-Sham potential (Vloc + Hartree + XC).
-
-* `.usp`
-ASCII. Pseudoptential data, written for each species. See the page on [reading usp headers](../Pseudopotentials/reading_headers.md).
-
-* `.uspso`
-ASCII. Pseudoptential data, written for each species. This is the J-dependant version of the `.usp`. See the page on [reading usp headers](../Pseudopotentials/reading_headers.md).
-
-* `.beta`
-Xmgrace (.agr) format. Beta projectors for each generated pseudopotential. Only written if a test configuration `[]` is present in the OTF string.
-
-* `.pwave`
-Xmgrace (.agr) format. Pseudo-wavefunctions for each generated pseudopotential. Only written if a test configuration `[]` is present in the OTF string.
-
-* `.econv`
-Xmgrace (.agr) format. Isolated atom energy cutoff convergence for each generated pseudopotential. Only written if a test configuration `[]` is present in the OTF string.
-
-* `.bands`
-ASCII. Kohn-Sham eigenvalues at the requested k-points. Can be used to plot band structures or density of states. Note that the eigenvalues are given in atomic units (Hartree).
-
-* `.den_fmt`
-ASCII. Charge density. Only written if `write_formatted_density : T `.
-
-* `.pot_fmt`
-ASCII. Groundstate local potential  (Vloc + Hartree + XC) (See `.cst_esp`). Only written if `write_formatted_potential : T `.
-
-* `.chdiff`
-Binary. Difference between the groundstate charge density and a superposition of atomic densities. Only written if `calculate_densdiff : T`
-
-* `.chdiff_fmt`
-ASCII. same data as `.chdiff` in human readable format. Only written if `calculate_densdiff : T` and `write_formatted_density : T `.
-
-* `.xrd_sf`
-ASCII. X-ray structure factors. See the [documentation page](../XRD/overview.md).
-
-*  `.elf`
-Binary. Result of ELF calculation.
-
-* `.elf_fmt`
-ASCII.  Result of ELF calculation.Only written if `write_formatted_elf : T `.
-
-## Geometry Optimisation
-
-* `*.geom`
-ASCII. State of the system (coordinates, unit cell etc) at each step of the geometry optimisation. See for specification. Can be used to animate the geometry optimisation and can be read directly by Jmol.
-
-## Molecular Dynamics
-
-* `*.md`
-ASCII. State of the system (coordinates, unit cell etc) at each step of the molecular dynamics simulation. Same format as the `.geom` file.  See for specification. Can be used to animate the trajectory, and can be read directly by Jmol.
-
-* `*.hug`
-ASCII. Hugoniot data for hugoniostat MD.
-
-## Spectral
-
-* `.pdos_bin`
-Binary. Matrix elements used for plotting a projected density of states. Used by Optados.
-
-* `.ome_bin`
-Binary. Matrix elements used for calculating optical properties. Used by Optados.
-
-* `.dome_bin`
-Binary. Diagonal elements of the optical matrix elements. Used by Optados to plot densities of states / spectral properties using adaptive smearing.
-
-* `.elnes_bin`
-Binary. Matrix elements used for plotting the core-loss spectrum. Used by Optados.
-
-* `.orbitals`
-Binary. Kohn-Sham states at each kpoints. Used by `orbital2bands` to make a reorganised `.bands` file for a cleaner looking bandstructure.
-
-## Phonon and Efield
-
-* `.phonon`
-ASCII. Phonon eigenvalues and eigenvectors.
-
-* `.phonon_dos`
-ASCII. Phonon branch gradients and density-of-states when param keyword `phonon_calculate_dos` is true.
-
-* `.efield`
-ASCII. Mode oscillator strengths and frequency-dependent permittivity tensor in the ir band.
-
-## Electron-Phonon coupling
-
-* `.epme`
-ASCII. Electron-phonon matrix elements.
-
-* `.epme_bin`
-Binary. Electron-phonon matrix elements.
-
-## Elastic Constants
-
-* `.elastic`
-ASCII. Elastic constants, compliance matrix, Frozen ion constants, Internal Strain and Piezoelectric tensors
-
-## TDDFT
-
-* `.tddft`
-ASCII. TDDFT state band projection analysis and TDDFT excitation energies.
-
-## Magres
-
-* `.magres`
-ASCII. Contain the NMR tensors (depending on `magres_task` shielding, EFG or J). Read by MagresView or the Soprano python libraries.
-
-* `_current.dat`
-ASCII. Written if `MAGRES_WRITE_RESPONSE=True`. Used to compute NICS (nucleus independent chemical shifts) see https://www.ccpnc.ac.uk/docs/nics .
-
-## Transition state search
-
-* `.ts`
-ASCII. See the specification in the [documentation pages](../Transition_State_Search/neb.md).
+| Name            | Format      | Description                                                                                                              | Precondition                                                                            | Format                                                                                          |
+|:---------------:|:-----------:|:-------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
+| `.castep`       | ASCII       | CASTEP's main output file.                                                                                               | Always written.                                                                         | Not machine readable. See castep_outputs for processing.                                        |
+| `.bib`          | BibTeX      | Bibtex file containing citations to the methods CASTEP has used in the calculation.                                      | Disabled with `write_bib: F`.                                                           | Standard BibTeX file.                                                                           |
+| `.check`        | BINARY      | This checkpoint file contains the results of the calculation including the groundstate charge density and wavefunctions. | Disabled with `write_checkpoint: None` or `minimal`                                     | ---                                                                                             |
+| `.check_bak`    | BINARY      | Backup of the checkpoint file.                                                                                           | "                                                                                       | ---                                                                                             |
+| `.castep_bin`   | BINARY      | This file is identical to `.check` except that does not contain the wavefunctions.                                       | Disabled with `write_checkpoint: None`                                                  | ---                                                                                             |
+| `.cst_esp`      | BINARY      | The local part of the Kohn-Sham potential (Vloc + Hartree + XC).                                                         | Disabled with `write_cst_esp: F`                                                        | ---                                                                                             |
+| `.usp`          | ASCII       | Pseudoptential data, written for each species.                                                                           |                                                                                         | See the page on [reading usp headers](../Pseudopotentials/reading_headers.md)                   |
+| `.uspso`        | ASCII       | Pseudoptential data, written for each species.                                                                           |                                                                                         | See the page on [reading usp headers](../Pseudopotentials/reading_headers.md)                   |
+| `.beta`         | XMGrace AGR | Beta projectors for each generated pseudopotential.                                                                      | `[]` present in OTF string.                                                             | XMGrace file.                                                                                   |
+| `.gamma`        | XMGrace AGR | Gamma projectors for each generated pseudopotential.                                                                     | `[]` present in OTF string.                                                             | XMGrace file.                                                                                   |
+| `.pwave`        | XMGrace AGR | Pseudo-wavefunctions for each generated pseudopotential.                                                                 | `[]` present in OTF string.                                                             | XMGrace file.                                                                                   |
+| `.econv`        | XMGrace AGR | Isolated atom energy cutoff convergence for each generated pseudopotential.                                              | `[]` present in OTF string.                                                             | XMGrace file.                                                                                   |
+| `.bands`        | ASCII       | Kohn-Sham eigenvalues at requested k-points. Can be used to plot band structures or DoS.                                 |                                                                                         | [.bands](../../file-formats/bands.md)                                                           |
+| `.den_fmt`      | ASCII       | Charge density.                                                                                                          | `write_formatted_density: T`                                                            | [.den_fmt](../../file-formats/fmt.md)                                                           |
+| `.pot_fmt`      | ASCII       | Groundstate local potential (Vloc + Hartree + XC) (See `.cst_esp`)                                                       | `write_formatted_potential: T`                                                          | [.pot_fmt](../../file-formats/fmt.md)                                                           |
+| `.chdiff`       | BINARY      | Difference between the ground-state charge density and a superposition of atomic densities.                              | `calculate_densdiff: T`                                                                 | ---                                                                                             |
+| `.chdiff_fmt`   | ASCII       | Same as `.chdiff` in human readable format.                                                                              | `calculate_densdiff: T` and `write_formatted_density: T`                                | [.chdiff_fmt](../../file-formats/fmt.md)                                                        |
+| `.xrd_sf`       | ASCII       | X-ray structure factors.                                                                                                 |                                                                                         | [.xrd_sf](../../file-formats/xrd_sf.md) and [Overview](../XRD/overview.md)                      |
+| `.elf`          | BINARY      | Result of the ELF calculation.                                                                                           |                                                                                         | ---                                                                                             |
+| `.elf_fmt`      | ASCII       | Same as `.el` in human readable format.                                                                                  | `write_formatted_elf: T`                                                                | [.elf_fmt](../../file-formats/fmt.md)                                                           |
+| `.geom`         | ASCII       | State of the system (coordinates, unit cell etc) at each step of the geometry optimisation.                              | `task: geomopt`; can be disabled with `write_geom: F`                                   | [.geom](../../file-formats/geom.md)                                                             |
+| `.pes`          | ASCII       | Potential energy surface of a molecule or atom scanned across a grid.                                                    | `task: geomopt` and `geom_method: pes`                                                  | [.pes](../../file-formats/pes.md)                                                               |
+| `.md`           | ASCII       | State of the system (coordinates, unit cell etc) at each step of the molecular dynamics simulation.                      | `task: md`; can be disabled with `write_md: F`                                          | [.md](../../file-formats/md.md)                                                                 |
+| `.hug`          | ASCII       | Hugoniot data for hugoniostat MD.                                                                                        | `task: md` and `ensemble: nvhug` or `nphug`                                             | [.hug](../../file-formats/hug.md)                                                               |
+| `.pdos_bin`     | BINARY      | Matrix elements used for plotting a projected density of states.                                                         | `task: spectral`                                                                        | ---                                                                                             |
+| `.ome_bin`      | BINARY      | Matrix elements used for calculating optical properties.                                                                 | `task: spectral`                                                                        | ---                                                                                             |
+| `.dome_bin`     | BINARY      | Diagonal elements of the optical matrix elmeents.                                                                        | `task: spectral`                                                                        | ---                                                                                             |
+| `.elnes_bin`    | BINARY      | Matrix elements used for plotting the core-loss spectrum.                                                                | `task: spectral`                                                                        | ---                                                                                             |
+| `.orbitals`     | BINARY      | Kohn-Sham states at each k-point.                                                                                        | `task: spectral`                                                                        | ---                                                                                             |
+| `.epme`         | ASCII       | Electron-phonon matrix elements.                                                                                         | `task: epcoupling`                                                                      | [.epme](../../file-formats/epme.md)                                                             |
+| `.epme_bin`     | BINARY      | Electron-phonon matrix elements.                                                                                         | `task: epcoupling`                                                                      | ---                                                                                                |
+| `.elastic`      | ASCII       | Elastic constants, compliance matrix, frozen ion constants, internal strain and Piezoelectric tensors.                   | `task: elastic`                                                                         | [.elastic](../../file-formats/elastic.md)                                                       |
+| `.tddft`        | ASCII       | TDDFT state band projection analysis and TDDFT excitation energies.                                                      | `tddft_selected_state` > `0`                                                            | [.tddft](../../file-formats/tddft.md)                                                           |
+| `.magres`       | ASCII       | NMR tesors and depending on `magres_task` shielding, electric field gradients and J coupling.                            | `task: magres`                                                                          | [.magres](https://www.ccpnc.ac.uk/docs/magres/magres-format.pdf)                                |
+| `_current.dat`  | ASCII       |                                                                                                                          | `magres_write_response: T`                                                              | [_current.dat]()                                                                                |
+| `.ts`           | ASCII       | Transition state information.                                                                                            | `task: tssearch`                                                                        | [.ts](../../file-formats/ts.md) see also the [specification](../Transition_State_Search/neb.md) |
+| `.phonon`       | ASCII       | Phonon information.                                                                                                      | `task: phonon` or `phonon+efield`                                                       | [.phonon](../../file-formats/phonon.md)                                                         |
+| `.phonon_dos`   | ASCII       | Phonon DOS information.                                                                                                  | `task: phonon` or `phonon+efield` and `phonon_calculate_dos: T`                         | [.phonon](../../file-formats/phonon_dos.md)                                                     |
+| `.orbit_fmt`    | ASCII       | The same as `.orbitals`, but human readable.                                                                             | `write_formatted_bands: T`                                                              | [.orbit_fmt](../../file-formats/fmt.md)                                                         |
+| `.oep_fmt`      | ASCII       | OEP potential at each k-point.                                                                                           | `write_formatted_potential:T` and `OEP` in `xc_definition`                              | [.oep_fmt](../../file-formats/fmt.md)                                                           |
+| `.cif`          | CIF         | Output cell in `.cif` format.                                                                                            | `write_cif_structure: T`                                                                | Standard [.cif](https://journals.iucr.org/a/issues/1991/06/00/es0164/es0164.pdf) format         |
+| `.modos_state`  | ASCII       | States                                                                                                                   | `calculate_modos: T`                                                                    | [.modos_state](../../file-formats/modos_state.md)                                               |
+| `.efield`       | ASCII       | Electric field oscillator strengths.                                                                                     | `task: efield or phonon+efield`; can be disabled with `efield_calc_ion_permittivity: F` | [.efield](../../file-formats/efield.md)                                                         |
+| `.pdos_weights` | BINARY      | Phonon density of states weights.                                                                                        | `pdos_calculate_weights: T`                                                             | ---                                                                                             |
+| `.vacuum_den`   | BINARY      | Autosolvation vacuum density.                                                                                            | `task: autosolvation`                                                                   | ---                                                                                             |
+| `.drhom`        | BINARY      | First order density extrapolation derviative.                                                                            | `task: md` and `md_extrap: first` or `second` or `mixed` and `opt_strategy: memory`     | ---                                                                                             |
+| `.drho2m`       | BINARY      | Second order density extrapolation derivative.                                                                           | `task: md` and `md_extrap: second` or `mixed` and `opt_strategy: memory`                | ---                                                                                             |
+| `gsden.cube`    | CUBE        | Density in format for Gaussian.                                                                                          | `magres_write_response: T`                                                              | Gaussian [.cube](https://gaussian.com/cubegen/) format.                                         |

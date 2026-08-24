@@ -82,6 +82,22 @@ nav:
         - 'Cell Keywords': 'documentation/Input_Files/cell_keywords.md'
       - 'Output Files':
         - 'Output Files': 'documentation/Output_Files/output_files.md'
+        - 'Detailed':
+          - '.*_fmt': 'file-formats/fmt.md'
+          - '.bands': 'file-formats/bands.md'
+          - '.efield': 'file-formats/efield.md'
+          - '.elastic': 'file-formats/elastic.md'
+          - '.epme': 'file-formats/epme.md'
+          - '.geom': 'file-formats/geom.md'
+          - '.hug': 'file-formats/hug.md'
+          - '.md': 'file-formats/md.md'
+          - '.modos_state': 'file-formats/modos_state.md'
+          - '.pes': 'file-formats/pes.md'
+          - '.phonon': 'file-formats/phonon.md'
+          - '.phonon_dos': 'file-formats/phonon_dos.md'
+          - '.tddft': 'file-formats/tddft.md'
+          - '.ts': 'file-formats/ts.md'
+          - '.xrd_sf': 'file-formats/xrd_sf.md'
       - 'Other Codes and Tools':
         - 'Other Codes and Tools': 'documentation/Tools/tools.md'
       - 'Troubleshooting':
