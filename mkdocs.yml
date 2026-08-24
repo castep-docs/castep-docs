@@ -123,6 +123,9 @@ nav:
         - 'Introduction': 'tutorials/GA/Introduction.md'
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
+      - 'Phonons':
+        - 'Vibrational Spectra': 'tutorials/Phonons/Phonons_Vibrational_Spectra.md'
+        - 'Phonon Dispersion and DOS': 'tutorials/Phonons/Phonon_Dispersion_and_DOS.md'
    - 'Developer':
       - 'Using Devel Codes': 'developer/using_devel_codes.md'
       - 'Using trace': 'developer/using_trace.md'
