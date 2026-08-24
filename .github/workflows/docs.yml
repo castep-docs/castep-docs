@@ -1,5 +1,6 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+# Based on starter-workflows at https://github.com/actions/starter-workflows/tree/main/pages
 
 name: docs
 
@@ -9,18 +10,32 @@ on:
   pull_request:
     branches: [ develop ]
 
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   doc:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.12"]
-
+        python-version: ["3.14"]
     steps:
-      - uses: actions/checkout@v4
-        
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -31,9 +46,20 @@ jobs:
         run: |
           mkdocs build -d ./docs_build
 
-      - name: Deploy
+      - name: Upload Artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs_build
+          path: './docs_build'
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: doc
+    steps:
+      - name: Deploy artifact to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
