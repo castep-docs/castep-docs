@@ -80,7 +80,7 @@ where $C^i$ is given by the initial conditions. For example to fix the second S 
 Cell constraints can be used with all forms of geometry optimization and molecular dynamics that allow the cell size/shape 
 to vary. Some simple short cuts exist, such as to keep the unit cell fixed during the optimisation
 ```
-FIX_CELL : T
+FIX_ALL_CELL : T
 ```
 
 or to fix the volume (but not the shape) of the unit cell
