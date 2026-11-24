@@ -50,7 +50,7 @@ The 1st line says that constraint number 1 is to fix the x coordinate of Tungste
 number 2 is to fix the y coordinate of Tungsten atom 1. etc. To fix an atom in 3D requires 3 constraints to remove all 3 
 degrees of freedom.
 
-The ionic_constraints block can also be used to impose any arbitary linear constraint, such as to restrict an atom to move in a plane or along a line, or to fix the 
+The ionic_constraints block can also be used to impose any arbitrary linear constraint, such as to restrict an atom to move in a plane or along a line, or to fix the 
 centre of mass. A constraint may involve more than 1 atom, and hence can span mulitple lines, but each constraint operates on 1 degree of freedom. It cannot be used 
 to fix a bond length - that is a non-linear constraint - see below for more details.
 
@@ -62,7 +62,7 @@ The general syntax for constraint $i$ operating on atom $j$ of element X at posi
 ...
 %ENDBLOCK IONIC_CONSTRAINTS
 ```
-and the constraint is specfied as
+and the constraint is specified as
 \begin{equation}
    C^i={\bf a^i}\cdot{\bf r^j}
 \end{equation}
@@ -80,7 +80,7 @@ where $C^i$ is given by the initial conditions. For example to fix the second S 
 Cell constraints can be used with all forms of geometry optimization and molecular dynamics that allow the cell size/shape 
 to vary. Some simple short cuts exist, such as to keep the unit cell fixed during the optimisation
 ```
-FIX_CELL : T
+FIX_ALL_CELL : T
 ```
 
 or to fix the volume (but not the shape) of the unit cell
@@ -89,7 +89,7 @@ FIX_VOL  : T
 ```
 
 
-It is also possible to apply an arbitary set of constraints to the cell angles and cell lengths using the `CELL_CONSTRAINTS` block.
+It is also possible to apply an arbitrary set of constraints to the cell angles and cell lengths using the `CELL_CONSTRAINTS` block.
 
 ```
 %BLOCK CELL_CONSTRAINTS
