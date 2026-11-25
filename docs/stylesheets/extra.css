@@ -19,3 +19,11 @@
     -webkit-mask-image: var(--md-admonition-icon--keyword);
     mask-image: var(--md-admonition-icon--keyword);
 }
+
+#search {
+  width: 80%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}

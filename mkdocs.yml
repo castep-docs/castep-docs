@@ -78,8 +78,9 @@ nav:
         - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
       - 'Input Files':
         - 'Cell File':  'documentation/Input_Files/cell_file.md'
-        - 'Param File': 'documentation/Input_Files/param_file.md'
         - 'Cell Keywords': 'documentation/Input_Files/cell_keywords.md'
+        - 'Param File': 'documentation/Input_Files/param_file.md'
+        - 'Param Keywords': 'documentation/Input_Files/param_keywords.md'
       - 'Output Files':
         - 'Output Files': 'documentation/Output_Files/output_files.md'
       - 'Other Codes and Tools':
@@ -140,6 +141,7 @@ theme:
     - content.code.annotate
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+  - js/filter.js
 markdown_extensions:
   - attr_list
   - admonition
