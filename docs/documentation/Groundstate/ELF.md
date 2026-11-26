@@ -36,7 +36,7 @@ and $\psi$ is the Kohn-Sham wavefunction. The first term is the KE of the non-in
 A=\frac{\hbar^2}{2*m}.
 \end{equation}
 
-In the presence of spin, there is a seperate $ELF_{\alpha}$ and $ELF_{\beta}$ for the different spin channels, and each expression just uses $n_{\alpha}$ and $\psi_{\alpha}$ and
+In the presence of spin, there is a separate $ELF_{\alpha}$ and $ELF_{\beta}$ for the different spin channels, and each expression just uses $n_{\alpha}$ and $\psi_{\alpha}$ and
 
 \begin{equation}
 D0_{\alpha} = 0.3*\left(6*\pi^2\right)^{2/3}*n_{\alpha}^{5/3}.
