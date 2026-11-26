@@ -5,18 +5,18 @@ molecular dynamics.
 
 Some simple short cuts exist, such as to keep all the atoms fixed:
 
-```
+```castep_cell
 FIX_ALL_IONS : T
 ```
 or to fix the Centre of Mass:
-```
+```castep_cell
 FIX_COM      : T
 ```
 
 It is also possible to specify constraints on individual atoms, using the `IONIC_CONSTRAINTS` block. The simplest case is to control which atoms remain fixed during
 a geometry optimisation. e.g.
 
-```
+```castep_cell
 %BLOCK IONIC_CONSTRAINTS
 fix: C 1				!fix position of atom C 1
 %ENDBLOCK IONIC_CONSTRAINTS
@@ -37,7 +37,7 @@ positions determined by diffraction.
 
 To fix the individual Cartesian components of an atom's position use the full syntax of the `ionic_constraints` block, where each constraint removes one degree of
 freedom. For example
-```
+```castep_cell
 %BLOCK IONIC_CONSTRAINTS
        1       W       1    1.0000000000    0.0000000000    0.0000000000
        2       W       1    0.0000000000    1.0000000000    0.0000000000
@@ -55,7 +55,7 @@ centre of mass. A constraint may involve more than 1 atom, and hence can span mu
 to fix a bond length - that is a non-linear constraint - see below for more details.
 
 The general syntax for constraint $i$ operating on atom $j$ of element X at position $r^j$ is
-```
+```castep_cell
 %BLOCK IONIC_CONSTRAINTS
 ...
     i X j a1 a2 a3
@@ -68,7 +68,7 @@ and the constraint is specfied as
 \end{equation}
 
 where $C^i$ is given by the initial conditions. For example to fix the second S atom to move in the plane parallel to $y=x$ use this:
-```
+```castep_cell
 %BLOCK IONIC_CONSTRAINTS
     1 S 2 -1 1 0
 %ENDBLOCK IONIC_CONSTRAINTS
@@ -79,19 +79,19 @@ where $C^i$ is given by the initial conditions. For example to fix the second S 
 
 Cell constraints can be used with all forms of geometry optimization and molecular dynamics that allow the cell size/shape
 to vary. Some simple short cuts exist, such as to keep the unit cell fixed during the optimisation
-```
+```castep_cell
 FIX_ALL_CELL : T
 ```
 
 or to fix the volume (but not the shape) of the unit cell
-```
+```castep_cell
 FIX_VOL  : T
 ```
 
 
 It is also possible to apply an arbitary set of constraints to the cell angles and cell lengths using the `CELL_CONSTRAINTS` block.
 
-```
+```castep_cell
 %BLOCK CELL_CONSTRAINTS
   a       b     c
   alpha  beta  gamma
@@ -100,14 +100,14 @@ It is also possible to apply an arbitary set of constraints to the cell angles a
 
 Setting an element to zero means to keep it fixed. Two or more elements set to the same positive integer, means that these elements should be kept equal during the
 geometry optimisation. For example
-```
+```castep_cell
 %BLOCK CELL_CONSTRAINTS
        0       0       0
        4       5       6
 %ENDBLOCK CELL_CONSTRAINTS
 ```
 would keep all cell lengths fixed, and allow the three cell angles to vary independently, and
-```
+```castep_cell
 %BLOCK CELL_CONSTRAINTS
        0       0       0
        4       4       6
@@ -126,7 +126,7 @@ impose all the desired constraints explicitly.
 
 CASTEP can also support non-linear constraints, such as fixed bond length, in both molecular dynamics, and also in geometry
 optimization if using `GEOM_METHOD=DELOCALISED`:
-```
+```castep_cell
 %BLOCK NONLINEAR_CONSTRAINTS
     constraint_type atom1 atom2 (atom3 (atom 4))
 ...
@@ -140,7 +140,7 @@ As for (linear) ionic constraints, atoms are specified by species and number wit
 species. In addition, it is necessary to specify which periodic image of the cell the atom is located in (so constraints can straddle a cell boundary).
 
 For instance
-```
+```castep_cell
 %BLOCK NONLINEAR_CONSTRAINTS
     distance H 4 0 0 0   O 2 0 1 0
         bend H 5 0 0 0   C 1 1 0 1   H 2 0 0 0

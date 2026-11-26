@@ -7,7 +7,7 @@ In this tutorial, we will use Optados to examine the optical properties of silic
 For Silicon, we will use the input `cell` file
 
 *Si.cell*
-```
+```castep_cell
 %BLOCK LATTICE_CART
 2.73  2.73 0.00
 2.73  0.00 2.73
@@ -21,14 +21,14 @@ Si 0.25    0.25    0.25
 
 SYMMETRY_GENERATE
 
-KPOINTS_MP_GRID 10 10 10  
+KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 14 14 14
 ```
 
 and the `param` file
 
 *Si.param*
-```
+```castep_param
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : OPTICS
 CUT_OFF_ENERGY         : 200
@@ -48,7 +48,7 @@ DOS_SPACING        : 0.1
 BROADENING         : adaptive # Default
 ADAPTIVE_SMEARING  : 0.4     # Default
 OPTICS_GEOM        : polycrystalline     # Default
-OPTICS_LOSSFN_BROADENING : 0.0    
+OPTICS_LOSSFN_BROADENING : 0.0
 ```
 
 After running Optados, we get several output `.dat` and `.agr` files. We will now examine them.
@@ -58,10 +58,10 @@ After running Optados, we get several output `.dat` and `.agr` files. We will no
 First let's look at the file containing the (polycrystalline) dielectric function - `Si_epsilon.dat`. The contents of the file look like
 
 ```
-0.0000000000000000        14.107263205387552        0.0000000000000000     
-1.0003334444814937E-002   14.107363765236455        0.0000000000000000     
-2.0006668889629875E-002   14.107665455817445        0.0000000000000000     
-3.0010003334444812E-002   14.108168310237140        0.0000000000000000    
+0.0000000000000000        14.107263205387552        0.0000000000000000
+1.0003334444814937E-002   14.107363765236455        0.0000000000000000
+2.0006668889629875E-002   14.107665455817445        0.0000000000000000
+3.0010003334444812E-002   14.108168310237140        0.0000000000000000
 ```
 
 The 1st column corresponds to the energy (of the photon interacting with it), the 2nd is the real component of the dielectric function, and the 3rd is the imaginary component.
@@ -90,8 +90,8 @@ This file gives us all the data necessary for the calculation of any optical pro
 Next let's look at the absorption data. The `dat` file is very similar, this time with 2 columns: the 1st is the energy of the photon, and the 2nd is the absorption coefficient. It doesn't look particularly different, but if you wish to check, the data table should start like
 
 ```
-0.0000000000000000        0.0000000000000000     
-1.0020040080160320E-002   0.0000000000000000  
+0.0000000000000000        0.0000000000000000
+1.0020040080160320E-002   0.0000000000000000
 ```
 
 You can plot it with xmgrace the same way as before (again the `agr` file is prepared by Optados). It should look like this
@@ -117,18 +117,18 @@ To check that this is really what's going on in the absorption calculation, we c
 
 ```python
 import numpy as np
-c = 3e8  
-hbar = 6.582119569e-16  
+c = 3e8
+hbar = 6.582119569e-16
 def calculate_property(energy, epsilon_1, epsilon_2):
-    omega = energy / hbar  
+    omega = energy / hbar
     kappa = np.sqrt(0.5 * (-epsilon_1 + np.sqrt(epsilon_1**2 + epsilon_2**2)))
-    alpha = (2 * omega * kappa) / c  
+    alpha = (2 * omega * kappa) / c
     return alpha
 data = np.loadtxt('Si2_OPTICS_epsilon.dat')
 
-energy = data[:, 0]  
+energy = data[:, 0]
 epsilon_1 = data[:, 1]
-epsilon_2 = data[:, 2]  
+epsilon_2 = data[:, 2]
 result = calculate_property_coefficient(energy, epsilon_1, epsilon_2)
 output_data = np.column_stack((energy, result))
 np.savetxt('predicted_abs.dat', output_data, fmt='%e', delimiter=' ')
@@ -225,8 +225,8 @@ where $\sigma_1$ is the real part and $\sigma_2$ is the imaginary. As usual $\ep
 
 ```python
 def calculate_conductivity(epsilon_1, epsilon_2, energy):
-    omega = energy / hbar  
-    sigma_1 = epsilon_0 * omega * epsilon_2  
+    omega = energy / hbar
+    sigma_1 = epsilon_0 * omega * epsilon_2
     sigma_2 = -epsilon_0 * omega * (epsilon_1 - epsilon_inf)
     return sigma_1, sigma_2
 

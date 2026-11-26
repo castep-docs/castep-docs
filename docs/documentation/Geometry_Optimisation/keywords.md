@@ -1,5 +1,5 @@
 To perform a geometry optimisation set the task parameter
-```
+```castep_param
 task : geomopt
 ```
 
@@ -13,7 +13,7 @@ The convergence criteria have the following default values, each of which can be
 
 
 It is possible to change the optimisation method, and to choose a preconditioner.
-```
+```castep_param
 geom_method     : LBFGS (default), BFGS, TPSD, DAMPEDMD, FIRE
 geom_preconditioner : EXP / FF / ID  # EXPonential, Force Field, Identity (default)
 ```
@@ -21,7 +21,7 @@ geom_preconditioner : EXP / FF / ID  # EXPonential, Force Field, Identity (defau
 It is useful to set the following two parameters in a geometry optimisation.
 These will cause CASTEP to write a new cell/cif file with the final optimised
 coordinates
-```
+```castep_param
 write_cell_structure : T
 write_cif_structure  : T
 ```

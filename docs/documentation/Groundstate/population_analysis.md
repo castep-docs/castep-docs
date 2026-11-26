@@ -67,31 +67,31 @@ orbitals determined, the Mulliken population analysis can be performed by calcul
 ### CASTEP keywords
 
 The default behaviour is to compute the population analysis on completion of most tasks that determine the ground state electron density. Mulliken population analysis can be turned off by adding
-```
+```castep_param
 POPN_CALCULATE : FALSE
 ```
 to the `.param` file. The bond population analysis is computed between all atoms which are closer than a spatial cutoff (3 &#8491 by default), which may be controlled using the `.param` keyword `POPN_BOND_CUTOFF`, for
 example
-```
+```castep_param
 POPN_BOND_CUTOFF : 4.0
 ```
 to set the cutoff to 4 &#8491. To control the verbosity of the population analysis output,
-```
+```castep_param
 POPN_WRITE : ENHANCED
 ```
 which is the default setting, writes individual orbital as well as atomic and bond populations;
-```
+```castep_param
 POPN_WRITE : MINIMAL
 ```
 only writes atomic and bond populations;
-```
+```castep_param
 POPN_WRITE : NONE
 ```
 only writes bond populations.
 
 The `.cell` block `SPECIES_LCAO_STATES` controls the number of atomic orbitals, as specified by their main and angular quantum numbers, used for each atomic specie. By default, all valence states up to the next noble gas configuration are obtained and used
 in the population analysis, but these can be overridden, for example:
-```
+```castep_cell
 %BLOCK SPECIES_LCAO_STATES
 H 3
 %ENDBLOCK SPECIES_LCAO_STATES
@@ -138,11 +138,11 @@ calculation parameters as the main calculation.
 ### CASTEP keywords
 
 To switch on the Hirshfeld partitioning scheme, add
-```
+```castep_param
 CALCULATE_HIRSHFELD : TRUE
 ```
 to the `.param` file. This provides a basic analysis of the Hirshfeld charges. More information, such as atomic volumes, can be gained when using
-```
+```castep_param
 IPRINT : 2
 ```
 or higher.

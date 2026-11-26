@@ -2,7 +2,7 @@ One of the most fundamental tasks for CASTEP is to take a crystal lattice and se
 
 Once the [lattice and atomic positions](../Getting_Started/basic_cell_file.md) have been specified, you can tell CASTEP to compute the energy by setting the task keyword in [the param file](../Getting_Started/basic_param_file.md):
 
-```
+```castep_param
 task : energy
 ```
 
@@ -12,7 +12,7 @@ mytest.cell
 mytest.param
 ```
 and the calculation is run with the command
-```
+```sh
 castep mytest
 ```
 

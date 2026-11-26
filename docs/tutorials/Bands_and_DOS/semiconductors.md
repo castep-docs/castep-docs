@@ -2,8 +2,8 @@ In this tutorial we will show you the cell and param files needed to plot bandst
 
 ## Silicon
 
-```
-! Si.cell 
+```castep_cell
+! Si.cell
 %block lattice_abc
 3.8 3.8 3.8
 60 60 60
@@ -37,8 +37,8 @@ kpoint_mp_grid 4 4 4
 %endblock spectral_kpoint_path
 ```
 
-```
-! Si.cell 
+```castep_param
+! Si.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
@@ -55,7 +55,7 @@ opt_strategy    speed         ! Choose algorithms for best speed
 ## Gallium Arsenide
 
 The cell file is almost identical to the silicon example above, except that the unitc cell length is slighly larger, and we have replaced one Si atom with Ga, and the other Si with As.
-```
+```castep_cell
 ! GaAs.cell
 %block lattice_abc
 4 4 4
@@ -90,7 +90,7 @@ kpoint_mp_grid 4 4 4
 %endblock spectral_kpoint_path
 ```
 The param file is unchanged from the Silicon example
-```
+```castep_param
 ! GaAs.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !

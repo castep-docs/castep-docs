@@ -5,7 +5,7 @@ In this tutorial, we will have brief look at how to calculate the optical proper
 We will use the `cell` file
 
 *Al.cell*
-```
+```castep_cell
 %BLOCK LATTICE_CART
        4.050000000000000       0.000000000000000       0.000000000000000
        0.000000000000000       4.050000000000000       0.000000000000000
@@ -28,7 +28,7 @@ SYMMETRY_GENERATE
 and `param` file
 
 *Al.param*
-```
+```castep_param
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : optics
 NEXTRA_BANDS           : 10
@@ -44,7 +44,7 @@ JDOS_MAX_ENERGY    : 30
 OPTICS_INTRABAND   : true
 EFERMI             : optados
 DOS_SPACING        : 0.1
-ADAPTIVE_SMEARING  : 0.8  
+ADAPTIVE_SMEARING  : 0.8
 BROADENING         : adaptive # Default
 OPTICS_GEOM        : polycrystalline     # Default
 ```
@@ -57,9 +57,9 @@ We're starting with the high spacing so we get few results (measuring only at 3 
 The file `Al_epsilon.dat` contains the following data:
 
 ```
-0.0000000000000000        2.1445746376579851        0.0000000000000000     
-  15.000000000000000        1.1673581523361172        1.6007294583641971     
-  30.000000000000000       0.66031465886470098       0.39432835642313052     
+0.0000000000000000        2.1445746376579851        0.0000000000000000
+  15.000000000000000        1.1673581523361172        1.6007294583641971
+  30.000000000000000       0.66031465886470098       0.39432835642313052
 
 
   0.0000000000000000       -32490.319172606654                            NaN
@@ -68,8 +68,8 @@ The file `Al_epsilon.dat` contains the following data:
 
 
   0.0000000000000000       -32489.174597968995                            NaN
-  15.000000000000000       0.54174204443369112        1.6034747114736059     
-  30.000000000000000       0.50390837320213944       0.39467151801745531     
+  15.000000000000000       0.54174204443369112        1.6034747114736059
+  30.000000000000000       0.50390837320213944       0.39467151801745531
 ```
 
 You can see here that there are 3 columns like before (energy, real and imaginary dielectric), but there's 3 separate sets of them, separated by a double space. The 1st set corresponds to the interband contribution, the 2nd to the intraband, and the 3rd to the total. Though normally it'd be easiest to visualise this data by plotting the `agr` file on xmgrace, this would only give the interband term - if you're interested in other information you will have to use the `.dat` file.

@@ -107,7 +107,7 @@ In the `.cell` file you can *optionally* set custom parameters for each species:
 
 You set them like this:
 
-```
+```castep_cell
 %BLOCK SEDC_CUSTOM_PARAMS
       ! example values for test purposes only - don't use these... !
       He      C6:1.00      R0:2.00
@@ -280,7 +280,7 @@ This is the Grimme D3 scheme with Becke-Johnson damping.
 ??? warning "Compilation flags: for the D3 correction, CASTEP must be compiled with `GRIMMED3 := compile`<a name="D3compilation"></a>"
 
       Note that for the D3 correction to work, CASTEP must be compiled with the following flag:
-      ```
+      ```make
       # Grimme D3 library support. Options are none or compile
       GRIMMED3 := compile
       ```

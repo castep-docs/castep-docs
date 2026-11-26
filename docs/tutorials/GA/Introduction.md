@@ -9,7 +9,7 @@ We will use the `cell` file
 
 *Si.cell*
 
-```
+```castep_cell
 %block LATTICE_ABC
 ang
 5.4 5.4 5.4
@@ -47,7 +47,7 @@ In a normal castep GA run the positions of all the Si's, and even the starting u
 
 For the `param` file we will use
 
-```
+```castep_param
 task             = genetic algor # Run the GA
 ga_pop_size      = 12           # Parent population size
 ga_max_gens      = 6            # Max number of generations to run for
@@ -61,7 +61,7 @@ rand_seed        = 129189 # Random seed for replicability
 # continuation = Si.xyz
 
 #################################################################
-# CASTEP Geomtery Optimisation Parameters		        #
+# CASTEP Geomtery Optimisation Parameters               #
 # These will be used for each cells geom opt/fitenss evaluation #
 #################################################################
 
@@ -80,7 +80,7 @@ write_bands      = FALSE
 write_cell_structure = TRUE
 
 ######################################
-# Any extra devel code options	     #
+# Any extra devel code options       #
 # & required GA specific devel flags #
 ######################################
 

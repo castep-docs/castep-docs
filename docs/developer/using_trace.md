@@ -160,7 +160,7 @@ The `trace` module has several functions which can be enabled by devel codes.
 
 Enables timing for the castep.
 
-```
+```castep_cell
 # Prints profiling information for the whole run
 # i.e. how long is spent in each subroutine.
 %block devel_code
@@ -173,7 +173,7 @@ PROF: * :ENDPROF
 List of "classes" to be matched against trace classes (see: [`trace_entry`](#tracing-code)), to
 enable profiling for certain groups of operations.
 
-```
+```castep_cell
 %block devel_code
 PROFCLASS:FFT ORTHOGONALISATION:ENDPROFCLASS
 %endblock devel_code

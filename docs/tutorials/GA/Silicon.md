@@ -1,4 +1,3 @@
-
 # Castep GA for silicon
 
 Let's assume we don't know the ground state Stillinger-Weber silicon structure and set out to discover it using the CASTEP GA!
@@ -9,7 +8,7 @@ Let's assume we don't know the ground state Stillinger-Weber silicon structure a
 We will use the `cell` file
 *Si.cell*
 
-```
+```castep_cell
 %block LATTICE_ABC
 ang
 3.8 3.8 3.8
@@ -40,7 +39,7 @@ The definition of the lattice and positions of the atoms is fairly inconsequenti
 For the `param` file we will use
 *Si.param*
 
-```
+```castep_param
 task             = genetic algor # Run the GA
 ga_pop_size      = 12            # Parent population size
 ga_max_gens      = 12            # Max number of generations to run for
@@ -61,7 +60,7 @@ write_bands      = FALSE
 write_cell_structure = TRUE
 
 ######################################
-# Any extra devel code options	     #
+# Any extra devel code options       #
 # & required GA specific devel flags #
 ######################################
 
@@ -117,13 +116,13 @@ The `devel_code` block is a bit more complex. The fact that pair potentials are 
 
 A very important thing to note are the lines
 
-```
+```castep_param
 NUM_CHILDREN = 12
 RSC = F
 ```
 
 This is highly atypical and would not be used in most actual calculations: instead, it would look like this
-```
+```castep_param
 NUM_CHILDREN=11
 RSC=T
 RSN=1

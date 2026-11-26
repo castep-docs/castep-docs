@@ -1,11 +1,9 @@
-
-
 Andrew Walker (building on work by Dan Wilson) provides some python scripts for calculating elastic constants using CASTEP, available from https://github.com/andreww/elastic-constants. The tool comes in two parts - first is generate_strain.py, this takes the results of a successful variable cell geometry optimisation and creates a set of input files to be run through CASTEP. The second part is elastics.py, which takes the CASTEP results and constructs the matrix of elastic constants, Young's modulus, Poisson's ratios and bulk and shear moduli. Usage information for each script can be obtained by using the --help option.
 
 
 For this exercise we will use rutile - titanium dioxide. Below are example `.cell` and `.param` files to start from. It is assumed that the scripts `generate_strain.py` and `elastics.py` are in your PATH and that python is installed.
 
-```
+```castep_cell
 #TiO2.cell
  %BLOCK lattice_cart
  4.594 0.000 0.000
@@ -27,7 +25,7 @@ For this exercise we will use rutile - titanium dioxide. Below are example `.cel
  kpoint_mp_grid 3 3 3
 ```
 
-```
+```castep_param
 #TiO2.param
  task             : geometryoptimisation
  cutoff_energy    : 700 eV

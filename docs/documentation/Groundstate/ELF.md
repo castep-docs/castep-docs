@@ -47,11 +47,11 @@ CASTEP uses pseudopotentials, and so the absolute values of ELF are not transfer
 ### CASTEP keywords
 
 The default behaviour is to not compute ELF. It can be turned on by adding
-```
+```castep_param
 CALCULATE_ELF : TRUE
 ```
 to the `.param` file. The ELF will be written out to a binary file, unless the
-```
+```castep_param
 WRITE_FORMATTED_ELF ; TRUE
 ```
 is enabled. The ELF files (both formatted and unformatted) have the same internal layout as POT and DEN. It is conventional to visualize them as 3D isosurfaces using programs such as JMol.

@@ -6,7 +6,7 @@ We will use the cell file
 
 *rut.cell*
 
-```
+```castep_cell
 %BLOCK LATTICE_ABC
   4.6257000   4.6257000   2.9806000
  90.0000000  90.0000000  90.0000000
@@ -30,7 +30,7 @@ We will first run a castep calculation using the above cell with the `param` fil
 
 *rut.param*
 
-```
+```castep_param
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : OPTICS
 CUT_OFF_ENERGY         : 200
@@ -44,7 +44,7 @@ We will begin by examining the dielectric tensor. We will do this by using the O
 
 *rut.odi*
 
-```
+```castep_param
 TASK               : optics
 JDOS_SPACING       : 0.01
 JDOS_MAX_ENERGY    : 60
@@ -64,7 +64,7 @@ The output file starts off looking like
 # Component            1
 
 
-  0.0000000000000000        10.985963719914423        0.0000000000000000     
+  0.0000000000000000        10.985963719914423        0.0000000000000000
   1.0001666944490749E-002   10.986133776534746        4.5560614006426980E-003
   2.0003333888981498E-002   10.990669467897412        5.9329124271557589E-003
 ```
@@ -140,7 +140,7 @@ So now that we have the dielectric function tensor, let's examine how this corre
 We will run Optados again (no need to rerun Castep), changing the line
 
 ```
-OPTICS_GEOM        : tensor    
+OPTICS_GEOM        : tensor
 ```
 
 in the `rut.odi` file to the lines

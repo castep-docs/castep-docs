@@ -5,7 +5,7 @@ In this tutorial, we will using Optados to calculate the electronic density of s
 We will use the `cell` file
 
 *Si.cell*
-```
+```castep_cell
 %BLOCK LATTICE_CART
 2.73  2.73 0.00
 2.73  0.00 2.73
@@ -19,14 +19,14 @@ Si 0.25    0.25    0.25
 
 SYMMETRY_GENERATE
 
-KPOINTS_MP_GRID 10 10 10  
+KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 12 12 12
 ```
 
 and the `param` file
 
 *Si.param*
-```
+```castep_param
 TASK                   : SPECTRAL
 %BLOCK devel_code
 spectral: check_output: true :endspectral

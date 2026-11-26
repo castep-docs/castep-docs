@@ -7,22 +7,22 @@ https://libxc.gitlab.io/functionals/.
 CASTEP interfaces to this library which can be used instead of
 CASTEP's in-built library of XC functionals. Prepend the string LIBXC_
 to CASTEP's functional name in the parameter keyword `xc_functional`
-to use LIBXC. For example:  
-`xc_functional : PBE` for CASTEP's in-built PBE functional  
-`xc_functional : LIBXC_PBE` for the LIBXC version of the PBE functional  
+to use LIBXC. For example:
+`xc_functional : PBE` for CASTEP's in-built PBE functional
+`xc_functional : LIBXC_PBE` for the LIBXC version of the PBE functional
 
 In the LIBXC library there are many functionals, covering LDAs, GGAs,
 Meta-GGAs, Hybrids, etc. Most of these are separated into exchange and
 correlation contributions. To use these functionals, build your own
 combination using CASTEP's `xc_definition` keyword in the .param
-file. Firstly at https://libxc.gitlab.io/functionals/ 
+file. Firstly at https://libxc.gitlab.io/functionals/
 find the exchange and correlation functionals that you require, note
 the name LIBXC calls is and then prepend the string LIBXC_ to them.
 
 For example to construct Perdew and Zunger's LDA, LDA exchange is
 called LDA_X and correlation is called LDA_C_PZ.
 In the .param file use
-```
+```castep_cell
 %block xc_definition
 LIBXC_LDA_X 1.0
 LIBXC_LDA_C_PZ 1.0
@@ -34,7 +34,7 @@ to use, in this case 100% of each.
 Example, construct the PBE functional from LIBXC: In LIBXC, PBE
 exchange is called GGA_X_PBE and its correlation is called
 GGA_C_PBE. Prepend with LIBXC_ and construct `xc_definition`:
-```
+```castep_cell
 %block xc_definition
 LIBXC_GGA_X_PBE 1.0
 LIBXC_GGA_C_PBE 1.0
@@ -45,7 +45,7 @@ There are a few functional in LIBXC that have combined exchange and
 correlation parts, so this can be listed in `xc_definition` on its
 own. For example the HCTH93 XC functional is called GGA_XC_HCTH_93 in
 LIBXC hence it can be used in CASTEP with
-```
+```castep_cell
 %block xc_definition
 LIBXC_GGA_XC_HCTH_93 1.0
 %endblock xc_definition
@@ -56,7 +56,7 @@ not contain the non-local part of such functionals, just the local
 part. Construct the functional using CASTEP's non-local
 functionality. For example, the PBE0 functional is called
 HYB_GGA_XC_PBE0 in LIBXC, so to construct this use
-```
+```castep_cell
 %block xc_definition
 LIBXC_HYB_GGA_XC_PBE0 1.0
 HF 0.25
@@ -73,7 +73,7 @@ balance this with offsetting it with the correct fraction of local
 exchange. For this construct the whole functional yourself. For
 example PBE0 is 0.25HF + 0.75PBE_X + 1.0PBE_C. Varying the HF
 component in PBE0 can be done with
-```
+```castep_cell
 %block xc_definition
 HF 0.20
 LIBXC_GGA_PBE_X 0.80
@@ -85,7 +85,7 @@ PBE correlation.
 
 Meta-GGAs are also supported. For example the RSCAN functional can be
 used with
-```
+```castep_cell
 %block xc_definition
 LIBXC_MGGA_X_RSCAN 1.0
 LIBXC_MGGA_C_RSCAN 1.0

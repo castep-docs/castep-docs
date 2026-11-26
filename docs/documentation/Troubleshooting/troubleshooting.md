@@ -3,7 +3,7 @@
 ### Command not found ###
 
 If you see a message like this on the command-line when you run CASTEP:
-```
+```sh
 castep mytest
 castep: command not found
 ```
@@ -24,4 +24,3 @@ mytest.0002.err
 These files contain useful information about what went wrong, so it is always worth looking at them.
 
 ### Failed to converge ###
-

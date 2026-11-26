@@ -1,4 +1,3 @@
-
 ## Electronic excitations of the Azobenzene molecule
 
 In this example we calculate the first two electronic excited states of
@@ -8,7 +7,7 @@ The required files are azo.cell and azo.param:
 
 *azo.param*
 
-```
+```castep_param
     task: SinglePoint
 
     reuse: default
@@ -18,7 +17,7 @@ The required files are azo.cell and azo.param:
 
 #band  occ spin from_band to_band
 %block deltascf_constraints
-34    0.5000  1   34   34       
+34    0.5000  1   34   34
 35    0.5000  1   35   35
 %endblock deltascf_constraints
 
@@ -40,7 +39,7 @@ The required files are azo.cell and azo.param:
 
 *azo.cell*
 
-```
+```castep_cell
     %BLOCK LATTICE_CART
         10.0000000 0.0000000000 0.0000000000
         0.0000000000 20.0000000 0.0000000000
@@ -97,11 +96,11 @@ and the LUMO.
 The corresponding constraint sequence in azo.deltascf for the S1
 excitation is
 
-```
+```castep_param
 #band  occ spin from_band to_band
 %block deltascf_constraints
-  34    0.5000  1   34   34       
-  35    0.5000  1   35   35      
+  34    0.5000  1   34   34
+  35    0.5000  1   35   35
 %endblock deltascf_constraints
 ```
 
@@ -131,11 +130,11 @@ This corresponds to an S1 excitation energy of 1.96 eV.
 
 The constraint sequence for an S2 excitation is
 
-```
+```castep_param
 #band  occ spin from_band to_band
 %block deltascf_constraints
 33    0.5000  1   33   33
-35    0.5000  1   35   35      
+35    0.5000  1   35   35
 %endblock deltascf_constraints
 ```
 

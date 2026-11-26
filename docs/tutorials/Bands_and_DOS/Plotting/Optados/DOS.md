@@ -7,7 +7,7 @@ In this tutorial, we will go through a simple example of using Optados to calcul
 Firstly, we will run the calculation and examine the Optados output file `Si.odo`. We will use the `cell` file
 
 *Si.cell*
-```
+```castep_cell
 %BLOCK LATTICE_CART
 2.73  2.73 0.00
 2.73  0.00 2.73
@@ -21,14 +21,14 @@ Si 0.25    0.25    0.25
 
 SYMMETRY_GENERATE
 
-KPOINTS_MP_GRID 10 10 10  
+KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 10 10 10
 ```
 
 together with the `param` file
 
 *Si.param*
-```
+```castep_param
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : DOS
 PDOS_CALCULATE_WEIGHTS : TRUE
@@ -69,14 +69,14 @@ Let's have a look at the file `Si.odo`
 
 Towards the top of the data output, we have a table looking like this:
 
-	```
-	+--------------- Fermi Energy Analysis ---------------------------+
-	| From Adaptive broadening                                        |
-	| Spin Component:1 occupation between 3.99964 and    4.00003 <-Oc |
-	| Spin Component:2 occupation between 3.99964 and    4.00003 <-Oc |
-	|       Fermi energy (Adaptive broadening) : 4.4479 eV     <- EfA |
-	+-----------------------------------------------------------------+
-	```
+    ```
+    +--------------- Fermi Energy Analysis ---------------------------+
+    | From Adaptive broadening                                        |
+    | Spin Component:1 occupation between 3.99964 and    4.00003 <-Oc |
+    | Spin Component:2 occupation between 3.99964 and    4.00003 <-Oc |
+    |       Fermi energy (Adaptive broadening) : 4.4479 eV     <- EfA |
+    +-----------------------------------------------------------------+
+    ```
 
 It has used the integrated DOS to work out the Fermi level, and has suggested the error in the integration by indicating the number of electrons at the Fermi level. Since we had 4 up electrons and 4 down in the input file this analysis seems satisfactory.
 
@@ -112,7 +112,7 @@ The DoS is written to `Si2.adaptive.dat`. This contains 5 columns - the 1st is t
 
 This file can be plotted by your preferred graph-plotting software. However, `optados` has made things easy and generated a  `Si2.adaptive.agr` file which is directly plottable using `xmgrace` - to get a plot all you have to run is:
 
-```
+```sh
 $ xmgrace Si2.adaptive.agr
 ```
 

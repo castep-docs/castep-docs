@@ -40,31 +40,31 @@
      situations are investigated.
 
 *   At the moment, the excitation constraints only work for
-     ``metals_method=DM`` and ``spin_treatment=scalar`` or ``none``. 
+     ``metals_method=DM`` and ``spin_treatment=scalar`` or ``none``.
     Currently, hybrid XC functionals are unsupported.
 
 ## General Use
 
 The general use of $\Delta$SCF always involves the following steps:
 
-1.   Define the base system and calculate the self consistent density and wave functions using a 
+1.   Define the base system and calculate the self consistent density and wave functions using a
 `task=single point energy`. The checkfile generated is then used as the base for the next steps.
 
-2.  Define the system you want to study and add something similar to the following to 
+2.  Define the system you want to study and add something similar to the following to
 the``<seed>.param`` file:
 
-```
+```castep_param
 reuse               : <base>.check
 calculate_deltascf  : true
 deltascf_checkpoint : <base>.check
 deltascf_mode       :  1
 ```
 
-where `<base>` is the seedname of the base calculation in step 1. 
+where `<base>` is the seedname of the base calculation in step 1.
 
 3. Decide on the type of $\Delta$SCF calculation. The allowed methods are:
 
-```
+```castep_param
 deltascf_method : SIMPLE		or	deltascf_mode : 1
 deltascf_method : DFT+U(MO)		or	deltascf_mode : 2
 deltascf_method : LINEAR EXPANSTION	or	deltascf_mode : 3
@@ -73,7 +73,7 @@ deltascf_method : LINEAR EXPANSTION	or	deltascf_mode : 3
 For each method, the constraints need to be specified as follows:
 
 SIMPLE
-```
+```castep_param
 #band  occ spin from_band to_band
 %block deltascf_constraints
 5    0.5000  1   5   5
@@ -82,7 +82,7 @@ SIMPLE
 ```
 
 DFT+U(MO)
-```
+```castep_param
 #band  occ spin U(eV) excite_band
 %block deltascf_constraints
 5    0.5000  1   +0.0   .true.
@@ -91,7 +91,7 @@ DFT+U(MO)
 ```
 
 LINEAR EXPANSION
-```
+```castep_param
 #band  occ spin
 %block deltascf_constraints
 5    0.5000  1
@@ -99,12 +99,12 @@ LINEAR EXPANSION
 %endblock deltascf_constraints
 ```
 
-The "occ" column is the constrained occupation required. In this instance, 1 electron is being 
-raised from band 5 to band 6. The occupation is defined such that 0<=occ<=1 so if non-spin polarized 
+The "occ" column is the constrained occupation required. In this instance, 1 electron is being
+raised from band 5 to band 6. The occupation is defined such that 0<=occ<=1 so if non-spin polarized
 calculation then occ=0.5 means 1 electron.
 
 
 4.  You can now run the $\Delta$SCF calculation as any other CASTEP task.
 
-5.  If you wish to, you can analyse the results using the MolPDOS post-processing tool which needs 
+5.  If you wish to, you can analyse the results using the MolPDOS post-processing tool which needs
 an additional ``<seed>.molpdos`` input file. Hence use  ``MolPDOS <seed>``

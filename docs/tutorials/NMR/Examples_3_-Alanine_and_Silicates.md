@@ -36,7 +36,7 @@ We will use the cell file
 
 and param file `alanine.param`
 
-```
+```castep_param
 fix_occupancy = true
 opt_strategy : speed
 task        = magres
@@ -46,7 +46,7 @@ xc_functional : PBE
 ```
 Note that the only difference to the [previous](Example_1_-Ethanol.md#ethanol.param) [files](Example_2_-Diamond.md#diamond.param) is the line
 
-```
+```castep_param
 magres_task = nmr
 ```
 
@@ -143,7 +143,7 @@ For quartz we will use the cell file
 
 And the param file `quartz.param`
 
-```
+```castep_param
 cut_off_energy  = 40 ry
 xc_functional : PBE
 fix_occupancy = true
@@ -184,7 +184,7 @@ For quartz:
 ```
 
 and for cristoballite
-```  
+```
 ===============================================================================
 |                Chemical Shielding and Electric Field Gradient Tensors       |
 |-----------------------------------------------------------------------------|

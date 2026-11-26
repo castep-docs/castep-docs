@@ -1,12 +1,11 @@
-
 CASTEP has a built-in library of pseudopotentials which is usually updated each release. We refer to CASTEP's build-in pseudopotentials as on-the-fly generated (or OTFG).  The default OTFG pseudopotentials are accurate ultrasoft pseudopotentials. These are used if species_pot block is not defined in the cell file - or an empty block is given
-```
+```castep_cell
 %block species_pot
 %endblock species_pot
 ```
 
 For preliminary investigations and high-throughput calculations you might want to choose the QC5 set of ultrasoftpotentials which are faster, but slightly less accurate than the default set. These are designed to give converged results at 500eV for all elements:
-```
+```castep_cell
 %block species_pot
 QC5
 %endblock species_pot
@@ -15,19 +14,19 @@ QC5
 
 For properties that require norm-conserving pseudopotentials, you can select CASTEP's latest OTFG norm-conserving set with the following in the
 in your <seed>.cell file.
-```
+```castep_cell
 %block species_pot
 NCP
 %endblock species_pot
 ```
 For backwards compatibility you can also select pseudopotentials from earlier versions on the on-the-fly database, e.g. use
-```
+```castep_cell
 %block species_pot
 C17
 %endblock species_pot
 ```
 to select the ultrasoft pseudopotentials from CASTEP version 17. You can also specify the pseudopotential on a per-element basis, e.g.
-```
+```castep_cell
 %block species_pot
 Fe  C17
  O  NCP

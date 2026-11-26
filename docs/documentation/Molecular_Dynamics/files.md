@@ -203,7 +203,7 @@ Kinetic energy on the second line with the label ``<-- E``.
 
 Formatting:
 
-```
+```fortran
 format(12x,es18.8e3)
 format(9x,3(3x,es18.8e3),'  <-- E')
 ```
@@ -221,7 +221,7 @@ is also printed with the label ``<-- P``.
 
 Formatting:
 
-```
+```fortran
 format(12x,es18.8,T73,   '  <-- T')
 format(12x,es18.8,T73,   '  <-- P')
 ```
@@ -240,7 +240,7 @@ gives the three Cartesian components of one of the cell vectors.
 
 Formatting:
 
-```
+```fortran
 format(9x,3(3x,es18.8e3),'  <-- h')
 format(9x,3(3x,es18.8e3),'  <-- h')
 format(9x,3(3x,es18.8e3),'  <-- h')
@@ -258,7 +258,7 @@ is printed with the label ``<-- hv``.
 
 Formatting:
 
-```
+```fortran
 format(9x,3(3x,es18.8e3),'  <-- hv')
 format(9x,3(3x,es18.8e3),'  <-- hv')
 format(9x,3(3x,es18.8e3),'  <-- hv')
@@ -275,7 +275,7 @@ with the label ``<-- S`` in a similar fashion.
 
 Formatting:
 
-```
+```fortran
 format(9x,3(3x,es18.8e3),'  <-- S')
 format(9x,3(3x,es18.8e3),'  <-- S')
 format(9x,3(3x,es18.8e3),'  <-- S')
@@ -303,7 +303,7 @@ label ``<-- R``.
 
 Formatting (for each atom):
 
-```
+```fortran
 format(1x,a3,1x,i4,3(3x,es18.8e3),'  <-- R')
 ```
 
@@ -322,7 +322,7 @@ Velocities are then printed in a similar fashion.
 
 Formatting (for each atom):
 
-```
+```fortran
 format(1x,a3,1x,i4,3(3x,es18.8e3),'  <-- V')
 ```
 
@@ -341,7 +341,7 @@ Si     8      2.13724448E-003      2.14235805E-003      3.79851935E-003  <-- F
 
 Formatting (for each atom):
 
-```
+```fortran
 format(1x,a3,1x,i4,3(3x,es18.8e3),'  <-- F')
 ```
 
