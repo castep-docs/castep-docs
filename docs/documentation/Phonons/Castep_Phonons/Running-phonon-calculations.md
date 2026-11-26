@@ -1,4 +1,3 @@
-
 CASTEP contains implementations of several methods for computing the
 electronic response orbitals and the dynamical matrix ([Refson, Tulip,
 and Clark 2006](Bibliography.md#ref-Refson2006)). There are implementation restrictions
@@ -37,7 +36,7 @@ table [[method-selection]](Running-phonon-calculations.md#tbl:method-selection)
 
 : **Table 1:** CASTEP phonons implementation matrix. In general DFPT is avalable for
 semilocal DFPT, but not other Hamiltonians. The combination of DFPT and
-USPs is not implemented.  
+USPs is not implemented.
 {#tbl:captable}
 
 | Target Property | Preferred method |
@@ -56,7 +55,7 @@ USPs is not implemented.  
 | Vibrational Thermodynamics | same as DOS *(section. [[thermodynamics]](Thermodynamic-properties.md#sec:thermodynamics))* |
 
 : **Table 2:** Available and recommended methods for different property
-calculations.  
+calculations.
 {#tbl:method-selection}
 
 ### A DFPT phonon calculation at the $\Gamma$-point {#sec:dfpt-gamma}
@@ -89,7 +88,7 @@ could be specified using additional lines in this block.[^5]
 [^5]: This example will use the DFPT method which is the default if
     `phonon_method` is not present.
 
-```
+```castep_cell
 %block LATTICE_ABC
    2.536000   2.536000     4.199000  ! a, b, c
   90.000000  90.000000   120.000000  ! alpha, beta, gamma
@@ -116,7 +115,7 @@ symmetry_generate            ! Find symmetry operations of crystal structure
 
 ```
 
-```
+```castep_param
 task             : PHONON    ! Choose a phonon calculation
 xc_functional    : LDA
 opt_strategy     : SPEED     ! Optimise for speed over memory saving
@@ -126,7 +125,7 @@ phonon_sum_rule  : TRUE      ! Enforce acoustic sum rule on calculated D
 ```
 
 : **Figure 1:** Annotated example cell and parameter files for BN in the Wurtzite
-structure. Note that `phonon_method` defaults to `DFPT`.    
+structure. Note that `phonon_method` defaults to `DFPT`.
 {#fig:example-gamma}
 
 #### Reading the output {#sec:output-gamma}
@@ -156,21 +155,21 @@ whether the mode is Raman active.
  +  q-pt=    1 (  0.000000  0.000000  0.000000)     1.0000000000              +
  + -------------------------------------------------------------------------- +
  +  Acoustic sum rule correction <   8.094974 cm-1 applied                    +
- +     N      Frequency irrep.    ir intensity active            raman active + 
- +                (cm-1)         ((D/A)**2/amu)                               + 
+ +     N      Frequency irrep.    ir intensity active            raman active +
+ +                (cm-1)         ((D/A)**2/amu)                               +
  +                                                                            +
- +     1      -0.049170   a          0.0000000  N                       N     + 
- +     2      -0.034768   b          0.0000000  N                       N     + 
- +     3      -0.034768   b          0.0000000  N                       N     + 
- +     4     475.116083   c          0.0000000  N                       Y     + 
- +     5     475.116083   c          0.0000000  N                       Y     + 
- +     6     952.000075   c          0.0000000  N                       Y     + 
- +     7     952.000075   c          0.0000000  N                       Y     + 
- +     8     963.032787   d          0.0000000  N                       N     + 
- +     9    1016.312039   a         28.5895083  Y                       Y     + 
- +    10    1051.124801   b         25.8079204  Y                       Y     + 
- +    11    1051.124801   b         25.8079204  Y                       Y     + 
- +    12    1123.472590   d          0.0000000  N                       N     + 
+ +     1      -0.049170   a          0.0000000  N                       N     +
+ +     2      -0.034768   b          0.0000000  N                       N     +
+ +     3      -0.034768   b          0.0000000  N                       N     +
+ +     4     475.116083   c          0.0000000  N                       Y     +
+ +     5     475.116083   c          0.0000000  N                       Y     +
+ +     6     952.000075   c          0.0000000  N                       Y     +
+ +     7     952.000075   c          0.0000000  N                       Y     +
+ +     8     963.032787   d          0.0000000  N                       N     +
+ +     9    1016.312039   a         28.5895083  Y                       Y     +
+ +    10    1051.124801   b         25.8079204  Y                       Y     +
+ +    11    1051.124801   b         25.8079204  Y                       Y     +
+ +    12    1123.472590   d          0.0000000  N                       N     +
  + .......................................................................... +
  +        Character table from group theory analysis of eigenvectors          +
  +                           Point Group =  25, C6v                           +
@@ -188,7 +187,7 @@ wurtzite BN. The columns show the mode frequencies, a letter labelling
 of the irreducible representation of the mode, the infrared absorptivity
 and Raman activity, and whether or not the mode is Raman and/or IR
 active. Not all of these are present in every calculation depending on
-the use of symmetry and input options.    
+the use of symmetry and input options.
 {#fig:example-gamma}
 
 ```
@@ -197,21 +196,21 @@ the use of symmetry and input options.  
  +  q->0 along (  0.000000  0.000000  1.000000)                               +
  + -------------------------------------------------------------------------- +
  +  Acoustic sum rule correction <   8.094974 cm-1 applied                    +
- +     N      Frequency irrep.    ir intensity active            raman active + 
- +                (cm-1)         ((D/A)**2/amu)                               + 
+ +     N      Frequency irrep.    ir intensity active            raman active +
+ +                (cm-1)         ((D/A)**2/amu)                               +
  +                                                                            +
- +     1      -0.037851   a          0.0000000  N                       N     + 
- +     2      -0.034768   b          0.0000000  N                       N     + 
- +     3      -0.034768   b          0.0000000  N                       N     + 
- +     4     475.116083   c          0.0000000  N                       Y     + 
- +     5     475.116083   c          0.0000000  N                       Y     + 
- +     6     952.000075   c          0.0000000  N                       Y     + 
- +     7     952.000075   c          0.0000000  N                       Y     + 
- +     8     963.032787   d          0.0000000  N                       N     + 
- +     9    1051.124801   b         25.8079204  Y                       Y     + 
- +    10    1051.124801   b         25.8079204  Y                       Y     + 
- +    11    1123.472590   d          0.0000000  N                       N     + 
- +    12    1262.933291   a         28.5895083  Y                       Y     + 
+ +     1      -0.037851   a          0.0000000  N                       N     +
+ +     2      -0.034768   b          0.0000000  N                       N     +
+ +     3      -0.034768   b          0.0000000  N                       N     +
+ +     4     475.116083   c          0.0000000  N                       Y     +
+ +     5     475.116083   c          0.0000000  N                       Y     +
+ +     6     952.000075   c          0.0000000  N                       Y     +
+ +     7     952.000075   c          0.0000000  N                       Y     +
+ +     8     963.032787   d          0.0000000  N                       N     +
+ +     9    1051.124801   b         25.8079204  Y                       Y     +
+ +    10    1051.124801   b         25.8079204  Y                       Y     +
+ +    11    1123.472590   d          0.0000000  N                       N     +
+ +    12    1262.933291   a         28.5895083  Y                       Y     +
  + .......................................................................... +
  +        Character table from group theory analysis of eigenvectors          +
  +                           Point Group =  25, C6v                           +
@@ -237,7 +236,7 @@ the non-analytic contribution which generates the LO/TO splitting in one
 or more directions (See Gonze and Lee ([Gonze and Lee
 1997](Bibliography.md#ref-GonzeL97))). (The group theory analysis for LO modes is less
 useful than might be wanted and is likely to be the subject of future
-developments.)     
+developments.)
 {#fig:example-gamma-out}
 
 As with other calculations the amount of information written to the
@@ -388,7 +387,7 @@ which to perform DFPT calculations. This may be specified as a
 irreducible Brillouin Zone, but is is almost always more straightforward
 to use the alternative keywords
 
-> `phonon_kpoint_mp_grid` : *p q r*  
+> `phonon_kpoint_mp_grid` : *p q r*
 > `phonon_kpoint_mp_offset` : `INCLUDE_GAMMA`
 
 to specify the grid parameters and offset[^9]. The grid parameters *p*,
@@ -466,7 +465,7 @@ usual DFPT calculation.
 The target set of wavevectors for the interpolation is set up using
 additional keywords or blocks in the *.cell* file. Either
 
-> `phonon_fine_kpoint_mp_grid` *p q r*  
+> `phonon_fine_kpoint_mp_grid` *p q r*
 > `phonon_fine_kpoint_mp_offset` *o$_1$ o$_2$ o$_3$*
 
 or
@@ -482,7 +481,7 @@ for computing a phonon density of states.
 If a set of dispersion curves along high symmetry directions is
 required, an empty cell keyword block
 
-> `%block PHONON_FINE_KPOINT_PATH`  
+> `%block PHONON_FINE_KPOINT_PATH`
 > `%endblock PHONON_FINE_KPOINT_PATH`
 
 will internally generate a list of ${\mathbf{q}}$-points sampling a
@@ -490,7 +489,7 @@ default path through the Brillouin-Zone according to the symmetry of the
 calculation. Alternatively a list of ${\mathbf{q}}$-points explicitly
 specifying the vertices of the path may be input as
 
-> ```
+> ```castep_cell
 > %block PHONON_FINE_KPOINT_PATH
 > 0.0 0.0 0.0
 > 0.5 0.5 0.0
@@ -512,7 +511,7 @@ path is set by an additional keyword
 As a final alternative, a simple list of points can be directly input to
 model any sampling you choose using
 
-> ```
+> ```castep_cell
 > %block PHONON_FINE_KPOINT_LIST
 > 0.0 0.0 0.0
 > 0.1 0.2 0.3
@@ -643,12 +642,12 @@ ${\mathbf{q}}=0$ with a frequency of zero. This leads to the so-called
 *acoustic sum rule* (or ASR) ([Ackland, Warren, and Clark
 1997](Bibliography.md#ref-AcklandWC97); [Pick, Cohen, and Martin 1970](#ref-Pick1970))
 which has mathematical expressions for the force constant and
-$\Gamma$-point dynamical matrices     
+$\Gamma$-point dynamical matrices
 {#eq:asr}
 
 $$\begin{aligned}
  \sum_{\kappa,a} {\Phi^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(a)}&= 0\\
- \sum_{\kappa} {D^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(\mathbf{q}=0)}&= 0 
+ \sum_{\kappa} {D^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(\mathbf{q}=0)}&= 0
 \end{aligned}$$
 
 In plane-wave calculations the translational invariance is broken as
@@ -729,7 +728,7 @@ by a post-processing calculation as well as turned on.
 
 The definition of the phonon density of states requires an integration
 of the calculated frequencies $\omega_{i{\mathbf{q}}}$ over the
-Brillouin-Zone     
+Brillouin-Zone
 {#eq:dos}
 
 $$g(\omega) = \int_{\text{BZ}}d^3{\mathbf{q}}\sum_i \delta(\omega -
@@ -738,7 +737,7 @@ $$g(\omega) = \int_{\text{BZ}}d^3{\mathbf{q}}\sum_i \delta(\omega -
 A simple computational approximation would be to compute
 $\omega_{i{\mathbf{q}}}$ on a regular, discrete grid of ${\mathbf{q}}$,
 replace the integral with a sum over the grid and convolute the result
-with some peak shape function $h(\omega)$ such as a Gaussian     
+with some peak shape function $h(\omega)$ such as a Gaussian
 {#eq:broadendos}
 
 $$g(\omega) \approx \int d\omega^{\prime} h(\omega - \omega^{\prime}) \sum_{{\mathbf{q}}} \sum_i \delta(\omega^{\prime} -
@@ -775,7 +774,7 @@ script is able to read and present `.phonon_dos` files just as with
 The range and resolution may be modified using additional parameters,
 for example
 
-> `phonon_dos_spacing : 0.01 THz`  
+> `phonon_dos_spacing : 0.01 THz`
 > `phonon_dos_limit : 10.0 THz`
 
 Example output for the phonons of diamond is shown in
@@ -786,7 +785,7 @@ figure [[c2-pdos]](Running-phonon-calculations.md#fig:c2-pdos).
 : **Figure 3** Phonon DOS for Diamond, with an $18^3$ fine grid comparing Gaussian
 broadened (red) vs adaptively broadened (black) methods. Artefactual
 wiggles are clearly visible in the Gaussian-broadened case, and the
-height of the sharp peaks is not well reproduced.     
+height of the sharp peaks is not well reproduced.
 {#fig:c2-pdos}
 
 ### Finite Displacement {#sec:fd}
@@ -820,7 +819,7 @@ CASTEP proceeds by shifting each atom by a small amount, then performing
 a SCF calculation to evaluate the forces on the perturbed configuration.
 Both positive and negative displacements are performed in each direction
 so that the corresponding force constants can be evaluated using the
-accurate “central difference” method of numerical differentiation.     
+accurate “central difference” method of numerical differentiation.
 {#eq:finite-diff}
 
 $$\frac{d^{2} E_{0}}{d u_{\kappa,\alpha}
@@ -874,7 +873,7 @@ a different DFT code.
 This may be accomplished by specifying the name of an external file
 containing the values (in this case `BORN.DAT`) in the `.param` file
 
-> ```
+> ```castep_param
 > %block DEVEL_CODE
 > PHONON:READ_EXTERNAL_BORN=BORN.DAT:ENDPHONON
 > %endblock DEVEL_CODE
@@ -885,7 +884,7 @@ The file should be formatted as for the Phonopy code
 file of this format may be written at the end of a DFT, NCP E-field
 response calculation by
 
-> ```
+> ```castep_param
 > %block DEVEL_CODE
 > PHONON:WRITE_EXTERNAL_BORN=BORN.DAT:ENDPHONON
 > %endblock DEVEL_CODE
@@ -937,7 +936,7 @@ of the product.
 A non-diagonal supercell calculation is selected by setting the
 parameters
 
-> `phonon_method : FINITEDISPLACEMENT`  
+> `phonon_method : FINITEDISPLACEMENT`
 > `phonon_fine_method : INTERPOLATE`,
 
 the cell keywords
@@ -1013,7 +1012,7 @@ section [[ndsc]](Running-phonon-calculations.md#sec:ndsc). That method gives an
 calculation of the force constant matrix, usually with a smaller
 computational cost, because of its superior scaling with cell size.
 
-```
+```castep_cell
 %block LATTICE_CART
           0     2.02475      2.02475
     2.02475           0      2.02475
@@ -1055,10 +1054,10 @@ calculation computes a set of dispersion curves along high-symmetry
 directions. Note that this calculation is not fully converged with
 supercell size - there is a noticeable change in frequency on some of
 the branches on increasing the supercell matrix entries from 3 to 4.
-    
+
 {#fig:al-sc-cell}
 
-```
+```castep_param
 task                            : PHONON
 phonon_fine_method              : SUPERCELL
 phonon_calc_lo_to_splitting     : FALSE
@@ -1082,7 +1081,7 @@ strictly necessary to turn off the LO/TO splitting calculation - CASTEP
 will warn that this is not possible and turn it off anyway. The explicit
 request for a non-spin polarized calculation is necessary for fcc Al,
 because CASTEP chooses spin-polarized by default due to the odd number
-of electrons.     
+of electrons.
 {#fig:-sc-paramal}
 
 In a CASTEP calculation the supercell must be chosen and explicitly
@@ -1090,7 +1089,7 @@ specified in the input files. It is defined by a matrix, which
 multiplies the ordinary simulation cell vectors and is specified as a
 $3\times3$ matrix in the `.cell` file of the form
 
-> ```
+> ```castep_cell
 > %block PHONON_SUPERCELL_MATRIX
 >  4  0  0
 >  0  4  0
@@ -1319,4 +1318,3 @@ exactly half the supercell Wigner Seitz cell. Consequently convergence
 is not smooth in this parameter and while 0.95 might be underconverged,
 1.0 could be very well converged. (This is also the reason for its
 superior convergence performance over the spherical cutoff scheme.)
-

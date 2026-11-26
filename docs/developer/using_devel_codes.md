@@ -48,7 +48,7 @@ the feature is complete.
 
 The structure of a sub-block in the `.param` file (here `XYZ`) is as follows:
 
-```
+```castep_param
 %block devel_code
 XYZ: param=3 :ENDXYZ
 %endblock devel_code
@@ -99,7 +99,7 @@ parsed using the following functions:
 
 For a `devel_code` block that looks like:
 
-```
+```castep_param
 %block devel_code
 mod_param=17
 XYZ: param=3 :ENDXYZ

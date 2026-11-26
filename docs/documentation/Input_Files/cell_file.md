@@ -15,9 +15,9 @@ $C$ are characters.
 
 !!! Note
 
-     Numerical values may be specified either as integer or floating-point numerals including in scientific notation, or by simple 
+     Numerical values may be specified either as integer or floating-point numerals including in scientific notation, or by simple
      arithmetic expressions, involving the operators `+`,`-`,`*`,`/`, the functions `cos`, `sin`, `tan` (in degrees) or `sqrt`, for example
-	 `3.333e-1` `-1/3`,`0.5*sqrt(2.0)`,`cos(30)`.
+     `3.333e-1` `-1/3`,`0.5*sqrt(2.0)`,`cos(30)`.
 
 ### Cell Lattice Vectors ###
 
@@ -28,7 +28,7 @@ and `LATTICE_ABC` may occur in a cell definition file.
 
 The definitions of these keywords are as follows:
 
-```
+```castep_cell
 %BLOCK LATTICE_CART
 [units]
 a_x  a_y  a_z
@@ -43,7 +43,7 @@ $b_y$ is the y-component of the second lattice vector, $\mathbf{b}$, etc.
 `[units]` specifies the units in which the lattice vectors are
 defined. If not present, the default is Å.
 
-```
+```castep_cell
 %BLOCK LATTICE_ABC
 [units]
 a b c
@@ -51,26 +51,26 @@ alpha beta gamma
 %ENDBLOCK LATTICE_ABC
 ```
 
-Here `a` is the value of the lattice constant $\vert\mathbf{a}\vert$, `gamma` is the value of the cell angle $\gamma$ (in degrees) etc. Because the absolute orientation is undetermined if the lattice is specified in this manner, CASTEP chooses a suitable orientation which aligns the symmetry axes of the Bravais lattice with the Cartesian X, Y and Z directions. 
+Here `a` is the value of the lattice constant $\vert\mathbf{a}\vert$, `gamma` is the value of the cell angle $\gamma$ (in degrees) etc. Because the absolute orientation is undetermined if the lattice is specified in this manner, CASTEP chooses a suitable orientation which aligns the symmetry axes of the Bravais lattice with the Cartesian X, Y and Z directions.
 
 ??? "detailed description of orientation choice"
-    Cubic, orthorhombic and tetragonal conventional cells have $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$ aligned along X, Y and Z.  
-    Body or face-centred cubic, orthorhombic and tetragonal primitive cells have $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$ of the *conventional* cell aligned along X, Y and Z.  
-    Trigonal(H) and hexagonal cells have their unique axis $\mathbf{a}$, $\mathbf{b}$ or $\mathbf{c}$ aligned along X, Y or Z respectively.  
-    Trigonal(R) cells have the unique axis aligned along Z.  
-    Monoclinic:  $\mathbf{a}$ lies along the X-axis, $\mathbf{b}$ lies along the Y-axis or in the xy plane if $\gamma$ 
-	is the unique angle and $\mathbf{c}$ lies along the Z-axis if $\gamma$ is the unique angle.  
-    Triclinic: $\mathbf{a}$ lies along the x-axis, $\mathbf{b}$ lies in the xy plane and $\mathbf{c}$ forms a 
-	right-handed set with $\mathbf{a}$ and $\mathbf{b}$.  
+    Cubic, orthorhombic and tetragonal conventional cells have $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$ aligned along X, Y and Z.
+    Body or face-centred cubic, orthorhombic and tetragonal primitive cells have $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$ of the *conventional* cell aligned along X, Y and Z.
+    Trigonal(H) and hexagonal cells have their unique axis $\mathbf{a}$, $\mathbf{b}$ or $\mathbf{c}$ aligned along X, Y or Z respectively.
+    Trigonal(R) cells have the unique axis aligned along Z.
+    Monoclinic:  $\mathbf{a}$ lies along the X-axis, $\mathbf{b}$ lies along the Y-axis or in the xy plane if $\gamma$
+    is the unique angle and $\mathbf{c}$ lies along the Z-axis if $\gamma$ is the unique angle.
+    Triclinic: $\mathbf{a}$ lies along the x-axis, $\mathbf{b}$ lies in the xy plane and $\mathbf{c}$ forms a
+    right-handed set with $\mathbf{a}$ and $\mathbf{b}$.
 
 !!! Warning
     The exact values of lattice parameters used in the calculation may differ marginally from the input values specified in `%BLOCK LATTICE_ABC`
-	
+
     `%BLOCK LATTICE_ABC` is implemented by choosing a standard set of lattice vector directions, scaled by the input parameters.
-	This has the side effect of removing any slight deviation of the cell parameters from the exact Bravais lattice, 
-	in effect performing a "snap-to-symmetry" of the lattice. This is usually advantageous!
-	
-	This does not adjust the ionic positions unless keyword `SNAP_TO_SYMMETRY	is also set to TRUE.
+    This has the side effect of removing any slight deviation of the cell parameters from the exact Bravais lattice,
+    in effect performing a "snap-to-symmetry" of the lattice. This is usually advantageous!
+
+    This does not adjust the ionic positions unless keyword `SNAP_TO_SYMMETRY	is also set to TRUE.
 
 `[units]` specifies the units in which the lattice vector magnitudes are defined. If not present, the default is Å. Angles should be specified in degrees.
 
@@ -81,7 +81,7 @@ to the lattice vectors of the unit cell, or in absolute coordinates.
 Only one of `POSITIONS_FRAC` and `POSITIONS_ABS` may occur in a cell definition
 file.
 
-```
+```castep_cell
 %BLOCK POSITIONS_FRAC
 CCC_1  R_{1i}  R_{1j}  R_{1k}  [SPIN=s_1]
 CCC_2  R_{2i}  R_{2j}  R_{2k}  [SPIN=s_2]
@@ -102,7 +102,7 @@ spin polarisation ( $N^\uparrow-N^\downarrow$) of the
 atom for initialisation of the spin density; for non-collinear spin calculations, the vector spin is specified as three numbers. If this flag is not
 present a non-spin polarised state will be assumed.
 
-```
+```castep_cell
 %BLOCK POSITIONS_ABS
 [units]
 CCC_1  R_{1i}  R_{1j}  R_{1k}  [SPIN=s_1]
@@ -122,13 +122,13 @@ The optional flag `SPIN` is defined above under `POSITIONS_FRAC`.
 ### Pre-defined structures ###
 Alternatively CASTEP encodes a small number of pre-defined crystal structures using keyword
 
-````
+```castep_cell
 UNIT_CELL name
-````
+```
 where *name* may be, for example `Si2`, `Si64`, `GaAs`, `Quartz`, `Graphene`, `MoS2`, `SrTiO3`.  To obtain the full list of possibilities, interrogate CASTEP's build-in help facility
-````
+```sh
 CASTEP --help UNIT_CELL
-````
+```
 This keyword is mutually exclusive to using `%BLOCK LATTICE_CART/ABC` and `%BLOCK POSITIONS_FRAC/ABS`.
 
 ### Brillouin Zone Sampling (k-points) ###
@@ -152,7 +152,7 @@ The `KPOINT_LIST`, `KPOINT_MP_GRID` and `KPOINT_MP_SPACING`
 keywords are mutually exclusive. `KPOINT_MP_OFFSET` may be specified
 in combination with either `KPOINT_MP_GRID` or `KPOINT_MP_SPACING`.
 
-```
+```castep_cell
 %BLOCK KPOINT_LIST
 \begin{array}{cccc}
 R_{1i}  R_{1j}  R_{1k}  R_{1w}
@@ -166,7 +166,7 @@ k-point relative to the reciprocal space lattice vectors. The final entry
 on a line is the weight of the k-point relative to the others specified.
 The sum of the weights must be equal to 1.
 
-```
+```castep_cell
 KPOINT_MP_GRID I_i I_j I_k
 ```
 
@@ -176,7 +176,7 @@ grid will be $I_i\times I_j\times I_k$; any symmetries generated (or
 supplied) will be used to reduce this number, when computing the
 irreducible wedge.
 
-```
+```castep_cell
 KPOINT_MP_SPACING R [units]
 ```
 
@@ -187,7 +187,7 @@ that the maximum separation of k-points is less than this.
 `[units]` specifies the units in which the k-point spacing is
 defined, although *note that the actual units used are $2\pi$ units*. If not present, the default is `ang-1`, such that the spacing is in $2\pi Å^{-1}$.
 
-```
+```castep_cell
 KPOINT_MP_OFFSET R_i R_j R_k
 ```
 
@@ -203,7 +203,7 @@ mutually exclusive keywords apply.
 For a non-self-consistent spectral calculation, the k-points may
 be defined along a path through reciprocal space or a list of k-points.
 
-```
+```castep_cell
 %BLOCK SPECTRAL_KPOINT_PATH
 R_{1i} R_{1j} R_{1k}
 R_{2i} R_{2j} R_{2k}
@@ -221,30 +221,30 @@ immediately following. The path will be open *unless the first and
 last point in the list are identical*.
 
 If the block is empty
-```
+```castep_cell
 %BLOCK SPECTRAL_KPOINT_PATH
 %ENDBLOCK SPECTRAL_KPOINT_PATH
 ```
 CASTEP will choose a suitable default path according to the Bravais lattice.
 
 ??? "Spacegroup-specific Brillouin-zone vertex names"
-	The vertex points of the k-space path may be also specified
-	using the special-point label names corresponding of the particular spagegroup.
-	For example, a suitable path for an fcc cell would be
+    The vertex points of the k-space path may be also specified
+    using the special-point label names corresponding of the particular spagegroup.
+    For example, a suitable path for an fcc cell would be
 
-	````
-	%BLOCK SPECTRAL_KPOINT_PATH
-	G
-	X
-	U
-	Break
-	K
-	G
-	L
-	W
-	X
-	%ENDBLOCK SPECTRAL_KPOINT_PATH
-	````
+    ```castep_cell
+    %BLOCK SPECTRAL_KPOINT_PATH
+    G
+    X
+    U
+    Break
+    K
+    G
+    L
+    W
+    X
+    %ENDBLOCK SPECTRAL_KPOINT_PATH
+    ```
 
 The maximum spacing of the points sampled along each line segment is defined by the keyword
 `SPECTRAL_KPOINT_PATH_SPACING` (default value $0.1 \times 2\pi$Å$^{-1}$). If necessary,
@@ -263,14 +263,14 @@ For a phonon spectrum calculation, the k-points may be defined along a
 path through reciprocal space or a list of k-points, in the same
 manner as for a spectral calculation. The corresponding keywords
 are identical to those for the band structure specification with the
-initial `SPECTRAL_` replaced by either `PHONON_` or `PHONON_FINE_`, 
+initial `SPECTRAL_` replaced by either `PHONON_` or `PHONON_FINE_`,
 e.g. `PHONON_KPOINT_LIST`, `PHONON_KPOINT_MP_GRID`, `PHONON_FINE_KPOINT_PATH`,
-`PHONON_FINE_KPOINT_PATH_SPACING`. 
+`PHONON_FINE_KPOINT_PATH_SPACING`.
 !!! Note
     The first form `PHONON_KPOINT...` defines the points at which a direct
-	calculation of the dynamical matrix is performed, and the second, `PHONON_FINE_KPOINT_` 
-	specifies the set onto which Fourier interpolation is used to generate the dynamical matrices.
-	See ([[Phonons]](../../Phonons/Castep_Phonons/Running-phonon-calculations#sec:ddos)) for more details.
+    calculation of the dynamical matrix is performed, and the second, `PHONON_FINE_KPOINT_`
+    specifies the set onto which Fourier interpolation is used to generate the dynamical matrices.
+    See ([[Phonons]](../../Phonons/Castep_Phonons/Running-phonon-calculations#sec:ddos)) for more details.
 
 The same restrictions regarding mutually exclusive keywords apply.
 
@@ -296,7 +296,7 @@ synonyms for SPECTRAL_KPOINT_ and similarly those beginning.
 If no symmetry is specified in the cell definition file,
 the default is for no symmetry to be applied.
 
-```
+```castep_cell
 SYMMETRY_GENERATE
 ```
 
@@ -304,7 +304,7 @@ If this keyword is present in the cell, the highest symmetry group
 that applies to the structure of the cell will be found and the
 corresponding symmetry operations generated.
 
-```
+```castep_cell
 SYMMETRY_TOL R [units]
 ```
 
@@ -321,7 +321,7 @@ Alternatively, the symmetry operations may be provided directly in a
 series of symmetry operations under which the unit cell is
 invariant. Each operation is represented as a $3\times 3$ array.
 
-```
+```castep_cell
 %BLOCK SYMMETRY_OPS
 R_{11}   R_{21}   R_{31}
 R_{12}   R_{22}   R_{32}
@@ -368,7 +368,7 @@ keywords `FIX_ALL_IONS` or `FIX_ALL_CELL` to be `TRUE` respectively.
 If no ionic or cell constraints are specified in the cell definition file,
 the default is to fix the centre of mass.
 
-```
+```castep_cell
 %BLOCK IONIC_CONSTRAINTS
 I_1  CCC_{1s}   I_{1s}   I_{n1}   R_{1i}   R_{1j}   R_{1k}
 I_2  CCC_{2s}   I_{2s}   I_{n2}   R_{2i}   R_{2j}   R_{2k}
@@ -389,7 +389,7 @@ sum. All coefficients in the sum not explicitly specified will be zero.
 On reading this data, the matrix of ionic constraints will be
 orthogonalised.
 
-```
+```castep_cell
 %BLOCK CELL_CONSTRAINTS
 I_a      I_b      I_c
 I_alpha  I_beta   I_gamma
@@ -414,7 +414,7 @@ The mass of a species, the pseudopotential which represents the ion
 and the size of the LCAO basis set used for population anslsyis may be
 specified in the cell definition file.
 
-```
+```castep_cell
 %BLOCK SPECIES_MASS
 [units]
 CCC_1   I_1   R_1
@@ -436,7 +436,7 @@ alphabetical symbol specified for a species is not a standard element
 symbol in the periodic table, the mass of the species must be
 specified.
 
-```
+```castep_cell
 %BLOCK SPECIES_POT
 CCC_1   I_1   <filename>
 CCC_2   I_2   <filename>
@@ -464,7 +464,7 @@ for the species must be specified.
 The charge on the ion for each species will be derived from
 the pseudopotential corresponding to that ion.
 
-```
+```castep_cell
 %BLOCK SPECIES_LCAO_STATES
 CCC_1   I_1   I_{B1}
 CCC_2   I_2   I_{B2}
@@ -490,7 +490,7 @@ is used.
 An external pressure may be applied to the unit cell by specifying
 a pressure tensor.
 
-```
+```castep_cell
 %BLOCK EXTERNAL_PRESSURE
 [units]
 R_{xx}   R_{xy}  R_{xz}
@@ -512,7 +512,7 @@ The default is to apply no external pressure.
 The initial ionic velocities may be specified in Cartesian coordinates
 in a cell definition file.
 
-```
+```castep_cell
 %BLOCK IONIC_VELOCITIES
 [units]
 CCC_1 V_{1x}  V_{1y}  V_{1z}

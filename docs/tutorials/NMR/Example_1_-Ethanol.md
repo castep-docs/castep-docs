@@ -5,7 +5,7 @@
 
 
 
-The discovery that one could actually see chemical shifts in hydrogen spectra was made in 1951 at Stanford University by Packard, Arnold, Dharmatti (shown in Fig1.). In this tutorial, we will try to reproduce this result.  
+The discovery that one could actually see chemical shifts in hydrogen spectra was made in 1951 at Stanford University by Packard, Arnold, Dharmatti (shown in Fig1.). In this tutorial, we will try to reproduce this result.
 
 
 ## Getting outputs
@@ -13,7 +13,7 @@ The discovery that one could actually see chemical shifts in hydrogen spectra wa
 This tutorial will go through the calculations for ethanol, using these 2 files:
 
 *ethanol.cell*
-```
+```castep_cell
 
 %BLOCK LATTICE_ABC
 6 6 6
@@ -38,7 +38,7 @@ O 5.746254 5.812705 5.6871
 ```
 
 *ethanol.param* <a name ="ethanol.param"></a>
-```
+```castep_param
 xcfunctional    = PBE
 fix_occupancy   = true
 opt_strategy    = speed

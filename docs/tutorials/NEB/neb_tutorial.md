@@ -3,10 +3,10 @@
 
 ## Overview and background
 
-The nudged elastic band (NEB) approach is a widely-used method for finding a minimum energy pathway between two configurations of atoms. 
-You can use the method to estimate the barrier for the system to transition between the two structures. 
+The nudged elastic band (NEB) approach is a widely-used method for finding a minimum energy pathway between two configurations of atoms.
+You can use the method to estimate the barrier for the system to transition between the two structures.
 
-The technique starts with two fixed end points which are fully relaxed (local) minima: the initial and final configurations. It then connects these end points with a series of "images" via fictitious springs that "pull" the structures taut over one or more intermediate transition states. 
+The technique starts with two fixed end points which are fully relaxed (local) minima: the initial and final configurations. It then connects these end points with a series of "images" via fictitious springs that "pull" the structures taut over one or more intermediate transition states.
 
 In this tutorial, we will use the well-known example of an ammonia molecule's [pyramidal inversion](https://en.wikipedia.org/wiki/Pyramidal_inversion#Energy_barrier)
 
@@ -37,7 +37,7 @@ These are the local minima structures you want to find the barrier between. They
 
 The initial state is specified in the same way as a normal .cell file, e.g.:
 
-```
+```castep_cell
 %BLOCK positions_frac
    H              0.500011764912384       0.634846485697942       0.443086003907125
    H              0.616593728396204       0.432553816946042       0.442828605918639
@@ -49,7 +49,7 @@ The initial state is specified in the same way as a normal .cell file, e.g.:
 
 The final state is specified using a similar block in the same .cell file but with `_product` appended to the name of the block, e.g.:
 
-```
+```castep_cell
 %BLOCK positions_frac_product
    H              0.500154169007758       0.634858887961251       0.556834437330747
    H              0.616661280589956       0.432482046338754       0.556941161085851
@@ -63,7 +63,7 @@ The final state is specified using a similar block in the same .cell file but wi
 
 CASTEP requires you to provide **one** intermediate structure between the initial and final configurations in order to get the NEB on the right track. The intermediate configuration is added using, e.g.:
 
-```
+```castep_cell
 %BLOCK POSITIONS_ABS_INTERMEDIATE
 ang
 N  3.500000  3.500000  3.500000
@@ -84,11 +84,11 @@ Intermediate structures can also be chosen in such a way as to bias your results
 
 ### How many images do I need?
 
-It depends... It's usually preferable to start with a small number of images and increase the number if you need to. Starting small can quickly give you a rough sense of the energy landscape and that will determine the actual number of images needed. 
+It depends... It's usually preferable to start with a small number of images and increase the number if you need to. Starting small can quickly give you a rough sense of the energy landscape and that will determine the actual number of images needed.
 
 In addition, if you start with too many images then you might never get close to the converged TS because the optimisation takes too long. If you instead start with a small number and get a reasonable TS structure, you can then use that as your initial intermediate structure in a restarted calculation with more images.
 
-Using many (i.e. > 15) will result in slow convergence, but may lead to a more accurate minimum energy pathway for complex barriers. If you do find a particularly complex pathway, however, you might be better off splitting the work up into more than one NEB calculation, each with fewer images. Just remember to always fully relax the end points (even if the end point is a meta-stable local minimum)!  
+Using many (i.e. > 15) will result in slow convergence, but may lead to a more accurate minimum energy pathway for complex barriers. If you do find a particularly complex pathway, however, you might be better off splitting the work up into more than one NEB calculation, each with fewer images. Just remember to always fully relax the end points (even if the end point is a meta-stable local minimum)!
 
 Using too few (i.e. < 5) might fail to find the minimum energy pathway if the energy landscape is complex.
 
@@ -103,7 +103,7 @@ Some questions to help answer how many images you need:
 - How complex is the landscape between the initial and final state? For example, if you expect more than one maximum between the end points, you probably need more images than for the single peak example we look at here.
 
 
-!!! note 
+!!! note
       The number of images is the number of structures *between* the end points. The total number of structures in the path (i.e. including the end points) is therefore the number of images + 2.
 
 
@@ -113,7 +113,7 @@ We can often dramatically improve the efficiency of the transition state search 
 
 In the ammonia case, we can constrain the N atom position without affecting the physical set up by adding the block:
 
-``` 
+```castep_cell
 %BLOCK IONIC_CONSTRAINTS
  fix: N
 %ENDBLOCK IONIC_CONSTRAINTS
@@ -128,13 +128,13 @@ You should then see something like:
   --- Initialising NEB constraints ---
      Fixed            3  degrees of freedom
 ```
- 
+
 in the `.castep` output file.
 
 
 ### Do I need climbing NEB?
 
-The climbing NEB method modifies the force on the highest-energy image such that it tries to climb *up* the barrier. 
+The climbing NEB method modifies the force on the highest-energy image such that it tries to climb *up* the barrier.
 This is very useful to get an accurate estimate of the transition state configuration and barrier since you ensure that one image sits exactly at the saddle point of the minimum energy pathway. However, care must be taken when exploring more complex pathways (i.e. with multiple maxima) since it might become ambiguous as to which image should be the one to "climb".
 
 In our example the path is quite straightforward and will not make a large difference whether we use the climbing or regular NEB method. We can set:
@@ -165,11 +165,11 @@ Because the NEB calculation essentially involves *N* independent CASTEP calculat
 
 `NUM_FARMS: 7`
 
-in the .param file. 
+in the .param file.
 
-A good rule of thumb is to aim for `NUM_FARMS` = number of NEB images. That way each 'farm' is responsible for one NEB image. Since each farm will effectively run a series of single-point calculations on each NEB image they are responsible for, the compute resources of that farm should be appropriately sized for such calculations. Too small and you could get an out-of-memory error, too large and you might end up over-parallelising, leading to reduced overall performance. i.e. you should aim to run on a total of `NUM_FARMS` times as many cores as you would use for a single-point calculation on one of the structures.  
+A good rule of thumb is to aim for `NUM_FARMS` = number of NEB images. That way each 'farm' is responsible for one NEB image. Since each farm will effectively run a series of single-point calculations on each NEB image they are responsible for, the compute resources of that farm should be appropriately sized for such calculations. Too small and you could get an out-of-memory error, too large and you might end up over-parallelising, leading to reduced overall performance. i.e. you should aim to run on a total of `NUM_FARMS` times as many cores as you would use for a single-point calculation on one of the structures.
 
-This also assumes that your available compute resources can be neatly split into `NUM_FARMS`. The easy case is when each farm can run on a single node; i.e. `NUM_FARMS` = number of NEB images = number of nodes. Note that the total number of cores available must be divisible by `NUM_FARMS`. 
+This also assumes that your available compute resources can be neatly split into `NUM_FARMS`. The easy case is when each farm can run on a single node; i.e. `NUM_FARMS` = number of NEB images = number of nodes. Note that the total number of cores available must be divisible by `NUM_FARMS`.
 
 If you choose `NUM_FARMS` < number of images, each of the images will run sequentially on one farm as soon as that farm becomes available. If the number of images is not a multiple of `NUM_FARMS`, some farms will end up being responsible for more images than others, leading poor overall efficiency.
 
@@ -177,7 +177,7 @@ If you choose `NUM_FARMS` > number of images, then some farms will be left with 
 
 Setting `NUM_FARMS = 1` is equivalent to not setting `NUM_FARMS`.
 
-You will notice that if you enable task farming, the seedname.castep output file will look relatively empty, as most output is split into the different task farm .castep files. The first indexed one contains the most important information (for example, the "Max NEB force") and will be called e.g. `seedname_farm001.castep`. 
+You will notice that if you enable task farming, the seedname.castep output file will look relatively empty, as most output is split into the different task farm .castep files. The first indexed one contains the most important information (for example, the "Max NEB force") and will be called e.g. `seedname_farm001.castep`.
 
 
 ### Is the calculation converging?
@@ -189,20 +189,20 @@ Common convergence issues include:
 - Too many (or too few) images. Too many images can lead to slow convergence, too few can lead to the calculation failing to find the minimum energy pathway.
 - Initial or final state (endpoints) not being fully relaxed structures
 
-### Restarting / Continuing 
+### Restarting / Continuing
 
-Sometimes the calculation will run out of time/number of iterations before the NEB calculation is finished. 
+Sometimes the calculation will run out of time/number of iterations before the NEB calculation is finished.
 You will probably see a "Failed to converge" message in the .castep output in that case; always read through your output files!
 
 If you re-run the calculation without changing anything, it will simply start from the beginning again -- probably not what you want!
 
 In order restart the NEB from the last checkpointed state, you need to **explicitly** set the name of the .check file you want to continue from in your .param file. In our example that would be:
 
-```
+```castep_param
 continuation: nh3.check
 ```
 
-In the .castep output you would then see: `Coordinates of NEB images loaded from checkpoint file`. 
+In the .castep output you would then see: `Coordinates of NEB images loaded from checkpoint file`.
 
 !!! warning
       Unlike other CASTEP tasks, setting `continuation: default` does not seem to work for continuing/restarting NEB calculations! You must explicitly set the name of checkpoint file.
@@ -212,8 +212,8 @@ In the .castep output you would then see: `Coordinates of NEB images loaded from
 
 ## Analysis
 
-Once you have a converged NEB, the provided Python utility `readTS` can be used to parse and analyse the NEB. 
-To add the readTS module to your PYTHONPATH, you can find a setup.py script in the `castep/Utilities/readts` directory of your CASTEP source directory. Running `python setup.py` should install the module to your path. You can also manually add it by inserting the following line into your ~/.bashrc or equivalent and restarting the terminal: 
+Once you have a converged NEB, the provided Python utility `readTS` can be used to parse and analyse the NEB.
+To add the readTS module to your PYTHONPATH, you can find a setup.py script in the `castep/Utilities/readts` directory of your CASTEP source directory. Running `python setup.py` should install the module to your path. You can also manually add it by inserting the following line into your ~/.bashrc or equivalent and restarting the terminal:
 
 ``` bash
 export PYTHONPATH="/path/to/castep/Utilities/readts:$PYTHONPATH"
@@ -225,18 +225,18 @@ You can then extract the NEB path using something like this python code:
 
 ```python
 ## get this by adding castep/Utilities/readts to your PYTHONPATH
-from readts import TSFile 
+from readts import TSFile
 from ase.neb import NEBTools
 
 
 def get_images(tsfile):
     '''
-   Function to extract the 
+   Function to extract the
    final NEB images from a tsfile object
 
-   Args: 
+   Args:
         tsfile (TSFile): tsfile object
-   
+
    Returns:
         images (list): list of ASE atoms objects
    '''
@@ -272,16 +272,16 @@ if __name__ == '__main__':
     images = get_images(tsfile)
     plot_band(images)
 
-    # we can use ASE to write out the structure 
+    # we can use ASE to write out the structure
     # in whatever format we want
     print('Image\t\t Energy (eV)')
     for i,atoms in enumerate(images):
         print(f'{i:03d}\t {atoms.get_potential_energy():16.5f} eV')
         ## this format includes the energy of the image
-        atoms.write(f'image-{i:03d}.xyz') 
+        atoms.write(f'image-{i:03d}.xyz')
 
 
-    ## We can also use the ASE GUI to 
+    ## We can also use the ASE GUI to
     ## view the images and analyse the NEB path.
     ## Select Tools -> NEB Plot
     # from ase.visualize import view
@@ -296,19 +296,19 @@ python analysis.py nh3
 
 we will get an .xyz file for each structure in the optimised NEB path and the energy of each image. We will also get the barrier estimate and a NEB plot showing the barrier.
 
-The ASE GUI can also be used to plot the NEB band (uncomment the last two lines in the above script and Select Tools → NEB Plot from the GUI). 
+The ASE GUI can also be used to plot the NEB band (uncomment the last two lines in the above script and Select Tools → NEB Plot from the GUI).
 
 
 The ASE-generated plot looks like this:
 
 ![NEB Plot](../../img/neb.png)
 
-The green lines show the tangents at those points; these can be useful indicators of convergence. 
+The green lines show the tangents at those points; these can be useful indicators of convergence.
 
 The barrier we obtained is about 0.23 eV, which compares well with the value of 0.25 eV (24.2 kJ/mol) [from Wikipedia](https://en.wikipedia.org/wiki/Pyramidal_inversion#Energy_barrier).
 
 We might also notice the slight difference in energy between the two end-points of the path (about 1 meV). These should be identical, so any difference can be used as a very rough guide for the amount of numerical noise in the geometry optimisations.
-If equivalent structures (the end-points in this example) were found to have very different energies, you would need to go back and tighten up your convergence criteria or force/energy tolerances in the initial geometry optimisations and re-run the NEB calculation with these tightened parameters. 
+If equivalent structures (the end-points in this example) were found to have very different energies, you would need to go back and tighten up your convergence criteria or force/energy tolerances in the initial geometry optimisations and re-run the NEB calculation with these tightened parameters.
 
 Using our favourite visualisation software (here we used the [ASE POV-Ray interface](https://wiki.fysik.dtu.dk/ase/ase/io/io.html#examples)), we can then look at how the structure evolves along the minimum energy pathway found via the NEB.
 
@@ -322,7 +322,7 @@ Using our favourite visualisation software (here we used the [ASE POV-Ray interf
 
 
 
-<!-- 
+<!--
 ### Zero-point energy corrections
 
 TODO: add instructions for harmonic ZPE corrections. -->

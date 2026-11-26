@@ -1,7 +1,7 @@
 Here we use CASTEP to calculate the bandstructure of two typical metals. The cell and param files are very similar to the semiconductor examples - the one difference is that we use a finer sampling of the Brillouin Zone with the keyword `kpoint_mp_grid`. A finer sampling is needed to correctly represent the change in occupancy at the Fermi energy.
 ## Aluminium
 
-```
+```castep_cell
 ! Al.cell
 %BLOCK LATTICE_ABC
 2.86 2.86 2.86
@@ -27,7 +27,7 @@ symmetry_generate
 ```
 
 
-```
+```castep_param
 ! Al.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
@@ -43,7 +43,7 @@ opt_strategy    speed         ! Choose algorithms for best speed
 
 ## Copper
 
-```
+```castep_cell
 ! Cu.cell
 %BLOCK LATTICE_ABC
 2.55 2.55 2.55
@@ -68,7 +68,7 @@ kpoint_mp_grid 12 12 12
 symmetry_generate
 ```
 
-```
+```castep_param
 ! Cu.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !

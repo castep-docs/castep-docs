@@ -24,7 +24,7 @@ The only additional relevant $\Delta$SCF keywords is `deltascf_smearing`
 Example `.param` file:
 
 
-```
+```castep_cell
 reuse               : <base>.check
 calculate_deltascf  : true
 deltascf_checkpoint : <base>.check

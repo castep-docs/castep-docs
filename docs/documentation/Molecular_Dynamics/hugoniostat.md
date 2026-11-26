@@ -96,7 +96,7 @@ $$
 
 ##### `.param`
 
-```
+```castep_param
 task             : molecular dynamics
 
 md_ensemble      : HUG
@@ -146,7 +146,7 @@ pressure to conserve system size independence, Ravelo *et al*.[@Ravelo2004] sugg
 
 ##### `.param`
 
-```
+```castep_param
 task             : molecular dynamics
 
 md_ensemble      : HUG
@@ -163,7 +163,7 @@ md_num_iter      : 1000
 
 ##### `.cell`
 
-```
+```castep_cell
 ...
 
 %block external_pressure
@@ -214,7 +214,7 @@ where $\beta{}_{H}$ and $\beta{}_{p}$ are user-defined damping coefficients for 
 
 #### Examples
 
-```
+```castep_param
 %block devel_code
 md: BETA_T=0.1 BETA_H=0.1 :endmd # Lightly Damped
 md: BETA_T=0.3 BETA_H=0.3 :endmd # Damped
@@ -248,7 +248,7 @@ Quenching only takes place during the equilibration phase as determined by [`md_
 
 #### Examples
 
-```
+```castep_param
 %block devel_code
 md: QUENCH_T=T :endmd # Quench Thermostat
 md: QUENCH_P=T :endmd # Quench Barostat
@@ -296,7 +296,7 @@ steps rather than every step (though the compression at each compression step wi
 
 #### Examples
 
-```
+```castep_param
 md_eqm_t: 600fs
 
 %block devel_code

@@ -1,4 +1,3 @@
-
 ### Molecular vibrational calculations {#sec:molecules}
 
 CASTEP is primarily a solid state code with periodic boundary
@@ -89,7 +88,7 @@ recomputing dynamical matrices.
 The simplest case is complete substitution. The new `.cell` file should
 contain a block specifying the new mass, *e.g.*
 
-> ```
+> ```castep_cell
 >  %block SPECIES_MASS
 >    H     2.014101778
 >  %endblock SPECIES_MASS
@@ -105,7 +104,7 @@ containing the species in question. It is therefore necessary to use
 CASTEP’s sub-species labelling capabilities. For example the original
 cell containing a methane molecule might contain
 
-```
+```castep_cell
 %block SPECIES_POT
 C C_00.recpot
 H H_04.recpot
@@ -122,7 +121,7 @@ H   -0.4658296  -0.8068405   -0.36333333
 
 The continuation cell for input to `phonons` should contain
 
-```
+```castep_cell
 %block SPECIES_POT
 C C_00.recpot
 H H_04.recpot
@@ -139,8 +138,8 @@ H   -0.4658296  -0.8068405   -0.36333333
 
 %block SPECIES_MASS
    H:D     2.014101778
-   H       1.007825032 
-   C       12.0107 
+   H       1.007825032
+   C       12.0107
 %endblock SPECIES_MASS
 ```
 
@@ -187,12 +186,12 @@ effort may be achieved.
 Frozen atoms are specified a CASTEP `.cell` file using the same syntax
 as applies to geometry operations. The block
 
-```
+```castep_cell
 %block IONIC_CONSTRAINTS
 1 Si  1   1   1   1
 2 Si  2   1   1   1
 3 C   4   1   1   1
-%endblock IONIC_CONSTRAINTS 
+%endblock IONIC_CONSTRAINTS
 ```
 
 constrains silicon atoms numbered 1-2 and C atom number 4 to be fixed.
@@ -213,4 +212,3 @@ sum rule (section [[asr]](Running-phonon-calculations.md#sec:asr)) as constrain
 breaks the translational invariance of the Hamiltonian. Acoustic sum
 rule correction is therefore disabled automatically if constraints are
 present.
-

@@ -33,7 +33,7 @@ where B is termed the Debye-Waller factor.
 
 Currently, to enable CASTEP (versions 21 and beyond) to calculate X-ray SFs, the desired SFs must be placed between ``CALCULATE_XRD_SF:`` and ``:ENDCALCULATE_XRD_SF`` within the ``devel_code`` block of the ``seed.param`` file. For example, the $(111)$ and $(200)$ and $(220)$ SFs can be calculated by appending the following code to the end of the ``seed.param`` file:
 
-```
+```castep_param
 %block devel_code
 CALCULATE_XRD_SF:
 1 1 1
@@ -45,7 +45,7 @@ CALCULATE_XRD_SF:
 
 Alternatively, if no structure factors are listed, as in:
 
-```
+```castep_param
 %block devel_code
 CALCULATE_XRD_SF:
 :ENDCALCULATE_XRD_SF
@@ -55,7 +55,7 @@ then the SFs on the entire FFT grid will be written out.
 
 Thermal effects can also be incoporated by placing the desired atomic Debye-Waller (DW) factors between ``DW_FACTOR:`` and ``:ENDDW_FACTOR`` within the ``devel_code`` block of the ``seed.param`` file. For isotropic DW factors, the value of the DW factor can be written next to the corresponding atomic symbol as below:
 
-```
+```castep_param
 %block devel_code
 DW_FACTOR:
 Mg 0.305
@@ -72,7 +72,7 @@ CALCULATE_XRD_SF:
 
 Alternatively, the entire anisotropic displacement tensor of each atomic species may be specified as follows:
 
-```
+```castep_param
 %block devel_code
 DW_FACTOR:
 Mg
@@ -98,7 +98,7 @@ CALCULATE_XRD_SF:
 ## Output Files
 The resulting structure factors that have been calculated will be outputted into a file named ``seed.xrd_sf``. For the following inputs:
 
-```
+```castep_param
 ! MgO.param
 xc_functional : PBE
 
@@ -116,7 +116,7 @@ CALCULATE_XRD_SF:
 %endblock devel_code
 ```
 
-```
+```castep_cell
 ! MgO.cell
 %BLOCK LATTICE_CART
 ang

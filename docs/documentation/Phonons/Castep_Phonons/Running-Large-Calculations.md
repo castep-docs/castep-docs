@@ -1,4 +1,3 @@
-
 Phonon calculations even on small crystalline systems typically require
 many times the CPU resources of a ground state calculation. DFPT
 calculations of phonon dispersion compute dynamical matrices at a number
@@ -115,7 +114,7 @@ From CASTEP version 24.1 band parallelism is implemented for FD
 calculations, but not yet DFPT. This may be enabled using a “devel-code”
 string in the `.param` file[^24]
 
-> ```
+> ```castep_param
 > %block DEVEL_CODE
 > PARALLEL:NBANDS=8:ENDPARALLEL
 > %endblock DEVEL_CODE
@@ -194,4 +193,3 @@ always written. As with the intermediate checkpoint files this contains
 a (now complete) record of the dynamical matrices or force constant
 matrix resulting from phonon calculation. This may be analysed in a
 post-processing phase using the `phonons` utility.
-

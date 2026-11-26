@@ -1,11 +1,10 @@
-
 By default castep will calculate the Mulliken Population analysis at the end of every calculation (the keyword `popn_calculate` is set to `true` by default).
 
 ## Silicon
 
 Here is a cell file. You can use the icon in the top right of the box to copy and paste the text. Save it in a file `silicon.cell`
 
-```
+```castep_cell
 %block lattice_abc
 3.8 3.8 3.8
 60 60 60
@@ -31,7 +30,7 @@ kpoint_mp_grid 4 4 4
 
 Here is a param file. You can use the icon in the top right of the box to copy and paste the text. Save it in a file `silicon.param`
 
-```
+```castep_param
 xc_functional : LDA
 cutoff_energy : 500 eV
 spin_polarised : false
@@ -115,7 +114,7 @@ Next we will examine a few diatomic molecules - HF, HCl and HBr.
 
 Here is the `HF.cell` file
 
-```
+```castep_cell
 %block lattice_abc
 5 5 5
 90 90 90

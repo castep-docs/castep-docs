@@ -7,7 +7,7 @@ The file itself is a free-format keyword-driven text file, consisting of keyword
 ## Lattice ##
 
 There are two main ways to set the crystal lattice in the cell file. The `lattice_abc` block specifies the lattice constants in terms of the lengths of the lattice vectors ($\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$) and angles ($\alpha$, $\beta$ and $\gamma$):
-```
+```castep_cell
 %block lattice_abc
 a b c
 alpha beta gamma
@@ -16,7 +16,7 @@ alpha beta gamma
 This doesn't specify how the cell is to be oriented in the Cartesian coordinate system, so CASTEP will choose an orientation which maximally aligns the symmetry directions of the Bravais lattice with the Cartesian XYZ frame.
 
 Alternatively, you can specify the lattice vectors $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$ directly in terms of their Cartesian components, using the lattice_cart block. Note that these are specified as *row* vectors:
-```
+```castep_cell
 %block lattice_cart
 [unit]
 a_x  a_y  a_z
@@ -30,7 +30,7 @@ The first line is optional, and specifies a length unit; the default is `ang`, m
 ## Atomic positions ##
 
 The positions of the atoms within a cell may be specified in either fractional coordinates (i.e. the coordinates in the basis of the lattice vectors) or Cartesian coordinates:
-```
+```castep_cell
 %block positions_frac
 symbol  u v w
 %endblock positions_frac
@@ -45,7 +45,7 @@ To add a second atom, simply add a second line with the new information, and sim
 
 An alternative is to specify the atomic coordinates with reference to their absolute Cartesian coordinates:
 
-```
+```castep_cell
 %block positions_abs
 [unit]
 symbol  x y z
@@ -56,7 +56,7 @@ where `[unit]` is an optional length unit (default: `ang`, meaning Angstroms), `
 ## Comments ##
 
 It can be convenient to add comments to a cell file, not only to explain why certain choices were made, but also as a way of disabling input lines without removing them from the file. Both `!` and `#` are accepted as comment characters, and anything to the right of these will be ignored by CASTEP. For example, the cell section
-```
+```castep_cell
 # Place a single atom at the origin
 %block positions_abs
 bohr

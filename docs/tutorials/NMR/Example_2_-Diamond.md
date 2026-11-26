@@ -6,7 +6,7 @@ We will use the `cell` and `param` files below for our calculations:
 
 *diamond.cell*
 
-```
+```castep_cell
 %block LATTICE_CART
 0 1.7 1.7
 1.7  0 1.7
@@ -25,7 +25,7 @@ symmetry_generate
 ```
 *diamond.param* <a name="diamond.param"></a>
 
-```
+```castep_param
 comment         = nmr testing
 iprint          = 1
 xcfunctional = LDA
@@ -73,19 +73,19 @@ The computational cost scales linearly with the number of kpoints (i.e. the numb
 
 For diamond we will look at 3 different k-points (0,0,0), (½,½,½) (¼,¼,¼). First, we delete the line
 
-```
+```castep_cell
 kpoints_mp_grid x x x
 ```
 
 Then we specify the kpoint we are examining in the `diamond.cell` file using
-```
+```castep_cell
 %BLOCK KPOINTS_LIST
 0 0 0 1.0
 %ENDBLOCK KPOINTS_LIST
 ```
 to check (0,0,0) - in this case it resulted in an isometric chemical shielding of about 5798.71ppm (though, as in previous and future cases, the exact values you get may be slightly different) Similarly, we can change that block to
 
-```
+```castep_cell
 %BLOCK KPOINTS_LIST
 0.5 0.5 0.5 1.0
 %ENDBLOCK KPOINTS_LIST
@@ -93,7 +93,7 @@ to check (0,0,0) - in this case it resulted in an isometric chemical shielding o
 
 to check (½,½,½), which led to 303.21ppm. Lastly,we replace that block with
 
-```
+```castep_cell
 %BLOCK KPOINTS_LIST
 0.25 0.25 0.25 1
 %ENDBLOCK KPOINTS_LIST

@@ -1,6 +1,6 @@
 [ELF](../../documentation/Groundstate/ELF.md) (Electron Localization Function) measures how "local" electrons are - the higher the value, the more likely electrons are to make opposite-spin pairs and generally be more "fixed" in place. We will use it to examine ionic and covalent bonding, and then use it to examine lone pairs (and hydrogen bonding) in HF, H~2~O and NH~3~ molecules.
 
-A lot of the steps on examining the data are the same as in [Plotting Charge Density](charge_density.md) - if you prefer, you may use that (and its accompanying [video tutorial](https://www.youtube.com/watch?v=_c2Hk4jxmm4&feature=youtu.be)), though the cells and planes used are slightly different. For visualising the results, this tutorial will use [Vesta](https://jp-minerals.org/vesta/en/), but feel free to use another software if you prefer. 
+A lot of the steps on examining the data are the same as in [Plotting Charge Density](charge_density.md) - if you prefer, you may use that (and its accompanying [video tutorial](https://www.youtube.com/watch?v=_c2Hk4jxmm4&feature=youtu.be)), though the cells and planes used are slightly different. For visualising the results, this tutorial will use [Vesta](https://jp-minerals.org/vesta/en/), but feel free to use another software if you prefer.
 
 ## NaCl
 
@@ -9,7 +9,7 @@ We will start by looking at how electrons in an NaCl crystal behave - to illustr
 For both calculations we will use the `cell` file
 
 *NaCl.cell*
-```
+```castep_cell
 %block lattice_cart
 5.693 0.000 0.000
 0.000 5.693 0.000
@@ -30,7 +30,7 @@ Cl 0.0 0.0 0.5
 and the `param` file
 
 *NaCl.param*
-```
+```castep_param
 xc_functional : LDA
 cutoff_energy : 500 eV
 spin_polarised : false
@@ -90,7 +90,7 @@ We will now use ELF to demonstrate covalent bonding in diamond-silicon. We will 
 
 *Si.cell*
 
-```
+```castep_cell
 
 %block lattice_abc
 3.8 3.8 3.8
@@ -133,7 +133,7 @@ Now that we have a good understand of what ELF actually does, let's use it for a
 For HF we will use the `cell` file:
 
 *HF.cell*
-```
+```castep_cell
 %block lattice_abc
 6 6 6
 90 90 90
@@ -158,7 +158,7 @@ This gives us an interesting picture: the small regions of high electron localit
 The procedure for H~2~O and NH~3~ is almost identical. We use exactly the same `param` file as above, and perform the same procedures following the `elf_fmt` output. The `cell` files we use are:
 
 *H2O.cell*
-```
+```castep_cell
 %block lattice_abc
 5 5 5
 90 90 90
@@ -174,7 +174,7 @@ H 2.5 1.95 1.72
 for water and
 
 *NH3.cell*
-```
+```castep_cell
 %BLOCK LATTICE_ABC
 8 8 8
 90 90 90

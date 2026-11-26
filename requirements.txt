@@ -1,3 +1,4 @@
 mkdocs~=1.2
 mkdocs-material~=8.2.1
 mkdocs-bibtex~=2.14.1
+castep_pygments @ git+https://github.com/oerc0122/castep_pygments.git

@@ -1,4 +1,3 @@
-
 ## Electronic excitations of NO on Ni(001)
 
 ATTENTION: These calculations are done using standard on-the-fly
@@ -10,23 +9,23 @@ molecule
 
 In the following, the required input files are:
 
-no-on-ni001.param, no-on-ni001.cell, 
+no-on-ni001.param, no-on-ni001.cell,
 gasphase.cell, gasphase.param, gasphase.check
 
 *no-on-ni001.param*
 
-```
+```castep_param
     #reuse: default
     calculate_deltascf  : true
     deltascf_method     : linear expansion
     deltascf_checkpoint : gasphase.check
-    
+
 #band  occ spin
 %block deltascf_constraints
 5    0.0000  1
 6    1.0000  2
 %endblock deltascf_constraints
- 
+
     task: SinglePoint
 
     spin_polarized : True
@@ -48,7 +47,7 @@ gasphase.cell, gasphase.param, gasphase.check
 
 *no-on-ni001.cell*
 
-```
+```castep_cell
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -94,7 +93,7 @@ gasphase.cell, gasphase.param, gasphase.check
 
 *gasphase.cell*
 
-```
+```castep_cell
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -113,7 +112,7 @@ gasphase.cell, gasphase.param, gasphase.check
 
 *gasphase.param*
 
-```
+```castep_param
     task: SinglePoint
 
     spin_polarized : True
@@ -148,12 +147,12 @@ The workflow is as follows:
 We calculate a charge transfer from the molecule to the surface by
 removing an electron from the HOMO in the majority spin channel
 
-```
+```castep_param
 #band  occ spin
 %block deltascf_constraints
 5    0.0000  1
 %endblock deltascf_constraints
- 
+
 ```
 
 ------------------------------------------------------------------------
@@ -182,7 +181,7 @@ with the following constraint sequence in \<seed\>.deltascf. This
 excites 1 electron from the HOMO in the majority spin channel to the
 LUMO in the minority spin channel.
 
-```
+```castep_param
 #band  occ spin
 %block deltascf_constraints
 5     0.0000  1

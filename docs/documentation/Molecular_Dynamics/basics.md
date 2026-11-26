@@ -1,14 +1,14 @@
 Fundamental to MD calculations is the calculation time-step. An appropriate value
 for the simulation should be specified in the parameters file in the following way.
 
-```
+```castep_param
 md_delta_t  = 2 fs
 ```
 
 Any valid unit of time can be used when specifying the time-step. The number of
 time-steps to perform is specified with e.g.
 
-```
+```castep_param
 md_num_iter = 500
 ```
 NB This is the number of steps to be calculated in this run. It is NOT the accumulated total number of steps in a series of
@@ -33,7 +33,7 @@ in atomic units.
 
 This ensemble is selected using the command
 
-```
+```castep_param
 md_ensemble  =  NVE
 ```
 
@@ -45,7 +45,7 @@ These ionic velocities are defined in one of three ways.
 
 
 * By explicit user definition of ionic velocities in the cell file, e.g.
-```
+```castep_cell
 %BLOCK IONIC_VELOCITIES
 auv
 H  xxxxx yyyyy zzzzz
@@ -56,7 +56,7 @@ O  xxxxx yyyyy zzzzz
 using any valid unit of velocity (auv is atomic unit of velocity), etc.
 
 * By definition of an initial temperature in the parameters file, e.g.
-```
+```castep_param
 md_temperature  =  293 K
 ```
 Note that this can be specified using any valid unit
@@ -78,7 +78,7 @@ block are specified, the `md_temperature` keyword will be ignored.
 By default, pressure is not calculated during an NVE run. To override this
 use the command
 
-```
+```castep_param
 calculate_stress = true
 ```
 
@@ -88,7 +88,7 @@ in the parameters file.
 
 This ensemble is selected with
 
-```
+```castep_param
 md_ensemble  =  NVT
 ```
 
@@ -102,7 +102,7 @@ Temperature control can be implemented by one of several methods, all
 of which have been shown to correctly sample the canonical ensemble. The
 first of these is the deterministic Nose-Hoover chain method of Tuckerman et al [@Martyna1992]  and is selected with
 
-```
+```castep_param
 md_thermostat  =  nose-hoover
 ```
 
@@ -110,7 +110,7 @@ in the parameters file. In the NVT case, a single Nose-Hoover chain
 is coupled to all particle degrees of freedom. The length of the
 chain can also be specified, e.g.
 
-```
+```castep_param
 md_nhc_length  =  5
 ```
 
@@ -136,7 +136,7 @@ ergodic and hence should be avoided.
 
 The second method of controlling temperature is through the stochastic Langevin thermostat.
 
-```
+```castep_param
 md_thermostat = langevin
 ```
 
@@ -146,7 +146,7 @@ exhibit no long term drift from the equilibrium value.
 
 Finally, the temperature may be controled via the Hoover-Langevin thermostat.
 
-```
+```castep_param
 md_thermostat = hoover-langevin
 ```
 which is the fusion of a deterministic Nose-Hoover thermostat acting directly on the physical system, with a Langevin
@@ -156,7 +156,7 @@ With each method, a suitable relaxation time for the thermostatic
 process should be specified. This can use any supported unit of
 time, e.g
 
-```
+```castep_param
 md_ion_t = 2.4 ps
 ```
 
@@ -173,7 +173,7 @@ cell varies to regulate pressure. No thermostat is applied and hence the enthalp
 
 This ensemble is specified with the following:
 
-```
+```castep_param
 md_ensemble = NPH
 ```
 
@@ -182,7 +182,7 @@ any valid unit of pressure. The required symmetry of the external pressure
 tensor implies that only the upper triangular components need be
 specified, e.g.
 
-```
+```castep_cell
      %block external_pressure
      GPa
      0.5   0.0  0.0
@@ -203,7 +203,7 @@ of the cell to isotropic expansions and contractions. This
 follows the method of Andersen[@Andersen1980] and Hoover[@Hoover1985;@Hoover1986] as corrected
 by Martyna et al.[@Martyna1994]. This is selected using:
 
-```
+```castep_param
 md_barostat = andersen-hoover
 ```
 
@@ -228,7 +228,7 @@ of Martyna, Tobias and Klien[@Martyna1994].
 The following line in the parameters file selects this barostat.
 
 
-```
+```castep_param
 md_barostat = parrinello-rahman
 ```
 
@@ -246,7 +246,7 @@ H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 For both barostats, a relaxation time for the cell motions should be specified
 with an appropriate unit of time, for example:
 
-```
+```castep_param
 md_cell_t = 20 ps
 ```
 
@@ -265,7 +265,7 @@ changes.
 The user therefore has two options. The first is to fix the size
 of the basis set.
 
-```
+```castep_param
 fixed_npw = true
 ```
 
@@ -276,7 +276,7 @@ with respect to the number of plane waves.
 
 The second option is to allow the basis set to change at each time-step.
 
-```
+```castep_param
 fixed_npw = false
 ```
 which is the default value. This keeps the cut-off energy approximately constant by adding
@@ -294,7 +294,7 @@ and is recalculated at each step.
 
 The NPT ensemble is specified with the command:
 
-```
+```castep_param
 md_ensemble = NPT
 ```
 

@@ -9,7 +9,7 @@ In this tutorial, we will look at the results of such a calculation on cubic bor
 We will use the `cell` file
 
 *cbn.cell*
-```
+```castep_cell
 %block lattice_abc
 2.5 2.5 2.5
 60 60 60
@@ -30,7 +30,7 @@ spectral_kpoint_mp_grid 12 12 12
 with the `param` file
 
 *cbn.param*
-```
+```castep_param
 task: spectral
 spectral_task: coreloss
 xc_functional: LDA
@@ -61,9 +61,9 @@ would simulate the results of an electron (or X-ray) beam going through a single
 Running Optados should generate 2 files of interest: `cbn_B1K1_core_edge.dat` and `cbn_N1K1_core_edge.dat` - these are the results of the core-loss calculations. We will focus on the first `dat` file - let's look at the boron part specifically. The file starts off like
 
 ```
--15.720790912312673        0.0000000000000000     
--15.710790160394351        0.0000000000000000     
--15.700789408476030        0.0000000000000000     
+-15.720790912312673        0.0000000000000000
+-15.710790160394351        0.0000000000000000
+-15.700789408476030        0.0000000000000000
 ```
 
 The 1st column is the energy and the 2nd is the (smeared) core-loss for that energy. Let's try plotting the dat file with xmgrace - the graph should look like
@@ -124,7 +124,7 @@ This tells us what kind of pseudopotential is used for the boron. To specify tha
 
 Go into `cbn.cell`, and add the lines
 
-```
+```castep_cell
 %block species_pot
 B 2|1.2|12|14|16|20:21(qc=8){1s1.00}
 %endblock species_pot
@@ -142,31 +142,31 @@ Also add the line
 to the `cbn.param` file - this must be done to maintain charge neutrality.  Next, re-run Castep. Let's have a quick look at the pseudopotential report of boron in `cbn.castep`
 
 ```
-============================================================                
-| Pseudopotential Report - Date of generation 29-07-2024   |                
-------------------------------------------------------------                
-| Element: B Ionic charge:  4.00 Level of theory: LDA      |                
-| Atomic Solver: Koelling-Harmon                           |                
-|                                                          |                
-|               Reference Electronic Structure             |                
-|         Orbital         Occupation         Energy        |                
-|            2s              2.000           -0.865        |                
-|            2p              1.000           -0.654        |                
-|                                                          |                
-|                 Pseudopotential Definition               |                
-|        Beta     l      e      Rc     scheme   norm       |                
-|          1      0   -0.865   1.199     qc      0         |                
-|          2      0    0.250   1.199     qc      0         |                
-|          3      1   -0.654   1.199     qc      0         |                
-|          4      1    0.250   1.199     qc      0         |                
-|         loc     2    0.000   1.199     pn      0         |                
-|                                                          |                
-| Augmentation charge Rinner = 0.838                       |                
-| Partial core correction Rc = 0.838                       |                
-------------------------------------------------------------                
-| "2|1.2|12|14|16|20:21(qc=8){1s1.00}"                     |                
-------------------------------------------------------------                
-|      Author: Chris J. Pickard, Cambridge University      |                
+============================================================
+| Pseudopotential Report - Date of generation 29-07-2024   |
+------------------------------------------------------------
+| Element: B Ionic charge:  4.00 Level of theory: LDA      |
+| Atomic Solver: Koelling-Harmon                           |
+|                                                          |
+|               Reference Electronic Structure             |
+|         Orbital         Occupation         Energy        |
+|            2s              2.000           -0.865        |
+|            2p              1.000           -0.654        |
+|                                                          |
+|                 Pseudopotential Definition               |
+|        Beta     l      e      Rc     scheme   norm       |
+|          1      0   -0.865   1.199     qc      0         |
+|          2      0    0.250   1.199     qc      0         |
+|          3      1   -0.654   1.199     qc      0         |
+|          4      1    0.250   1.199     qc      0         |
+|         loc     2    0.000   1.199     pn      0         |
+|                                                          |
+| Augmentation charge Rinner = 0.838                       |
+| Partial core correction Rc = 0.838                       |
+------------------------------------------------------------
+| "2|1.2|12|14|16|20:21(qc=8){1s1.00}"                     |
+------------------------------------------------------------
+|      Author: Chris J. Pickard, Cambridge University      |
 ============================================================
 ```
 
@@ -198,7 +198,7 @@ To create the 2x2x2 supercell, the transformation matrix is rather simple: make 
 Now that the supercell has been generated, we must save it and turn it into a cell file. Click `File -> Export Data` and save it as  `cbn.cif` file (saving it as a `cell` file is not an option). We can use `cif2cell cbn.cif` to get information on how to make the new cell. In the end, we change `cbn.cell` to:
 
 *cbn.cell*
-```
+```castep_cell
 %block lattice_abc
 5 5 5
 60 60 60

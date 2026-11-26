@@ -4,7 +4,7 @@ In this tutorial we will walk through plotting a bandstructure and density of st
 
 Here is a cell file. You can use the icon in the top right of the box to copy and paste the text. Save it in a file `si-bands.cell`
 
-```
+```castep_cell
 %block lattice_abc
 3.8 3.8 3.8
 60 60 60
@@ -40,7 +40,7 @@ kpoint_mp_grid 4 4 4
 
 Here is a param file. You can use the icon in the top right of the box to copy and paste the text. Save it in a file `si-bands.param`
 
-```
+```castep_param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
@@ -50,7 +50,7 @@ opt_strategy    speed         ! Choose algorithms for best speed
 
 We can then run castep and use the tool `dispersion.pl` to plot a bandstructure with Xmgrace. To see all of the functionality run 'dispersion.pl -h'
 
-```
+```sh
 castep si-bands
 dispersion.pl -sym fcc -xg si-bands.bands
 ```
@@ -61,7 +61,7 @@ You should get a plot
 
 Here is a cell file. It is the same as a bandstructure cell file except we have replaced the path through the Brillioun zone with a regular grid of k-points. You can use the icon in the top right of the box to copy and paste the text. Save it in a file `si-dos.cell`
 
-```
+```castep_cell
 %block lattice_abc
 3.8 3.8 3.8
 60 60 60
@@ -90,7 +90,7 @@ spectral_kpoint_mp_grid 17 17 17
 
 Here is a param file. You can use the icon in the top right of the box to copy and paste the text. Save it in a file `si-dos.param`
 
-```
+```castep_param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   dos           !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
@@ -100,7 +100,7 @@ opt_strategy    speed         ! Choose algorithms for best speed
 
 We can then run castep and use the tool `dos.pl` to plot a bandstructure with Xmgrace. To see all of the functionality run 'dos.pl -h'
 
-```
+```sh
 castep si-dos
 dos.pl -xg si-dos.bands -w 0.3
 ```

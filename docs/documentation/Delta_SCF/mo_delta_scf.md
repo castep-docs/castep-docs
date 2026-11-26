@@ -20,7 +20,7 @@ The only additional relevant $\Delta$SCF keywords is `deltascf_dftu_checkpoint`
 Example `.param` file:
 
 
-```
+```castep_param
 reuse               : <base>.check
 calculate_deltascf  : true
 deltascf_checkpoint : <base>.check

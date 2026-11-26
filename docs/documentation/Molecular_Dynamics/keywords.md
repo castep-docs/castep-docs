@@ -1,6 +1,5 @@
-
 To perform a molecular dynamics calculation set the task parameter
-```
+```castep_param
 task : md
 ```
 
