@@ -1,0 +1,46 @@
+spellchecker: hunspell
+
+matrix:
+  - name: markdown
+    hunspell:
+      d: en_GB
+    pipeline:
+      - pyspelling.filters.context:
+          context_visible_first: true
+          delimiters:
+            # Figcaption
+            - open: "</?figcaption"
+              close: ">"
+            # YAML Metadata
+            - open: "(?s)^---$"
+              close: "^---$"
+            # HTML Comments
+            - open: "<!--"
+              close: "-->"
+            # References in TOOLS
+            - open: '\('''''
+              close: '''''\)'
+            # Ignore bib ref
+            - open: '\[@'
+              close: '\]'
+            # Ignore inline ref
+            - open: '\{#'
+              close: '\}'
+            # Ignore links
+            - open: '\]\('
+              close: '\)'
+            # Ignore multiline content between fences
+            - open: '(?s)^(?P<open> *>? *`{3,}).*$'
+              close: '^(?P=open)$'
+            # Ignore multiline content between $$
+            - open: '(?s)^(?P<open> *>? *\$\$).*$'
+              close: '^(?P=open)$'
+            # Ignore text between inline code/math
+            - open: '(?P<open>(?:`|\$)+)'
+              close: '(?P=open)'
+    dictionary:
+      wordlists:
+      - utils/wordslist.txt
+      output: utils/castep.dic
+    sources:
+        - docs/**/*.md|!docs/**/*[kK]eyword*.md|!**/Bibliography.md|!docs/documentation/Output_Files/output_files.md
