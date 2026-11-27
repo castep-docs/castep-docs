@@ -1,4 +1,4 @@
-# Coreloss
+# Core-loss
 
 ## Calculation of core-loss spectra for cBN
 
@@ -6,10 +6,9 @@ Core-loss calculations effectively calculate the probability of an electron bein
 
 In this tutorial, we will look at the results of such a calculation on cubic boron nitride (cBN), looking at the boron K-edge. In the end, we will compare it to the spectrum in the [EELS Database](https://eelsdb.eu/spectra/cubic-boron-nitride).
 
-We will use the `cell` file
+We will use the `.cell` file
 
-*cbn.cell*
-```castep_cell
+```castep_cell {title="cbn.cell"}
 %block lattice_abc
 2.5 2.5 2.5
 60 60 60
@@ -25,12 +24,9 @@ spectral_kpoint_mp_grid 12 12 12
 
 ```
 
+with the `.param` file
 
-
-with the `param` file
-
-*cbn.param*
-```castep_param
+```castep_param {title="cbn.param"}
 task: spectral
 spectral_task: coreloss
 xc_functional: LDA
@@ -39,10 +35,9 @@ opt_strategy: speed
 
 Note that a larger number of spectral k-point than standard one is usually required, and, to test if it is converged, you'd have to look at the whole spectrum (rather than examining a single value/result as in some other convergence tests). It is also important that you do not have `SYMMETRY_GENERATE` on for coreloss calculations.
 
-After running Castep, run Optados with the Optados input file
+After running Castep, run OptaDOS with the OptaDOS input file
 
-*cbn.odi*
-```
+``` {title="cbn.odi"}
 TASK               : core
 DOS_SPACING       : 0.01
 BROADENING         : adaptive # Default
@@ -58,7 +53,7 @@ The line `TASK : core` is what determines that a core-loss calculation will be p
 
 would simulate the results of an electron (or X-ray) beam going through a single crystal in the [1 1 1] direction. In this tutorial, we will be looking at the polycrystalline case, where it effectively uses the average of all directions.
 
-Running Optados should generate 2 files of interest: `cbn_B1K1_core_edge.dat` and `cbn_N1K1_core_edge.dat` - these are the results of the core-loss calculations. We will focus on the first `dat` file - let's look at the boron part specifically. The file starts off like
+Running OptaDOS should generate 2 files of interest: `cbn_B1K1_core_edge.dat` and `cbn_N1K1_core_edge.dat` - these are the results of the core-loss calculations. We will focus on the first `dat` file - let's look at the boron part specifically. The file starts off like
 
 ```
 -15.720790912312673        0.0000000000000000
@@ -66,11 +61,11 @@ Running Optados should generate 2 files of interest: `cbn_B1K1_core_edge.dat` an
 -15.700789408476030        0.0000000000000000
 ```
 
-The 1st column is the energy and the 2nd is the (smeared) core-loss for that energy. Let's try plotting the dat file with xmgrace - the graph should look like
+The 1st column is the energy and the 2nd is the (smeared) core-loss for that energy. Let's try plotting the dat file with XMGrace - the graph should look like
 
 ![Result of above steps](basic_result.png){width="50%"}
 
-Let's now add some experimental broadening to the results, in order to more accurately simulate experiment. You can do so by re-running Optados (no need to re-run Castep) with `CORE_LAI_BROADENING` set to true and the lines
+Let's now add some experimental broadening to the results, in order to more accurately simulate experiment. You can do so by re-running OptaDOS (no need to re-run Castep) with `CORE_LAI_BROADENING` set to true and the lines
 
 ```
 LAI_GAUSSIAN_WIDTH : 1.8
@@ -91,10 +86,9 @@ Re-running it now yields 3 columns in the `dat` file - it now starts like
 
 The 1st and 2nd columns are the same, and the 3rd column is the lifetime and instrumentation (LAI) broadened core-loss results.
 
-To plot this with xmgrace, it is easiest to run `xmgrace -batch plot.bat` on the batch file
+To plot this with XMGrace, it is easiest to run `xmgrace -batch plot.bat` on the batch file
 
-*plot.bat*
-```
+``` {title="plot.bat"}
 READ BLOCK "cbn_B1K1_core_edge.dat"
 
 BLOCK XY "1:2"
@@ -114,7 +108,7 @@ This gives the graph below
 
 The above was effectively calculating the probability of an electron being able to be excited into the conduction band, corresponding to that same energy being lost from an X-ray/electron and thus XANES/EELs data. However, when calculating that, it was not accounting for the fact that there'd be a core-hole as a result (which naturally will affect energy, DOS and thus probability of occurring): that must be factored in for more realistic results.
 
-This is done rather simply by specifying the missing electron when describing the potential in the `cell` file. If you look at the `cbn.castep` file generated earlier, you may see that the pseudopotential report contains the line
+This is done rather simply by specifying the missing electron when describing the potential in the `.cell` file. If you look at the `cbn.castep` file generated earlier, you may see that the pseudopotential report contains the line
 
 ```
 "2|1.2|12|14|16|20:21(qc=8)"
@@ -172,7 +166,7 @@ to the `cbn.param` file - this must be done to maintain charge neutrality.  Next
 
 You should notice that the energies in the 2s and 2p orbitals are lower, the beta values are all different, and, most importantly, that the pseudopotential used is the one we manually wrote in: the one with only 1 electron in the 1s shell.
 
-Now, re-run Optados. This create the same files as before. Again, let's focus on the boron result. The output file `cbn_B1K1_core_edge.dat` now starts like:
+Now, re-run OptaDOS. This create the same files as before. Again, let's focus on the boron result. The output file `cbn_B1K1_core_edge.dat` now starts like:
 
 ```
 -16.879627404257498        0.0000000000000000        4.3418325679994708E-005
@@ -185,7 +179,7 @@ The columns represent the same information as before. Plotting it with the same 
 
 ## Supercell
 
-The periodic images of the core-hole will interact with one another.  As this is unphysical, we need to increase the distance between the core-holes. This is done by creating a supercell.  To do this, we will create a 2x2x2 supercell - the larger the supercell the better the simulation (as this reduces the core-hole interaction effect more), but the calculation time also shoots up significantly. There are multiple ways of doing this, but this tutorial will cover how it can be done using [Vesta](https://jp-minerals.org/vesta/en/). First, upload the `cell` file we used to Vesta. From the top of the toolbar, go into `Edit -> Edit Data -> Unit cell...`. This should open up the window below
+The periodic images of the core-hole will interact with one another.  As this is unphysical, we need to increase the distance between the core-holes. This is done by creating a supercell.  To do this, we will create a 2x2x2 supercell - the larger the supercell the better the simulation (as this reduces the core-hole interaction effect more), but the calculation time also shoots up significantly. There are multiple ways of doing this, but this tutorial will cover how it can be done using [Vesta](https://jp-minerals.org/vesta/en/). First, upload the `.cell` file we used to Vesta. From the top of the toolbar, go into `Edit -> Edit Data -> Unit cell...`. This should open up the window below
 
 ![Edit unit cell window](cell_window.png)
 
@@ -195,10 +189,9 @@ Click `Transform...`. This opens up a new window
 
 To create the 2x2x2 supercell, the transformation matrix is rather simple: make the diagonal values 2 like in the figure above (so it becomes 2x larger in all directions) and click `Ok`. Select `Search atoms in the new unit-cell and add them as new sites` in the next pop-up window.
 
-Now that the supercell has been generated, we must save it and turn it into a cell file. Click `File -> Export Data` and save it as  `cbn.cif` file (saving it as a `cell` file is not an option). We can use `cif2cell cbn.cif` to get information on how to make the new cell. In the end, we change `cbn.cell` to:
+Now that the supercell has been generated, we must save it and turn it into a `.cell` file. Click `File -> Export Data` and save it as  `cbn.cif` file (saving it as a `.cell` file is not an option). We can use `cif2cell cbn.cif` to get information on how to make the new cell. In the end, we change `cbn.cell` to:
 
-*cbn.cell*
-```castep_cell
+```castep_cell {title="cbn.cell"}
 %block lattice_abc
 5 5 5
 60 60 60
@@ -237,13 +230,13 @@ With double the size of the supercell, you may also halve the kpoints: this allo
 
 Specifying 1 of the boron atoms to be called `B:exi` and making changing the potential block to only affect that means that we simulate only 1 of the boron atoms losing that electron - by doing this we prevent the interaction problem mentioned above.
 
-In the `param` file, also add the line
+In the `.param` file, also add the line
 
 `NEXTRA_BANDS : 100`
 
 This makes Castep perform the calculation for higher-energy bands, and is necessary to prevent too sudden of a drop in the core-loss values towards the higher energies (you may notice that in the above figures the value drops towards 0 after the peaks, but tends towards a finite non-zero value in experiment).
 
-Re-run Castep and Optados. There will now be 16 output files, rather than just 2 - there is a core edge output for every atom - `cbn_ B 1    K1     B:exi_core_edge.dat` is the core edge result for the boron with the missing 1s electron. The spaces in the file name can be a bit awkward so let's rename it to `cbn_BExi.dat`. Let's plot it the same as we have before
+Re-run Castep and OptaDOS. There will now be 16 output files, rather than just 2 - there is a core edge output for every atom - `cbn_ B 1    K1     B:exi_core_edge.dat` is the core edge result for the boron with the missing 1s electron. The spaces in the file name can be a bit awkward so let's rename it to `cbn_BExi.dat`. Let's plot it the same as we have before
 
 ![Supercell 1s output](222_super.png)
 
@@ -264,7 +257,7 @@ with open('cbn_BExi.dat', 'r') as infile, open('cbn_BExi_ss.dat', 'w') as outfil
         outfile.write(f"{col1} {col2}\n")
 ```
 
-Now let's plot our Castep and the experimental results together by xmgrace with the batch file
+Now let's plot our Castep and the experimental results together by XMGrace with the batch file
 
 ```
 READ BLOCK "cbn_BExi_ss.dat"
@@ -282,4 +275,4 @@ The output should look like this:
 
 ![Experimental and Castep plotted together](together.png)
 
-They are reasonably similar, but the Optados calculation retains the problem of dropping off faster towards higher energies.
+They are reasonably similar, but the OptaDOS calculation retains the problem of dropping off faster towards higher energies.

@@ -1,17 +1,19 @@
 # Examples 3 - Alanine and Silicates
 
-We now look at some more realistic and complex structures - the amino acid alanine and 2 different silicates: cristoballite and qartz. These are fairly large crystals - to get them
-to complete in a short time we will run them on a cluster.
-**Use the following number of
-CPUs:**
+We now look at some more realistic and complex structures - the amino
+acid alanine and 2 different silicates: cristobalite and quartz. These
+are fairly large crystals - to get them to complete in a short time we
+will run them on a cluster.
 
-* analine - 4
-* cristoballite - 6
+**Use the following number of CPUs:**
+
+* alanine - 4
+* cristobalite - 6
 * quartz - 13
 
 (these numbers are chosen to give efficient k-point scaling)
 
-We will also perform EFG calculations for the above structures and examine the respective data.
+We will also perform electric field gradient (EFG) calculations for the above structures and examine the respective data.
 
 ### Oxygen-17 NMR
 
@@ -19,7 +21,7 @@ Oxygen is a component of many geological materials. Oxygen is
 also important element in organic and biological molecules since it is often intimately involved in hydrogen bonding. Solid State ^17^O NMR should be a uniquely valuable probe as the chemical shift range of ^17^O covers almost 1000 ppm in organic molecules. Furthermore ^17^O has spin I = 5/2 and hence a net quadrupole moment. As a consequence of this the solid state NMR spectrum is strongly affected by the electric
 field gradient at the nucleus.
 
-Because the isotopic abundance of ^17^O is very low (0.037%) and the NMR linewidths due to the electric field gradient relatively large, only limited Solid State NMR data is
+Because the isotopic abundance of ^17^O is very low (0.037%) and the NMR line-widths due to the electric field gradient relatively large, only limited Solid State NMR data is
 available. This is particularly true for organic materials. First principles calculations of ^17^O NMR parameters have played a vital role in assigning experimental spectra, and developing empirical rules between NMR  parameters and local atomic structure.
 
 
@@ -27,14 +29,14 @@ available. This is particularly true for organic materials. First principles cal
 ## Alanine
 
 ### Examining input and output
-We will use the cell file
+We will use the `.cell` file
 
-[alanine.cell](alanine/alanine.cell)
+[`alanine.cell`](alanine/alanine.cell)
 
 !!! Note
-    Don't worry about how long/complex it is - it is no different from any other [cell file](../../documentation/Input_Files/cell_file.md) - it just simply defines a large cell
+    Don't worry about how long/complex it is - it is no different from any other [`.cell` file](../../documentation/Input_Files/cell_file.md) - it just simply defines a large cell
 
-and param file `alanine.param`
+and `.param` file `alanine.param`
 
 ```castep_param
 fix_occupancy = true
@@ -131,17 +133,17 @@ These results are confirmed by the other values provided in the table. To confir
 
 However, this is not the case for hydrogen - a $C_Q$ of 6.53MHz and an $\eta_Q$ of 0.7 are expected, but the castep results are 0.21MHz and 0.06 respectively. In fact, the only ion that comes close to matching the $C_Q$ $eta_Q$ expectation is the other (even-numbered) oxygen type: the oxygen that the hydrogen of interest (1, 8 and 15) is hydrogen-bonded to.
 
-## Silicates - Quartz and Cristoballite
+## Silicates - Quartz and Cristobalite
 
-As an extra example, we will now perform similar calculations and corresponding analysis with 2 forms of silicate - cristoballite and quartz. Naturally, we wiil do the castep calculations separately
+As an extra example, we will now perform similar calculations and corresponding analysis with 2 forms of silicate - cristobalite and quartz. Naturally, we wiil do the castep calculations separately
 
 ### Input and output files
 
-For quartz we will use the cell file
+For quartz we will use the `.cell` file
 
-[quartz.cell](silicates/quartz.cell)
+[`quartz.cell`](silicates/quartz.cell)
 
-And the param file `quartz.param`
+And the `.param` file `quartz.param`
 
 ```castep_param
 cut_off_energy  = 40 ry
@@ -153,13 +155,13 @@ magres_task = nmr
 elec_energy_tol = 1.0e-12 ry
 ```
 
-The param file is identical to the alanine one above.
+The `.param` file is identical to the alanine one above.
 
-For cristoballite we will use the cell file
+For cristobalite we will use the `.cell` file
 
-[crist.cell](silicates/crist.cell)
+[`crist.cell`](silicates/crist.cell)
 
-And exactly the same param file as above (just named `crist.param` instead)
+And exactly the same `.param` file as above (just named `crist.param` instead)
 
 We then run castep on both crystal structures as usual, getting the output files `quartz.castep` and `crist.castep`. Within those files, we will have the same types of tables as above:
 
@@ -183,7 +185,7 @@ For quartz:
 ===============================================================================
 ```
 
-and for cristoballite
+and for cristobalite
 ```
 ===============================================================================
 |                Chemical Shielding and Electric Field Gradient Tensors       |
@@ -218,4 +220,4 @@ Like with alanine, we will compare it to an experimental ^17^O NMR parameter tab
 
 This example is much more straightforward - all the atoms of a certain element are identical.
 
-We are given that a suitable $\sigma_{ref}$ (for oxygen) is 263ppm. Using the equation $\delta_{iso}$=$\sigma_{iso}$ - $\sigma$ - used before in [Example 1](Example_1_-Ethanol.md#equation) - we are able to convert the isometric chemical shielding tensor into a relative chemical shift: O in quartz has a shift of 28.46ppm and in cristoballite it has a shift of 23.53ppm
+We are given that a suitable $\sigma_{ref}$ (for oxygen) is 263ppm. Using the equation $\delta_{iso}$=$\sigma_{iso}$ - $\sigma$ - used before in [Example 1](Example_1_-Ethanol.md#equation) - we are able to convert the isometric chemical shielding tensor into a relative chemical shift: O in quartz has a shift of 28.46ppm and in cristobalite it has a shift of 23.53ppm

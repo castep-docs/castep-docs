@@ -1,11 +1,10 @@
 # Projected Density of States
 
-In this tutorial, we will using Optados to calculate the electronic density of states of 2 atoms of crystalline silicon projected onto LCAO basis states. It may be helpful to have gone through the [previous tutorial on calculating the DoS](DOS.md).
+In this tutorial, we will using OptaDOS to calculate the electronic density of states of 2 atoms of crystalline silicon projected onto LCAO basis states. It may be helpful to have gone through the [previous tutorial on calculating the DoS](DOS.md).
 
-We will use the `cell` file
+We will use the `.cell` file
 
-*Si.cell*
-```castep_cell
+```castep_cell {title="Si.cell"}
 %BLOCK LATTICE_CART
 2.73  2.73 0.00
 2.73  0.00 2.73
@@ -23,10 +22,9 @@ KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 12 12 12
 ```
 
-and the `param` file
+and the `.param` file
 
-*Si.param*
-```castep_param
+```castep_param {title="Si.param"}
 TASK                   : SPECTRAL
 %BLOCK devel_code
 spectral: check_output: true :endspectral
@@ -38,7 +36,7 @@ CUT_OFF_ENERGY         : 200
 IPRINT                 : 1
 ```
 
-Run castep. Then, run Optados with the Optados input file
+Run castep. Then, run OptaDOS with the OptaDOS input file
 
 *Si.odi*
 ```
@@ -98,7 +96,7 @@ You can change which projectors you will gain by changing the line `PDOS : ANGUL
 !!! note
     Using custom projectors won't save the data in `Si.pdos.dat`, but a file named based on the projectors chosen - in the example above, it'd be saved in `Si.pdos.proj-0001-0002.dat`.
 
-The output is easily plotted by using xmgrace on the `dat` file. To plot multiple bits of data, it is easiest to use a batch file - this is the plot of the s and p channels: We can run `xmgrace -batch pdos_plot.bat` on the batch file
+The output is easily plotted by using XMGrace on the `dat` file. To plot multiple bits of data, it is easiest to use a batch file - this is the plot of the s and p channels: We can run `xmgrace -batch pdos_plot.bat` on the batch file
 
 *pdos_plot.bat*
 ```

@@ -1,7 +1,7 @@
 ## Diamagnetic Insulators
-By a diamagnetic insulator we mean a system with an electronic gap between its highest occupied state and lowest unoccupied state, and all of the electronic spins are paired, simple examples are diamond, quartz, glycine… This class of materials is the most suitable for calculations as the main NMR interactions, magnetic sielding, J-coupling and electric field gradients can all be computed.
+By a diamagnetic insulator we mean a system with an electronic gap between its highest occupied state and lowest unoccupied state, and all of the electronic spins are paired, simple examples are diamond, quartz, glycine… This class of materials is the most suitable for calculations as the main NMR interactions, magnetic shielding, J-coupling and electric field gradients can all be computed.
 
-###Magnetic Shielding
+### Magnetic Shielding
 In a diamagnetic insulator this arises from orbital currents induced by an external magnetic field. This current ${\bf j}({\bf r})$,
  produces a non-uniform induced magnetic field in the material,
 which is given by the Biot-Savart law as
@@ -77,16 +77,16 @@ $$G_{\alpha\beta}({\bf r}) = \frac{\partial E_{\alpha}({\bf r})}{\partial  r_{\b
 where $\alpha,\beta,\gamma$ denote the Cartesian coordinates x,y,z and
 $E_{\alpha}({\bf r})$ is the local electric field at the position ${\bf
   r}$, which can be calculated from the charge density $n({\bf r})$:
-\begin{equation}
+$$
 E_{\alpha}({\bf r})=\int d^3r \frac{n({\bf r})}{|{\bf r}-{\bf r}'|^3} (r_{\alpha}-r_{\alpha}').
-\end{equation}
+$$
 The EFG tensor is then equal to
-\begin{equation}\label{eq:efg_rs}
+$$\label{eq:efg_rs}
 G_{\alpha\beta}({\bf r}) = \int d^3r \frac{n({\bf r})}{|{\bf r}-{\bf
     r}'|^3}\left[ \delta_{\alpha\beta} -3
   \frac{(r_{\alpha}-r_{\alpha}')(r_{\beta}-r_{\beta}')}{|{\bf r}-{\bf
       r}'|^2}\right].
-\end{equation}
+$$
 The computation of electric field gradient tensors is less demanding than
 either shielding or J-coupling tensors as it
 requires only knowledge of the electronic ground state.
@@ -95,14 +95,15 @@ series of codes[@Blaha1990] has been widely used and shown to reliably predict
 Electric Field Gradient (EFG) tensors[@Blaha1989]. The equivalent
 formalism for the planewave/PAW approach is reported in Profeta *et al*.[@Profeta2003].
 
- The quadrupolar coupling constant, C$_Q$ and the asymmetry
- parameter, $\eta_Q$ can be obtained from the  the diagonalized electric
- field gradient tensor whose eigenvalues are
- labelled V$_{xx}$, V$_{yy}$, V$_{zz}$, such that $|V_{zz}|>|V_{yy}|>|V_{xx}|$:
-\begin{equation}
+The quadrupolar coupling constant, C$_Q$ and the asymmetry
+parameter, $\eta_Q$ can be obtained from the  the diagonalized electric
+field gradient tensor whose eigenvalues are
+labelled V$_{xx}$, V$_{yy}$, V$_{zz}$, such that $|V_{zz}|>|V_{yy}|>|V_{xx}|$:
+
+$$
 C_{Q}=\frac{eV_{zz}Q}{h},
-\end{equation}
+$$
 where h is Planck's constant and
-\begin{equation}
+$$
 \eta_Q=\frac{V_{xx}-V_{yy}}{V_{zz}}.
-\end{equation}
+$$

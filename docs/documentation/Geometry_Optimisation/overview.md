@@ -1,5 +1,3 @@
-
-
 The essence of the calculation is for the ions and electrons in the supercell to be moved around stepwise until the forces on the atoms and the change in total energy between steps fall below some predefined convergence tolerance. The ionic positions are optimised using quasi-Newton methods. For each configuration of the ionic positions the electronic configuration is optimised using the method of conjugate gradients. The flow of the calculation is thus;
 
 1. Move ions into new positions using geometry optimisation algorithm
@@ -20,7 +18,7 @@ It should be noted, that with a plane-wave basis set (as used by CASTEP) there i
 The effect of changing lattice vectors on the basis set can also be corrected to first-order using the 'finite basis set correction'. This can be calculated by the change in total energy for a small change in the cut-off energy at the start of a calculation, and then used as a correction to the energy and the stress. This is especially important in variable-cell calculations, for which it is activated by default.
 
 #### Advanced settings
-For geometry optimisation, there are a variety of different algorithms available which can be selected by the `geom_method` parameter in the param file. The choices are:
+For geometry optimisation, there are a variety of different algorithms available which can be selected by the `geom_method` parameter in the `.param` file. The choices are:
 
 * LBFGS - the low-memory version of BFGS - the default option
 * BFGS - widely-used quasi-Newton minimization
@@ -31,6 +29,6 @@ For geometry optimisation, there are a variety of different algorithms available
 
 NB These are all 'local optimisations', i.e. the final structure depends upon the initial configuration and is not the global minimum. For those interested in finding the global minimum, then there are associated projects using Genetic Algorithms and AIRSS.
 
-The first 3 methods can do variable-cell or fixed-cell optimization, whereas the last 3 are only fixed-cell (for now). LBFGS/BFGS is generally the fastest method, and since v19, LBFGS has supported new preconditioners which should make it generally faster still. TPSD (unlike LBFGS/BFGS) has no built-in history, so should be much slower - however, the CASTEP implementation has a very efficient preconditioner which makes up for this, and the lack of history means that variable-cell optimisation with additional cell constraints is much more efficient than the equivalent calculation in LBFGS/BFGS.
+The first 3 methods can do variable-cell or fixed-cell optimization, whereas the last 3 are only fixed-cell (for now). LBFGS/BFGS is generally the fastest method, and since CASTEP 19, LBFGS has supported new preconditioners which should make it generally faster still. TPSD (unlike LBFGS/BFGS) has no built-in history, so should be much slower - however, the CASTEP implementation has a very efficient preconditioner which makes up for this, and the lack of history means that variable-cell optimisation with additional cell constraints is much more efficient than the equivalent calculation in LBFGS/BFGS.
 
 The DELOCALIZED minimizer is the only supported method to use delocalized internal coordinates, as opposed to absolute or fractional coordinates, and as such, should be best for optimizing large structures such as molecule-in-a-box with many low-energy soft modes. The two MD-based methods are generally less efficient, but can handle arbitrary constraints well, and have sometimes out-performed other methods for very anisotropic systems, such as molecule-on-a-surface etc.

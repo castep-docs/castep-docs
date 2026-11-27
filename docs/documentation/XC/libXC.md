@@ -14,14 +14,14 @@ to use LIBXC. For example:
 In the LIBXC library there are many functionals, covering LDAs, GGAs,
 Meta-GGAs, Hybrids, etc. Most of these are separated into exchange and
 correlation contributions. To use these functionals, build your own
-combination using CASTEP's `xc_definition` keyword in the .param
+combination using CASTEP's `xc_definition` keyword in the `.param`
 file. Firstly at https://libxc.gitlab.io/functionals/
 find the exchange and correlation functionals that you require, note
 the name LIBXC calls is and then prepend the string LIBXC_ to them.
 
 For example to construct Perdew and Zunger's LDA, LDA exchange is
-called LDA_X and correlation is called LDA_C_PZ.
-In the .param file use
+called `LDA_X` and correlation is called `LDA_C_PZ`.
+In the `.param` file use
 ```castep_cell
 %block xc_definition
 LIBXC_LDA_X 1.0
@@ -93,6 +93,6 @@ LIBXC_MGGA_C_RSCAN 1.0
 ```
 (although RSCAN is also natively supported in CASTEP with `xc_functional : RSCAN`).
 
-The `xc_definition` keyword in the .param file will allow you to mix
+The `xc_definition` keyword in the `.param` file will allow you to mix
 and match any of the hundreds of functionals in LIBXC
 https://libxc.gitlab.io/functionals/ . DO SO WITH EXTREME CAUTION!

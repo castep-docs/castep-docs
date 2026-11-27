@@ -30,9 +30,9 @@ If increasing the degree of parallel distribution is not possible,
 `opt_strategy_bias` can be reduced to 0[^21], which will page
 wavefunctions to disk. In that case it is vital to ensure that the
 temporary scratch files are written to high-speed disk (either local or
-a high-performance filesystem). This is usually controlled by setting
+a high-performance file-system). This is usually controlled by setting
 the environment variable `CASTEP_PAGE_TMPDIR` to point to a directory on
-an appropriate filesystem[^22].
+an appropriate file-system[^22].
 
 [^20]: equivalent to `opt_strategy : SPEED`
 
@@ -100,8 +100,8 @@ the proposed calculation from the `.cell` file and is simply invoked by
 
 > `phonon_kpoints` *seedname*
 
-It then determines and prints the k-point counts, and provides a “figure
-of merit” for a range of possible processor counts. On most parallel
+It then determines and prints the k-point counts, and provides a "figure
+of merit" for a range of possible processor counts. On most parallel
 architectures the efficiency of the plane-wave parallelism becomes
 unacceptable if there are fewer than around 200 plane-waves per node. It
 is usually possible to choose a processor count which allows a highly
@@ -111,7 +111,7 @@ considerably higher than this.
 #### band parallelism
 
 From CASTEP version 24.1 band parallelism is implemented for FD
-calculations, but not yet DFPT. This may be enabled using a “devel-code”
+calculations, but not yet DFPT. This may be enabled using a "devel-code"
 string in the `.param` file[^24]
 
 > ```castep_param
@@ -123,7 +123,7 @@ string in the `.param` file[^24]
 will attempt to set up 8-way band parallelism in addition to k-point and
 g-vector.
 
-[^24]: This activation mechanism will be replaced by a “first-class”
+[^24]: This activation mechanism will be replaced by a "first-class"
     parameter to set parallelism in future releases of CASTEP. N.B.
     `DEVEL_CODE` is the only `%block` allowed in the `.param` file.
 
@@ -167,7 +167,7 @@ Even with a parallel computer, it is frequently the case that a
 calculation can not be completed in a single run. Many machines have a
 maximum time limit on a batch queue which may be too short. On desktop
 machines, run time may be limited by reliability and uptime limitations.
-CASTEP is capable of periodically writing “checkpoint” files containing
+CASTEP is capable of periodically writing "checkpoint" files containing
 a complete record of the state of the calculation and of restarting and
 completing a calculation from such a checkpoint file. In particular
 dynamical matrices from complete q-points, and partial dynamical
@@ -177,18 +177,18 @@ parameter
 
 > `backup_interval 3600`
 
-which will write a checkpoint file named *seedname*`.check` every hour
+which will write a checkpoint file named `<seedname>.check` every hour
 (the time is specified in seconds) or on completion of the next
 perturbation thereafter. To restart a calculation, set the parameter
 
 > `continuation : default`
 
 in the `.param` file before resubmitting the job. This will attempt to
-read *seedname*`.check` and restart the calculation from there.
+read `<seedname>.check` and restart the calculation from there.
 Alternatively the full filename of a checkpoint file may be given as
 argument to the `continuation` keyword to read an explicitly named file.
 
-At the end of the calculation a checkpoint file *seedname*`.check` is
+At the end of the calculation a checkpoint file `<seedname>.check` is
 always written. As with the intermediate checkpoint files this contains
 a (now complete) record of the dynamical matrices or force constant
 matrix resulting from phonon calculation. This may be analysed in a

@@ -2,8 +2,8 @@
     The Koopmans' compliance functionality for determining the Hubbard U parameter was introduced in CASTEP version 26 - ensure you are using this version or later!
 
 
-## .param file
-The following keywords are available to allow specification of calculating Koopmans' compliance parameters in the .param file:
+## `.param` file
+The following keywords are available to allow specification of calculating Koopmans' compliance parameters in the `.param` file:
 ```castep_param
 task : koopmans
 koopmans_method : hubbard
@@ -12,8 +12,8 @@ koopmans_LR_method : finitedifference
 The only currently implemented type of Koopmans' compliance technique is Hubbard, which itself only has the method of finite differences implemented. The default for the latter two parameters are thus as shown above and can therfore be omitted in this case.
 
 
-## .cell file
-To define which species are to have their Hubbard $U$ values calculated, use the `hubbard_alpha` block in the .cell file:
+## `.cell` file
+To define which species are to have their Hubbard $U$ values calculated, use the `hubbard_alpha` block in the `.cell` file:
 ```castep_cell
 %BLOCK hubbard_alpha
 Fe
@@ -44,17 +44,17 @@ This is unlikely to be required, but may be used if any linear fitting warnings 
 
 
 ## Farm parallelism
-All perturbative ($\alpha_{I}\neq0$) calculations are independent from all others. Therefore, due to the large number required, it is often beneficial to utilise farm parallelism. This can split the $\alpha_{I}$ tasks across nodes to speed up computation time. To indicate that you would like the `CASTEP` calculation to be farm parallelised, indicate this in the .param file:
+All perturbative ($\alpha_{I}\neq0$) calculations are independent from all others. Therefore, due to the large number required, it is often beneficial to utilise farm parallelism. This can split the $\alpha_{I}$ tasks across nodes to speed up computation time. To indicate that you would like the `CASTEP` calculation to be farm parallelised, indicate this in the `.param` file:
 ```castep_param
 num_farms = 4
 ```
-This will require the number of processes used to be at least $4$, and will proceed to utilise $\mathbf{k}$-point, $\mathbf{G}$-vector or band parallelism within each farm block of processes if possible. Each farm will essentially run its own `CASTEP` calculation (all running in parallel) and have its own output .castep file. The powerful aspect of this is that when each farm has finished its $\alpha_{I}$ computations, the results will be collated on the master farm node and the $U$ values computed as normal. The computation
+This will require the number of processes used to be at least $4$, and will proceed to utilise $\mathbf{k}$-point, $\mathbf{G}$-vector or band parallelism within each farm block of processes if possible. Each farm will essentially run its own `CASTEP` calculation (all running in parallel) and have its own output `.castep` file. The powerful aspect of this is that when each farm has finished its $\alpha_{I}$ computations, the results will be collated on the master farm node and the $U$ values computed as normal. The computation
 of the $U$ values after the $\alpha_{I}$ calculations have been performed is very quick, and does not need any level of parallelism.
 
 !!! Example
     Suppose you would like to $\mathbf{k}$-point parallelise a calculation across $4$ $\mathbf{k}$-points and $3$ farms. This would require $12$ processes. The $12$ processes would be split into $3$ blocks of $4$. For each of those $3$ farms, the $4$ processes would be split across the $4$ $\mathbf{k}$-points.
 
-An Mn d states $U$ calculation in MnO, where the $6$ $\alpha_{I}$ calculations are farm parallelised over $3$ farms, will have $3$ .castep files named `MnO_farm001.castep`, `MnO_farm002.castep` and `MnO_farm003.castep`. Each file will indicate the work that each farm will perform, for example in MnO_farm001.castep:
+An Mn d states $U$ calculation in MnO, where the $6$ $\alpha_{I}$ calculations are farm parallelised over $3$ farms, will have $3$ `.castep` files named `MnO_farm001.castep`, `MnO_farm002.castep` and `MnO_farm003.castep`. Each file will indicate the work that each farm will perform, for example in MnO_farm001.castep:
 ```
   This farm will perform the following calculations:
     1st alpha calc out of  6 for channel    Mn              1  d
@@ -62,4 +62,4 @@ An Mn d states $U$ calculation in MnO, where the $6$ $\alpha_{I}$ calculations a
 ```
 
 !!! Tip
-    Each farm will conduct its own base $\alpha_{I}\neq0\;\forall\;I$ calculation, which makes the method less efficient as this only needs to be computed once. The recommended workflow is to conduct a `singlepoint` calculations as normal (no farm parallelism required). Then, run a `continuation` calculation with the output .check file from the `singlepoint` run for the $\alpha_{I}$ calculations **with** farm parallelism. Each farm will read in the base wavefunction and density from the .check file and conduct its share of $\alpha_{I}$ calculations as normal.
+    Each farm will conduct its own base $\alpha_{I}\neq0\;\forall\;I$ calculation, which makes the method less efficient as this only needs to be computed once. The recommended workflow is to conduct a `singlepoint` calculations as normal (no farm parallelism required). Then, run a `continuation` calculation with the output `.check` file from the `singlepoint` run for the $\alpha_{I}$ calculations **with** farm parallelism. Each farm will read in the base wavefunction and density from the `.check` file and conduct its share of $\alpha_{I}$ calculations as normal.

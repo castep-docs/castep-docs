@@ -1,4 +1,3 @@
-
 Density functional perturbation theory is not limited to atomic
 displacement perturbations, and may also be used to calculate other
 response properties with respect to an electric field perturbation of an
@@ -6,13 +5,13 @@ insulating system[^16]. These are the dielectric permittivity
 
 $$\epsilon_{\alpha,\beta}^{\infty} = \delta_{\alpha,\beta} - \frac{4 \pi}{\Omega}\frac{\partial^2 E}{\partial \varepsilon_{\alpha} \partial \varepsilon_{\beta}} \;,$$
 
-the “molecular” polarizability
+the "molecular" polarizability
 
 $$\alpha_{\alpha,\beta}^{\infty} =  - \frac{1}{\Omega}\frac{\partial^2 E}{\partial \varepsilon_{\alpha} \partial \varepsilon_{\beta}} \;,$$
 
 and the Born effective charges
 
-$$Z^{*}_{\alpha,\beta} = \Omega \frac{\partial P_{\beta}}{\partial u_{\kappa,\alpha}} = \frac{\partial F_{\kappa,\alpha}}{\partial  \varepsilon_{\beta}} = 
+$$Z^{*}_{\alpha,\beta} = \Omega \frac{\partial P_{\beta}}{\partial u_{\kappa,\alpha}} = \frac{\partial F_{\kappa,\alpha}}{\partial  \varepsilon_{\beta}} =
 \frac{\partial^2 E}{\partial u_{\kappa,\alpha}\partial  \varepsilon_{\beta}}$$
 
 which play a strong role in lattice dynamics of crystals, and in
@@ -36,7 +35,7 @@ The low and near-infrared frequency contributions to the permittivity
 and polarizability and the Born effective charges are printed to the
 `.castep` output file. An extract for the same Wurtzite BN calculation
 as earlier is shown in figure [[efield-out]](Dielectric-properties.md#fig:efield-out). An
-additional output file *seedname*`.efield` is also written and contains
+additional output file `<seedname>.efield` is also written and contains
 the frequency-dependent permittivity over the entire range, with a
 spacing determined by parameter `efield_freq_spacing`, and a Lorentzian
 broadening governed by a fixed $Q$, `efield_oscillator_q`.
@@ -45,7 +44,7 @@ The low-frequency contribution of the phonons to the dielectric
 polarizability and permittivity is only well-defined when all mode
 frequencies are real and positive. In the presence of any imaginary mode
 or one of zero frequency the low-frequency dielectric and polarizability
-tensors are not calculated and are reported as “infinity”. By default
+tensors are not calculated and are reported as "infinity". By default
 the three lowest frequency modes are assumed to be acoustic modes and
 not included in the calculation. To support molecule-in-supercell
 calculations, the parameter `efield_ignore_molec_modes` may be set to
@@ -64,16 +63,16 @@ only real difference between any of the tasks `PHONON`, `EFIELD` and
 computations are performed in each case. Only if one or other of those
 properties is specifically turned off with one of the parameters
 
-> `phonon_calc_lo_to_splitting : FALSE`  
+> `phonon_calc_lo_to_splitting : FALSE`
 > `efield_calc_ion_permittivity : FALSE`
 
-is a “pure” phonon or E-field calculation ever performed.
+is a "pure" phonon or E-field calculation ever performed.
 
 It is well documented that the LDA tends to overestimate dielectric
 permittivities - by over 10% in the case of Si or Ge ([Levine and Allan
 1989](Bibliography.md#ref-LevineA89)). It is possible to include an ad-hoc correction
 term to model the missing self-energy, by applying the so-called
-“scissors operator”, which consists of a rigid upshift of all conduction
+"scissors operator", which consists of a rigid upshift of all conduction
 band states. This was incorporated into DFPT electric field response
 calculations by Gonze and Lee ([Gonze and Lee 1997](Bibliography.md#ref-GonzeL97)). The
 parameters keyword
@@ -126,7 +125,7 @@ be determined from high-level calculations or empirically.
 run of figure [[example-gamma]](Running-phonon-calculations.md#fig:example-gamma), with
 `task : EFIELD`. The Born effective charges are laid out with the
 columns representing the X,Y,Z electric field directions and the rows
-the X,Y,Z displacement directions.     
+the X,Y,Z displacement directions.
 {#fig:efield-out}
 
 [^16]: Because the response of a metallic system to an applied field is
@@ -143,11 +142,11 @@ be computed if the parameter
 
 > `efield_calculate_nonlinear : CHI2`
 
-is set. The calculation uses the “2n+1 theorem” extension of
+is set. The calculation uses the "2n+1 theorem" extension of
 DFPT ([Baroni et al. 2001](Bibliography.md#ref-BaroniDDG01); [Miwa
 2011](Bibliography.md#ref-Miwa2011)) to compute the static response, $\chi^{(2)}$. The
 results are reported in the `.castep` file in reduced tensor form as the
-“d-matrix” ([Boyd 2003](Bibliography.md#ref-Boyd03)). See
+"d-matrix" ([Boyd 2003](Bibliography.md#ref-Boyd03)). See
 figure [[nlo]](Dielectric-properties.md#fig:nlo).
 
 This is not activated by default, because it is substantially more
@@ -167,6 +166,5 @@ symmetry.)
 ```
 
 : **Figure 7** Nonlinear optical susceptibility $\chi^{(2)}$ expressed as a d-matrix
-for LiNbO3.     
+for LiNbO3.
 {#fig:nlo}
-

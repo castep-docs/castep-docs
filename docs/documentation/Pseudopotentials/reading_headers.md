@@ -1,33 +1,33 @@
-At the start of a calculation CASTEP will generate the require pseudopotentials. A report is written into the start of the <seedname>.castep file. This page explains what information is contained within this header.
+At the start of a calculation CASTEP will generate the require pseudopotentials. A report is written into the start of the `<seedname>.castep` file. This page explains what information is contained within this header.
 
 ## Carbon - Ultrasoft
 
 ```
-============================================================                
-| Pseudopotential Report - Date of generation  8-07-2020   |                
-------------------------------------------------------------                
-| Element: C Ionic charge:  4.00 Level of theory: PBE      |                
-| Atomic Solver: Koelling-Harmon                           |                
-|                                                          |                
-|               Reference Electronic Structure             |                
-|         Orbital         Occupation         Energy        |                
-|            2s              2.000           -0.505        |                
-|            2p              2.000           -0.194        |                
-|                                                          |                
-|                 Pseudopotential Definition               |                
-|        Beta     l      e      Rc     scheme   norm       |                
-|          1      0   -0.505   1.395     qc      0         |                
-|          2      0    0.250   1.395     qc      0         |                
-|          3      1   -0.194   1.395     qc      0         |                
-|          4      1    0.250   1.395     qc      0         |                
-|         loc     2    0.000   1.395     pn      0         |                
-|                                                          |                
-| Augmentation charge Rinner = 0.983                       |                
-| Partial core correction Rc = 0.983                       |                
-------------------------------------------------------------                
-| "2|1.4|10|12|13|20:21(qc=7)"                             |                
-------------------------------------------------------------                
-|      Author: Chris J. Pickard, Cambridge University      |                
+============================================================
+| Pseudopotential Report - Date of generation  8-07-2020   |
+------------------------------------------------------------
+| Element: C Ionic charge:  4.00 Level of theory: PBE      |
+| Atomic Solver: Koelling-Harmon                           |
+|                                                          |
+|               Reference Electronic Structure             |
+|         Orbital         Occupation         Energy        |
+|            2s              2.000           -0.505        |
+|            2p              2.000           -0.194        |
+|                                                          |
+|                 Pseudopotential Definition               |
+|        Beta     l      e      Rc     scheme   norm       |
+|          1      0   -0.505   1.395     qc      0         |
+|          2      0    0.250   1.395     qc      0         |
+|          3      1   -0.194   1.395     qc      0         |
+|          4      1    0.250   1.395     qc      0         |
+|         loc     2    0.000   1.395     pn      0         |
+|                                                          |
+| Augmentation charge Rinner = 0.983                       |
+| Partial core correction Rc = 0.983                       |
+------------------------------------------------------------
+| "2|1.4|10|12|13|20:21(qc=7)"                             |
+------------------------------------------------------------
+|      Author: Chris J. Pickard, Cambridge University      |
 ============================================================
 ```
 All quantities are given in atomic units - so energies in Hartree (1Ha =26.4eV) and lengths in Bohr (1 bohr = 0.88Ang)
@@ -62,29 +62,29 @@ The final line gives the choice of local potential. In this case the local poten
 ## Carbon - Normconserving
 
 ```
-============================================================                
-| Pseudopotential Report - Date of generation  8-07-2020   |                
-------------------------------------------------------------                
-| Element: C Ionic charge:  4.00 Level of theory: PBE      |                
-| Atomic Solver: Koelling-Harmon                           |                
-|                                                          |                
-|               Reference Electronic Structure             |                
-|         Orbital         Occupation         Energy        |                
-|            2s              2.000           -0.505        |                
-|            2p              2.000           -0.194        |                
-|                                                          |                
-|                 Pseudopotential Definition               |                
-|        Beta     l      e      Rc     scheme   norm       |                
-|          1      0   -0.505   1.201     qc      1         |                
-|         loc     1   -0.194   1.201     qc      1         |                
-|                                                          |                
-| No charge augmentation                                   |                
-| Partial core correction Rc = 0.839                       |                
-------------------------------------------------------------                
-| "1|1.2|17|20|23|20N:21L(qc=8)"                           |                
-------------------------------------------------------------                
-|      Author: Chris J. Pickard, Cambridge University      |                
-============================================================  
+============================================================
+| Pseudopotential Report - Date of generation  8-07-2020   |
+------------------------------------------------------------
+| Element: C Ionic charge:  4.00 Level of theory: PBE      |
+| Atomic Solver: Koelling-Harmon                           |
+|                                                          |
+|               Reference Electronic Structure             |
+|         Orbital         Occupation         Energy        |
+|            2s              2.000           -0.505        |
+|            2p              2.000           -0.194        |
+|                                                          |
+|                 Pseudopotential Definition               |
+|        Beta     l      e      Rc     scheme   norm       |
+|          1      0   -0.505   1.201     qc      1         |
+|         loc     1   -0.194   1.201     qc      1         |
+|                                                          |
+| No charge augmentation                                   |
+| Partial core correction Rc = 0.839                       |
+------------------------------------------------------------
+| "1|1.2|17|20|23|20N:21L(qc=8)"                           |
+------------------------------------------------------------
+|      Author: Chris J. Pickard, Cambridge University      |
+============================================================
 ```
 
 Note that the `Reference Electronic Structure` section is identical to the ultrasoft potential above. This relates to the all-electron atom and is unaffected by the details of the pseudopotential.
@@ -97,42 +97,42 @@ There is no charge augmentation (this is only needed for ultrasofts) however, a 
 ## Uranium - J-dependent
 
 ```
-============================================================                
-| Pseudopotential Report - Date of generation  4-07-2020   |                
-------------------------------------------------------------                
-| Element: U Ionic charge: 14.00 Level of theory: LDA      |                
-| Atomic Solver: Dirac (FR)                                |                
-|                                                          |                
-|               Reference Electronic Structure             |                
-|         Orbital         Occupation         Energy        |                
-|          6s1/2            2.000           -1.748         |                
-|          6p1/2            2.000           -1.101         |                
-|          6p3/2            4.000           -0.776         |                
-|          7s1/2            2.000           -0.161         |                
-|          5f5/2            1.286           -0.147         |                
-|          5f7/2            1.714           -0.116         |                
-|          6d3/2            0.400           -0.103         |                
-|          6d5/2            0.600           -0.085         |                
-|                                                          |                
-|                 Pseudopotential Definition               |                
-|      Beta    l   2j     e      Rc     scheme   norm      |                
-|        1     0    1   -1.748   2.106     qc     1        |                
-|        2     0    1   -0.161   2.106     qc     1        |                
-|        3     1    3   -0.776   2.106     qc     1        |                
-|        4     1    1   -1.101   2.106     qc     1        |                
-|        5     2    5   -0.085   2.106     qc     1        |                
-|        6     2    3   -0.103   2.106     qc     1        |                
-|        7     3    7   -0.116   2.106     qc     1        |                
-|        8     3    5   -0.147   2.106     qc     1        |                
-|       loc    4    0    0.000   2.106     pn     0        |                
-|                                                          |                
-| No charge augmentation                                   |                
-| Partial core correction Rc = 1.472                       |                
-------------------------------------------------------------                
-| "4|2.1|17|19|22|60N:70N:61N:62N:53N(qc=6,q3=8)"          |                
-------------------------------------------------------------                
-|      Author: Chris J. Pickard, Cambridge University      |                
-============================================================   
+============================================================
+| Pseudopotential Report - Date of generation  4-07-2020   |
+------------------------------------------------------------
+| Element: U Ionic charge: 14.00 Level of theory: LDA      |
+| Atomic Solver: Dirac (FR)                                |
+|                                                          |
+|               Reference Electronic Structure             |
+|         Orbital         Occupation         Energy        |
+|          6s1/2            2.000           -1.748         |
+|          6p1/2            2.000           -1.101         |
+|          6p3/2            4.000           -0.776         |
+|          7s1/2            2.000           -0.161         |
+|          5f5/2            1.286           -0.147         |
+|          5f7/2            1.714           -0.116         |
+|          6d3/2            0.400           -0.103         |
+|          6d5/2            0.600           -0.085         |
+|                                                          |
+|                 Pseudopotential Definition               |
+|      Beta    l   2j     e      Rc     scheme   norm      |
+|        1     0    1   -1.748   2.106     qc     1        |
+|        2     0    1   -0.161   2.106     qc     1        |
+|        3     1    3   -0.776   2.106     qc     1        |
+|        4     1    1   -1.101   2.106     qc     1        |
+|        5     2    5   -0.085   2.106     qc     1        |
+|        6     2    3   -0.103   2.106     qc     1        |
+|        7     3    7   -0.116   2.106     qc     1        |
+|        8     3    5   -0.147   2.106     qc     1        |
+|       loc    4    0    0.000   2.106     pn     0        |
+|                                                          |
+| No charge augmentation                                   |
+| Partial core correction Rc = 1.472                       |
+------------------------------------------------------------
+| "4|2.1|17|19|22|60N:70N:61N:62N:53N(qc=6,q3=8)"          |
+------------------------------------------------------------
+|      Author: Chris J. Pickard, Cambridge University      |
+============================================================
 ```
 
 This pseudopotential is calculated by using a Dirac equation solver including the spin-orbit interaction (FR=fully relativistic).

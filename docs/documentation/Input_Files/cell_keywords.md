@@ -1,4 +1,4 @@
-This is a concise list of the common keywords for CASTEP's cell input file. The definitions of the keywords are given in more detail in the [section on the cell file](cell_file.md).
+This is a concise list of the common keywords for CASTEP's cell input file. The definitions of the keywords are given in more detail in the [section on the `.cell` file](cell_file.md).
 
 
 <input type="text" id="search" onkeyup="filter_table()" placeholder="Search..." title="Search table">

@@ -1,19 +1,18 @@
-![Fig1. Proton spectrum of ethanol](../img/nmr_tut1.png){width="50%"}
+![Figure 1. Proton spectrum of ethanol](../img/nmr_tut1.png){width="50%"}
 <figure style="display: inline-block;">
-  <figcaption style="text-align: left;">Fig1. Proton spectrum of ethanol</figcaption>
+  <figcaption style="text-align: left;">Figure 1. Proton spectrum of ethanol</figcaption>
 </figure>
 
 
 
-The discovery that one could actually see chemical shifts in hydrogen spectra was made in 1951 at Stanford University by Packard, Arnold, Dharmatti (shown in Fig1.). In this tutorial, we will try to reproduce this result.
+The discovery that one could actually see chemical shifts in hydrogen spectra was made in 1951 at Stanford University by Packard, Arnold, Dharmatti (shown in figure 1.). In this tutorial, we will try to reproduce this result.
 
 
 ## Getting outputs
 
 This tutorial will go through the calculations for ethanol, using these 2 files:
 
-*ethanol.cell*
-```castep_cell
+```castep_cell {title="ethanol.cell"}
 
 %BLOCK LATTICE_ABC
 6 6 6
@@ -37,8 +36,7 @@ O 5.746254 5.812705 5.6871
 %ENDBLOCK KPOINTS_LIST
 ```
 
-*ethanol.param* <a name ="ethanol.param"></a>
-```castep_param
+```castep_param {title="ethanol.param"}
 xcfunctional    = PBE
 fix_occupancy   = true
 opt_strategy    = speed
@@ -50,7 +48,8 @@ Look at the [cell](../../documentation/Input_Files/cell_file.md) and [param](../
 
 `task = magres`
 
-Run a standard castep calculation for ethanol. Look at the `ethanol.castep` output file. Towards the end, you should be able to find the isotropic chemical shielding, anisotropy, and asymmetry in a table like this:
+Run a standard CASTEP calculation for ethanol. Look at the `ethanol.castep` output file. Towards the end, you should be able to find the isotropic chemical shielding, anisotropy, and asymmetry in a table like this:
+
 <a name="ethanol_result"></a>
  ```
  ====================================================================
@@ -104,7 +103,7 @@ You might wish to open the `ethanol.magres` with [MagresView](https://www.ccpnc.
 ## Analysis
 
 Next we identify which (hydrogen) ion corresponds to which part of the molecule - in the case of ethanol, we find out which ones correspond to CH~3~ CH~2~ and OH.
-This can be done by uploading the cell file to VESTA or MagresView and clicking each atom.
+This can be done by uploading the `.cell` file to VESTA or MagresView and clicking each atom.
 
 ![NMR vesta demonstration](../img/NMR_vesta_demonstration.png){width="40%"}
 

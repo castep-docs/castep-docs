@@ -2,14 +2,14 @@ The exchange and correlation functional used for calculations in
 CASTEP can be specified in one of two main ways.
 
 1. `xc_functional`
-The most straightforward is with the .param file keyword
-`xc_functional`. For example to use the PBE functional in the .param
+The most straightforward is with the `.param` file keyword
+`xc_functional`. For example to use the PBE functional in the `.param`
 file simply use
 ```castep_param
 xc_functional : PBE
 ```
 There are a number of standard functionals that can be used in CASTEP
-with the xc_functional keyword:
+with the `xc_functional` keyword:
 Local density approximation:
 `LDA`
 `LDA-X`
@@ -41,7 +41,7 @@ Meta-GGA functionals:
 `MS2`
 
 2. `xc_definition`
-The keyword `xc_definition` in the .param file (used instead of
+The keyword `xc_definition` in the `.param` file (used instead of
 xc_functional) is used when you want to modify the standard behaviour
 of hybrid functionals, or if you want to construct your own hybrid
 functionals.
@@ -116,7 +116,7 @@ screening can be altered by the `NLXC_SCREENING_LENGTH` parameter (natural units
 computationally intensive than (semi-)local functionals. They are
 often used because they are able to give much better electronic band
 gaps. If we do LDA and SHF-LDA band structure for silicon we can use
-the cell file
+the `.cell` file
 ```castep_cell
 %block lattice_cart
 2.7 2.7 0.0
@@ -144,7 +144,7 @@ G
 NCP
 %endblock species_pot
 ```
-and then the .param file for LDA
+and then the `.param` file for LDA
 ```castep_param
 task : spectral
 spectral_task :	BandStructure
@@ -159,4 +159,4 @@ xc_functional : shf-lda
 If we then plot these two band structures together, the difference in
 results can be seen, the band gap opens from the LDA value of around
 0.5eV to a more realistic 1.  ![Silicon SHF-LDA and LDA
-bandstructures](../../img/si-shf-bands.png)
+band structures](../../img/si-shf-bands.png)

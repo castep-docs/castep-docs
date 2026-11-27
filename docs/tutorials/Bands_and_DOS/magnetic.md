@@ -27,7 +27,7 @@ kpoint_mp_grid 8 8 8
 0.5 0.0 0.0     !N
 %ENDBLOCK spectral_KPOINT_PATH
 ```
-In the param file we set `spin_polarised  true` in order to allow the up and down spin electrons to take different configurations. It is important to start the calculation with an initial spin density using e.g. `spin:   1`. The value of the initial spin should not affect the final answer - a non-zero value is just needed to break the symmetry between the spin channels.
+In the `.param` file we set `spin_polarised  true` in order to allow the up and down spin electrons to take different configurations. It is important to start the calculation with an initial spin density using e.g. `spin:   1`. The value of the initial spin should not affect the final answer - a non-zero value is just needed to break the symmetry between the spin channels.
 ```castep_param
 ! Fe.param
 task            spectral      ! The TASK keyword instructs CASTEP what to do
@@ -45,7 +45,7 @@ At the end of the calculation the net spin of the unit cell is reported in the `
 Integrated Spin Density     =     2.15322     hbar/2
 ```
 
-![bcc Iron bandstructure](../../img/fe-bands.png)
+![bcc Iron band structure](../../img/fe-bands.png)
 
 !!! note
      The band structure has similarities with that of Copper - and other 3d elements - with flat 3d bands and dispersive s bands. We colour code the bands according to their spin chactacter (red=up, blue=down). We can see that there is an almost constant exchange splitting of 1.5eV between the up and down 3d bands. The splitting between the s-like bands is much smaller. More up states lie below the fermi energy than down states - hence the net spin of the unit cell.
@@ -92,16 +92,16 @@ nextra_bands : 6
 spin_polarized : true
 ```
 
-A PBE calculation incorrectly finds FeO to be a metal (bandstructure on left below).
+A PBE calculation incorrectly finds FeO to be a metal (band structure on left below).
 
-Add the following to the cell file to run a PBE+U calculation
+Add the following to the `.cell` file to run a PBE+U calculation
 ```castep_cell
 %block hubbard_u
 Fe 1 d: 2.5
 Fe 2 d: 2.5
 %endblock hubbard_u
 ```
-![FeO bandstructure](../../img/feo-bands.png)
+![FeO band structure](../../img/feo-bands.png)
 
 *FeO band structure with PBE (left) and with PBE+U (right)*
 

@@ -1,18 +1,18 @@
-Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
+Draft GitLab/git workflow for CASTEP developers: NB: Not a git tutorial!
 
-1.  Bitbucket web - create fork (“myfork” for this example)
+1.  GitLab web - create fork (`"myfork"` for this example)
 
-2.  Make fork visible to CDG (bitbucket group, very least to dominik.jochym@stfc.ac.uk so that the CI works)
+2.  Make fork visible to CDG (GitLab group, very least to dominik.jochym@stfc.ac.uk so that the CI works)
 
-3.  Clone to local machine ``git clone git@bitbucket.org:mybitbucket/castep-myfork.git castep-myfork``
+3.  Clone to local machine ``git clone git@gitlab.stfc.ac.uk:mybitbucket/castep-myfork.git castep-myfork``
 
-4.  Setup local githook (see readme in .githooks)
+4.  Setup local git hook (see README in `.githooks`)
 
-5.  Configure remote “myfork” and “upstream”:
+5.  Configure remote `"myfork"` and `"upstream"`:
 
     ```
-    git remote add upstream git@bitbucket.org:castep/castep.git
-    git remote add myfork git@bitbucket.org:mybitbucket/castep-myfork.git
+    git remote add upstream git@gitlab.stfc.ac.uk:castep/castep.git
+    git remote add myfork git@gitlab.stfc.ac.uk:mybitbucket/castep-myfork.git
     ```
     Can verify remotes with git remote -v (useful to have more remote aliases if you want to check out a branch on someone else’s fork)
 
@@ -20,13 +20,13 @@ Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
 
 7.  Switch to branch ``git switch foo``
 
-8.  (Stage and) Commit changes ``git commit -m “Cool stuff”``
+8.  (Stage and) Commit changes ``git commit -m "Cool stuff"``
 
 9.  If planned destination branch (usually default) has changed:
 
-    1.      Fetch from official ``git fetch upstream default:default`` [NB: reference to “upstream” might be different if   your remote aliases are configured differently]. This not only performs the fetch but also updates the local "default" branch to sync with the upstream.
+    1.      Fetch from official ``git fetch upstream default:default`` [NB: reference to "upstream" might be different if   your remote aliases are configured differently]. This not only performs the fetch but also updates the local "default" branch to sync with the upstream.
 
-    2. Rebase using destination (default) branch ``git rebase default``. This makes it so that your changes are sitting on top of the latest “official” default. If your branch contains many PRs it may be better to "squash", using the bitbucket merge option "squash merge", or
+    2. Rebase using destination (default) branch ``git rebase default``. This makes it so that your changes are sitting on top of the latest "official" default. If your branch contains many PRs it may be better to "squash", using the GitLab merge option "squash merge", or
     ```
     git rebase -i default
     ```
@@ -41,7 +41,7 @@ Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
       git push myfork default
        ```
 
-11.      Create pull request (bitbucket web, from fork)
+11.      Create pull request (GitLab web, from fork)
                 "Delete this branch after merge" should be checked in most cases. The exception is with long-term development branches and release branches.
 
 12.      If another PR is merged first, you have two choices:
@@ -49,11 +49,11 @@ Draft bitbucket/git workflow for CASTEP developers: NB: Not a git tutorial!
 
     1. &nbsp;
 
-          1. *Do NOT* click “Sync now” on the PR page as this does a merge and commit, which breaks our --ffonly policy
+          1. *Do NOT* click "Sync now" on the PR page as this does a merge and commit, which breaks our --ffonly policy
 
           2. At your local clone, go back to step 9
 
-          3. Similar to step 10, except this is a “force” push as the rebase has changed the commit history:
+          3. Similar to step 10, except this is a "force" push as the rebase has changed the commit history:
           ```
           git push --force myfork foo
           git push myfork default

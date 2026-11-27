@@ -1,13 +1,12 @@
 # Density of States
 
-In this tutorial, we will go through a simple example of using Optados to calculate the electronic density of states (DoS) of crystalline silicon in a 2 atom cell. We will then examine how Optados' adaptive broadening can be used to resolve fine spectral features that a fixed broadening scheme will obscure.
+In this tutorial, we will go through a simple example of using OptaDOS to calculate the electronic density of states (DoS) of crystalline silicon in a 2 atom cell. We will then examine how OptaDOS' adaptive broadening can be used to resolve fine spectral features that a fixed broadening scheme will obscure.
 
-## ODO Output
+## `ODO` Output
 
-Firstly, we will run the calculation and examine the Optados output file `Si.odo`. We will use the `cell` file
+Firstly, we will run the calculation and examine the OptaDOS output file `Si.odo`. We will use the `.cell` file
 
-*Si.cell*
-```castep_cell
+```castep_cell {title="Si.cell"}
 %BLOCK LATTICE_CART
 2.73  2.73 0.00
 2.73  0.00 2.73
@@ -25,10 +24,9 @@ KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 10 10 10
 ```
 
-together with the `param` file
+together with the `.param` file
 
-*Si.param*
-```castep_param
+```castep_param {title="Si.param"}
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : DOS
 PDOS_CALCULATE_WEIGHTS : TRUE
@@ -37,7 +35,7 @@ CUT_OFF_ENERGY         : 200
 IPRINT                 : 1
 ```
 
-The first 2 lines are what determine that we will be doing a DoS calculation. Run castep as usual, and then run optados on Si with the Optados input file
+The first 2 lines are what determine that we will be doing a DoS calculation. Run castep as usual, and then run OptaDOS on Si with the OptaDOS input file
 
 *Si.odi*
 ```
@@ -56,14 +54,14 @@ FINITE_BIN_CORRECTION : true  # Default
 One interesting thing to note here is the line `efermi : optados` - this sets the internal value of the Fermi level to the one it has derived from the DoS. This is important for subsequent calculations. Other valid options are:
 
 * `file`, where `optados` uses the value calculated by the electronic structure code that generated the eigenvalues
-* `insulator`, where optados uses a value calculated from assuming the system is non-metallic
+* `insulator`, where OptaDOS uses a value calculated from assuming the system is non-metallic
 * A custom value you may want to use
 
 This generates 3 files:
 
-* `Si.odo` - Optados general output file.
+* `Si.odo` - OptaDOS general output file.
 * `Si.adaptive.dat` - The adaptive broadened DOS raw output data.
-* `Si.adaptive.agr` - The adaptive broadened DOS in a file suitable to be plotted by  xmgrace.
+* `Si.adaptive.agr` - The adaptive broadened DOS in a file suitable to be plotted by  XMGrace.
 
 Let's have a look at the file `Si.odo`
 
@@ -80,7 +78,7 @@ Towards the top of the data output, we have a table looking like this:
 
 It has used the integrated DOS to work out the Fermi level, and has suggested the error in the integration by indicating the number of electrons at the Fermi level. Since we had 4 up electrons and 4 down in the input file this analysis seems satisfactory.
 
-Optados now performs some analysis of the DOS at the Fermi level,
+OptaDOS now performs some analysis of the DOS at the Fermi level,
 
 ```
 +----------------------- DOS at Fermi Energy Analysis -----------------------+
@@ -93,7 +91,7 @@ Optados now performs some analysis of the DOS at the Fermi level,
 
 From this we may assume that there is a band gap.
 
-A bit further down, Optados then calculates the band energy from the DOS is has calculated.
+A bit further down, OptaDOS then calculates the band energy from the DOS is has calculated.
 
 ```
 +--------------------------- Band Energy Analysis ---------------------------+
@@ -102,13 +100,13 @@ A bit further down, Optados then calculates the band energy from the DOS is has 
 +----------------------------------------------------------------------------+
 ```
 
-As the quality of the optados calculation is increased these two values should converge to the same answer.
+As the quality of the OptaDOS calculation is increased these two values should converge to the same answer.
 
 ## Other Output Files
 
-Finally, Optados shifts the Fermi level to 0 eV for the output files - let's have a look at the other 2 files generated.
+Finally, OptaDOS shifts the Fermi level to 0 eV for the output files - let's have a look at the other 2 files generated.
 
-The DoS is written to `Si2.adaptive.dat`. This contains 5 columns - the 1st is the energy, the 2nd is the up-spin DoS, the 3rd is the down-spin DoS, the 4th is the up-spin integrated DoS, and the 5th is the down-spin integrated DoS. If instead `SPIN_POLARIZED : FALSE` were set in the `param` file, there would only be 3 columns: energy, DoS and integrated DoS.
+The DoS is written to `Si2.adaptive.dat`. This contains 5 columns - the 1st is the energy, the 2nd is the up-spin DoS, the 3rd is the down-spin DoS, the 4th is the up-spin integrated DoS, and the 5th is the down-spin integrated DoS. If instead `SPIN_POLARIZED : FALSE` were set in the `.param` file, there would only be 3 columns: energy, DoS and integrated DoS.
 
 This file can be plotted by your preferred graph-plotting software. However, `optados` has made things easy and generated a  `Si2.adaptive.agr` file which is directly plottable using `xmgrace` - to get a plot all you have to run is:
 
@@ -118,7 +116,7 @@ $ xmgrace Si2.adaptive.agr
 
 The graph should look a bit like this:
 
-![AGR xmgrace plot](agr_out.png){width="40%"}
+![AGR XMGrace plot](agr_out.png){width="40%"}
 
 What is important to mention is that this `agr` file only contains the data for DoS, not integrated DoS. If you want to plot all the data, including up and down integrated DoS, run `xmgrace -batch other_data.bat` on the batch file
 
@@ -171,7 +169,7 @@ Let's go back to looking at the `odo` output file. Because `COMPUTE_BAND_GAP : T
 +----------------------------------------------------------------------------+
 ```
 
-Optados is very careful in its band gap analysis. It uses the bare eigenvalues (un-broadened) and works out the nature and size of the thermal gap, optical gap and the average gap over all of the Brillouin zone. In cases of multi-valleyed semiconductors optados will report the number of conduction band minima or valence band maxima with identical energies, but will not report the nature of the gap.
+OptaDOS is very careful in its band gap analysis. It uses the bare eigenvalues (un-broadened) and works out the nature and size of the thermal gap, optical gap and the average gap over all of the Brillouin zone. In cases of multi-valleyed semiconductors OptaDOS will report the number of conduction band minima or valence band maxima with identical energies, but will not report the nature of the gap.
 
 
 ## Broadening
@@ -180,7 +178,7 @@ We will now compare the different forms of broadening. This can be done quickly 
 
 `task : compare_dos`
 
-and re-running Optados. This gives us 4 new output files - `Si_linear.dat` and `Si_fixed.dat`, plus their accompanying `agr` files. Let's compare them by running `xmgrace -batch compare.bat` on the batch file
+and re-running OptaDOS. This gives us 4 new output files - `Si_linear.dat` and `Si_fixed.dat`, plus their accompanying `agr` files. Let's compare them by running `xmgrace -batch compare.bat` on the batch file
 
 *compare.bat*
 ```

@@ -3,19 +3,19 @@ electronic response orbitals and the dynamical matrix ([Refson, Tulip,
 and Clark 2006](Bibliography.md#ref-Refson2006)). There are implementation restrictions
 and the choice of the most suitable one depends on the type of
 calculation, the Hamiltonian, and the property calculations required.
-See table [[captable]](Running-phonon-calculations.md#tbl:captable) for details. For
+See table [[cap table]](Running-phonon-calculations.md#tbl:captable) for details. For
 straightforward semi-local DFT calculations (LDA, PBE etc.) the
 *density-functional perturbation theory method* (DFPT) method is
-preferred (section [[dfpt-gamma]](Running-phonon-calculations.md#sec:dfpt-gamma)), as this is
+preferred (section [[DFPT-gamma]](Running-phonon-calculations.md#sec:dfpt-gamma)), as this is
 not only the most efficient, but also allows the calculation of infra
 red and Raman intensities for modelling of spectra. DFPT is not yet
 implemented for ultrasoft pseudopotentials, or for Hubbard U or some
 dispersion-corrected DFT methods (as of release 24.1), and in these
 cases the *finite displacement* method should be used
-(section [[fd]](Running-phonon-calculations.md#sec:fd)). If a density of states or finely
+(section [[FD]](Running-phonon-calculations.md#sec:fd)). If a density of states or finely
 sampled dispersion curve along high symmetry directions is needed, then
 either the DFPT method with *Fourier interpolation*
-(section [[ddos]](Running-phonon-calculations.md#sec:ddos)) is the most suitable or the
+(section [[DDOS]](Running-phonon-calculations.md#sec:ddos)) is the most suitable or the
 *finite-displacement supercell*
 (section [[supercell]](Running-phonon-calculations.md#sec:supercell); if ultrasoft
 pseudopotentials are required). A summary of the recommended approach
@@ -34,23 +34,23 @@ table [[method-selection]](Running-phonon-calculations.md#tbl:method-selection)
 | DFT+D: TS, D2           |       ✓       |       ✓        |      ✓      |
 | DFT+D: D3,D4, MBD\*,XDM |       ✘       |       ✓        |      ✓      |
 
-: **Table 1:** CASTEP phonons implementation matrix. In general DFPT is avalable for
-semilocal DFPT, but not other Hamiltonians. The combination of DFPT and
+: **Table 1:** CASTEP phonons implementation matrix. In general DFPT is available for
+semi-local DFPT, but not other Hamiltonians. The combination of DFPT and
 USPs is not implemented.
 {#tbl:captable}
 
 | Target Property | Preferred method |
 |:---|:---|
-| IR spectrum | DFPT at q=0 with NCP potentials *(section. [[dfpt-gamma]](Running-phonon-calculations.md#sec:dfpt-gamma))* |
-|  | FD at q=0 with NCP potentials and DFPT e-field *(section. [[fd]](Running-phonon-calculations.md#sec:fd))* |
-|  | FD at q=0 with USP potentials and Berry Phase $Z^{*}$ *(section. [[berry-fd]](Running-phonon-calculations.md#sec:berry-fd))* |
-| Raman spectrum | DFPT at q=0 with NCP potentials (2n+1 theorem) *(section. [[raman]](Running-phonon-calculations.md#sec:raman))* |
+| IR spectrum | DFPT at q=0 with NCP potentials *(section. [[DFPT-gamma]](Running-phonon-calculations.md#sec:dfpt-gamma))* |
+|  | FD at q=0 with NCP potentials and DFPT e-field *(section. [[FD]](Running-phonon-calculations.md#sec:fd))* |
+|  | FD at q=0 with USP potentials and Berry Phase $Z^{*}$ *(section. [[berry-FD]](Running-phonon-calculations.md#sec:berry-fd))* |
+| Raman spectrum | DFPT at q=0 with NCP potentials ($2n+1$ theorem) *(section. [[Raman]](Running-phonon-calculations.md#sec:raman))* |
 | Born Effective Charges ($Z^{*}$) | DFPT E-field using NCP potentials *(section. [[efield]](Dielectric-properties.md#sec:efield))* |
-|  | FD at q=0 with USP potentials and Berry Phase $Z^{*}$  *(section. [[berry-fd]](Running-phonon-calculations.md#sec:berry-fd))* |
+|  | FD at q=0 with USP potentials and Berry Phase $Z^{*}$  *(section. [[berry-FD]](Running-phonon-calculations.md#sec:berry-fd))* |
 | Dielectric Permittivity ($\epsilon_\infty$) | DFPT E-field using NCP potentials *(section. [[efield]](Dielectric-properties.md#sec:efield))* |
-| Nonlinear optical susceptibility ($\chi^{(2)}$) | DFPT E-field (2n+1 theorem) using NCP potentials *(section. [[nlo]](Dielectric-properties.md#sec:nlo))* |
-| Phonon dispersion or DOS | DFPT plus interpolation with NCP potentials *(section. [[ddos]](Running-phonon-calculations.md#sec:ddos))* |
-|  | FD plus interpolation using USP or NCP potentials *(section. [[ndsc]](Running-phonon-calculations.md#sec:ndsc))* |
+| Nonlinear optical susceptibility ($\chi^{(2)}$) | DFPT E-field ($2n+1$ theorem) using NCP potentials *(section. [[NLO]](Dielectric-properties.md#sec:nlo))* |
+| Phonon dispersion or DOS | DFPT plus interpolation with NCP potentials *(section. [[DDOS]](Running-phonon-calculations.md#sec:ddos))* |
+|  | FD plus interpolation using USP or NCP potentials *(section. [[NDSC]](Running-phonon-calculations.md#sec:ndsc))* |
 |  | FD with supercell using USP or NCP potentials *(section. [[supercell]](Running-phonon-calculations.md#sec:supercell))* |
 | Vibrational Thermodynamics | same as DOS *(section. [[thermodynamics]](Thermodynamic-properties.md#sec:thermodynamics))* |
 
@@ -70,7 +70,7 @@ modes.
 #### Input files {#sec:input-basic}
 
 The setup for a CASTEP phonon calculation requires a few additional
-keywords in the *seedname*`.cell` file. Like any type of calculation,
+keywords in the `<seedname>.cell` file. Like any type of calculation,
 the unit cell must be specified using either of `%block LATTICE_ABC` or
 `%block LATTICE_CART`, and the atomic co-ordinates using
 `%block POSITIONS_FRAC` or `%block POSITIONS_ABS`. Figure
@@ -182,7 +182,7 @@ whether the mode is Raman active.
  + d B1    2 |    1  -1   1  -1  -1   1                                       +
 ```
 
-: **Figure 2** Output in the .castep file generated by the preceding input files for
+: **Figure 2** Output in the `.castep` file generated by the preceding input files for
 wurtzite BN. The columns show the mode frequencies, a letter labelling
 of the irreducible representation of the mode, the infrared absorptivity
 and Raman activity, and whether or not the mode is Raman and/or IR
@@ -285,7 +285,7 @@ In addition to the infrared absorptivity computed as a default part of a
 $\Gamma$-point phonon calculation, CASTEP is also capable of computing
 the Raman activity tensors in the case of non-resonant scattering for an
 insulating system[^7]. This calculation uses an extension of DFPT known
-as the “2n+1 theorem” ([Baroni et al. 2001](Bibliography.md#ref-BaroniDDG01); [Miwa
+as the "$2n+1$ theorem" ([Baroni et al. 2001](Bibliography.md#ref-BaroniDDG01); [Miwa
 2011](Bibliography.md#ref-Miwa2011)) which requires substantially more computational
 effort than a bare phonon calculation and is therefore not enabled by
 default. To compute Raman activity set
@@ -320,7 +320,7 @@ dos.pl tool (see section [[dos-pl]](Plotting-and-analysis-tools.md#sec:dos-pl))
 
 [^8]: If the parameter `raman_method : FINITEDISPLACEMENT` is set the
     calculation uses an older, finite-difference implementation (see
-    section [[fd]](Running-phonon-calculations.md#sec:fd)) to compute the mode displacement
+    section [[FD]](Running-phonon-calculations.md#sec:fd)) to compute the mode displacement
     derivatives of the polarizability tensor
     (section [[efield]](Dielectric-properties.md#sec:efield)) using the approach of
     Porezag and Pedersen ([Porezag and Pederson
@@ -463,7 +463,7 @@ instructs CASTEP to perform the Fourier interpolation step following the
 usual DFPT calculation.
 
 The target set of wavevectors for the interpolation is set up using
-additional keywords or blocks in the *.cell* file. Either
+additional keywords or blocks in the `.cell` file. Either
 
 > `phonon_fine_kpoint_mp_grid` *p q r*
 > `phonon_fine_kpoint_mp_offset` *o$_1$ o$_2$ o$_3$*
@@ -540,7 +540,7 @@ figure [[al-sc-cell]](Running-phonon-calculations.md#fig:al-sc-cell).
 #### Continuation {#sec:continuation}
 
 CASTEP stores the results of all phonon calculations - dynamical
-matrices and force constant matrices - in the binary *seedname*`.check`
+matrices and force constant matrices - in the binary `<seedname>.check`
 file written at the end of a successful run. This can be used to change
 some values of parameters relating to interpolation, and to change or
 indeed replace the entire fine phonon k-point set *without* any need to
@@ -553,12 +553,12 @@ Setting up a continuation calculation is simple. Just add the
 continuation keyword in the usual way to a renamed copy of the param
 file
 
-> `continuation` *orig-seedname*`.check`
+> `continuation <orig-seedname>.check`
 
 and make any changes to the fine phonon k-point sampling parameters in a
-copy of the *seedname*`.cell` file. It is recommended that you work with
+copy of the `<seedname>.cell` file. It is recommended that you work with
 renamed copies to avoid overwriting the original and valuable
-*seedname*`.check` file. Running CASTEP on the new set of input files is
+`<seedname>.check` file. Running CASTEP on the new set of input files is
 exactly the same as running a new calculation, except that the result
 will be generated much more quickly.
 
@@ -601,7 +601,7 @@ suitable weighting factor to preserve the symmetry of the cumulant force
 constant matrix. (See Refs. ([Parlinski, Li, and Kawazoe
 1997](Bibliography.md#ref-ParlinskiLK97)) and ([Ye et al. 2004](#ref-YeLWH04)) for a
 more detailed explanation). This scheme is selected by specifying the
-param file keyword
+`.param` file keyword
 
 > `phonon_fine_cutoff_method CUMULANT`
 
@@ -657,7 +657,7 @@ an otherwise apparently very well converged calculation that the three
 acoustic modes at $\Gamma$ depart significantly from zero frequency.
 Depending on the XC functional[^11] these frequencies may reach or
 exceed 50 cm$^{\text{-1}}$. One solution is simply to increase number of
-grid points of CASTEP’s “fine” FFT grid used for densities and
+grid points of CASTEP’s "fine" FFT grid used for densities and
 potentials by increasing `fine_grid_scale`[^12]. (N. B. This is distinct
 from `grid_scale` which controls the FFT grid used to represent
 wavefunctions.) However this can be very costly in computer time and
@@ -819,7 +819,7 @@ CASTEP proceeds by shifting each atom by a small amount, then performing
 a SCF calculation to evaluate the forces on the perturbed configuration.
 Both positive and negative displacements are performed in each direction
 so that the corresponding force constants can be evaluated using the
-accurate “central difference” method of numerical differentiation.
+accurate "central difference" method of numerical differentiation.
 {#eq:finite-diff}
 
 $$\frac{d^{2} E_{0}}{d u_{\kappa,\alpha}
@@ -856,7 +856,7 @@ and output formats are the same as for DFPT calculations.
 FD phonon calculations are useful where atomic-displacement response
 DFPT is not implemented, notably for ultrasoft pseudopotentials (USPs)
 and post-DFT exchange and correlation including LDA+U, SOC, hybrid
-functionals (see table [[captable]](Running-phonon-calculations.md#tbl:captable)). However
+functionals (see table [[cap table]](Running-phonon-calculations.md#tbl:captable)). However
 properties including IR spectral intensity, LO/TO splitting and the
 effectiveness of Fourier interpolation of dynamical matrices depend on
 the Born effective charges and dielectric permittivity (see
@@ -916,7 +916,7 @@ matrices at all of the (fine) phonon wavevectors required.
 
 The key step of computing every
 ${D^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(\mathbf{q})}$ on the
-“coarse” regular grid is achieved by constructing a list of supercells
+"coarse" regular grid is achieved by constructing a list of supercells
 commensurate with each of the coarse ${\mathbf{q}}$-points in turn (so
 that ${\mathbf{q}}\cdot T_{\text{SC}} = 2 n \pi$ where $T_{\text{SC}}$
 is a lattice vector of that supercell). This ${\mathbf{q}}$ maps to a
@@ -988,8 +988,8 @@ interpolation scheme tweaks apply identically.
 #### Legacy Finite Displacement/Supercell {#sec:supercell}
 The limitation of the primitive-cell finite displacement approach to
 ${\mathbf{q}}=0$ may also be overcome by combining the method with the
-use of a supercell. This method, sometimes known as the “direct
-method” ([Kunc and Martin 1982, sec. 19.2](Bibliography.md#ref-KuncM82)) relies on the
+use of a supercell. This method, sometimes known as the "direct
+method" ([Kunc and Martin 1982, sec. 19.2](Bibliography.md#ref-KuncM82)) relies on the
 short-ranged decay of the force constant matrix with interatomic
 distance and makes the assumption that force constants for separations
 larger than some value, $R_c$ are negligibly small and can be treated as
@@ -1008,7 +1008,7 @@ interpolation calculation.
 
 **Note:** This method is mostly superceded by the non-diagonal
 supercell/finite displacement approach of
-section [[ndsc]](Running-phonon-calculations.md#sec:ndsc). That method gives an equivalent
+section [[NDSC]](Running-phonon-calculations.md#sec:ndsc). That method gives an equivalent
 calculation of the force constant matrix, usually with a smaller
 computational cost, because of its superior scaling with cell size.
 
@@ -1049,7 +1049,7 @@ symmetry_generate
 %endblock PHONON_SUPERCELL_MATRIX
 ```
 
-: **Figure 4** Example cell file for aluminium supercell phonon calculation. This
+: **Figure 4** Example `.cell` file for aluminium supercell phonon calculation. This
 calculation computes a set of dispersion curves along high-symmetry
 directions. Note that this calculation is not fully converged with
 supercell size - there is a noticeable change in frequency on some of
@@ -1076,7 +1076,7 @@ num_dump_cycles   : 0
 xc_functional     : LDA
 ```
 
-: **Figure 5** Example param file for aluminium supercell phonon calculation. It is not
+: **Figure 5** Example `.param` file for aluminium supercell phonon calculation. It is not
 strictly necessary to turn off the LO/TO splitting calculation - CASTEP
 will warn that this is not possible and turn it off anyway. The explicit
 request for a non-spin polarized calculation is necessary for fcc Al,
@@ -1130,7 +1130,7 @@ care.
   the model.
 
 The electronic Brillouin-Zone integrals for the supercell calculation
-use the special k-points method, which are specified in the .`cell` file
+use the special k-points method, which are specified in the `.cell` file
 using an separate but analogous set of keywords to those pertaining to
 the primitive cell sampling. Specifically,
 
@@ -1231,7 +1231,7 @@ roughly `phonon_energy_tol` squared and it is wise to rely on this and
 
 #### Convergence of finite displacement forces
 
-The criteria for choosing the “ground-state” convergence parameters for
+The criteria for choosing the "ground-state" convergence parameters for
 a finite-displacement phonon calculation (in either primitive or
 supercell mode) are naturally almost identical to those governing DFPT
 calculations. In this case there is no additional self-consistent
@@ -1294,15 +1294,15 @@ parameter
 > `phonon_force_constant_CUTOFF`
 
 to lower values than the maximum of half the largest box size. These
-tests may be performed using the “continuation” method
-(section [[continuation]](Running-phonon-calculations.md#sec:continuation)) or the “phonons”
+tests may be performed using the "continuation" method
+(section [[continuation]](Running-phonon-calculations.md#sec:continuation)) or the "phonons"
 utility (section [[phonons-tool]](Plotting-and-analysis-tools.md#sec:phonons-tool)) without
 repeating the expensive supercell calculation.
 
 Another convergence test is automatically performed if the spherical
 cutoff method is selected. The frequencies resulting from the
 interpolation with the spherical cutoff are compared to those from an
-“exact” interpolation at wavevectors commensurate with the supercell.
+"exact" interpolation at wavevectors commensurate with the supercell.
 The results are written to the `.castep` file. This provides a
 quantitative measure of the interpolation error.
 
@@ -1313,7 +1313,7 @@ less useful. Parameter
 > `phonon_force_constant_cut_scale 0.9`
 
 will scale the range of the cutoff by the factor specified. However the
-default value of 1.0 is “special” in including constants separated by
+default value of 1.0 is "special" in including constants separated by
 exactly half the supercell Wigner Seitz cell. Consequently convergence
 is not smooth in this parameter and while 0.95 might be underconverged,
 1.0 could be very well converged. (This is also the reason for its

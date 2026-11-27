@@ -1,7 +1,7 @@
 # Hugoniostat
 
 The Hugoniostat is an approach to simulate shock-waves in DFT through a pseudo-ensemble which drives the temperature and
-pressure to the point on the Hugoniot line. Two Hugoniotstat methods are implemented. The constant volume
+pressure to the point on the Hugoniot line. Two Hugoniostat methods are implemented. The constant volume
 Hugoniostat (NVHug) of Maillet *et al.*[@Maillet2000] and the constant pressure/stress Hugoniostat of Ravelo
 *et al.*[@Ravelo2004].
 
@@ -259,7 +259,7 @@ md: QUENCH_P=T :endmd # Quench Barostat
 
 The effects of quenching on the temperature of a 70% volume 500-atom Lennard-Jones system, unquenched line (black)
 shows a large tran- sient initially, the quenched lines (blue and green) show the elimination of this transient at the
-expense of “unphysical” temperature dynamics, which are eliminated when the quenching is turned off (blue) after
+expense of "unphysical" temperature dynamics, which are eliminated when the quenching is turned off (blue) after
 equilibration. It should be noted that all three converge to the same temperature.
 
 ### Steady compression

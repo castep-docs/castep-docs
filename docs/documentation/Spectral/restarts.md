@@ -1,4 +1,4 @@
-Spectral calculations do not write a check file - however, they can write backups to enable restarting an unfinished calculation. The limitation is that a parallel calculation must be restarted on the same number of processors.
+Spectral calculations do not write a `.check` file - however, they can write backups to enable restarting an unfinished calculation. The limitation is that a parallel calculation must be restarted on the same number of processors.
 
 ```castep_param
 #Sample param file
@@ -17,7 +17,7 @@ The devel_code keyword `SPECTRAL_RESTART` triggers both the writing an reading o
 
 `backup_interval` determines the time between writing backups. Backup will slow down the calculation as they require disk access (which is always slow). If you expect a job to run for several hours backing up every 30min is a reasonable compromise. After completing each k-point the CASTEP will check to see if time since the last backup is greater than backup_interval - is it is a backup will be written - if not CASTEP carries on with the next k-point. Note that a backup is always written (if backup_interval>0) after the final kpoint. This is useful insurance in case there is any problem when CASTEP writes the final output files.
 
-Here is an example .castep file with backup
+Here is an example `.castep` file with backup
 
 ```
   =====================================================================
@@ -51,15 +51,15 @@ As this calculation was run on two processors, we find two backup files have bee
 ```
 
 
-To restart, keep everything the same but add to the param file
+To restart, keep everything the same but add to the `.param` file
 
 ```castep_param
  continuation : xxx.check
 ```
 
- Where `xxx.check` is the name of the check file containing the ground-state density etc. This will have been written during the first run - and xxx will be replaced with whatever is the seedname of your run.
+ Where `xxx.check` is the name of the `.check` file containing the ground-state density etc. This will have been written during the first run - and xxx will be replaced with whatever is the seedname of your run.
 
- We now re-run the calculation. CASTEP will read the ground-state from the check file (so there should be no electronic minimisation)
+ We now re-run the calculation. CASTEP will read the ground-state from the `.check` file (so there should be no electronic minimisation)
 
 ```
     Restarting spectral calculation from restart file         |<-- SPEC

@@ -14,11 +14,11 @@ md_num_iter = 500
 NB This is the number of steps to be calculated in this run. It is NOT the accumulated total number of steps in a series of
 continuation runs. The "MD time" value in the `<seed>.castep` file records the cumulative time.
 
-##Ensembles
+## Ensembles
 
 The following statistical ensembles can be simulated using CASTEP.
 
-####NVE
+#### NVE
 
 In this ensemble the number of atoms (N), the shape
 and volume (V) of the simulation cell and the energy (E) remain constant. The conserved energy is the Born-Oppenheimer
@@ -44,7 +44,7 @@ the kinetic energy of the initial ionic velocities.
 These ionic velocities are defined in one of three ways.
 
 
-* By explicit user definition of ionic velocities in the cell file, e.g.
+* By explicit user definition of ionic velocities in the `.cell` file, e.g.
 ```castep_cell
 %BLOCK IONIC_VELOCITIES
 auv
@@ -84,7 +84,7 @@ calculate_stress = true
 
 in the parameters file.
 
-####NVT
+#### NVT
 
 This ensemble is selected with
 
@@ -95,7 +95,7 @@ md_ensemble  =  NVT
 The system will be evolved to a specific temperature defined using
 the ``md_temperature`` keyword as used above. Initial velocities
 are assigned based on this temperature, read from an ``IONIC_VELOCITIES``
-block in the cell file, or read from a continuation file in the same way as
+block in the `.cell` file, or read from a continuation file in the same way as
 above.
 
 Temperature control can be implemented by one of several methods, all
@@ -119,14 +119,14 @@ for a chain of five thermostats.
 In the Nose-Hoover case with a chain of $M$ thermostats acting of $N_{f}$ ionic degrees of freedom, the conserved quantity
 is the pseudo-Hamiltonian
 
-\begin{equation}
+$$
 \mathcal{H} = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 \sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
 {|\mathbf{R}_{i}-\mathbf{R}_{j}|}
 +\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}}
 + \sum_{i=1}^{M}\frac{p_{\xi_{i}}^{2}}{2Q_{i}}
 + N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
-\end{equation}
+$$
 
 where the $Q_{i}$ are the thermostat fictitious masses assigned automatically
 from the specified ion relaxation time and $\xi_{i}$ are the thermostat degrees of
@@ -166,7 +166,7 @@ this value.
 As with the NVE ensemble, pressure is not calculated by default. This is
 overridden in the same way as the NVE case.
 
-####NPH
+#### NPH
 
 In this ensemble the size and (if desired) shape of the simulation
 cell varies to regulate pressure. No thermostat is applied and hence the enthalpy (H) is conserved.
@@ -210,7 +210,7 @@ md_barostat = andersen-hoover
 In this case the printed Hamiltonian energy is the enthalpy, plus the kinetic
 energy associated with the cell motion.
 
-\begin{equation}
+$$
 \label{eq:AndersenNPH}
 H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 \sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
@@ -235,13 +235,13 @@ md_barostat = parrinello-rahman
 The cell dynamics contain nine degrees of freedom (of which six are independent) leading to
 a Hamiltonian energy of
 
-\begin{equation}
+$$
 \label{eq:ParRarNPH}
 H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 \sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
 {|\mathbf{R}_{i}-\mathbf{R}_{j}|}
 +\sum_{i=1}^{N}\frac{P_{i}^{2}}{2M_{i}} + P_{ext}V + \mathrm{Tr}[{\mathbf{p}_{g}\mathbf{p}_{g}^{T}]}/2W
-\end{equation}
+$$
 
 For both barostats, a relaxation time for the cell motions should be specified
 with an appropriate unit of time, for example:
@@ -290,7 +290,7 @@ of plane waves the energy correction is no longer constant
 and is recalculated at each step.
 
 
-####NPT
+#### NPT
 
 The NPT ensemble is specified with the command:
 
@@ -307,7 +307,7 @@ In the case of Langevin dynamics at NPT, the printed Hamiltonian energy is
 the same as in the NPH ensemble, i.e. that given by the equations above. In the case of Nose-Hoover NPT molecular dynamics,
 the Hamiltonian energy is given by
 
-\begin{equation}
+$$
 \label{eq:HooverNPT}
 H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 \sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
@@ -317,11 +317,11 @@ H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 + N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
 + \sum_{i=1}^{M}\frac{p_{\xi_{bi}}^{2}}{2Q_{bi}}
 + k_{B}T\sum_{i=1}^{M}\xi_{bi}
-\end{equation}
+$$
 
 in the case of isotropic cell dynamics, or
 
-\begin{equation}
+$$
 \label{eq:ParRarNPT}
 H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 \sum_{i=1}^{N}\sum_{j=1}^{N}\frac{Z_{i}Z_{j}}
@@ -331,7 +331,7 @@ H = \left<\Psi|\hat{H}_{e}|\Psi\right> + \frac{1}{2}
 + N_{f}k_{B}T\xi_{1} + k_{B}T\sum_{i=2}^{M}\xi_{i}
 + \sum_{i=1}^{M}\frac{p_{\xi_{bi}}^{2}}{2Q_{bi}}
 + 9k_{B}T\xi_{b1} + k_{B}T\sum_{i=2}^{M}\xi_{bi}
-\end{equation}
+$$
 
 in the Parrinello-Rahman case. Note that in each case the motion of the cell degree(s) of
 freedom couple to a second Nose-Hoover chain.

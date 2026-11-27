@@ -14,46 +14,46 @@ definition[@Hirshfeld1977].
 ## Mulliken population analysis
 
 The total number of electrons $N$ of a quantum mechanical system can be found by evaluating the sum
-\begin{equation}
+$$
 N = \sum _ \mu (\mathbf{P} \mathbf{S}) _ {\mu\mu}
-\end{equation}
+$$
 where $\mathbf{P}$ and $\mathbf{S}$ are the density and overlap matrices expressed in a suitable basis set $\boldsymbol{\chi}$, respectively. The overlap matrix elements are obtained as
-\begin{equation}
+$$
 S _ {\mu\nu} = \langle \chi _ \mu | \chi _ \nu \rangle
 \textrm{.}
-\end{equation}
+$$
 The density matrix results from evaluating the density operator using the basis set
-\begin{equation}
+$$
 P _ {\mu\nu} = \langle \chi _ \mu | \hat{P} | \chi _ \nu \rangle
-\end{equation}
+$$
 where the single-particle density operator is expressed in terms of the single-particle wavefunctions $\psi _ i$ and the corresponding occupancies $f _ i$ as
-\begin{equation}
+$$
 \hat{P} = \sum _ i f _ i \; |\psi _ i \rangle \langle \psi _ i |
 \textrm{,}
-\end{equation}
+$$
 therefore
-\begin{equation}
+$$
 P _ {\mu\nu} = \sum _ i f _ i \; \langle \chi _ \mu | \psi _ i \rangle \langle \psi _ i | \chi _ \nu \rangle
 \textrm{.}
-\end{equation}
+$$
 
 If the basis set $\boldsymbol{\chi}$ is local (i.e. functions with compact support), individual terms $(\mathbf{P} \mathbf{S}) _ {\mu\mu}$ in the total charge expression may be associated with the
 spatial region corresponding to the individual basis function $\chi _ \mu$. If these basis functions are centred on atoms, the contributions belonging to a particular atom $A$ are defined as the
 charge of $A$:
-\begin{equation}
+$$
 N _ A = \sum _ {\mu \in A} (\mathbf{P} \mathbf{S}) _ {\mu\mu}
 \textrm{.}
-\end{equation}
+$$
 Conveniently, the off-diagonal elements of $\mathbf{P} \mathbf{S}$ are partitioned into bond contributions between atoms $A$ and $B$ as
-\begin{equation}
+$$
 N _ {AB} = \sum _ {\mu \in A} \sum _ {\nu \in B} (\mathbf{P} \mathbf{S}) _ {\mu\nu}
 \textrm{.}
-\end{equation}
+$$
 
 To assign a charge to an atom,
-\begin{equation}
+$$
 q _ A = Z' _ A - N _ A
-\end{equation}
+$$
 is calculated, where $Z'$ is the pseudoatom nuclear charge.
 
 
@@ -101,32 +101,32 @@ will use the 1s, 2s and 2p orbitals. Shallow core states, if explicitly treated 
 ## The Hirshfeld partitioning scheme
 
 The Hirshfeld population analysis partitions the total ground state electronic density $\rho(\mathbf{r})$ into atomic densities using
-\begin{equation}
+$$
 \rho _ A(\mathbf{r}) = w _ A(\mathbf{r}) \rho(\mathbf{r})
-\end{equation}
+$$
 where $w _ A(\mathbf{r})$ is the sharing function belonging to atom $A$. The sharing function is calculated from the spherically averaged isolated atom densities $\rho^\textrm{isolated}$ as
-\begin{equation}
+$$
 w _ A(\mathbf{r}) = \frac{\rho^\textrm{isolated} _ A (\mathbf{r})}{\sum _ A \rho^\textrm{isolated} _ A (\mathbf{r})}
 \textrm{,}
-\end{equation}
+$$
 where each $\rho^\textrm{isolated} _ A$ is centred at the position $\mathbf{R} _ A$ of the nucleus of $A$.
 
 The electronic charge attributed to atom $A$ is the integral
-\begin{equation}
+$$
 N _ A = \int \mathrm{d} \mathbf{r} \rho _ A(\mathbf{r})
 \textrm{,}
-\end{equation}
+$$
 from which the total charge is obtained as
-\begin{equation}
+$$
 q _ A = Z' _ A - N _ A
 \textrm{.}
-\end{equation}
+$$
 
 Other quantities, such as the volume of the bonded atom is calculated from the integral
-\begin{equation}
+$$
 V _ A = \int \mathrm{d} \mathbf{r} \rho _ A(\mathbf{r}) |\mathbf{r} - \mathbf{R} _ A|^3
 \textrm{,}
-\end{equation}
+$$
 which are useful in other methods, such as the [many-body and XDM ispersion schemes](../dftd).
 
 

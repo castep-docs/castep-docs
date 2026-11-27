@@ -63,9 +63,9 @@ The general syntax for constraint $i$ operating on atom $j$ of element X at posi
 %ENDBLOCK IONIC_CONSTRAINTS
 ```
 and the constraint is specfied as
-\begin{equation}
+$$
    C^i={\bf a^i}\cdot{\bf r^j}
-\end{equation}
+$$
 
 where $C^i$ is given by the initial conditions. For example to fix the second S atom to move in the plane parallel to $y=x$ use this:
 ```castep_cell

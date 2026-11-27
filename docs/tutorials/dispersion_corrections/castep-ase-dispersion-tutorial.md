@@ -29,7 +29,7 @@ from matplotlib import pyplot as plt
 
 ```
 
-The CASTEP-ASE interface returns the 'Final energy' from the .castep file, though for this tutorial we will actually want the dispersion-corrected energy. The function below reads the .castep file and extracts the dispersion-corrected final energy.
+The CASTEP-ASE interface returns the 'Final energy' from the `.castep` file, though for this tutorial we will actually want the dispersion-corrected energy. The function below reads the `.castep` file and extracts the dispersion-corrected final energy.
 
 ```python
 def extract_dispersion_corrected_energy(file_path):
@@ -163,7 +163,7 @@ for sedc_scheme in schemes:
 df.to_csv('graphite_layer_separation.csv')
 ```
 
-The .param files generated look something like this:
+The `.param` files generated look something like this:
 
 ```castep_param
 WRITE_CST_ESP: FALSE
@@ -177,7 +177,7 @@ BASIS_PRECISION: precise
 
 The task defaults to `SINGLEPOINT` (which is what we want in this case).
 
-The .cell files simply have the crystal structure in which the cell is scaled in the c direction.
+The `.cell` files simply have the crystal structure in which the cell is scaled in the c direction.
 
 
 
@@ -185,7 +185,7 @@ The .cell files simply have the crystal structure in which the cell is scaled in
 
 ## Read in and analyse the results
 
-We can now read in and analyse the results from the previous step. Reading the data into a `pandas` dataframe object is convenient.
+We can now read in and analyse the results from the previous step. Reading the data into a `pandas` `DataFrame` object is convenient.
 
 ```python
 df  = pd.read_csv('./graphite_layer_separation.csv')
@@ -225,7 +225,7 @@ which produces the following figure:
 </figure>
 
 
-We can see that the plain PBE functional severely underestimates the binding energy of graphite and that many of the dispersion-corrected results are in much better agreement. The TS scheme strongly overbinds graphite, but has been found to be accurate for other types of systems. Testing such methods carefully is always required when you encounter a new system.
+We can see that the plain PBE functional severely underestimates the binding energy of graphite and that many of the dispersion-corrected results are in much better agreement. The TS scheme strongly over-binds graphite, but has been found to be accurate for other types of systems. Testing such methods carefully is always required when you encounter a new system.
 
 
 ## Further suggestions
@@ -239,7 +239,7 @@ We can see that the plain PBE functional severely underestimates the binding ene
     %ENDBLOCK devel_code
     ```
 
-    in the .param file. What effect does this have on the interlayer binding energy in graphite? (You may also want to set `IPRINT = 2`  to see more information about the dispersion correction parameters.)
+    in the `.param` file. What effect does this have on the interlayer binding energy in graphite? (You may also want to set `IPRINT = 2`  to see more information about the dispersion correction parameters.)
 
 2.  Compare to other XC functionals with and without the dispersion corrections (though note that of the corrections are [only parameterised for a few functionals](../../documentation/Groundstate/dftd.md#table).)
 

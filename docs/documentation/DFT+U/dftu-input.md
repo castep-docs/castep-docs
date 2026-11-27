@@ -1,5 +1,5 @@
-## .cell file
-A $U$ value can be specified in the .cell file as follows:
+## `.cell` file
+A $U$ value can be specified in the `.cell` file as follows:
 ```castep_cell
 %BLOCK hubbard_u
 Ni d : 6

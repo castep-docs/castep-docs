@@ -3,7 +3,7 @@
 
 
 ## Work to do
-After the base $\alpha_{I}=0\;\forall\;I$ calculation, a description of the work to be performed will be written to the .castep file:
+After the base $\alpha_{I}=0\;\forall\;I$ calculation, a description of the work to be performed will be written to the `.castep` file:
 ```
  Performing   6 alpha calculations for the following   3 channels:
    Mn              1  d
@@ -77,4 +77,3 @@ Once all the work is complete, the calculated $U$ values will be output:
    ====================================================
 ```
 Each of the Mn, Fe and Co are all equivalent sites here, and thus the computed $U$ values for each species are all identical as expected.
-

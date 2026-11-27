@@ -1,6 +1,6 @@
-This is a detailed description of options for CASTEP's cell file. See the [basic cell file page](../Getting_Started/basic_cell_file.md) for an overview. This page has the most frequently-used cell file options, but for a full set use [CASTEP's built-in help](../Getting_Started/built_in_help.md). There is also a [concise table of cell keywords](cell_keywords.md).
+This is a detailed description of options for CASTEP's `.cell` file. See the [basic `.cell` file page](../Getting_Started/basic_cell_file.md) for an overview. This page has the most frequently-used `.cell` file options, but for a full set use [CASTEP's built-in help](../Getting_Started/built_in_help.md). There is also a [concise table of cell keywords](cell_keywords.md).
 
-The cell file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, cell symmetry, external pressure, constraints on motion of the atoms or cell, and atomic properties such as the mass of each species.
+The `.cell` file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, cell symmetry, external pressure, constraints on motion of the atoms or cell, and atomic properties such as the mass of each species.
 
 The file itself is a free-format keyword-driven text file, consisting of keywords and blocks of information. These may be given in any order, with blocks indicated by the special `%block` and `%endblock` markers. Most of the keywords and blocks are optional, but CASTEP *requires* two block entries: a block to specify the lattice, and another to specify the atomic elements and positions within the cell.
 
@@ -482,7 +482,7 @@ is a core state) this should be 2. By default, the number of states
 will be the appropriate number to complete the valence shell to the
 next noble gas. If shallow core states are excluded from a
 pseudopotential, the value of `SPECIES_LCAO_STATES` for that species
-should be included in the cell file to ensure a meaningful basis set
+should be included in the `.cell` file to ensure a meaningful basis set
 is used.
 
 ### External Pressure ###

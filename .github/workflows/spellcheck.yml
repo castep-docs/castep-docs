@@ -1,0 +1,44 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: spellcheck
+
+on:
+  push: {}
+  pull_request:
+    branches: [develop]
+
+
+permissions:
+  contents: read
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.14"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools
+          python -m pip install pyspelling
+
+      - name: Install hunspell
+        run: |
+          sudo apt-get install hunspell
+          curl -OL https://github.com/en-wl/wordlist/releases/download/rel-2026.02.25/hunspell-en_GB-large-2026.02.25.zip
+          unzip -p hunspell-en_GB-large-2026.02.25.zip en_GB-large.aff > /usr/share/hunspell/en_GB.aff
+          unzip -p hunspell-en_GB-large-2026.02.25.zip en_GB-large.dic > /usr/share/hunspell/en_GB.dic
+
+      - name: Spell check
+        run: |
+          python -m pyspelling

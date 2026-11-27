@@ -20,7 +20,7 @@
 - [ ] Ensure checkpoints forward & backward compatible
 - [ ] Ensure compatibility between Academic and BIOVIA releases
 
-- [ ] Check CASTEP builds and runs on ARCHER2 -- Both GNU and CMake
+- [ ] Check CASTEP builds and runs on `ARCHER2` -- Both GNU and CMake
 - [ ] Check GPU build on Tier-1 machines -- Both GNU and CMake
 
 - [ ] Check supported compilers for oldest and latest and update README.install
@@ -30,26 +30,26 @@
 
 - [ ] Check linked/included library versions for updates
   - Current libraries:
-    - [ ] dl_mg
-    - [ ] simple-dftd3
-    - [ ] d4
-    - [ ] spglib
-    - [ ] libxc
-    - [ ] FoxXML
+    - [ ] `dl_mg`
+    - [ ] `simple-dftd3`
+    - [ ] `d4`
+    - [ ] `spglib`
+    - [ ] `libxc`
+    - [ ] `FoxXML`
 
 ## External Tools
 
 - [ ] Checked shipped versions of third-party tools and utilities for updates
   - Current tools:
-    - [ ] c2x
-    - [ ] cif2cell
-    - [ ] optados
-    - [ ] BoltzTrap
-    - [ ] SHengBTE
-    - [ ] emc
-    - [ ] atat
-    - [ ] elastic_constants
-- [ ] Update emacs_mode keys for most recent keywords
+    - [ ] `c2x`
+    - [ ] `cif2cell`
+    - [ ] `OptaDOS`
+    - [ ] `BoltzTraP`
+    - [ ] `ShengBTE`
+    - [ ] `emc`
+    - [ ] `ATAT`
+    - [ ] `elastic_constants`
+- [ ] Update `emacs_mode` keys for most recent keywords
 
 - [ ] Check that version requirement of Python components and utilities are
       still up to date
@@ -60,7 +60,7 @@
 - [ ] Update release notes
 - [ ] Update version in Ford Docs
 
-- [ ] Check new parameters (cell and param keywords)
+- [ ] Check new parameters (`.cell` and `.param` keywords)
   - [ ] New parameters have correct help text
   - [ ] New parameters are documented in the manual
 
@@ -68,13 +68,13 @@
 ## Licences
 
 - [ ] Update checksums file
-- [ ] Upload appropriately to licences.stfc.ac.uk
+- [ ] Upload appropriately to `licences.stfc.ac.uk`
 
 ## Finalisation
 
 - [ ] Tag final release commit
 - [ ] Pre-notify HPC providers of release
 - [ ] Notify mailing list of release
-- [ ] Update castep.org with latest info
+- [ ] Update `castep.org` with latest info
 - [ ] Check release branch for build system and documentation updates
       and back-port to default branch if needed
