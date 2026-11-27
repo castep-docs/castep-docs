@@ -1,12 +1,10 @@
-Here we will look more into convergence of chemical shielding calculations, examining what happens as we change the sampling of the Birllouin zone (BZ). We will examine diamond for this purpose.
+Here we will look more into convergence of chemical shielding calculations, examining what happens as we change the sampling of the Brillouin zone (BZ). We will examine diamond for this purpose.
 
 ## Varying k-point grid size
 
-We will use the `cell` and `param` files below for our calculations:
+We will use the `.cell` and `.param` files below for our calculations:
 
-*diamond.cell*
-
-```castep_cell
+```castep_cell {title="diamond.cell"}
 %block LATTICE_CART
 0 1.7 1.7
 1.7  0 1.7
@@ -23,9 +21,9 @@ kpoints_mp_grid  4 4 4
 
 symmetry_generate
 ```
-*diamond.param* <a name="diamond.param"></a>
 
-```castep_param
+<a name="diamond.param"></a>
+```castep_param {title="diamond.param"}
 comment         = nmr testing
 iprint          = 1
 xcfunctional = LDA

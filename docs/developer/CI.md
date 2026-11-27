@@ -9,7 +9,7 @@
 
 The CASTEP CI system is divided into 3 phases:
 
-[Rapid Response (BitBucket)](#bitbucket-pipelines)
+[Rapid Response (GitLab)](#gitlab-pipelines)
 : A short set of tests run whenever a PR is created or pushed to.
 
 [CASTEP PR Tests (Jenkins)](#jenkins-pipelines)
@@ -150,7 +150,7 @@ report accessible through the side-bar.
     The warning collection will take the set of warnings from the first build using
     any of the following compilers:
 
-    - gfortran
+    - GFortran
     - ifort
     - nag
 
@@ -266,7 +266,7 @@ to cover a broad scope of possible use-cases.
 
 ### PR Builds run
 
-When a PR is opened, BitBucket triggers a small subset of the Jenkins
+When a PR is opened, GitLab triggers a small subset of the Jenkins
 tests.
 
 These builds only run the `quick` subset of the tests.
@@ -310,7 +310,7 @@ Parameters`. This allows one to manually specify the components to use.
     | Parameter                         | Meaning                                                                             | Default                                                  |
     |:---------------------------------:|:-----------------------------------------------------------------------------------:|:--------------------------------------------------------:|
     | `repo_method`                     | Define method to retrieve repo. <br>**Should not need to be changed.**              | `https`                                                  |
-    | `repo_host`                       | URL to repository if externally hosted. <br>**Should not need to be changed.**      | `bitbucket.org`                                          |
+    | `repo_host`                       | URL to repository if externally hosted. <br>**Should not need to be changed.**      | `gitlab.stfc.ac.uk`                                          |
     | `repo_path`                       | URL Path to workspace and repository. [^1^](#urlnote)                               | `castep/castep`                                          |
     | `branch`                          | Branch to build and test. [^2^](#branchnote)                                        | `default`                                                |
     | `builds_to_run`&nbsp;&nbsp;&nbsp; | Builds to run as list of [build keys](#build-keys).                                 | see: [Default builds list](#default-builds-run)          |
@@ -411,13 +411,13 @@ Multiple comment tags are joined with `-`
     <!-- | -                    | `NO_CMAKE`                     -->
     <!-- | `NO_GNUMAKE`         | -                              -->
 
-## BitBucket pipelines
+## GitLab pipelines
 
 In addition to the main Jenkins tests, there is also a subset of short, fast
-tests which are run on BitBucket every commit to ascertain functionality
+tests which are run on GitLab every commit to ascertain functionality
 quickly.
 
-The BitBucket pipelines are managed through the `bitbucket-pipelines.yml` in the
+The GitLab pipelines are managed through the `gitlab-ci.yml` in the
 root CASTEP folder.
 
 They currently run:

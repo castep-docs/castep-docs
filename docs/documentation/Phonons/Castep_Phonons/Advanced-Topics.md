@@ -7,8 +7,8 @@ sometimes be convenient to use it in this mode (for example, if it is
 desired to compare a molecular crystal with an isolated molecule at
 exactly the same level of theory).
 
-With certain limitations this can be done in CASTEP using the “molecule
-in large box” method. The idea is to place the molecule in a vacuum by
+With certain limitations this can be done in CASTEP using the "molecule
+in large box" method. The idea is to place the molecule in a vacuum by
 constructing a large supercell. If the supercell is sufficiently large
 that the periodic images of the molecule do not interact then the
 frequencies and eigenvectors in the molecular limit can be recovered.
@@ -53,7 +53,7 @@ the molecular point group.
 Finally, it is sometimes desirable to compute the vibrational spectrum
 of an ion rather than a neutral molecule. This adds a number of
 complications of different degrees of severity. First is the well-known
-result that semi-local DFT (LDA and GGA) severely underbinds anions, and
+result that semi-local DFT (LDA and GGA) severely under-binds anions, and
 the description of the molecular states in some systems may be
 substantially incorrect. Second, the introduction of a non-zero
 molecular charge in a periodic cell necessitates the addition of a
@@ -64,7 +64,7 @@ system. This model while effective, gives rise to additional
 electrostatic terms which decrease only as $1/L^{3}$. Consequently it is
 impossible to completely converge such a calculation with respect to
 cell size. It is beyond the scope of this document to describe the
-techniques which may be used to recover the “infinite” volume limit. The
+techniques which may be used to recover the "infinite" volume limit. The
 reader is referred to ref ([Leslie and Gillan 1985](Bibliography.md#ref-leslie:85)) and
 the extensive literature which cites this paper for further reading. An
 example of a successful approach involving an extrapolation of
@@ -176,9 +176,9 @@ alternative approach is to apply constraints to certain atoms.
 
 CASTEP implements a technique known as *constrained lattice dynamics*,
 also known as the *partial hessian* method. Nominated atoms are assumed
-to be “frozen”, and the corresponding entries of the dynamical matrix
+to be "frozen", and the corresponding entries of the dynamical matrix
 are set to zero. The model is effectively one whereby the atoms in the
-region of the system deemed “irrelevant” are assigned a mass of
+region of the system deemed "irrelevant" are assigned a mass of
 infinity. It is not necessary to perform any computations for
 perturbation of these atoms, and a considerable saving of computational
 effort may be achieved.
@@ -202,7 +202,7 @@ generality of CASTEP’s linear constraints block (see for example the
 tutorial on MD at <http://www.castep.org>) but only identifies atoms
 which are fully constrained not to move. As in the example above, there
 should be a single line for each atom which creates a uniquely numbered
-constraint. This should contain a “1” in all of the x, y, z positions.
+constraint. This should contain a "1" in all of the x, y, z positions.
 
 Except in rather specialised geometries the presence of fixed atom
 constraints is incompatible with most symmetry operations, and therefore

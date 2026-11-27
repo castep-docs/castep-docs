@@ -3,12 +3,11 @@
 For this example we calculate the projected MOs of a NO molecule on a
 Ni(001) slab. In the following the required input files are:
 
-no-on-ni001.param, no-on-ni001.cell, no-on-ni001.molpdos,
-gasphase.cell, gasphase.param, gasphase.check
+`no-on-ni001.param`, `no-on-ni001.cell`, `no-on-ni001.molpdos`,
+`gasphase.cell`, `gasphase.param`, `gasphase.check`
 
-*no-on-ni001.param*
 
-```castep_param
+```castep_param {title="no-on-ni001.param"}
     calculate_modos     : true
     deltascf_checkpoint :  gasphase
 
@@ -30,9 +29,7 @@ gasphase.cell, gasphase.param, gasphase.check
     xc_functional : RPBE
 ```
 
-*no-on-ni001.cell*
-
-```castep_cell
+```castep_cell {title="no-on-ni001.cell"}
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -76,9 +73,7 @@ gasphase.cell, gasphase.param, gasphase.check
     KPOINTS_MP_OFFSET : 0.25 0.25 0.25
 ```
 
-*no-on-ni001.molpdos*
-
-```
+``` {title="no-on-ni001.molpdos"}
     molpdos_state        :  4        1
     molpdos_state        :  5        1
     molpdos_state        :  6        1
@@ -92,9 +87,7 @@ gasphase.cell, gasphase.param, gasphase.check
     output_filename      :  MolPDOS.dat
 ```
 
-*gasphase.cell*
-
-```castep_cell
+```castep_cell {title="gasphase.cell"}
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -111,9 +104,9 @@ gasphase.cell, gasphase.param, gasphase.check
     KPOINTS_MP_OFFSET : 0.25 0.25 0.25
 ```
 
-*gasphase.param*
 
-```castep_param
+
+```castep_param {title="gasphase.param"}
     task: SinglePoint
 
     spin_polarized : True
@@ -132,8 +125,8 @@ gasphase.cell, gasphase.param, gasphase.check
     xc_functional : RPBE
 ```
 
-After generating gasphase.check by running CASTEP on the gasphase.param
-and gasphase.cell files, we execute CASTEP and post-process with
+After generating gasphase.check by running CASTEP on the `gasphase.param`
+and `gasphase.cell` files, we execute CASTEP and post-process with
 MolPDOS. This will write x-y data files for the Total DOS, the separate
 spin channels, and the MolPDOS peaks.
 

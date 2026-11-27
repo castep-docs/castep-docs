@@ -1,28 +1,19 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-# Based on starter-workflows at https://github.com/actions/starter-workflows/tree/main/pages
 
-name: docs
+name: spellcheck
 
 on:
-  push:
-    branches: [ develop ]
+  push: {}
   pull_request:
-    branches: [ develop ]
+    branches: [develop]
 
-  workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
-  doc:
+  spellcheck:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -43,7 +34,10 @@ jobs:
 
       - name: Install hunspell
         run: |
-          sudo apt-get install hunspell hunspell-en-gb
+          sudo apt-get install hunspell
+          curl -OL https://github.com/en-wl/wordlist/releases/download/rel-2026.02.25/hunspell-en_GB-large-2026.02.25.zip
+          unzip -p hunspell-en_GB-large-2026.02.25.zip en_GB-large.aff > /usr/share/hunspell/en_GB.aff
+          unzip -p hunspell-en_GB-large-2026.02.25.zip en_GB-large.dic > /usr/share/hunspell/en_GB.dic
 
       - name: Spell check
         run: |

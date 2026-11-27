@@ -1,12 +1,10 @@
 # Optics
 
-Optados is capable of getting numerous optical properties of different structures, all of which depend on the wavelength (energy) of light interacting with it. In this tutorial, we will perform an Optados optics calculation on rutile (TiO~2~) - a birefringent crystal with anisotropic optical properties, examining its single-crystal and polycrystalline (isotropic) properties. Throughout this tutorial, we will be using [xmgrace](https://plasma-gate.weizmann.ac.il/Grace/) to plot everything, but feel free to use your preferred software.
+OptaDOS is capable of getting numerous optical properties of different structures, all of which depend on the wavelength (energy) of light interacting with it. In this tutorial, we will perform an OptaDOS optics calculation on rutile (TiO~2~) - a birefringent crystal with anisotropic optical properties, examining its single-crystal and polycrystalline (isotropic) properties. Throughout this tutorial, we will be using [XMGrace](https://plasma-gate.weizmann.ac.il/Grace/) to plot everything, but feel free to use your preferred software.
 
-We will use the cell file
+We will use the `.cell` file
 
-*rut.cell*
-
-```castep_cell
+```castep_cell {title="rut.cell"}
 %BLOCK LATTICE_ABC
   4.6257000   4.6257000   2.9806000
  90.0000000  90.0000000  90.0000000
@@ -24,19 +22,17 @@ KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 14 14 14
 ```
 
-This `cell` file was obtained using cif2cell using the structure with the COD ID 1010942, found on the [Crystallography Open Database](https://www.crystallography.net)
+This `.cell` file was obtained using cif2cell using the structure with the COD ID 1010942, found on the [Crystallography Open Database](https://www.crystallography.net)
 
-We will first run a castep calculation using the above cell with the `param` file
+We will first run a castep calculation using the above cell with the `.param` file
 
-*rut.param*
-
-```castep_param
+```castep_param {title="rut.param"}
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : OPTICS
 CUT_OFF_ENERGY         : 200
 ```
 
-Once that is done, we can perform the optical Optados calculations.
+Once that is done, we can perform the optical OptaDOS calculations.
 
 ## Demonstrating Birefringence
 
@@ -118,7 +114,7 @@ YAXIS LABEL "Dielectric constant"
 
 ```
 
-and plotting it with xmgrace via
+and plotting it with XMGrace via
 
 `xmgrace -batch plot_12_together.bat`
 
@@ -137,7 +133,7 @@ This is a rather interesting result: this seems that the dielectric function in 
 
 So now that we have the dielectric function tensor, let's examine how this corresponds to its (anisotropic) optical properties
 <a id = "examining"></a>
-We will run Optados again (no need to rerun Castep), changing the line
+We will run OptaDOS again (no need to rerun Castep), changing the line
 
 ```
 OPTICS_GEOM        : tensor
@@ -160,7 +156,7 @@ Let's try a more interesting example - change the direction line to
 
 `OPTICS_QDIR : 1 1 1`
 
-Now the result shouldn't align with anything. To demonstrate that let's compare it to $\epsilon_{xx}$, $\epsilon_{zz}$ and $\epsilon_{xy}$, all on the same graph - luckily xmgrace makes it very easy to plot them together. We'll modify the batch file to include all of them -
+Now the result shouldn't align with anything. To demonstrate that let's compare it to $\epsilon_{xx}$, $\epsilon_{zz}$ and $\epsilon_{xy}$, all on the same graph - luckily XMGrace makes it very easy to plot them together. We'll modify the batch file to include all of them -
 
 *compare.bat*
 ```
@@ -211,7 +207,7 @@ Where $\epsilon'$ is the dielectric constant in the direction of $\hat{\mathbf{n
 !!! note
     In this tutorial, a symbol being bold and underlined (like $\underline{\mathbf{\epsilon}}$) shows that it's a matrix, while being just bold (like $\mathbf{n}$) shows that it's a vector.
 
-Let's quickly work through what we'd expect in the (111) direction and compare that with what we get from Optados. To get
+Let's quickly work through what we'd expect in the (111) direction and compare that with what we get from OptaDOS. To get
 
 $$ \underline{\mathbf{\epsilon}} \hat{\mathbf{n}} $$ we do
 
@@ -282,9 +278,9 @@ np.savetxt(output_filename, output_data, fmt='% .16e', header="Energy (eV) Effec
 
 This gives the output of the [above equation](Optics_ani.md#final_equation) acting on the dielectric function tensor we calculate, stored in `rut_111.dat`. Now let's see if the 2 results agree: let's try
 
-` xmgrace rut_epsilon.dat tensors/rut_111_out.dat`
+`xmgrace rut_epsilon.dat tensors/rut_111_out.dat`
 
-Using `rut_epsilon.dat` from our [last Optados calculation](Optics_ani.md#examining). We should see that the lines almost perfectly overlap:
+Using `rut_epsilon.dat` from our [last OptaDOS calculation](Optics_ani.md#examining). We should see that the lines almost perfectly overlap:
 
 ![111 overlap](111_together.png)
 
@@ -292,7 +288,7 @@ Now we properly understand what is going on when choosing a certain polarisation
 
 ## Isotropic Dielectric Function
 
-There is another case to have a look at: what is the dielectric function when the material is polycrystalline, and thus behaves isotropically? Optados can easily find this by changing the keyword in the `rut.odi` file to
+There is another case to have a look at: what is the dielectric function when the material is polycrystalline, and thus behaves isotropically? OptaDOS can easily find this by changing the keyword in the `rut.odi` file to
 
 
 `OPTICS_GEOM        : tensor`

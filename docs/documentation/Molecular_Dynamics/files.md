@@ -1,13 +1,13 @@
-##Understanding the Output
+## Understanding the Output
 
 In this chapter we shall briefly describe the output produced
 during a CASTEP calculation. Only the level of detail printed
-at iprint = 1 will be discussed.
+at `iprint = 1` will be discussed.
 
 
-##The .castep file
+## The `.castep` file
 
-####Header
+#### Header
 
 As well as the usual information printed at the top of the output file,
 the molecular dynamics data specified in the parameters file is
@@ -39,9 +39,9 @@ This amount of information presented in this section will obviously vary
 depending on the type of calculation being performed, but should
 be self-explanatory.
 
-####Initial cell
+#### Initial cell
 
-The information specified in the .cell file is then output. This will
+The information specified in the `.cell` file is then output. This will
 include the ionic positions, any user specified velocities if present,
 the usual pseudo-potential, k-point information, and details
 of any constraints. The total energy of the initial cell is then
@@ -134,7 +134,7 @@ x      T/=0 Pressure:      0.172231                  GPa     x
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-##Iteration
+## Iteration
 
 The MD simulation proper now begins.
 
@@ -158,25 +158,25 @@ information is printed in the same manner as above.
 The process repeats until the calculation is killed, or the specified number
 of MD iterations is completed.
 
-##The .md file
+## The `.md` file
 
-The .md file is provided as a single source for all the dynamical
+The `.md` file is provided as a single source for all the dynamical
 data produced by a CASTEP calculation. In all cases, data is printed
 in Hartree atomic units. Fortran formating data will be given here for
 all entries in this file for those who wish to import it into their
 own analysis codes.
 
-The CASTEP default behaviour is to record every single configuration in the .md file. This can therefore grow to quite a
+The CASTEP default behaviour is to record every single configuration in the `.md` file. This can therefore grow to quite a
 large size if doing a long MD run! The only exception to this, is if doing a non-DFT calculation, whereupon a sample of the
 configurations are written if `md_sample_iter`>0, otherwise no configurations are written.
 
-Note that unlike the .castep file, the .md file from a previous
+Note that unlike the `.castep` file, the `.md` file from a previous
 calculation with the same seedname will be overwritten, unless
 the new calculation is a continuation of the original.
 
-####Header
+#### Header
 
-At the top of every .md file a header is written as below. The total
+At the top of every `.md` file a header is written as below. The total
 length is four lines including blanks. The comments written are
 taken from the cell/parameter files.
 
@@ -190,7 +190,7 @@ taken from the cell/parameter files.
 This is followed by a blank line. There is a single space at the start
 of each non-blank line. This header is written once only.
 
-####Time and Energy Data
+#### Time and Energy Data
 
 The next entry will be the data for the first MD step. This begins with
 the current time on the first line, followed by the Total, Hamiltonian, and
@@ -208,7 +208,7 @@ format(12x,es18.8e3)
 format(9x,3(3x,es18.8e3),'  <-- E')
 ```
 
-####Thermodynamic Data
+#### Thermodynamic Data
 
 The current temperature is then printed with the label ``<-- T``. If the output is from a variable cell
 calculation, or ``calculate_stress`` has been explicitly set to true, the pressure
@@ -226,7 +226,7 @@ format(12x,es18.8,T73,   '  <-- T')
 format(12x,es18.8,T73,   '  <-- P')
 ```
 
-####Cell Data
+#### Cell Data
 
 For all calculations, the current matrix of cell vectors is printed with
 the label ``<-- h`` Each row
@@ -281,7 +281,7 @@ format(9x,3(3x,es18.8e3),'  <-- S')
 format(9x,3(3x,es18.8e3),'  <-- S')
 ```
 
-####Ionic Data
+#### Ionic Data
 
 Data on the current ionic configuration is then printed. Atoms
 are identified by their chemical symbol in the first column,
@@ -348,7 +348,7 @@ format(1x,a3,1x,i4,3(3x,es18.8e3),'  <-- F')
 A blank line is then printed, and the process repeats with the data from the next
 time-step.
 
-##The .hug file
+## The .hug file
 
 If you are using the Hugoniostat predictor-corrector method to generate a Hugoniot curve, each different state point
 generated has a different compression etc. This is summarized in the `.hug` file as follows:

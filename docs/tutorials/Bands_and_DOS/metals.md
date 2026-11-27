@@ -1,4 +1,4 @@
-Here we use CASTEP to calculate the bandstructure of two typical metals. The cell and param files are very similar to the semiconductor examples - the one difference is that we use a finer sampling of the Brillouin Zone with the keyword `kpoint_mp_grid`. A finer sampling is needed to correctly represent the change in occupancy at the Fermi energy.
+Here we use CASTEP to calculate the band structure of two typical metals. The `.cell` and `.param` files are very similar to the semiconductor examples - the one difference is that we use a finer sampling of the Brillouin Zone with the keyword `kpoint_mp_grid`. A finer sampling is needed to correctly represent the change in occupancy at the Fermi energy.
 ## Aluminium
 
 ```castep_cell
@@ -36,7 +36,7 @@ cut_off_energy  500 eV        !
 opt_strategy    speed         ! Choose algorithms for best speed
 ```
 
-![Aluminium bandstructure](../../img/al-bands.png)
+![Aluminium band structure](../../img/al-bands.png)
 
 !!! note
     Aluminium is a metal - there is no gap energy between the occupied and unoccupied states. The bands are close to parabolic (this is particularly noticeable around Gamma) - the electronic structure of aluminium closely follows a nearly-free electron model.
@@ -78,7 +78,7 @@ opt_strategy    speed         ! Choose algorithms for best speed at expense of m
 spectral_nbands 8             !
 ```
 
-![Copper bandstructure](../../img/cu-bands.png)
+![Copper band structure](../../img/cu-bands.png)
 
 !!! note
-    Copper is a metal - there is no gap energy between the occupied and unoccupied states. The bandstructure of copper is typical for a transition metal - we have highly dispersive parabolic bands corresponding to the s electrons, these are crossed by 5 quite flat bands corresponding to more localised 3d electrons. In copper the 3d states are filled, and we see the flat bands lie below the Fermi level.
+    Copper is a metal - there is no gap energy between the occupied and unoccupied states. The band structure of copper is typical for a transition metal - we have highly dispersive parabolic bands corresponding to the s electrons, these are crossed by 5 quite flat bands corresponding to more localised 3d electrons. In copper the 3d states are filled, and we see the flat bands lie below the Fermi level.

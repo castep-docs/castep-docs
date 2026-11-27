@@ -3,7 +3,7 @@
 ## Basics
 
 We can employ the molecular orbital projections we have introduced
-in the [le $\Delta$SCF](lin_ex_delta_scf.md) section to also
+in the [linear expansion $\Delta$SCF](lin_ex_delta_scf.md) section to also
 introduce penalty potentials that shift specific orbitals up or down. This can be used to specify the
 HOMO-LUMO of an adsorbed molecule or to modify the level alignment with the
 metal substrate. This constraint potential can be combined with population constraints.
@@ -11,8 +11,8 @@ metal substrate. This constraint potential can be combined with population const
 For more details and an example application on Porphine molecules adsorbed at coinage
 metal surfaces, see Müller *et al*. (2016)[@Muller2016].
 
-For a le $\Delta$SCF calculation, we have to set `deltascf_method = linear expansion` in the
-`<seed>.param` file. The constraint must also be specifed, as discussed in the
+For a linear expansion $\Delta$SCF calculation, we have to set `deltascf_method = linear expansion` in the
+`<seed>.param` file. The constraint must also be specified, as discussed in the
 [overview](overview.md) section.
 
 The only additional relevant $\Delta$SCF keywords is `deltascf_dftu_checkpoint`

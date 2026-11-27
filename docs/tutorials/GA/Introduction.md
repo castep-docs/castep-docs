@@ -1,15 +1,13 @@
 # Introduction
 
-In this tutorial we will look at exactly what castep GA is doing when it is used, examining what the input files do what the output files tell us. We will go through a silicon example to do so - starting from a heavily distorted diamond cell and ending in a diamond structure.
+In this tutorial we will look at exactly what CASTEP GA is doing when it is used, examining what the input files do what the output files tell us. We will go through a silicon example to do so - starting from a heavily distorted diamond cell and ending in a diamond structure.
 
 
 ## Input Files
 
-We will use the `cell` file
+We will use the `.cell` file
 
-*Si.cell*
-
-```castep_cell
+```castep_cell {title="Si.cell"}
 %block LATTICE_ABC
 ang
 5.4 5.4 5.4
@@ -43,11 +41,11 @@ is only a bit off from where it'd be in a perfect diamond, which is
 
 `Si 0 0 0`
 
-In a normal castep GA run the positions of all the Si's, and even the starting unit cell, is completely arbitrary, and in most cases it should have little impact on the run. However, in this case we are trying to get it to get to diamond quickly, so that it is easier to analyse what is going on.
+In a normal CASTEP GA run the positions of all the Si's, and even the starting unit cell, is completely arbitrary, and in most cases it should have little impact on the run. However, in this case we are trying to get it to get to diamond quickly, so that it is easier to analyse what is going on.
 
-For the `param` file we will use
+For the `.param` file we will use
 
-```castep_param
+```castep_param {title="Si.param"}
 task             = genetic algor # Run the GA
 ga_pop_size      = 12           # Parent population size
 ga_max_gens      = 6            # Max number of generations to run for
@@ -143,7 +141,7 @@ This means that you may be able to replicate similar results, though that isn't 
 
 ## Running
 
-We can now run castep GA on the Si. This should take about 3 minutes to run, but look at what is happening as it is running - you can use `tail -f Si.castep` to keep track of how the `castep` output file is being generated. Also, refresh your directory regularly to see what's being generated.
+We can now run CASTEP GA on the Si. This should take about 3 minutes to run, but look at what is happening as it is running - you can use `tail -f Si.castep` to keep track of how the `.castep` output file is being generated. Also, refresh your directory regularly to see what's being generated.
 
 The first files to be generated will have the same format as `Si.gen_000_mem_001.cell` and `Si.gen_000_mem_001.param` - this is the 1st member of the 0th generation, which is generated randomly using the `Si.cell` as well as the mutation values specified in the `Si.param` file
 
@@ -154,7 +152,7 @@ You should get a total of 12 members like that, up to `mem_012`. As it's running
 
 After the last member finishes its geometry optimisation, the next generation is generated: you'll get `<seed>.cell` and `<seed>.param` files.
 
-This is the point where the `castep` output file gets interesting. You have a table that starts like
+This is the point where the `.castep` output file gets interesting. You have a table that starts like
 
 ```
 GA: gen #  1 parent #  1 enthalpy = -3.940733E+000 eV/atom un-scaled fitness =  0.684242 conv = T member error = F seed = Si.gen_000_mem_001 vol/ion =    19.4307 A**3/atom
@@ -174,7 +172,7 @@ The `parent` rows all using generation 0 members as the seed, and giving them an
 
 Those parents then breed together to form the children, which are then mutated and geometry optimised like before. The probability of a parent breeding is based on its fitness evaluation - in the example above, parent 2 is more likely to breed than parent 1 (ADD LINK TO ROULETTE RANDOMNESS)
 
-You may find the ancestry of each individual child by looking for parts of the `castep` file such as
+You may find the ancestry of each individual child by looking for parts of the `.castep` file such as
 
 ```
 GA: Member filename    Si.gen_002_mem_011
@@ -223,4 +221,4 @@ Let's go through the steps above to see what happened in this specific case -
 5. In generations 4, 5 and 6, no ancestors were generated. Looking forward, that means that 1,4 and 2,11 either didn't breed at all (the parent combinations are ROULETTE RANDOM) or whatever child they made didn't have a mutation favourable enough to be the lowest enthalpy structure.
 6. Finally, in generation 6, 3,4 bred with 2,11 (its own parent - again after the children are generated they are all treated as equal parent candidates) to generate 6,7.
 
-Please note that in actual runs the family tree will most likely be significantly more complicated - as noted before, both `cell` and `param` files were geared towards getting a good structure in few generations and modest mutations. Even with such files it is highly chance-based whether you will get such a result. This was just a simple demonstration.
+Please note that in actual runs the family tree will most likely be significantly more complicated - as noted before, both `.cell` and `.param` files were geared towards getting a good structure in few generations and modest mutations. Even with such files it is highly chance-based whether you will get such a result. This was just a simple demonstration.

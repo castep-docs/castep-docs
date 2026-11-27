@@ -51,8 +51,8 @@ The relevant `.param` keywords are summarised in the table below:
 
 
 
-As a minimum, you need to specify `TASK: TRANSITIONSTATESEARCH` and `TSSEARCH_METHOD: NEB` in the .param file
-and specify the product (final) ionic positions (using e.g. the `POSITIONS_ABS_PRODUCT` block) and a transition state guess configuration (using e.g. the `POSITIONS_ABS_INTERMEDIATE` block) in the .cell file, in addition to the normal `POSITIONS_ABS` block.
+As a minimum, you need to specify `TASK: TRANSITIONSTATESEARCH` and `TSSEARCH_METHOD: NEB` in the `.param` file
+and specify the product (final) ionic positions (using e.g. the `POSITIONS_ABS_PRODUCT` block) and a transition state guess configuration (using e.g. the `POSITIONS_ABS_INTERMEDIATE` block) in the `.cell` file, in addition to the normal `POSITIONS_ABS` block.
 CASTEP will then linearly interpolate from the initial to intermediate and from the intermediate to product configurations to begin the NEB calculation.
 <!-- TODO: in future versions of CASTEP, you won't be required to manually specify an intermediate structure. If not present, castep will linearly interpolate between start and end -->
 

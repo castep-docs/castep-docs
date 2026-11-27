@@ -6,10 +6,9 @@ In this tutorial, we will calculate the JDOS for silicon, and then relate that t
 
 ## JDOS Calculation
 
-Let's start by actually getting the JDOS results. Run Castep on the `cell` file
+Let's start by actually getting the JDOS results. Run CASTEP:
 
-*Si.cell*
-```castep_cell
+```castep_cell {title="Si.cell"}
 %BLOCK LATTICE_CART
 2.73  2.73 0.00
 2.73  0.00 2.73
@@ -27,20 +26,18 @@ KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 10 10 10
 ```
 
-and `param` file
+and `.param` file
 
-*Si.param*
-```castep_param
+```castep_param {title="Si.param"}
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : DOS
 PDOS_CALCULATE_WEIGHTS : TRUE
 CUT_OFF_ENERGY         : 200
 ```
 
-Afterwards, run Optados with the Optados input file
+Afterwards, run OptaDOS with the OptaDOS input file
 
-*Si.odi*
-```
+``` {title="Si.odi"}
 TASK              : jdos
 
 JDOS_MAX_ENERGY   : 30
@@ -62,7 +59,7 @@ The line `TASK : jdos` is what tells it to calculate the JDOS in which we are in
 0.1000333444481E-01    0.3869643667676E-14
 ```
 
-The 1st column is the energy, and the 2nd is the JDOS. The `agr` file allows us to make a nice plot with xmgrace (though  of course you could plot the results with your software of choice) - let's run
+The 1st column is the energy, and the 2nd is the JDOS. The `agr` file allows us to make a nice plot with XMGrace (though  of course you could plot the results with your software of choice) - let's run
 
 `xmgrace Si.jadaptive.agr`
 
@@ -114,7 +111,7 @@ This creates a new file `imaginary.dat` that contains the energy, JDOS and our f
 eps2 = (jdos/energy**2)
 ```
 
-We can plot this `dat` file by using xmgrace on the batch script
+We can plot this `dat` file by using XMGrace on the batch script
 
 *plot.bat*
 ```
@@ -147,7 +144,7 @@ Re-running the same procedure now yields the graph:
 
 At a glance, you can see that it levels off much more quickly - just as it happens in the more-properly calculated dielectric function.
 
-To confirm that the results are reasonable, let's plot this together with the results from an actual Optados optics calculation. You can see how to obtain this data at the start of the [optics tutorial](Optics.md), or you can download the relevant `dat` file [here](Si_epsilon.dat). Because we have gotten the results using simple proportionality relations, we'll have to scale the results to make them match experiment - adjust the Python script by changing the `eps2` calculation line to
+To confirm that the results are reasonable, let's plot this together with the results from an actual OptaDOS optics calculation. You can see how to obtain this data at the start of the [optics tutorial](Optics.md), or you can download the relevant `dat` file [here](Si_epsilon.dat). Because we have gotten the results using simple proportionality relations, we'll have to scale the results to make them match experiment - adjust the Python script by changing the `eps2` calculation line to
 
 ```
 eps2 = (dos/energy**3) * 650
@@ -167,7 +164,7 @@ BLOCK XY "1:3"
 S1 LEGEND "JDOS Approximated"
 ```
 
-to plot it with xmgrace. You can see that they are fairly similar in the graph produced:
+to plot it with XMGrace. You can see that they are fairly similar in the graph produced:
 
 ![Plotted together](eps1_calc.png)
 
@@ -204,7 +201,7 @@ np.savetxt("both.dat", data)
 
 The implementation is fairly straightforward: for every energy: the integral as in the equation is simply performed for every energy. While adding 1 to the integral is specified in the equation, again the constant of proportionality was found by trial and error until it was a decent fit (and the imaginary part was already scaled the same way).
 
-The data is then saved in `both.dat` with the 1st column being energy, the 2nd imaginary dielectric and the 3rd real dielectric. Let's now compare the imaginary components using xmgrace. Adjust the batch file appropriately, and you should get a graph that looks like:
+The data is then saved in `both.dat` with the 1st column being energy, the 2nd imaginary dielectric and the 3rd real dielectric. Let's now compare the imaginary components using XMGrace. Adjust the batch file appropriately, and you should get a graph that looks like:
 
 ![Real part plotted together](eps2_calc.png)
 

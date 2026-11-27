@@ -40,7 +40,7 @@ matrix:
               close: '(?P=open)'
     dictionary:
       wordlists:
-      - utils/wordslist.txt
-      output: utils/castep.dic
+      - ./utils/wordslist.txt
+      output: ./utils/castep.dic
     sources:
         - docs/**/*.md|!docs/**/*[kK]eyword*.md|!**/Bibliography.md|!docs/documentation/Output_Files/output_files.md

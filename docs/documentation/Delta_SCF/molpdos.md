@@ -9,15 +9,15 @@ to `<seed>.param` file.
 The projection data is produced by CASTEP after the SCF task and is
 written to files called ``<seed>.modos_state_<#>_<#>``, where
 the two numbers correspond to the number and the spin of the specified
-reference orbital from the reference checkfile.
+reference orbital from the reference `.check` file.
 
 At the end of the ``<seed>.castep`` file the projection is commented in
 the following way:
 
 ```
-             Calculating MODOS weights               
+             Calculating MODOS weights
  +-------------------INPUT PARAMETERS-------------------+
-Taking band from model   N2-base.check                                                                                                                                                                                                                                                   
+Taking band from model   N2-base.check
   MODOS state               1
   MODOS band  nr.           5
   MODOS band has spin       1
@@ -50,7 +50,7 @@ This will write output in the ``<seed>.castep`` with following header.
 In addition it will write files for the total DOS (Total-DOS.dat), for
 the two spin channels if the calculation was spin polarized
 (Total-DOS_spin1.dat, Total-DOS_spin2.dat), and for the MolPDOS (
-``<#>_spin<#>_<output_filename)``. 
+``<#>_spin<#>_<output_filename)``.
 
 The keywords for the `.molpdos` input file can be found below.
 

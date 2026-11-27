@@ -1,12 +1,12 @@
-This is a basic overview of the cell file. See the [full cell file page](../Input_Files/cell_file.md) for more details.
+This is a basic overview of the `.cell` file. See the [full `.cell` file page](../Input_Files/cell_file.md) for more details.
 
-The cell file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, and atomic properties.
+The `.cell` file is one of CASTEP's two main input files. It contains all of the information about the crystal lattice and the atomic positions, as well as additional information such as Brillouin zone sampling ('k-points'), pseudopotentials, and atomic properties.
 
 The file itself is a free-format keyword-driven text file, consisting of keywords and blocks of information. These may be given in any order, with blocks indicated by the special `%block` and `%endblock` markers. Most of the keywords and blocks are optional, but CASTEP *requires* two block entries: a block to specify the lattice, and another to specify the atomic elements and positions within the cell.
 
 ## Lattice ##
 
-There are two main ways to set the crystal lattice in the cell file. The `lattice_abc` block specifies the lattice constants in terms of the lengths of the lattice vectors ($\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$) and angles ($\alpha$, $\beta$ and $\gamma$):
+There are two main ways to set the crystal lattice in the `.cell` file. The `lattice_abc` block specifies the lattice constants in terms of the lengths of the lattice vectors ($\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$) and angles ($\alpha$, $\beta$ and $\gamma$):
 ```castep_cell
 %block lattice_abc
 a b c
@@ -55,7 +55,7 @@ where `[unit]` is an optional length unit (default: `ang`, meaning Angstroms), `
 
 ## Comments ##
 
-It can be convenient to add comments to a cell file, not only to explain why certain choices were made, but also as a way of disabling input lines without removing them from the file. Both `!` and `#` are accepted as comment characters, and anything to the right of these will be ignored by CASTEP. For example, the cell section
+It can be convenient to add comments to a `.cell` file, not only to explain why certain choices were made, but also as a way of disabling input lines without removing them from the file. Both `!` and `#` are accepted as comment characters, and anything to the right of these will be ignored by CASTEP. For example, the cell section
 ```castep_cell
 # Place a single atom at the origin
 %block positions_abs

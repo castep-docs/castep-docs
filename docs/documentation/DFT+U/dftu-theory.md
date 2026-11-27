@@ -1,9 +1,8 @@
-
 ## The problem
 ### Electron correlation
 Transition metal oxides and rare-earth metal compounds have highly localised d and/or f electrons. This leads to strong on-site electron correlation, of which, the exchange-correlation functionals of density functional theory struggle to describe. This can lead DFT to give metallic descriptions of insulating materials:
 
-| ![FeO_bandstructure_0U](../../img/feo-bands-0U.png) |
+| ![FeO_band structure](../../img/feo-bands-0U.png) |
 | :--: |
 | DFT incorrectly describes FeO as a metal - we would expect, from experiment, insulating behaviour with a band gap of around $2.5$ eV.[^1] |
 
@@ -19,7 +18,7 @@ The Hubbard model discusses the hopping of electrons between different sites in 
 | :--: |
 | The Hubbard model that inspires the DFT+U method. |
 
-This energetic penality for the delocalisation of electrons can be appended to the DFT potential, to give the DFT+U functional,
+This energetic penalty for the delocalisation of electrons can be appended to the DFT potential, to give the DFT+U functional,
 
 $$ E_{\text{DFT+U}} = E_{\text{DFT}} + \frac{U}{2}\sum_{i}q_{i}\left(1-q_{i}\right), $$
 
@@ -45,9 +44,9 @@ As there is no unique or rigorous way to define atomic orbitals in a multi-elect
 
 
 ## Results
-The DFT+U formalism correctly introduces a band gap in the bandstructure of FeO:
+The DFT+U formalism correctly introduces a band gap in the band structure of FeO:
 
-| ![FeO_bandstructure_U](../../img/feo-bands-U.png) |
+| ![FeO_band structure_U](../../img/feo-bands-U.png) |
 | :--: |
 | DFT comparison with DFT+U.[^1] |
 

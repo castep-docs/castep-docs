@@ -1,4 +1,4 @@
-##Check-pointing, Continuation and Parameter Changes
+## Check-pointing, Continuation and Parameter Changes
 
 As with any other calculation in CASTEP, checkpoint files
 are written at regular intervals. Should the calculation
@@ -7,10 +7,10 @@ continue from the point at which the checkpoint file
 was last written.
 
 Check-pointing is performed by dumping all pertinent
-data to a .check file. The interval at which this
+data to a `.check` file. The interval at which this
 check-pointing occurs can be controlled in two ways.
 
-The first option is to specify the number of md steps
+The first option is to specify the number of MD steps
 between checkpoints.
 
 ```castep_param
@@ -35,7 +35,7 @@ checkpoint   = my_md_run.check
 ```
 
 To continue an MD calculation from a checkpoint file, ensure
-that the .check file, the .castep file and the .md file
+that the `.check` file, the `.castep` file and the `.md` file
 from the previous run are present in the current directory. If the
 seed-name of the new run is the same as for the old, the command
 
@@ -50,12 +50,12 @@ will suffice. To continue the run from a checkpoint file
 continuation = my_md_run.check
 ```
 
-Note the standard CASTEP behaviour is to append new data to the end of existing files (such as .castep and .md) to avoid
-loosing data from earlier runs. This is not the case for the .check file, which is overwritten with new data. For this
-reason, the default CASTEP behaviour is to make a backup of the .check file, before over-writing it, so as to minimize the
+Note the standard CASTEP behaviour is to append new data to the end of existing files (such as `.castep` and `.md`) to avoid
+loosing data from earlier runs. This is not the case for the `.check` file, which is overwritten with new data. For this
+reason, the default CASTEP behaviour is to make a backup of the `.check` file, before over-writing it, so as to minimize the
 risk of data loss.
 
-####Changing Parameters on Continuation
+#### Changing Parameters on Continuation
 
 Check-pointing is particularly useful for MD calculations where
 we often require many thousands of time-steps to extract
@@ -80,7 +80,7 @@ should not be sampled until re-equilibrated.
 Although it is possible to change electronic minimisation schemes/parameters
 on a restart, this is somewhat unwise for obvious reasons.
 
-##On-The-Fly Parameter Changes
+## On-The-Fly Parameter Changes
 
 In fact, molecular dynamics parameters can be changed without having to halt
 the calculation at all! At the end of each MD step, the parameters file

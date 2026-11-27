@@ -1,14 +1,13 @@
-# Castep GA for silicon
+# CASTEP GA for silicon
 
 Let's assume we don't know the ground state Stillinger-Weber silicon structure and set out to discover it using the CASTEP GA!
 
 
 ## Input Files
 
-We will use the `cell` file
-*Si.cell*
+We will use the `.cell` file
 
-```castep_cell
+```castep_cell {title="Si.cell"}
 %block LATTICE_ABC
 ang
 3.8 3.8 3.8
@@ -36,10 +35,9 @@ symmetry_tol : 0.05 ang
 
 The definition of the lattice and positions of the atoms is fairly inconsequential to the result you will get: in the 0th generation it gets effectively randomised. The only thing that matters is the amount of Si atoms defined in the `POSITIONS_FRAC` block - here it is 8 so future structures will also have 8 atoms. Another thing worth noting is the QC5 potential being used - it is used due to its speed, which is essential considering how many calculations will be done.
 
-For the `param` file we will use
-*Si.param*
+For the `.param` file we will use
 
-```castep_param
+```castep_param {title="Si.param"}
 task             = genetic algor # Run the GA
 ga_pop_size      = 12            # Parent population size
 ga_max_gens      = 12            # Max number of generations to run for
@@ -112,7 +110,7 @@ It is important to understand what is going on in this file. The line `task = ge
 
 There are numerous lines that speed up the GA - with how many calculations are being performed, this is essential to be feasible. `op_strategy = SPEED` and `geom_max_iter = 211` help ensure that the geometry optimisations (of which there are 12 per generation - so 144 in total for this first run!) are fast but reasonably accurate. `AS=T` and `MS=3` allow asynchronous parellisation, where 3 population members will have geom-opts performed at the same time.
 
-The `devel_code` block is a bit more complex. The fact that pair potentials are used are defined in both the `GA` sub-block and `GEOM` sub-block, again necessary for speed. The `CMD` sub-block is there so that geometry optimisations are performed on all members: what happens is `cell` files are generated (initially randomly and in the 1st generation onwards by breeding + mutation), as well as respective `param` files that tell them to geometry optimise, for each member, and then they are run.
+The `devel_code` block is a bit more complex. The fact that pair potentials are used are defined in both the `GA` sub-block and `GEOM` sub-block, again necessary for speed. The `CMD` sub-block is there so that geometry optimisations are performed on all members: what happens is `.cell` files are generated (initially randomly and in the 1st generation onwards by breeding + mutation), as well as respective `.param` files that tell them to geometry optimise, for each member, and then they are run.
 
 A very important thing to note are the lines
 
@@ -135,7 +133,7 @@ With the general rule that `NUM_CHILREN` + `RSN` = `ga_pop_size` (defined earlie
 
 ## Running and Output
 
-Now we can run castep GA on Si. You may use
+Now we can run CASTEP GA on Si. You may use
 
 `tail -f Si.castep`
 
@@ -196,7 +194,7 @@ From this we can immediately tell that the result is imperfect: the actual struc
 
 This is promising - though it started off by generating random structures, it has already arrived at one resembling diamond.
 
-Let's see if more generations will improve the results. Change the initial `param` file to have
+Let's see if more generations will improve the results. Change the initial `.param` file to have
 
 `ga_max_gens = 18`
 
@@ -204,7 +202,7 @@ and add the line
 
 `continuation = Si.xyz`
 
-This tells it to continue to run, up to 18 generations, using the previous results as its history. Running castep GA on Si again will make it run as before.
+This tells it to continue to run, up to 18 generations, using the previous results as its history. Running CASTEP GA on Si again will make it run as before.
 
 After it's done running, if you wish to save the previous graph, simply rename it. Then run the bash, and then python, script again to get a new `all_gens.png` for the continued, longer run. The new image will have more points on the graph, as more members have been examined, and (hopefully) a new minimum enthalpy member. Running the same `grep` command will give this in the top 4
 

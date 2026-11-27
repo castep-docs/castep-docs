@@ -1,4 +1,3 @@
-
 Several tools and programs are available to help automate
 post-processing analysis and plotting of the results of phonon
 calculations. The tools described below are supplied as part of the
@@ -13,29 +12,29 @@ CASTEP source distribution to analyse and plot the results. Both of them
 read the phonon information from the `.castep` or `.phonon` files and
 can generate plots of phonon dispersion curves across the Brillouin
 Zone, and of phonon densities of states respectively [^17]. These
-programs are written in the PERL language which is almost universally
+programs are written in the Perl language which is almost universally
 available on modern operating systems. Generation of the plots is
 handled by either of the
-[xmgrace](http://plasma-gate.weizmann.ac.il/Grace/) or
-[gnuplot](http://gnuplot.info/) graphics programs (the perl programs
-generate an xmgrace script and invoke it automatically). [^18]
+[XMGrace](http://plasma-gate.weizmann.ac.il/Grace/) or
+[GNUplot](http://gnuplot.info/) graphics programs (the Perl programs
+generate an XMGrace script and invoke it automatically). [^18]
 
 [^17]: `dispersion.pl` and `dos.pl` are also able perform very similar
     analysis and plotting of *electronic* eigenvalues from `.castep` or
     `.bands` files and generate band structure and electronic DOS plots.
 
-[^18]: On linux systems xmgrace can usually be found as a contributed
-    package and installed using the system package manager. Xmgrace is
-    also available for Microsoft Windows systems as part of the “cygwin”
+[^18]: On Linux systems XMGrace can usually be found as a contributed
+    package and installed using the system package manager. XMGrace is
+    also available for Microsoft Windows systems as part of the "Cygwin"
     suite of programs (<http://www.cygwin.com>) along with shells, the
-    PERL interpreter and an X-windows server (Xmgrace is an X-windows
+    Perl interpreter and an X-windows server (XMGrace is an X-windows
     program and requires a running X server to display).
 
 ### dos.pl {#sec:dos-pl}
 
 The `dos.pl` program can read any of a `.castep`, a `.phonon`, or a
 `.phonon_dos` file and generate a phonon density of states plot.
-Arguments are given in “unix style” following a minus sign (dash). The
+Arguments are given in "unix style" following a minus sign (dash). The
 command
 
 > `dos.pl -xg -w 10 <seedname>.phonon`
@@ -48,7 +47,7 @@ adaptively-weighted dos computed by CASTEP is read from a `.phonon_dos`
 file if given as command-line argument.
 
 The options `-np`, `-ps`, `-eps` change the default output and write an
-xmgrace file, a PostScript or Encapsulated PostScript file respectively.
+XMGrace file, a PostScript or Encapsulated PostScript file respectively.
 These files are written to standard output so use a shell redirect ($>$)
 to name your plot file. The option `-ir` option weights the computed DOS
 by the computed infra-red intensity in the `.castep` or `.phonon` file.
@@ -62,17 +61,17 @@ option switches from Gaussian to a Lorentzian broadening and the
 `-temp T` option sets the temperature for the Stokes thermal population
 term in Kelvin.
 
-Figure [[bn-dos-ir]](Plotting-and-analysis-tools.md#fig:bn-dos-ir) shows an example derived from
+Figure [[BN-dos-ir]](Plotting-and-analysis-tools.md#fig:bn-dos-ir) shows an example derived from
 the output produced by using `dos.pl` on the example run of
 figure [[example-gamma-out]](Running-phonon-calculations.md#fig:example-gamma-out).
 
 ![](BN_irdos.svg)
 
-: **Figure 8** Example output from dos.pl based on the run of
+: **Figure 8** Example output from `dos.pl` based on the run of
 figure [[example-gamma-out]](Running-phonon-calculations.md#fig:example-gamma-out). Infrared
 spectrum and DOS curves based on just the TO modes or TO plus LO have
 been combined into into one plot with a slightly shifted baseline,
-scaled, and legends added.     
+scaled, and legends added.
 {#fig:bn-dos-ir}
 
 [^19]: A more sophisticated model of infra-red spectra was introduced by
@@ -86,7 +85,7 @@ scaled, and legends added.   
 ### dispersion.pl {#sec:dispersion-pl}
 
 The `dispersion.pl` program can read either a `.castep` or a `.phonon`
-file and generate a dispersion curve plot using xmgrace. Unlike the
+file and generate a dispersion curve plot using XMGrace. Unlike the
 behaviour of `dos.pl` there is an important difference between the
 behaviour when reading these two different output files concerning the
 detection of branch crossings. A high-quality dispersion plot requires
@@ -97,7 +96,7 @@ points to determine branch connectivity. Only the `.phonon` file
 contains eigenvector information, so only in this case is crossing
 detection enabled. The algorithm can be time consuming and take several
 minutes to complete in large cases, so patience is sometimes required.
-The `-nj` option (“no-join”) disables the crossing detection even when
+The `-nj` option ("no-join") disables the crossing detection even when
 the input file is a `.phonon` one.
 
 The options `-np`, `-ps`, `-eps` behave exactly as for `dos.pl`. One
@@ -107,9 +106,9 @@ Bradley and Cracknell. The symmetry keywords `cubic`, `fcc`, `bcc`,
 `tetragonal`, `tetragonal`, `tetragonal-I`, `orthorhombic`, `hexagonal`,
 `trigonal`, `trigonal-h` (and minor variants) are understood.
 
-Figure [[rbbr-dispersion]](Plotting-and-analysis-tools.md#fig:rbbr-dispersion) demonstrates the
+Figure [[RbBr-dispersion]](Plotting-and-analysis-tools.md#fig:rbbr-dispersion) demonstrates the
 effect of the flags and the branch joining algorithm. The plots were
-produced from a Fourier interpolation calculation of fcc RbBr using the
+produced from a Fourier interpolation calculation of FCC RbBr using the
 commands
 
 > `dispersion.pl -xg -symmetry fcc RbBr.phonon`
@@ -125,19 +124,19 @@ respectively.
 | ![image](RbBr-join.svg) | ![image](RbBr-nj.svg) |
 
 : **Figure 9** Phonon dispersion curve plots of RbBr generated using the
-`dispersion.pl` script and xmgrace. The Brillouin zone labelling is
+`dispersion.pl` script and XMGrace. The Brillouin zone labelling is
 generated using the `-symmetry fcc` option. The left-hand plot was
 generated using the default branch crossing detection algorithm, which
 was disabled using the `-nj` option for the right-hand plot. The
 algorithm has discriminated between modes which do cross and the four
-genuine avoided crossings in the left-hand plot.     
+genuine avoided crossings in the left-hand plot.
 {#fig:rbbr-dispersion}
 
 ### mode_follow
 
 `mode_follow` is one of the Fortran tools suite in the CASTEP source,
 which is compiled using the command `make tools`. As the name implies
-its function is to generate new “frozen phonon” configurations based on
+its function is to generate new "frozen phonon" configurations based on
 perturbation by a mode generated from a previous phonon calculation,
 which it outputs by writing one or more new `.cell` files. In fact it
 has two modes of operation.
@@ -146,50 +145,50 @@ has two modes of operation.
     phonon at a range of amplitudes, which may be used to explore the
     energy profile along the mode it is invoked as
 
-    > `mode follow -mode` *mode_num* `-namp` *num_amplitudes* `-amp`
-    > *max_amplitude* `-qpoint` *qx qy qz*
-    > $<$*seedname*$>$`|`$<$*seedname*$>$`.phonon`
+    > `mode follow -mode <mode_num> -namp <num_amplitudes> -amp`
+    > `<max_amplitude> -qpoint <qx> <qy> <qz>`
+    > `$<$*seedname*$>$`|`$<$*seedname*$>$`.phonon`
 
     which reads the `.phonon` and corresponding `.cell` files and
-    generates a sequence of $N+1$ files *seedname*`-`i`.cell` containing
+    generates a sequence of $N+1$ files `<seedname>-<i>.cell` containing
     structures perturbed by the selected eigenvector scaled by a
     non-dimensional amplitude factor $f=A i/N, i=0 .. N$. The arguments
     are
 
-    *mode_num*
+    `<mode_num>`
 
     :   is the integer index number selecting which mode to use (default
         1)
 
-    *qx qy qz*
+    `<qx> <qy> <qz>`
 
     :   is the q-point to extract from the `.phonon` file (default
         (0,0,0))
 
-    *max_amplitude*
+    `<max_amplitude>`
 
     :   is $A$ the non-dimensional scale of the eigenvectors used to
         create the (largest) displacement
 
-    *num_amplitudes*
+    `<num_amplitudes>`
 
     :   is $N$, one less than the number of configurations to generate
         (default 2).
 
-    *seedname*
+    `<seedname>`
 
     :   is the seed name of a previous, successful phonon run.
 
-    The file *seedname*`.phonon` must exist and be readable. If
+    The file `<seedname>.phonon` must exist and be readable. If
     `mode_follow` is invoked without the `.phonon` extension, it will
-    also attempt to read *seedname*`.cell` file if it exists and will
+    also attempt to read `<seedname>.cell` file if it exists and will
     copy most other cell parameters and settings to its output `.cell`
     files.
 
     As an alternative to specifying the arguments on the command line
     `mode_follow` will also attempt to read them from a file named
-    *seedname*`.mode-param` if it exists. This file should contain a
-    Fortran namelist named `freeze`, whose entries are the identical to
+    `<seedname>.mode-param` if it exists. This file should contain a
+    Fortran name-list named `freeze`, whose entries are the identical to
     the command-line argument names. For example
 
     > ```
@@ -237,8 +236,8 @@ The program `phonons`, one of the CASTEP tools suite is a general
 purpose phonon post-processing tool. It can read all of the dynamical
 matrix or force constant matrix data from a `.check` or `.castep_bin`
 file generated in any phonon calculation and re-generate the final
-phonon output with changes to one or several “finalisation” options,
-without needing to repeat the expensive “electronic” DFPT or supercell
+phonon output with changes to one or several "finalisation" options,
+without needing to repeat the expensive "electronic" DFPT or supercell
 parts of a lattice dynamics calculation. For example, an acoustic
 sum-rule correction may be applied to a calculation where this was not
 chosen initially.
@@ -251,7 +250,7 @@ the `continuation` keyword which must point to the `.check` or
 is successful it will write a log file with the extension `.phonon_out`
 and a new `.phonon` file. In this respect a run of `phonons` on a
 continuation deck is very similar to re-running `castep` on the same
-deck. However it will not attempt to perform any “electronic”
+deck. However it will not attempt to perform any "electronic"
 calculation and will ignore any attempt to try. For example, if the
 parameter `elec_energy_tol` was changed `castep` would discard the saved
 dynamical matrix data and restart from the beginning. `phonons` will
@@ -291,8 +290,7 @@ This post-processing can be used for a number of tasks, including
 
 All of the above could also be performed using `castep` rather than
 `phonons` provided care is taken not to change any parameters which
-control the properties of the “electronic” part of the calculation.
+control the properties of the "electronic" part of the calculation.
 However `phonons` can also perform some additional processing which
 `castep` can not, most notably isotopically substituted lattice dynamics
 calculations.
-

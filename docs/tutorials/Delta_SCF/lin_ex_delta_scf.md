@@ -9,12 +9,10 @@ molecule
 
 In the following, the required input files are:
 
-no-on-ni001.param, no-on-ni001.cell,
-gasphase.cell, gasphase.param, gasphase.check
+`no-on-ni001.param`, `no-on-ni001.cell`,
+`gasphase.cell`, `gasphase.param`, `gasphase.check`
 
-*no-on-ni001.param*
-
-```castep_param
+```castep_param {title="no-on-ni001.param"}
     #reuse: default
     calculate_deltascf  : true
     deltascf_method     : linear expansion
@@ -45,9 +43,7 @@ gasphase.cell, gasphase.param, gasphase.check
     xc_functional : RPBE
 ```
 
-*no-on-ni001.cell*
-
-```castep_cell
+```castep_cell {title="no-on-ni001.cell"}
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -91,9 +87,7 @@ gasphase.cell, gasphase.param, gasphase.check
     KPOINTS_MP_OFFSET : 0.25 0.25 0.25
 ```
 
-*gasphase.cell*
-
-```castep_cell
+```castep_cell {title="gasphase.cell"}
     %BLOCK LATTICE_CART
         3.5240000000 0.0000000000 0.0000000000
         0.0000000000 3.5240000000 0.0000000000
@@ -110,9 +104,7 @@ gasphase.cell, gasphase.param, gasphase.check
     KPOINTS_MP_OFFSET : 0.25 0.25 0.25
 ```
 
-*gasphase.param*
-
-```castep_param
+```castep_param {title="gasphase.param"}
     task: SinglePoint
 
     spin_polarized : True
@@ -155,11 +147,10 @@ removing an electron from the HOMO in the majority spin channel
 
 ```
 
-------------------------------------------------------------------------
 
-**WARNING**
+!!! warning
 
-:   A sufficient number of virtual states in the calculation, controlled
+    A sufficient number of virtual states in the calculation, controlled
     by the keyword nextra_states, is very important. The more virtual
     states are used explicitly, the more complete is the projection onto
     the space of KS states. Sometimes states are almost degenerate and
@@ -168,7 +159,6 @@ removing an electron from the HOMO in the majority spin channel
     some cases, convergence can be very slow and a large number of SCF
     steps is necessary.
 
-------------------------------------------------------------------------
 
 The resulting excitation energy is 0.46 eV.
 

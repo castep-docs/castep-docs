@@ -1,9 +1,8 @@
-In this tutorial we will show you the cell and param files needed to plot bandstructures and density of states plots for various semiconductors. For the commands needed to make the plots refer to earlier tutorials.
+In this tutorial we will show you the `.cell` and `.param` files needed to plot band structures and density of states plots for various semiconductors. For the commands needed to make the plots refer to earlier tutorials.
 
 ## Silicon
 
-```castep_cell
-! Si.cell
+```castep_cell {title="Si.cell"}
 %block lattice_abc
 3.8 3.8 3.8
 60 60 60
@@ -37,8 +36,7 @@ kpoint_mp_grid 4 4 4
 %endblock spectral_kpoint_path
 ```
 
-```castep_param
-! Si.param
+```castep_param {title="Si.param"}
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
@@ -46,7 +44,7 @@ cut_off_energy  500 eV        !
 opt_strategy    speed         ! Choose algorithms for best speed
 ```
 
-![Silicon bandstructure](../../img/si-bands2.png)
+![Silicon band structure](../../img/si-bands2.png)
 
 !!! note
     Silicon is a semiconductor with a small gap between the occupied (blue) and unoccupied states (brown). The gap is indirect as the valence band maximum is as Gamma, but the conduction band minimum lies between Gamma and X.
@@ -54,9 +52,8 @@ opt_strategy    speed         ! Choose algorithms for best speed
 
 ## Gallium Arsenide
 
-The cell file is almost identical to the silicon example above, except that the unitc cell length is slighly larger, and we have replaced one Si atom with Ga, and the other Si with As.
-```castep_cell
-! GaAs.cell
+The `.cell` file is almost identical to the silicon example above, except that the unitc cell length is slighly larger, and we have replaced one Si atom with Ga, and the other Si with As.
+```castep_cell {title="GaAs.cell"}
 %block lattice_abc
 4 4 4
 60 60 60
@@ -89,9 +86,8 @@ kpoint_mp_grid 4 4 4
 0.375 0.375 0.75 ! K
 %endblock spectral_kpoint_path
 ```
-The param file is unchanged from the Silicon example
-```castep_param
-! GaAs.param
+The `.param` file is unchanged from the Silicon example
+```castep_param {title=GaAs.param"}
 task            spectral      ! The TASK keyword instructs CASTEP what to do
 spectral_task   bandstructure !
 xc_functional   LDA           ! Which exchange-correlation functional to use.
@@ -99,7 +95,7 @@ cut_off_energy  500 eV        !
 opt_strategy    speed         ! Choose algorithms for best speed
 ```
 
-![GaAs bandstructure](../../img/gaas-bands.png)
+![GaAs band structure](../../img/gaas-bands.png)
 
 !!! note
-    GaAs is a semiconductor with a small gap between the occupied (blue) and unoccupied states (brown). The gap is direct both the valence band maximum  and conduction band minimum are at Gamma. Compared with Silicon we see that the original bandstructure contains low lying flat bands at around -32eV and -12eV. This is because both the Ga and As pseudopotentials include semi-core states in the valence. The red states are the As 3d and the green are the Ga 3d.
+    GaAs is a semiconductor with a small gap between the occupied (blue) and unoccupied states (brown). The gap is direct both the valence band maximum  and conduction band minimum are at Gamma. Compared with Silicon we see that the original band structure contains low lying flat bands at around -32eV and -12eV. This is because both the Ga and As pseudopotentials include semi-core states in the valence. The red states are the As 3d and the green are the Ga 3d.

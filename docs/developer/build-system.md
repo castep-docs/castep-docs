@@ -1,4 +1,4 @@
-# The CASTEP Build Sytem
+# The CASTEP Build System
 
 ## Introduction
 This documentation is intended for developers who intend to add new features/sources to the CASTEP system. A quick-start
@@ -28,7 +28,7 @@ There are also `Tools` which are separately built programs which depend on the C
 ### GNU Make
 
 The [GNU make](https://www.gnu.org/software/make/) build system is broken down into a hierarchical tree which build up the required rules for compiling CASTEP on as
-many varied systems as possible while still being isolated and maintable.
+many varied systems as possible while still being isolated and maintainable.
 
 The hierarchy of these make files is as follows:
 

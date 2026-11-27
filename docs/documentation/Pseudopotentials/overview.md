@@ -1,4 +1,4 @@
-CASTEP has a built-in library of pseudopotentials which is usually updated each release. We refer to CASTEP's build-in pseudopotentials as on-the-fly generated (or OTFG).  The default OTFG pseudopotentials are accurate ultrasoft pseudopotentials. These are used if species_pot block is not defined in the cell file - or an empty block is given
+CASTEP has a built-in library of pseudopotentials which is usually updated each release. We refer to CASTEP's build-in pseudopotentials as on-the-fly generated (or OTFG).  The default OTFG pseudopotentials are accurate ultrasoft pseudopotentials. These are used if species_pot block is not defined in the `.cell` file - or an empty block is given
 ```castep_cell
 %block species_pot
 %endblock species_pot
@@ -13,7 +13,7 @@ QC5
 
 
 For properties that require norm-conserving pseudopotentials, you can select CASTEP's latest OTFG norm-conserving set with the following in the
-in your <seed>.cell file.
+in your `<seed>.cell` file.
 ```castep_cell
 %block species_pot
 NCP
@@ -55,7 +55,7 @@ C19mk2 | USP definitions. Updated Lanthanide and Actinide definitions, but other
 
 
 
-##Pseudopotential files
+## Pseudopotential files
 
 CASTEP can also read in pseudopotentials from files
 

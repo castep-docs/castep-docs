@@ -6,10 +6,9 @@ A lot of the steps on examining the data are the same as in [Plotting Charge Den
 
 We will start by looking at how electrons in an NaCl crystal behave - to illustrate what ELF exactly does and doesn't do, we will compare it to the results of a standard population analysis.
 
-For both calculations we will use the `cell` file
+For both calculations we will use the `.cell` file
 
-*NaCl.cell*
-```castep_cell
+```castep_cell {title="NaCl.cell"}
 %block lattice_cart
 5.693 0.000 0.000
 0.000 5.693 0.000
@@ -27,10 +26,9 @@ Cl 0.0 0.5 0.0
 Cl 0.0 0.0 0.5
 %endblock positions_frac
 ```
-and the `param` file
+and the `.param` file
 
-*NaCl.param*
-```castep_param
+```castep_param {title="NaCl.param"}
 xc_functional : LDA
 cutoff_energy : 500 eV
 spin_polarised : false
@@ -38,11 +36,11 @@ WRITE_FORMATTED_DENSITY : TRUE
 CALCULATE_ELF : TRUE
 WRITE_FORMATTED_ELF : TRUE
 ```
-Running castep will yield 2 files of interest: `NaCl.elf_fmt` and `NaCl.den_fmt`.
+Running CASTEP will yield 2 files of interest: `NaCl.elf_fmt` and `NaCl.den_fmt`.
 
 We will want to compare the 2 outputs, so:
 
-1. Make 2 copies of the `cell` file by copying `NaCl.cell` to `NaCl_elf.cell` and `NaCl_den.cell`. 2. Copy `NaCl.elf_fmt` to `NaCl_elf.charg_frm`
+1. Make 2 copies of the `.cell` file by copying `NaCl.cell` to `NaCl_elf.cell` and `NaCl_den.cell`. 2. Copy `NaCl.elf_fmt` to `NaCl_elf.charg_frm`
 3. Copy `NaCl.den_fmt` to `NaCl_den.charg_frm`.
 4. In both `.charg_frm` files remove the header.
 Following this, they should look like:
@@ -58,7 +56,7 @@ Following this, they should look like:
 Now we will be able to visualise the results.
 
 !!! note
-    If you wish to move the files around, make sure that the `.charg_frm` file is located in the same directory as its respective `cell` file - for example, `NaCl_elf.charg_frm` should be with `NaCl_elf.cell`.
+    If you wish to move the files around, make sure that the `.charg_frm` file is located in the same directory as its respective `.cell` file - for example, `NaCl_elf.charg_frm` should be with `NaCl_elf.cell`.
 
 We will first look at the density output. Open it in Vesta, and, at the top-bar, go to `Utilities -> 2D Data Display`.
 
@@ -82,15 +80,13 @@ Now let's follow the exact same procedure, except this time with `NaCl_elf` for 
 
 ![Supercell of NaCl ELF](NaCl_elf_2x2.png){width="50%"}
 
-This is rather interesting: though the electron density around the Na^+^ cation is very low, the electrons are much more localised around it - the opposite is true for Cl^-^ : the ELF is high where density is low and vice versa. While both, in the simplest model, have full outer shells and thus should both be highly localised (in fact they are both localised, Na^+^ just moreso), Cl^-^ simply has larger orbitals and has a full valence shell (rather than core), leading to lower localisation. This helps illustrate the key difference between ELF and population analysis: ELF is purely a measure of how localised the electrons are in space, and doesn't always correspond to a higher density.
+This is rather interesting: though the electron density around the Na^+^ cation is very low, the electrons are much more localised around it - the opposite is true for Cl^-^ : the ELF is high where density is low and vice versa. While both, in the simplest model, have full outer shells and thus should both be highly localised (in fact they are both localised, Na^+^ just more so), Cl^-^ simply has larger orbitals and has a full valence shell (rather than core), leading to lower localisation. This helps illustrate the key difference between ELF and population analysis: ELF is purely a measure of how localised the electrons are in space, and doesn't always correspond to a higher density.
 
 ## Covalent bonding - Si
 
-We will now use ELF to demonstrate covalent bonding in diamond-silicon. We will use the `cell` file
+We will now use ELF to demonstrate covalent bonding in diamond-silicon. We will use the `.cell` file
 
-*Si.cell*
-
-```castep_cell
+```castep_cell {title="Si.cell"}
 
 %block lattice_abc
 3.8 3.8 3.8
@@ -103,7 +99,7 @@ Si 0.25 0.25 0.25
 %endblock positions_frac
 ```
 
-Run castep with an identical `param` file (you may remove `WRITE_FORMATTED_DENSITY : TRUE` if not you're not interested in the charge density). Follow the exact same procedure as above (though again you can ignore anything to do with the charge density). After opening it in Vesta, rather than taking a slice, click `Edit -> Lattice planes`, which will open the window below:
+Run CASTEP with an identical `.param` file (you may remove `WRITE_FORMATTED_DENSITY : TRUE` if not you're not interested in the charge density). Follow the exact same procedure as above (though again you can ignore anything to do with the charge density). After opening it in Vesta, rather than taking a slice, click `Edit -> Lattice planes`, which will open the window below:
 
 ![Lattice planes window](lattice_planes_window.png){width="30%"}
 
@@ -130,10 +126,9 @@ If you wish to also examine and compare the charge density, this is covered in [
 
 Now that we have a good understand of what ELF actually does, let's use it for a more interesting purpose: to demonstrate lone pairs and hydrogen bonding. Lone pairs are by their nature highly localised, pairing up with each other and being held largely in place by strong repulsions to any negative charges (including other lone pairs) and strong attractions to positive ones (such as adjacent dipoles - this leads to hydrogen bonding)
 
-For HF we will use the `cell` file:
+For HF we will use the `.cell` file:
 
-*HF.cell*
-```castep_cell
+```castep_cell {title="HF.cell"}
 %block lattice_abc
 6 6 6
 90 90 90
@@ -147,7 +142,7 @@ F 3.92 3 3
 kpoints_mp_grid 4 4 4
 
 ```
-and again the same `param` file. Following the exact same steps as with NaCl, slicing the (010) plane (with the distance from the origin, set in the same slice window, set as 0.5d - 0.5 * the size of the side lengths) we get an output looking like:
+and again the same `.param` file. Following the exact same steps as with NaCl, slicing the (010) plane (with the distance from the origin, set in the same slice window, set as 0.5d - 0.5 * the size of the side lengths) we get an output looking like:
 
 ![ELF electron distribution](HF_slice.png){width="30%"}
 
@@ -155,10 +150,9 @@ This gives us an interesting picture: the small regions of high electron localit
 
 ## Water and ammonia
 
-The procedure for H~2~O and NH~3~ is almost identical. We use exactly the same `param` file as above, and perform the same procedures following the `elf_fmt` output. The `cell` files we use are:
+The procedure for H~2~O and NH~3~ is almost identical. We use exactly the same `.param` file as above, and perform the same procedures following the `elf_fmt` output. The `.cell` files we use are:
 
-*H2O.cell*
-```castep_cell
+```castep_cell {title="H2O.cell"}
 %block lattice_abc
 5 5 5
 90 90 90
@@ -173,8 +167,7 @@ H 2.5 1.95 1.72
 
 for water and
 
-*NH3.cell*
-```castep_cell
+```castep_cell {title="NH3.cell"}
 %BLOCK LATTICE_ABC
 8 8 8
 90 90 90
@@ -186,8 +179,6 @@ H 4 4 5
 H 4.95 4 3.67
 H 3.53 3.18 3.67
 %ENDBLOCK POSITIONS_ABS
-
-
 ```
 
 For ammonia.

@@ -56,7 +56,7 @@ XYZ: param=3 :ENDXYZ
 
 ### Extracting devel codes
 
-The devel code block is converted upon reading the param file into
+The devel code block is converted upon reading the `.param` file into
 `parameters :: current_params%devel_code`. This block can then be
 parsed using the following functions:
 

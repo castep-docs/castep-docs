@@ -5,7 +5,7 @@
 *    Calculate $\Delta$SCF-DFT excitation energies by changing band
     occupation - the "simple" method.
 *   Constrain and occupy an orbital of a subsystem or reference system
-     to resemble an electronic excitation via 'linear expansion mode' = le $\Delta$SCF-DFT
+     to resemble an electronic excitation via 'linear expansion mode' = linear expansion $\Delta$SCF-DFT
 *   Put penalties onto orbitals of a subsystem in a DFT+U fashion
      (DFT+U(MO)). This can be done by enforcing idempotency (integer
      occupation) or by constrained DFT
@@ -17,7 +17,7 @@
 ## Prerequisites
 
 *   The following applies to all modes, except the $\Delta$SCF-DFT
-     mode. Nonetheless, this runmode requires a good understanding of
+     mode. Nonetheless, this run mode requires a good understanding of
      its limitations.
 
 *   The two systems should not be strongly geometrically or
@@ -27,9 +27,9 @@
      perturbation. This applies for example for
 
      *   A molecule adsorbed at a metal surface with weak to medium hybridization, *e.g.* C~6~H~6~\@Au(111).
-     *   A particle or molecule inserted into a porous nanostructure.
+     *   A particle or molecule inserted into a porous nano-structure.
      *   The exact same system in another electronic state, *e.g.*
-         groundstate *vs.* first excited state.
+         ground state *vs.* first excited state.
 
 *    The wavefunction of the subsystem has to be calculated with
      **exactly** the same settings (K-points, spin-polarisation,
@@ -48,7 +48,7 @@
 The general use of $\Delta$SCF always involves the following steps:
 
 1.   Define the base system and calculate the self consistent density and wave functions using a
-`task=single point energy`. The checkfile generated is then used as the base for the next steps.
+`task=single point energy`. The `.check` file generated is then used as the base for the next steps.
 
 2.  Define the system you want to study and add something similar to the following to
 the``<seed>.param`` file:

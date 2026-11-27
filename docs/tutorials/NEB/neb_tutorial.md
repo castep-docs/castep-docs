@@ -10,7 +10,7 @@ The technique starts with two fixed end points which are fully relaxed (local) m
 
 In this tutorial, we will use the well-known example of an ammonia molecule's [pyramidal inversion](https://en.wikipedia.org/wiki/Pyramidal_inversion#Energy_barrier)
 
-![NH3 inversion diagram from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/2d/Nitrogen-inversion-3D-balls.png)
+![NH3 inversion diagram from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/2d/Nitrogen-inversion-3D-balls.png)
 
 We will cover:
 
@@ -22,7 +22,7 @@ We will cover:
 
 ## Files
 
-You can find all the files needed for this tutorial here: [neb_tutorial.tar.gz](neb_tutorial.tar.gz)
+You can find all the files needed for this tutorial here: [`neb_tutorial.tar.gz`](neb_tutorial.tar.gz)
 
 
 
@@ -35,7 +35,7 @@ These are the local minima structures you want to find the barrier between. They
 2. The atoms must be in the correct order. A common mistake is to use a software tool to generate the final state from the initial state and end up with atoms that don't match the initial atom order. Atoms then "pass through each other" when CASTEP interpolates between the two structures, causing the calculation to blow up. Always check that the atoms connect up in the way you expect. Note that, for CASTEP, only the atom order within a given species matters, not the order of the species themselves. In this example, we make sure that the H atoms are in the same order in the initial, final and intermediate structures and we can have the N coordinate either before or after the H atom coordinates.
 
 
-The initial state is specified in the same way as a normal .cell file, e.g.:
+The initial state is specified in the same way as a normal `.cell` file, e.g.:
 
 ```castep_cell
 %BLOCK positions_frac
@@ -47,7 +47,7 @@ The initial state is specified in the same way as a normal .cell file, e.g.:
 ```
 
 
-The final state is specified using a similar block in the same .cell file but with `_product` appended to the name of the block, e.g.:
+The final state is specified using a similar block in the same `.cell` file but with `_product` appended to the name of the block, e.g.:
 
 ```castep_cell
 %BLOCK positions_frac_product
@@ -92,7 +92,7 @@ Using many (i.e. > 15) will result in slow convergence, but may lead to a more a
 
 Using too few (i.e. < 5) might fail to find the minimum energy pathway if the energy landscape is complex.
 
-The TS guess structure that you specify in the .cell file will be assigned to the middle image, with the other images being initially linearly interpolated between the initial, TS guess and final structures. If you choose an even number of images, the 'middle' one is taken to be the one to the right of the centre. e.g. for 6 images, the TS guess will be assigned to image 4. This will make your initial NEB asymmetric in the sense that there will be more images to the left of the TS guess than to the right. If the TS guess is estimated to be in the geometric centre of the minimum energy pathway, then it's probably best to use an odd number of images.
+The TS guess structure that you specify in the `.cell` file will be assigned to the middle image, with the other images being initially linearly interpolated between the initial, TS guess and final structures. If you choose an even number of images, the 'middle' one is taken to be the one to the right of the centre. e.g. for 6 images, the TS guess will be assigned to image 4. This will make your initial NEB asymmetric in the sense that there will be more images to the left of the TS guess than to the right. If the TS guess is estimated to be in the geometric centre of the minimum energy pathway, then it's probably best to use an odd number of images.
 
 As the minimum energy pathway is very simple in this example, we can actually get away with just one image. However, we'll use 7 images here to illustrate the process. As an exercise, you can try running the same calculation with `tssearch_max_path_points: ` 1, 2, 3, 4, 5 images and note how the results change.
 
@@ -141,7 +141,7 @@ In our example the path is quite straightforward and will not make a large diffe
 
 `TSSEARCH_NEB_CLIMBING: TRUE`
 
-in the .param file. Though it's not necessary in this case, we will use it here to illustrate the process.
+in the `.param` file. Though it's not necessary in this case, we will use it here to illustrate the process.
 
 To illustrate a case in which climbing NEB is more important, consider briefly another example: that of the HCN - HNC isomerisation. In this case, the minimum energy pathway is not a simple linear interpolation between the initial and final states and the minimum energy pathway is not symmetric. The climbing NEB method is very important to get an accurate estimate of the barrier and transition state structure. In Fig 1., we compare the regular and climbing NEB methods using 7 images. While we can find similar barrier heights using both methods if we use a suitable interpolation scheme for the regular NEB, the regular NEB does not find the correct transition state structure. The climbing NEB, on the other hand, finds the correct transition state structure and barrier height.
 
@@ -165,7 +165,7 @@ Because the NEB calculation essentially involves *N* independent CASTEP calculat
 
 `NUM_FARMS: 7`
 
-in the .param file.
+in the `.param` file.
 
 A good rule of thumb is to aim for `NUM_FARMS` = number of NEB images. That way each 'farm' is responsible for one NEB image. Since each farm will effectively run a series of single-point calculations on each NEB image they are responsible for, the compute resources of that farm should be appropriately sized for such calculations. Too small and you could get an out-of-memory error, too large and you might end up over-parallelising, leading to reduced overall performance. i.e. you should aim to run on a total of `NUM_FARMS` times as many cores as you would use for a single-point calculation on one of the structures.
 
@@ -177,7 +177,7 @@ If you choose `NUM_FARMS` > number of images, then some farms will be left with 
 
 Setting `NUM_FARMS = 1` is equivalent to not setting `NUM_FARMS`.
 
-You will notice that if you enable task farming, the seedname.castep output file will look relatively empty, as most output is split into the different task farm .castep files. The first indexed one contains the most important information (for example, the "Max NEB force") and will be called e.g. `seedname_farm001.castep`.
+You will notice that if you enable task farming, the seedname.castep output file will look relatively empty, as most output is split into the different task farm `.castep` files. The first indexed one contains the most important information (for example, the "Max NEB force") and will be called e.g. `seedname_farm001.castep`.
 
 
 ### Is the calculation converging?
@@ -196,7 +196,7 @@ You will probably see a "Failed to converge" message in the .castep output in th
 
 If you re-run the calculation without changing anything, it will simply start from the beginning again -- probably not what you want!
 
-In order restart the NEB from the last checkpointed state, you need to **explicitly** set the name of the .check file you want to continue from in your .param file. In our example that would be:
+In order restart the NEB from the last checkpointed state, you need to **explicitly** set the name of the `.check` file you want to continue from in your `.param` file. In our example that would be:
 
 ```castep_param
 continuation: nh3.check
@@ -288,7 +288,7 @@ if __name__ == '__main__':
     # view(images)
 ```
 
-If we save this script as analysis.py and run it in the directory containing both the nh3.cell and nh3.ts files like this:
+If we save this script as analysis.py and run it in the directory containing both the `nh3.cell` and `nh3.ts` files like this:
 
 ```bash
 python analysis.py nh3

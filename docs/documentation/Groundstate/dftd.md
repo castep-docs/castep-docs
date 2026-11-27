@@ -6,14 +6,14 @@
  * do the TSSURF and TSSCS schemes work/do anything?
  * are the aperiodic versions of TSSCS and MBD still a thing?
  * What elements are supported for D3?
- * General recommendations for types of systems -- are these ok? Add others?
+ * General recommendations for types of systems -- are these OK? Add others?
 -->
 
 ## Background
 
 ### Why and when are long range-dispersion methods needed?
 
-Van der Waals (vdW) interactions are ubiquitous in nature but aren't accounted for by standard local and semilocal density functional approximations (i.e. LDA or GGAs). In particular, the long-range attractive part of the vdW interaction between system components (London dispersion interaction) is not captured. Including such dispersion effects is essential for accurately describing certain systems, especially for systems that are not bound ionically or covalently, e.g. gas molecules.
+Van der Waals (vdW) interactions are ubiquitous in nature but aren't accounted for by standard local and semi-local density functional approximations (i.e. LDA or GGAs). In particular, the long-range attractive part of the vdW interaction between system components (London dispersion interaction) is not captured. Including such dispersion effects is essential for accurately describing certain systems, especially for systems that are not bound ionically or covalently, e.g. gas molecules.
 
 The use of a dispersion method is strongly recommended when intermolecular interactions are expected to play a key role such as in molecular crystals, stacked 2D materials, and generally any weakly-bound system.
 
@@ -21,7 +21,7 @@ The use of a dispersion method is strongly recommended when intermolecular inter
 ### Types of correction schemes
 There are several families of dispersion methods. A good summary of these can be found in the 2016 review by Grimme *et al*.[@Grimme2016] We will summarise these categories here and, for those implemented in CASTEP, link to the relevant keywords.
 
-**Semiempirical/semiclassical treatments**
+**Semi-empirical/semi-classical treatments**
 
 Here the dispersion energy is calculated atom-wise (typically pair-wise) and is added to the DFT energy of the underlying functional. Note that a specific damping parameter (and function) is usually used to combine a given underlying functional (e.g. PBE) with a dispersion correction (e.g. D3). This means, for example, that the D3 correction to the PBE functional may be different to the D3 correction to HSE.
 
@@ -33,13 +33,13 @@ Methods include:
 * The exchange-dipole moment model ([XDM](#XDM))
 
 
-**Nonlocal density-based treatments (not implemented in CASTEP)**
+**Non-local density-based treatments (not implemented in CASTEP)**
 
 Here non-local functionals of the electronic density are constructed. Methods include the van der Waals functionals (e.g. `vdW-DF2`[@vdW-DF2] and `vdW-DF-cx`[@vdW-DF-cx]) and Vydrov and Van Voorhis functionals[@VV10].
 
 **Effective one-electron potentials (not implemented in CASTEP)**
 
-Finally, the many-body correlated motion of electrons can be, to some extent, captured empiricially by using effective one-electron potentials. Examples of these include: semi-local functionals such as the Minnesota functionals (e.g. `M06`[@Zhao2008]) and external potentials such as the dispersion-corrected atom-centered potentials (e.g. van Santen and DiLabio, 2015[@vanSanten2015]).
+Finally, the many-body correlated motion of electrons can be, to some extent, captured empirically by using effective one-electron potentials. Examples of these include: semi-local functionals such as the Minnesota functionals (e.g. `M06`[@Zhao2008]) and external potentials such as the dispersion-corrected atom-centred potentials (e.g. van Santen and DiLabio, 2015[@vanSanten2015]).
 
 ## General recommendations
 
@@ -59,16 +59,16 @@ $^*$ See note below for how to include the three-body terms in the CASTEP D3 cor
 Again, please do your own testing and consult relevant reviews and benchmarking papers.
 
 
-For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). This has been fixed in academic CASTEP v24.1 for TS and MBD, and in v25 for XDM. If you are using an older version of CASTEP, then you should try to use larger unit cells until your dispersion correction converges.
+For the TS, MBD and XDM methods you may get a warning if your unit cell is small (where the lattice constants are comparable to the vdW radii). This has been fixed in academic CASTEP 24.1 for TS and MBD, and in CASTEP 25.1 for XDM. If you are using an older version of CASTEP, then you should try to use larger unit cells until your dispersion correction converges.
 
 
 Not all `XC_FUNCTIONAL` values are supported for all schemes - if in doubt use PBE. The primary 'XC_FUNCTIONAL' for XDM is B86BPBE.
 
-Each scheme has default parameters defined for a subset of elements (see [table](#table) below). For other elements you need to define custom parameters using the `SEDC_CUSTOM_PARAMS` keyword in the .cell file.
+Each scheme has default parameters defined for a subset of elements (see [table](#table) below). For other elements you need to define custom parameters using the `SEDC_CUSTOM_PARAMS` keyword in the `.cell` file.
 
 ## Using dispersion corrections in CASTEP
 
-### .param file keywords
+### `.param` file keywords
 
 In the `.param` file, set:
 
@@ -95,7 +95,7 @@ $^*$ <a name="tab-foot"></a>DFPT: Density functional perturbation theory; FD: fi
 
 All of the above methods support analytic forces.
 
-### .cell file keywords
+### `.cell` file keywords
 
 In the `.cell` file you can *optionally* set custom parameters for each species:
 
@@ -126,7 +126,7 @@ A density-dependent, atom pairwise dispersion-correction scheme.
 
 Restrictions:
 
-* Can only be used with the following XC functionals: PBE, PBE0, PBE1PBE, BLYP, B3LYP, AM0, RPB, PBESOL, PW91
+* Can only be used with the following XC functionals: `PBE`, `PBE0`, `PBE1PBE`, `BLYP`, `B3LYP`, `AM0`, `RPB`, `PBESOL`, `PW91`
 * Elements up to Z=54 (Xe) together with first row Lanthanides are supported.
 
 **`SEDC_SCHEME : TSSCS`** <a name="TSSCS"></a>
@@ -261,7 +261,7 @@ Restrictions:
 
  * Default D3 parameters are available for the PBE, PBE0 and HF functionals.
  <!-- * `TODO: what elements are supported?` -->
- * By default the **three-body term is not included**. To include it, set `d3_threebody: True` within a `devel_code` block in the .param file. Turn on `IPRINT > 1` to get more information on what has been included in the D3 correction.
+ * By default the **three-body term is not included**. To include it, set `d3_threebody: True` within a `devel_code` block in the `.param` file. Turn on `IPRINT > 1` to get more information on what has been included in the D3 correction.
  * In the current implementation, users cannot supply custom parameters for this correction scheme.
 
 

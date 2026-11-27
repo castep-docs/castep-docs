@@ -5,7 +5,7 @@
 The CASTEP source distribution includes a test suite to aid developers and users or HPC admins alike by
 
 - Ensuring that new development and refactored code does not cause a crash or significantly change any results;
-- Testing a new compiler, or new version of an existing compiler for failures due to language standard support, 
+- Testing a new compiler, or new version of an existing compiler for failures due to language standard support,
   non-portable code or bugs in the compiler itself;
 - Ensuring that serial and parallel execution yield the same results;
 - Automating the tests so they may be run as a routine part of
@@ -20,12 +20,12 @@ testing are performed using the
 [`testcode`](https://testcode.readthedocs.io/en/latest/) testing
 platform. This handles all of the definition of test categories, the
 selection, sequencing and running of tests, and comparison of the run
-output with a benchmark. To run CASTEP, postprocess the output and
+output with a benchmark. To run CASTEP, post-process the output and
 extract the comparison data, it invokes two scripts supplied in
 the CASTEP distribution `bin` directory named [`run_castep_test.py`](#creation-and-format-of-test-outputs-and-benchmarks) and
 [`extract_results.pl`](#extraction-of-properties).
 
-The directory structure of the suite consists of a top-level `Test` directory containing testcode's configuration files, a GNU Makefile which contains targets to drive the tests, and a set of subdirectories dividing the tests into categories; in outline
+The directory structure of the suite consists of a top-level `Test` directory containing `testcode`'s configuration files, a GNU Make file which contains targets to drive the tests, and a set of subdirectories dividing the tests into categories; in outline
 
 ```
 Test
@@ -35,11 +35,11 @@ Test
  |-- userconfig
  |-- Electronic
          |-- Cr-AFM
-			 |-- Cr_00PBE.uspcc
-			 |-- Cr_AFM.cell
-			 |-- Cr_AFM.param
-			 |-- benchmark.out.castep-23.1.castep-python-1.0.python-3.6.9.inp=Cr_AFM.param
-         |-- <Electronic test 2> 
+             |-- Cr_00PBE.uspcc
+             |-- Cr_AFM.cell
+             |-- Cr_AFM.param
+             |-- benchmark.out.castep-23.1.castep-python-1.0.python-3.6.9.inp=Cr_AFM.param
+         |-- <Electronic test 2>
 |-- <Category 2>
          |-- <Category 2 test 1>
          |-- <Category 2 test 2>
@@ -73,9 +73,9 @@ rm -f */*/*.castep */*/*.dfpt_wvfn */*/*.fd_wvfn */*/*.wvfn.* */*/*.*.err
 ....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................... [487/487]
 ```
 
-if everything passes. If one or more tests fails the corresponding `.` is replaced with a `F` symbol, or an `S` to flag that the test was skipped (possibly because a prerequisite test failed). 
+if everything passes. If one or more tests fails the corresponding `.` is replaced with a `F` symbol, or an `S` to flag that the test was skipped (possibly because a prerequisite test failed).
 
-In case of a failed test, more detailed information on which tests failed and why, the commands 
+In case of a failed test, more detailed information on which tests failed and why, the commands
 `make compare`, `make diff`, `cmake -t compare`, or `cmake -t diff`
 will print a summary or detailed analysis of the failed tests to stdout.  A deeper analysis may require a direct look at the corresponding `<test.out-...>` file, in the `Test/<category>` subdirectory which will contain the `.castep` output as well as the `.0001.err` error/traceback report file in case of an `io_abort`.
 
@@ -123,7 +123,7 @@ and may be run individually using
 or the targets of the same name in cmake.
 
 ??? keyword "Running individual tests"
-    In fact the tests may be run at even finer granularity, down to the subdirectory. This is not implemented via the Makefile or cmake, and can only be accessed by invoking `testcode` directly as described [below](#direct-invocation-of-testcode). However the most straightforward means of doing this is to copy and paste the testcode invocation command printed by `make check-spe` including all of the run and argument setup and change the argument of the `-c` option to `<directory>/<subdirectory>`.
+    In fact the tests may be run at even finer granularity, down to the subdirectory. This is not implemented via the `Makefile` or CMake, and can only be accessed by invoking `testcode` directly as described [below](#direct-invocation-of-testcode). However the most straightforward means of doing this is to copy and paste the testcode invocation command printed by `make check-spe` including all of the run and argument setup and change the argument of the `-c` option to `<directory>/<subdirectory>`.
 
 ### Adding or changing tests
 
@@ -134,7 +134,7 @@ The changes required are
   * (Optionally) a new test subdirectory. This will be automatically scanned by `testcode` and included if a subdirectory of one of the existing major categories. If the new output is an enhancement or option to an existing functionality, it may be appropriate to simply add the new test to an existing second-level subdirectory.
   * When adding is a major new capability, it may be appropriate to add a new top-level category and subdirectory tree. In that case the [`Makefile`](#adding-to-make) and [`CMakeLists.txt`](#adding-to-cmake) will need to be extended to add the new `check`, `compare`, `diff` and `recheck` targets.
   * CASTEP input files: `.cell` and `.param`
-  * If any external pseudopotential files are required, these should be placed in the `Test/Pseudopotentials` subdirectory and a symbolic link made from the test subdirectory. Both the fle and the link should be added to the `git` repository. 
+  * If any external pseudopotential files are required, these should be placed in the `Test/Pseudopotentials` subdirectory and a symbolic link made from the test subdirectory. Both the fle and the link should be added to the `git` repository.
   * to modify [`bin/run_castep_test.py`](#test-outputs-and-benchmarks) if you need to test the contents of a new output file.
   * if testing a new quantity, either in the `.castep` file or any other output file, you must extend the [`bin/extract_results.pl`](#extraction-of-properties) script to scan for and report the new value to be tested.
   * A new stanza in [`jobconfig`](#jobconfig-file) will be required to specify tolerances for the comparison if the defaults in [`userconfig`](#userconfig-file) are not suitable.
@@ -175,11 +175,11 @@ There are two or three common ways to achieve stability of a run with a test whi
    or spacing.  This avoids the propensity of the k-point symmetry
    reduction to generate different but equivalent sets depending on
    hardware, compiler options and the like. Usually a very coarse set will suffice.
-3. It is frequently counterproductive to use too loose a value for 
+3. It is frequently counterproductive to use too loose a value for
    `ELEC_ENERGY_TOL` as the addition or removal of a single SCF iteration between
    benchmark and test can result in a change of, for example, forces sufficient
    to cause a test failure.
-   
+
 ### Profiling the test suite
 
 A timing profile of the test suite may be generated following a successful run by the GNU make command
@@ -225,9 +225,9 @@ which will run only the tests in that subdirectory.
 
 During execution of a test suite run, individual tests are run via a
 wrapper script `run_castep_test.py`. This controls the execution of
-CASTEP, and gathers up and appends any additional output files generated 
-for this particular task.  This concatenated format is used for both the 
-test outputs (`test.out-...`) and benchmark files (`benchmark.out-...`). 
+CASTEP, and gathers up and appends any additional output files generated
+for this particular task.  This concatenated format is used for both the
+test outputs (`test.out-...`) and benchmark files (`benchmark.out-...`).
 
 The invocation is
 
@@ -242,8 +242,8 @@ The invocation is
 
 ### Extraction of Properties
 
-The `extract_results.pl` script is invoked by `testcode.py` to process both 
-the test (`test.out-...`) and benchmark  (`benchmark.out-...`) files and extract 
+The `extract_results.pl` script is invoked by `testcode.py` to process both
+the test (`test.out-...`) and benchmark  (`benchmark.out-...`) files and extract
 the specific output data for comparison.
 It can extract the following properties
 

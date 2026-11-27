@@ -6,7 +6,7 @@ For molecules adsorbed at surfaces, $\Delta$SCF calculations become
 challenging, simply because of the large number of states. Not only is
 it difficult to identify the correct state, often hybridization spreads
 adsorbate molecular orbitals across a large number of substrate bands. A
-more realistic excitation constraint would be to project on a gasphase
+more realistic excitation constraint would be to project on a gas-phase
 molecular orbital and subsequently enforce occupation of this state.
 
 This idea is referred to as linear expansion $\Delta$SCF and has first
@@ -15,7 +15,7 @@ been proposed by Gavnholt *et al*[@DeltaSCF2].
 The CASTEP implementation is described in Maurer and Reuer (2013)[@DeltaSCF3].
 Herein, we constrain the occupation of a so-called
 resonance state built from a linear combination of Kohn-Sham states
-instead of a single KS state. We expand an abitrary reference state
+instead of a single KS state. We expand an arbitrary reference state
 $|\phi_c\rangle$ in the space of Kohn-Sham states as follows:
 
 $$|\tilde{\psi}_c^{\mathbf{k}}\rangle = \sum_i^{\mathrm{states}} |\psi_i^{\mathbf{k}}\rangle\langle\psi_i^{\mathbf{k}}|\phi_c^{\mathbf{k}} \rangle$$

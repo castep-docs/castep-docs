@@ -6,7 +6,7 @@ approach is combined with MD to generate an ensemble of configurations, and so t
 Molecular Dynamics (PIMD). With this approach, quantum expectation values can be calculated by trajectory averages. Hence
 classical MD analysis techniques can be used to generate quantum values.
 
-####Keywords
+#### Keywords
 
 PIMD is a form of MD, and so all the usual MD keywords apply. NB the only supported `md_thermostat` is Langevin but this works with all values of `md_barostat`.
 
@@ -46,20 +46,20 @@ delocalization at the given temperature.
 The staging mode transformation is a key way to eliminate the natural harmonics in the dynamics of the ring of beads, which
 would otherwise significantly reduce the time step required, particularly at low temperatures.
 
-####Output files
+#### Output files
 
 When doing a PIMD calculation, there is `md_num_beads` times more information generated! Hence if using farming, then only
 the centroid position of and velocity etc of each ring of beads (corresponding to the classical position of each atom) is output to the `.castep`
 file. The coordinate data for each value of imaginary time (the cyclic index labelling the beads for each atom) is written
 to individual `farmXXX.castep` where XXX is the farm number. If not farming, then all this data is written to the
 single `.castep` file. The size of each ring for each atom at each real timestep is analysed in terms of the 'radius of gyration'
-tensor, and the 3 RGY eigenvalues and corresponding eigenvectors are also output to the master .castep file.
+tensor, and the 3 RGY eigenvalues and corresponding eigenvectors are also output to the master `.castep` file.
 
 In addition, there are `beadXXX.md` files produced, one per imaginary time value (number of beads). These can
 be used for different MD analysis techniques, and can also be merged using scripts such as `pimerge.pl` to put all the bead
 data for each value of real time into the same file, which can be useful for visualization of the bead dynamics.
 
-####Working with i-pi
+#### Working with i-pi
 
 `i-pi` is a 3rd-party python package for doing PIMD. This needs other codes, such as CASTEP, to generate the forces for a
 given configuration, and can then do different forms of PIMD, including centroid PIMD, which is not natively supported by

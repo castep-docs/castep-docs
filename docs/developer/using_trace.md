@@ -1,14 +1,14 @@
 # Using the `trace` module
 
 The `trace` module provides functionality useful to developers for debugging and
-profiling particular sections of castep. It is common practice to put calls to
+profiling particular sections of CASTEP. It is common practice to put calls to
 `trace_entry` and `trace_exit` at the beginning and end of function calls in
-castep, but the reasoning why may be unclear.
+CASTEP, but the reasoning why may be unclear.
 
-The primary reason for most users is that when castep performs an `io_abort`, it
+The primary reason for most users is that when CASTEP performs an `io_abort`, it
 first calls into `trace` on each process to dump the current trace stack to the
 `<seedname>.<process_id>.err` files. This is the main error message people see
-when castep fails.
+when CASTEP fails.
 
 This document sets out to explain in more detail, the usage of the `trace`
 module and how and why it benefits developers.
@@ -158,7 +158,7 @@ The `trace` module has several functions which can be enabled by devel codes.
 
 ##### PROF block
 
-Enables timing for the castep.
+Enables timing for the CASTEP.
 
 ```castep_cell
 # Prints profiling information for the whole run

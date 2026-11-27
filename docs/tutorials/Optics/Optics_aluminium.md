@@ -1,11 +1,10 @@
 # Optics - Aluminium
 
-In this tutorial, we will have brief look at how to calculate the optical properties of metals, looking at aluminium in particular, and how the results are different from a standard Optados optics calculation. It is highly recommended that you first go through the [previous tutorial](Optics.md), where we go more into depth on it - this tutorial is mostly just highlighting how it is slightly different for metals.
+In this tutorial, we will have brief look at how to calculate the optical properties of metals, looking at aluminium in particular, and how the results are different from a standard OptaDOS optics calculation. It is highly recommended that you first go through the [previous tutorial](Optics.md), where we go more into depth on it - this tutorial is mostly just highlighting how it is slightly different for metals.
 
-We will use the `cell` file
+We will use the `.cell` file
 
-*Al.cell*
-```castep_cell
+```castep_cell {title="Al.cell"}
 %BLOCK LATTICE_CART
        4.050000000000000       0.000000000000000       0.000000000000000
        0.000000000000000       4.050000000000000       0.000000000000000
@@ -25,16 +24,15 @@ SPECTRAL_KPOINTS_MP_GRID 15 15 15
 SYMMETRY_GENERATE
 ```
 
-and `param` file
+and `.param` file
 
-*Al.param*
-```castep_param
+```castep_param {title="Al.param"}
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : optics
 NEXTRA_BANDS           : 10
 ```
 
-Run Castep as usual. Then run Optados with the Optados input file
+Run Castep as usual. Then run OptaDOS with the OptaDOS input file
 
 *Al.odi*
 ```
@@ -72,9 +70,9 @@ The file `Al_epsilon.dat` contains the following data:
   30.000000000000000       0.50390837320213944       0.39467151801745531
 ```
 
-You can see here that there are 3 columns like before (energy, real and imaginary dielectric), but there's 3 separate sets of them, separated by a double space. The 1st set corresponds to the interband contribution, the 2nd to the intraband, and the 3rd to the total. Though normally it'd be easiest to visualise this data by plotting the `agr` file on xmgrace, this would only give the interband term - if you're interested in other information you will have to use the `.dat` file.
+You can see here that there are 3 columns like before (energy, real and imaginary dielectric), but there's 3 separate sets of them, separated by a double space. The 1st set corresponds to the interband contribution, the 2nd to the intraband, and the 3rd to the total. Though normally it'd be easiest to visualise this data by plotting the `agr` file on XMGrace, this would only give the interband term - if you're interested in other information you will have to use the `.dat` file.
 
-You may choose to use/plot this data in your preferred method, but this tutorial will give you the necessary files to plot it using xmgrace. Firstly, we will create a new file called `Al_epsilon_sep.dat` file that turns separates the data into columns - we can do that with [this Python script](contributions_sep.py). The output file looks like
+You may choose to use/plot this data in your preferred method, but this tutorial will give you the necessary files to plot it using XMGrace. Firstly, we will create a new file called `Al_epsilon_sep.dat` file that turns separates the data into columns - we can do that with [this Python script](contributions_sep.py). The output file looks like
 
 ```
 0.0000000000000000           2.1445746376579851           0.0000000000000000      -32490.3191726066543197           0.0000000000000000      -32489.1745979689949309           0.0000000000000000
@@ -84,7 +82,7 @@ You may choose to use/plot this data in your preferred method, but this tutorial
 
 It's exactly the same data except all the data is in separate columns now: 1 is still energy, 2 is interband real, 3 is interband imaginary, 4 is intraband real, 5 is intraband imaginary, 6 is total real and 7 is total imaginary dielectric.
 
-Now let's make a graph of more useful data: rerun Optados with `JDOS_SPACING : 0.01` set instead (to get more data for more meaningful graphs), and rerun the Python script. You could plot it with xmgrace (and using any accompanying batch files as you wish), but it is more convenient to plot it using plotly (and Bokeh to add a bit more functionality) - this is because the values vary greatly.
+Now let's make a graph of more useful data: rerun OptaDOS with `JDOS_SPACING : 0.01` set instead (to get more data for more meaningful graphs), and rerun the Python script. You could plot it with XMGrace (and using any accompanying batch files as you wish), but it is more convenient to plot it using plotly (and Bokeh to add a bit more functionality) - this is because the values vary greatly.
 
 To replicate this, you may use this [Python script](basic_graph.py) to use plotly to get a basic output, and to get 1 with a bit of extra functionality (such as being able to manually select the range of values to look at) use [this script](inter_graph.py). Make sure you have all the required libraries installed if doing this: pandas and plotly are required for the 1st, and Bokeh is also required for the 2nd. The 1st generates an output HTML file called `interactive_graph.html` and the 2nd generates `interactive_graph_extra.html`. The latter is embedded here for your convenience:
 
@@ -110,7 +108,7 @@ Try looking at the region where energy (x) is between 1.3 and 1.6 - you should s
 
 ## Other files
 
-Running Optados generates the same files as without its contribution, except some of the files are slightly different different. For example, the file `Al_epsilon.agr` only contains the interband term - it only has 2 columns. Similarly to `Al_epsilon.dat`, `Al_loss_fn.dat` contains the interband, intraband and total loss function (though this time the components aren't separated by a double space - you'd have to adjust the Python script used before). Unlike `epsilon`, the `Al_loss_fn.agr` file contains all the terms - you can plot all the loss function data easily using
+Running OptaDOS generates the same files as without its contribution, except some of the files are slightly different different. For example, the file `Al_epsilon.agr` only contains the interband term - it only has 2 columns. Similarly to `Al_epsilon.dat`, `Al_loss_fn.dat` contains the interband, intraband and total loss function (though this time the components aren't separated by a double space - you'd have to adjust the Python script used before). Unlike `epsilon`, the `Al_loss_fn.agr` file contains all the terms - you can plot all the loss function data easily using
 
 `xmgrace Al_loss_fn.agr`
 
@@ -120,7 +118,7 @@ The graph should look a bit like
 
 For the loss function, you could also include `optics_lossfn_broadening : x` where x is the value of broadening you wish to use: this will generate a 4th column containing the broadened total loss function (again well-included in the `agr` file)
 
-If you change the Optados input file to find the tensor properties - which can be done by changing the line
+If you change the OptaDOS input file to find the tensor properties - which can be done by changing the line
 
 `OPTICS_GEOM : POLYCRYSTALLINE`
 

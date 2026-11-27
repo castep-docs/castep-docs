@@ -1,4 +1,3 @@
-
 This guide introduces the concepts, keywords and techniques needed to
 set up and run CASTEP calculations of lattice dynamics and vibrational
 spectroscopy. The material covers the various lattice-dynamical and
@@ -23,9 +22,9 @@ section [[large-calculations]](Running-Large-Calculations.md#sec:large-calculat
 
 There are many useful textbooks on the theory of vibrations in crystals,
 or *lattice dynamics* as the subject is usually known. A good beginner’s
-guide is “Introduction to Lattice Dynamics” by Martin Dove ([Dove
+guide is "Introduction to Lattice Dynamics" by Martin Dove ([Dove
 1993](Bibliography.md#ref-Dove93)). More advanced texts are available by
-Srivistava ([Srivastava 2023](Bibliography.md#ref-Srivastava90)), Maradudin ([Maradudin
+Srivastava ([Srivastava 2023](Bibliography.md#ref-Srivastava90)), Maradudin ([Maradudin
 and Horton 1980](Bibliography.md#ref-Maradudin80)) and many others. The following
 section presents only a brief summary to introduce the notation.
 
@@ -39,7 +38,7 @@ $z$ direction).
 ${{\mathbf{u}}_{{\kappa,\alpha},a}}= x_{{\kappa,\alpha,a}} - R_{{\kappa,\alpha,a}}$
 denotes the displacement of an atom from its equilibrium position.
 Harmonic lattice dynamics is based on a Taylor expansion of total energy
-about structural equilibrium co-ordinates.     
+about structural equilibrium co-ordinates.
 {#eq:taylor}
 
 $$E = E_0 + \sum_{{\kappa,\alpha,a}} \frac{\partial E}{\partial{{\mathbf{u}}_{{\kappa,\alpha},a}}}.{{\mathbf{u}}_{{\kappa,\alpha},a}}+ {\frac{1}{2}}
@@ -48,7 +47,7 @@ $$E = E_0 + \sum_{{\kappa,\alpha,a}} \frac{\partial E}{\partial{{\mathbf{u}}_{{\
 where ${{\mathbf{u}}_{{\kappa,\alpha},a}}$ is the vector of atomic
 displacements from equilibrium and
 ${\Phi^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(a)}$ is the matrix
-of *force constants*     
+of *force constants*
 {#eq:fcmat}
 
 $${\Phi^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(a)}\equiv {\Phi^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(a,0)}= \frac{\partial^2 E}{\partial {{\mathbf{u}}_{{\kappa,\alpha},a}}\partial {{\mathbf{u}}_{{\kappa^\prime,\alpha^\prime},0}}} \;.$$
@@ -64,12 +63,12 @@ $${{\mathbf{u}}_{{\kappa,\alpha}}}= {\mathbf{\varepsilon}_{m{\kappa,\alpha}{\mat
 
 with a phonon wavevector ${\mathbf{q}}$ and a *polarization vector*
 ${\mathbf{\varepsilon}_{m{\kappa,\alpha}{\mathbf{q}}}}$. This yields an
-eigenvalue equation     
+eigenvalue equation
 {#eq:dmat-eigen}
 
 $${D^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(\mathbf{q})}{\mathbf{\varepsilon}_{m{\kappa,\alpha}{\mathbf{q}}}}= \omega_{m,{\mathbf{q}}}^2 {\mathbf{\varepsilon}_{m{\kappa,\alpha}{\mathbf{q}}}}\; .$$
 
-The **dynamical matrix** is defined as     
+The **dynamical matrix** is defined as
 {#eq:dmat}
 
 $${D^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(\mathbf{q})}= \frac{1}{\sqrt{M_\kappa M_{\kappa^\prime}}} {C^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}(\mathbf{q})}=
@@ -99,7 +98,7 @@ ${\Phi^{\kappa,\kappa^\prime}_{\alpha,\alpha^\prime}}$ which are the
 displacements. The *first* derivatives are the forces, and may be
 determined straightforwardly using the Hellman–Feynmann Theorem as the
 derivative of the quantum mechanical energy with respect to an atomic
-displacement, $\lambda$     
+displacement, $\lambda$
 {#eq:hellman}
 
 $$\begin{aligned}
@@ -185,7 +184,7 @@ experience suggests that substantially tighter tolerances are needed to
 generate reasonable quality phonons than are needed for structural or
 energetics calculations. For many crystalline systems a geometry force
 convergence tolerance set using parameter `geom_force_tol` of
-0.01 eV/Å is typically needed. For “soft” materials containing weak
+0.01 eV/Å is typically needed. For "soft" materials containing weak
 bonds such as molecular crystals or in the presence of hydrogen bonds,
 an even smaller value is frequently necessary. Only careful convergence
 testing of the geometry and resulting frequencies can determine the
@@ -209,7 +208,7 @@ necessarily positive definite, the eigenvalues
 $\omega_{m,{\mathbf{q}}}^2$ may be negative. In that case the
 frequencies are imaginary and do not correspond to a physical
 vibrational mode. For convenience CASTEP prints such values using a a
-minus sign “$-$”. These are sometimes loosely referred to as “negative”
+minus sign "$-$". These are sometimes loosely referred to as "negative"
 frequencies, but bear in mind that this convention really indicates
 negative *eigenvalues* and *imaginary* frequencies. [^3]
 
@@ -233,7 +232,7 @@ negative *eigenvalues* and *imaginary* frequencies. [^3]
     transition state geometry is at a stationary saddle point of the
     energy hypersurface and must therefore exhibit precisely one
     imaginary frequency. A final example is the case of a system
-    exhibiting a “soft-mode” phase transition where the frequency at the
+    exhibiting a "soft-mode" phase transition where the frequency at the
     Brillouin-zone boundary decreases to zero, indicating that the
     crystal could lower its energy by doubling of the corresponding unit
     cell parameter. It is often useful to explore how the frequency
@@ -300,7 +299,7 @@ Two features of CASTEP’s `.cell` file input may be helpful. First is the
 ability to input cell vectors and atomic positions using (a limited set
 of) mathematical syntax. See
 figure [[example-gamma]](Running-phonon-calculations.md#fig:example-gamma) for an example.
-Second, if the cell file keyword `snap_to_symmetry` is present, CASTEP
+Second, if the `.cell` file keyword `snap_to_symmetry` is present, CASTEP
 will adjust co-ordinates and vectors to satisfy symmetry to high
 precision.
 
@@ -310,6 +309,5 @@ invoked simply as
 
 > `symmetry_snap` *seedname*
 
-which reads *seedname*`.cell` and outputs the symmetrised version to
-*seedname*`-symm.cell`
-
+which reads `<seedname>.cell` and outputs the symmetrised version to
+`<seedname>-symm.cell`

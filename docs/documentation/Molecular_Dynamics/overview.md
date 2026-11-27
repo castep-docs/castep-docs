@@ -1,9 +1,8 @@
-
 Instead of using the forces to optimise the structure of the system, CASTEP can instead use the forces to accelerate the atoms (and cell-shape) in order to simulate dynamical properties - a method known as "Molecular Dynamics" or simply "MD". To perform this kind of calculation, set
 
 task : MD
 
-in your param file.
+in your `.param` file.
 
 CASTEP has a wide range of Molecular Dynamics (MD) capabilities, and can do equilibrium MD using a variety of ensembles:
 
@@ -11,7 +10,7 @@ CASTEP has a wide range of Molecular Dynamics (MD) capabilities, and can do equi
 * NVT - the canonical ensemble - with constant temperature not constant energy - due to the application of a thermostat
 * NPH - constant external pressure and enthalpy - due to the application of a barostat
 * NPT - constant external pressure and temperature - due to the application of a barostat and a thermostat
-* HUG - the Hugoniostat - a special thermo-barostat algorithm to find states on the Hugoniot curve
+* HUG - the Hugoniostat - a special thermostat-barostat algorithm to find states on the Hugoniot curve
 
 Of these, NPT is the closest to most real-life experiments.
 
@@ -21,12 +20,12 @@ Of the different barostats, CASTEP supports the isotropic Andersen-Hoover barost
 
 CASTEP also supports the Berendsen thermostat and barostat, as a route to faster equilibration before switching to one of the above thermostats/barostats for production data.
 
-As well as generating different classical ensembles, CASTEP can also generate a state on the Hugoniot using the Hugoniostat 
+As well as generating different classical ensembles, CASTEP can also generate a state on the Hugoniot using the Hugoniostat
 algorithm. In fact, CASTEP can generate multiple sets of points on the Hugoniot curve in a single calculation.
- 
-CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics 
+
+CASTEP can also go beyond the Born-Oppenheimer approximation to do quantum dynamics, using Path Integral Molecular Dynamics
 (PIMD), in either NVT or NPT ensembles, using the Langevin thermostat.
 
-In all MD schemes, CASTEP can support both linear and non-linear constraints on the ionic positions and/or on the cell 
-vectors. The detailed trajectory information is written to a `<seed>.md` file, which is a structured text file (similar to 
+In all MD schemes, CASTEP can support both linear and non-linear constraints on the ionic positions and/or on the cell
+vectors. The detailed trajectory information is written to a `<seed>.md` file, which is a structured text file (similar to
 the `<seed>.geom` file), for ease of manipulation and post-calculation analysis.

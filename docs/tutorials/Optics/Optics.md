@@ -1,13 +1,12 @@
 # Optics
 
-In this tutorial, we will use Optados to examine the optical properties of silicon and aluminium.
+In this tutorial, we will use OptaDOS to examine the optical properties of silicon and aluminium.
 
 ## Silicon Properties
 
-For Silicon, we will use the input `cell` file
+For Silicon, we will use the input `.cell` file
 
-*Si.cell*
-```castep_cell
+```castep_cell {title="Si.cell"}
 %BLOCK LATTICE_CART
 2.73  2.73 0.00
 2.73  0.00 2.73
@@ -25,21 +24,20 @@ KPOINTS_MP_GRID 10 10 10
 SPECTRAL_KPOINTS_MP_GRID 14 14 14
 ```
 
-and the `param` file
+and the `.param` file
 
-*Si.param*
-```castep_param
+```castep_param {title="Si.param"}
 TASK                   : SPECTRAL
 SPECTRAL_TASK          : OPTICS
 CUT_OFF_ENERGY         : 200
 IPRINT                 : 2
 
 ```
-Run Castep as usual. When it is done, run Optados on Si with the Optados input file
+Run Castep as usual. When it is done, run OptaDOS on Si with the OptaDOS input file
 
 <a id="odi"></a>
-*Si.odi*
-```
+
+``` {title="Si.odi"}
 TASK               : optics
 JDOS_SPACING       : 0.01
 JDOS_MAX_ENERGY    : 30
@@ -51,7 +49,7 @@ OPTICS_GEOM        : polycrystalline     # Default
 OPTICS_LOSSFN_BROADENING : 0.0
 ```
 
-After running Optados, we get several output `.dat` and `.agr` files. We will now examine them.
+After running OptaDOS, we get several output `.dat` and `.agr` files. We will now examine them.
 
 ### Epsilon.dat
 
@@ -72,7 +70,7 @@ The header also contains the results of the sum rule $\int_0^{\omega'} \textrm{I
 
 Where $N_\textrm{eff}$ is the effective number of electrons contributing to the absorption process, and is a function of energy.
 
-Let's plot it using xmgrace. Although you could plot the `dat` file (after configuring a bit to get it to plot everything properly), but luckily Optados has also generated an equivalent `agr` file that contains the same data, but also formats the xmgrace graph nicely. So let's use
+Let's plot it using XMGrace. Although you could plot the `dat` file (after configuring a bit to get it to plot everything properly), but luckily OptaDOS has also generated an equivalent `agr` file that contains the same data, but also formats the XMGrace graph nicely. So let's use
 
 `xmgrace Si_epsilon.agr`
 
@@ -94,7 +92,7 @@ Next let's look at the absorption data. The `dat` file is very similar, this tim
 1.0020040080160320E-002   0.0000000000000000
 ```
 
-You can plot it with xmgrace the same way as before (again the `agr` file is prepared by Optados). It should look like this
+You can plot it with XMGrace the same way as before (again the `agr` file is prepared by OptaDOS). It should look like this
 
 <a id="absorption_graph"></a>
 ![Si absorption graph](absorption.png){width="40%"}
@@ -156,7 +154,7 @@ def calculate_property(energy, epsilon_1, epsilon_2):
     alpha = (2 * omega * kappa) / c  # Absorption coefficient (1/m)
     return alpha
 ```
-If you're not interested in the Python output, just plot the `Si_refractive_index.agr` file using xmgrace, but if you wish to plot them together it is easiest to use
+If you're not interested in the Python output, just plot the `Si_refractive_index.agr` file using XMGrace, but if you wish to plot them together it is easiest to use
 
 <a id="batch"></a>
 `xmgrace -batch double.bat`
@@ -264,18 +262,18 @@ def calculate_property(epsilon_1, epsilon_2):
     return loss_function
 ```
 
-Plotting it together with `Si_loss_fn.dat` on xmgrace gives us the graph
+Plotting it together with `Si_loss_fn.dat` on XMGrace gives us the graph
 
 <a id="loss_graph"></a>
 ![Loss graph](loss.png){width="40%"}
 
 ## Changing Parameters
 
-Now that we know what Optados optics does and how it works, let's try changing some parameters in the [Optados input file](#odi) `Si.odi`, and re-running Optados, to see what effects it has.
+Now that we know what OptaDOS optics does and how it works, let's try changing some parameters in the [OptaDOS input file](#odi) `Si.odi`, and re-running OptaDOS, to see what effects it has.
 
 ### JDOS Parameters
 
-First let's have a look at the effect of changing the line `JDOS_MAX_ENERGY : 30`. We'll set it to 10 and 100 and plot `Si_epsilon.agr` using xmgrace. Doing it for 10 gives the graph
+First let's have a look at the effect of changing the line `JDOS_MAX_ENERGY : 30`. We'll set it to 10 and 100 and plot `Si_epsilon.agr` using XMGrace. Doing it for 10 gives the graph
 
 ![JDOS max energy 10](jdos_10.png){width="30%"}
 
@@ -329,7 +327,7 @@ As we see here, changing `JDOS_SPACING` simply affects the frequency of the samp
 
 ### Loss Function Broadening
 
-Additional broadening can be included in the calculation of the loss function.  This is done by setting the keyword `optics_lossfn_broadening` in the `odi` file to a non-zero value. To have a look at what it does, let's set `optics_lossfn_broadening : 1` and rerun Optados. The only files that are different are the `Si_loss_fn.dat` and `.agr` files - they now contain a 3rd column. The 1st is still energy, the 2nd is the unbroadened spectrum (the same result as when we did it [above](Optics.md#loss_graph)), and the 3rd is the broadened spectrum. Plotting thr `agr` file using xmgrace gives us this graph:
+Additional broadening can be included in the calculation of the loss function.  This is done by setting the keyword `optics_lossfn_broadening` in the `odi` file to a non-zero value. To have a look at what it does, let's set `optics_lossfn_broadening : 1` and rerun OptaDOS. The only files that are different are the `Si_loss_fn.dat` and `.agr` files - they now contain a 3rd column. The 1st is still energy, the 2nd is the unbroadened spectrum (the same result as when we did it [above](Optics.md#loss_graph)), and the 3rd is the broadened spectrum. Plotting thr `agr` file using XMGrace gives us this graph:
 
 ![Broadened loss](broadened_loss.png){width="40%"}
 
